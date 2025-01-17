@@ -2,7 +2,6 @@
 
 ## Author  : Aditya Shakya (adi1090x)
 ## Github  : @adi1090x
-#
 ## Applets : Screenshot + Screen Recording (Hyprland + grim + slurp + wf-recorder)
 
 # Import Current Theme
@@ -24,9 +23,9 @@ elif [[ "$theme" == *'type-5'* ]]; then
 fi
 
 # Options
-layout=`cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2`
+layout=$(cat ${theme} | grep 'USE_ICON' | cut -d'=' -f2)
 if [[ "$layout" == 'NO' ]]; then
-option_1=" Capture Region to Clipboard"
+	option_1=" Capture Region to Clipboard"
 	option_2=" Capture Desktop"
 	option_3="📋 Capture Region"
 	option_4=" Start Screen Recording (with Audio)"
@@ -40,6 +39,19 @@ else
 	option_5=""
 	option_6="❌"
 fi
+
+# Notification and Sound
+notify_view() {
+	local file_path=$1
+	local is_video=$2
+	local notify_icon=$3
+	local notify_message=$4
+	
+	paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga &>/dev/null &
+	dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i "$notify_icon" "$notify_message"
+	
+		viewnior "$file_path"
+}
 
 # Rofi CMD
 rofi_cmd() {
@@ -58,56 +70,54 @@ run_rofi() {
 	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6" | rofi_cmd
 }
 
-# Screenshot/Recording directory (ensuring screenshots are saved in ~/Pictures/Screenshots)
-dir="$HOME/Pictures/Screenshots"
-if [[ ! -d "$dir" ]]; then
-	mkdir -p "$dir"
+# Directories
+screenshot_dir="$HOME/Pictures/Screenshots"
+recording_dir="$HOME/Pictures/Recordings"
+
+if [[ ! -d "$screenshot_dir" ]]; then
+	mkdir -p "$screenshot_dir"
+fi
+if [[ ! -d "$recording_dir" ]]; then
+	mkdir -p "$recording_dir"
 fi
 
-# Take screenshots using grim and slurp
+# Timestamp
 timestamp=$(date +%Y-%m-%d-%H-%M-%S)
 
+# Screenshot Functions
 shotnow() {
-	file="$dir/desktop_${timestamp}.png"
-	sleep 1 && grim "$file"
-	dunstify -u low -i "/usr/share/icons/dunst/picture.png" --replace=699 "Screenshot Saved: $file"
+	file="$screenshot_dir/desktop_${timestamp}.png"
+	grim "$file"
+	notify_view "$file" false "/usr/share/icons/dunst/picture.png" "Screenshot Saved: $file"
 }
 
 shotarea() {
-	file="$dir/region_${timestamp}.png"
+	file="$screenshot_dir/region_${timestamp}.png"
 	grim -g "$(slurp)" "$file"
-	dunstify -u low -i "/usr/share/icons/dunst/picture.png" --replace=699 "Screenshot Saved: $file"
+	notify_view "$file" false "/usr/share/icons/dunst/picture.png" "Screenshot Saved: $file"
 }
 
 shotarea_clipboard() {
 	grim -g "$(slurp)" - | wl-copy
-	dunstify -u low -i "/usr/share/icons/dunst/picture.png" --replace=699 "Screenshot copied to clipboard."
+	dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i "/usr/share/icons/dunst/picture.png" "Screenshot copied to clipboard."
 }
 
-# Start Screen Recording with Audio
-dir1="$HOME/Pictures/Recordings"
-
-if [[ ! -d "$dir1" ]]; then
-  mkdir -p "$dir1"
-fi
-
+# Screen Recording Functions
 start_recording_with_audio() {
-	file="$dir1/screen_recording_${timestamp}.mp4"
+	file="$recording_dir/screen_recording_${timestamp}.mp4"
 	wf-recorder -f "$file" --audio &
-	dunstify -u low -i "/usr/share/icons/dunst/video.png" --replace=699 "Recording Started (with Audio)"
+	dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i "/usr/share/icons/dunst/video.png" "Recording Started (with Audio)"
 }
 
-# Start Screen Recording without Audio
 start_recording_no_audio() {
-	file="$dir1/screen_recording_${timestamp}.mp4"
+	file="$recording_dir/screen_recording_${timestamp}.mp4"
 	wf-recorder -f "$file" &
-	dunstify -u low -i "/usr/share/icons/dunst/video.png" --replace=699 "Recording Started (No Audio)"
+	dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i "/usr/share/icons/dunst/video.png" "Recording Started (No Audio)"
 }
 
-# Exit Screen Recording (kill the wf-recorder process)
 exit_recording() {
 	killall wf-recorder
-	dunstify -u low -i "/usr/share/icons/dunst/video.png" --replace=699 "Recording Stopped"
+	dunstify -u low -h string:x-dunst-stack-tag:obscreenshot -i "/usr/share/icons/dunst/video.png" "Recording Stopped"
 }
 
 # Execute Command
@@ -128,7 +138,7 @@ run_cmd() {
 }
 
 # Actions
-chosen="$(run_rofi)"
+chosen=$(run_rofi)
 case ${chosen} in
     $option_1)
 		run_cmd --opt5
