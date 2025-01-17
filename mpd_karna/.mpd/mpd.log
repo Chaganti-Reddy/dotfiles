@@ -87,3 +87,51 @@ Jan 17 16:02 : pipewire_output: Decoder is too slow; playing silence to avoid xr
 Jan 17 16:12 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
 Jan 17 16:13 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
 Jan 17 16:15 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 17 18:39 : update: added playlists/NEFFEX - Grateful [Copyright Free].mp3
+Jan 17 18:39 : update: added playlists/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
+Jan 17 18:39 : update: added playlists/N3WPORT - Power (feat. braev) [NCS Release].mp3
+Jan 17 18:39 : update: added playlists/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
+Jan 17 18:39 : update: added playlists/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
+Jan 17 18:39 : exception: Failed to decode /home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3; Failed to open '/home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3': No such file or directory
+Jan 17 18:39 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : update: removing playlists/NEFFEX - Grateful [Copyright Free].mp3
+Jan 17 18:40 : update: removing playlists/N3WPORT - Power (feat. braev) [NCS Release].mp3
+Jan 17 18:40 : update: removing playlists/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
+Jan 17 18:40 : update: removing playlists/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
+Jan 17 18:40 : update: removing playlists/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
+Jan 17 18:40 : update: added playlists/NCS/NEFFEX - Grateful [Copyright Free].mp3
+Jan 17 18:40 : update: added playlists/NCS/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
+Jan 17 18:40 : update: added playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3
+Jan 17 18:40 : update: added playlists/NCS/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
+Jan 17 18:40 : update: added playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:40 : update: removing NEFFEX - Grateful [Copyright Free].mp3
+Jan 17 18:40 : update: removing N3WPORT - Power (feat. braev) [NCS Release].mp3
+Jan 17 18:40 : update: removing Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
+Jan 17 18:40 : update: removing Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
+Jan 17 18:40 : update: removing Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
+Jan 17 18:40 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:42 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:42 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 18:42 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 17 19:16 : update: removing Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3
+Jan 17 19:16 : update: added /G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
+Jan 17 19:20 : update: added playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
+Jan 17 19:20 : update: removing G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
+Jan 17 19:20 : player: played "G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Jan 17 19:21 : exception: Bad song index
+Jan 17 19:21 : exception: Bad song index
+Jan 17 19:21 : exception: Bad song index
+Jan 17 19:21 : player: played "playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Jan 17 19:21 : exception: Bad song index
+Jan 17 19:21 : exception: Bad song index
+Jan 17 19:25 : player: played "playlists/NCS/NEFFEX - Grateful [Copyright Free].mp3"
+Jan 17 19:26 : player: played "playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 17 19:29 : player: played "playlists/NCS/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
