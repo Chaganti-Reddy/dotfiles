@@ -1,0 +1,46 @@
+# Basic vars
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons true
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
+# set drawbox true
+
+cmd trash ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && mv $fx /home/core/.local/share/Trash/files
+}}
+
+cmd setwallpaper %cp "$f" ~/.config/wall.jpg && wal -i "$f"
+cmd bulkrename $vidir
+
+# Bindings
+map gh
+map g top
+map D trash
+map <c-l> push :mkdir<space>
+map <c-r> reload
+map <c-s> set hidden!
+map <enter> shell
+map x $$f
+map X !$f
+map o &mimeopen $f
+map O $mimeopen --ask $f
+map A rename # at the very end
+map c push A<c-u> # new rename
+map I push A<c-a> # at the very beginning
+map i push A<a-b><a-b><a-f> # before extention
+map a push A<a-b> # after extention
+map B bulkrename
+map b setwallpaper
+map Y $printf "%s" "$fx" | xclip -selection clipboard
+
+# Folder Mapping
+source "~/.config/lf/shortcutrc"
