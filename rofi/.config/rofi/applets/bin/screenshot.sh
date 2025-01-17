@@ -70,18 +70,18 @@ timestamp=$(date +%Y-%m-%d-%H-%M-%S)
 shotnow() {
 	file="$dir/desktop_${timestamp}.png"
 	sleep 1 && grim "$file"
-	dunstify -u low --replace=699 "Screenshot Saved: $file"
+	dunstify -u low -i "/usr/share/icons/dunst/picture.png" --replace=699 "Screenshot Saved: $file"
 }
 
 shotarea() {
 	file="$dir/region_${timestamp}.png"
 	grim -g "$(slurp)" "$file"
-	dunstify -u low --replace=699 "Screenshot Saved: $file"
+	dunstify -u low -i "/usr/share/icons/dunst/picture.png" --replace=699 "Screenshot Saved: $file"
 }
 
 shotarea_clipboard() {
 	grim -g "$(slurp)" - | wl-copy
-	dunstify -u low --replace=699 "Screenshot copied to clipboard."
+	dunstify -u low -i "/usr/share/icons/dunst/picture.png" --replace=699 "Screenshot copied to clipboard."
 }
 
 # Start Screen Recording with Audio
@@ -94,20 +94,20 @@ fi
 start_recording_with_audio() {
 	file="$dir1/screen_recording_${timestamp}.mp4"
 	wf-recorder -f "$file" --audio &
-	dunstify -u low --replace=699 "Recording Started (with Audio)"
+	dunstify -u low -i "/usr/share/icons/dunst/video.png" --replace=699 "Recording Started (with Audio)"
 }
 
 # Start Screen Recording without Audio
 start_recording_no_audio() {
 	file="$dir1/screen_recording_${timestamp}.mp4"
 	wf-recorder -f "$file" &
-	dunstify -u low --replace=699 "Recording Started (No Audio)"
+	dunstify -u low -i "/usr/share/icons/dunst/video.png" --replace=699 "Recording Started (No Audio)"
 }
 
 # Exit Screen Recording (kill the wf-recorder process)
 exit_recording() {
 	killall wf-recorder
-	dunstify -u low --replace=699 "Recording Stopped"
+	dunstify -u low -i "/usr/share/icons/dunst/video.png" --replace=699 "Recording Stopped"
 }
 
 # Execute Command
