@@ -1,0 +1,39 @@
+/* .xfce4-panel { */
+/*   border-bottom-left-radius: 13px; */
+/*   border-bottom-right-radius: 13px; */
+/*   border-top-left-radius: 13px; */
+/*   border-top-right-radius: 13px; */
+/* } */
+
+.xfce4-panel .tasklist .toggle :checked {
+  border-radius: 10px;
+}
+
+.tasklist .button:checked {
+  border-bottom: 3px solid white;
+}
+
+.flat,
+.toggle {
+  font-family: "CaskaydiaCove Nerd Font";
+  font-size: 16px;
+  padding: 4px;
+}
+
+.flat:hover,
+.toggle:hover {
+  font-family: "CaskaydiaCove Nerd Font";
+  font-size: 16px;
+  padding: 4px;
+  background: #494949;
+  border: 1px solid;
+}
+
+.flat:checked,
+.toggle:checked {
+  font-family: "CaskaydiaCove Nerd Font";
+  font-size: 16px;
+  border-bottom: 3px solid white;
+  padding: 4px;
+}
+@import 'colors.css';
