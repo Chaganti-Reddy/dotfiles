@@ -1,0 +1,26 @@
+#!/bin/bash
+
+wall_dir=$(ls $HOME/dotfiles/XFCEPic/Pictures/)
+wall=""
+
+# now search recursively in all the dirs in wall_dir 
+for dir in $wall_dir; do 
+  wall+=$(find $HOME/dotfiles/XFCEPic/Pictures/$dir -type f -name "*.jpg" -o -name "*.png")
+done
+
+# now select a random wallpaper from the list
+wall=$(echo $wall | tr " " "\n" | shuf -n 1)
+
+echo "$wall"
+
+xwallpaper --zoom $wall
+
+wal -c
+wal -i $wall
+xdotool key super+F5
+rm -rf ~/.walcache/
+mkdir ~/.walcache
+cp $wall ~/.walcache/1
+pkill dunst 
+dunst &
+# betterlockscreen -u ~/.walcache/1

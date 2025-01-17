@@ -1,0 +1,65 @@
+#!/bin/bash
+
+function get_volume {
+	wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2 * 100)}'
+}
+function get_volume_mic {
+	wpctl get-volume @DEFAULT_SOURCE@ | awk '{print int($2 * 100)}'
+}
+
+function is_mute {
+	wpctl get-volume @DEFAULT_SINK@ | grep -q "\[MUTED\]"
+}
+
+function is_mute_mic {
+	wpctl get-volume @DEFAULT_SOURCE@ | grep -q "\[MUTED\]"
+}
+
+function send_notification {
+	volume=$(get_volume_mic)
+	# icon="🔊" # Volume icon
+
+	if is_mute_mic; then
+		mute_status=" [MUTED]"
+		icon=""
+	else
+		mute_status=""
+		icon=""
+	fi
+
+	# bar=$(seq -s "─" $(($volume / 5)) | sed 's/[0-9]//g')
+	dunstify -i audio-volume-muted-blocking -r 2593 -u normal "$icon   $volume%$mute_status"
+}
+
+case $1 in
+up)
+	wpctl set-volume @DEFAULT_SINK@ 4%+
+	paplay ~/.dwm/sounds/audio-volume-change.oga
+	# send_notification
+	;;
+down)
+	wpctl set-volume @DEFAULT_SINK@ 4%-
+	paplay ~/.dwm/sounds/audio-volume-change.oga
+	# send_notification
+	;;
+mute)
+	wpctl set-mute @DEFAULT_SINK@ toggle
+	paplay ~/.dwm/sounds/bell.oga
+	# if is_mute ; then
+	# dunstify -i audio-volume-muted -r 2593 -u normal "Mute"
+	# send_notification
+	# else
+	# send_notification
+	# fi
+	;;
+micmute)
+	wpctl set-mute @DEFAULT_SOURCE@ toggle
+	if is_mute_mic; then
+		# dunstify -i audio-volume-muted -r 2593 -u normal "Mute"
+		send_notification
+	else
+		send_notification
+	fi
+	;;
+
+esac

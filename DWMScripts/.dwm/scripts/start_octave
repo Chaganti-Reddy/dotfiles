@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Check if WhatsApp is already running
+if pgrep -f "octave-gui" > /dev/null
+then
+    dunstify "Octave is already running"
+else
+    octave --gui &
+    dunstify "Octave started"
+fi
+
