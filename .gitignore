@@ -1,0 +1,3 @@
+*.bak
+/Hyprland/.config/clipse/tmp_files
+BTOP/.config/btop/btop.log
