@@ -1,0 +1,14 @@
+{
+	"color_scheme": "Monokai.sublime-color-scheme",
+	"theme": "Default Dark.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"font_face": "Jetbrains Mono Nerd Font",
+	"font_size": 14,
+	"caret_style": "phase",
+	"caret_extra_top": 4,
+	"caret_extra_bottom": 4,
+	"caret_extra_width": 2,
+}

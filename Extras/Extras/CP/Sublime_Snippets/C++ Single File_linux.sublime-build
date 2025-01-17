@@ -1,0 +1,20 @@
+// {
+// 	"shell_cmd": "g++ \"${file}\" -o \"${file_path}/${file_base_name}\"",
+// 	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+// 	"working_dir": "${file_path}",
+// 	"selector": "source.c++",
+
+// 	"variants":
+// 	[
+// 		{
+// 			"name": "Run",
+// 			"shell_cmd": "g++ \"${file}\" -o \"${file_path}/${file_base_name}\" && \"${file_path}/${file_base_name}\""
+// 		}
+// 	]
+// }
+{
+"cmd" : ["g++ -std=c++17 $file_name -o $file_base_name.o && timeout 4s ./$file_base_name.o<inputf.in>outputf.in"], 
+"selector" : "source.c++",
+"shell": true,
+"working_dir" : "$file_path"
+}

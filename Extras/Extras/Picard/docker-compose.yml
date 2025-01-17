@@ -1,0 +1,10 @@
+version: '3'
+services:
+  musicbrains:
+    container_name: musicbrains
+    image: mikenye/picard:latest
+    ports:
+      - "7120:5800"
+    volumes:
+      - "./config:/config:rw"
+      - "/home/ram/Music/:/storage:rw"
