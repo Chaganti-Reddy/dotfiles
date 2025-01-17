@@ -205,12 +205,12 @@ window#waybar {
 }
 
 #mpd.playing {
-    /* background: @color12; */
-    color: @color14;
+    background: @color12;
+    color: @foreground;
 }
 
 #mpd.paused {
-    /* background: @color3; */
+    background: @color3;
     color: @foreground;
 }
 
@@ -219,16 +219,16 @@ window#waybar {
     color: @color10;
 }
 
-#mpd:hover {
-    background: @color3;
-    color: @background;
-    box-shadow: 0px 0px 4px @color3;
-}
+/* #mpd:hover { */
+/*     background: @color3; */
+/*     color: @background; */
+/*     box-shadow: 0px 0px 4px @color3; */
+/* } */
 
 #mpd.stopped:hover {
-    background: transparent;
+    background: @color3;
     color: @color10;
-    box-shadow: 0px 0px 0px transparent;
+    box-shadow: 0px 0px 0px @color3;
 }
 
 #idle_inhibitor {
