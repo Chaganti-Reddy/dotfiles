@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# Script name: dm-confedit
+# Description: Choose from a list of configuration files to edit using the rofi theme extracted from launcher.sh.
+# Dependencies: rofi, nvim
+
+# Set script safety options
+set -euo pipefail
+
+DMEDITOR="st -e nvim"
+
+# Extract the STYLE from launcher.sh
+LAUNCHER_SCRIPT="$HOME/.config/bspwm/scripts/rofi_launcher"
+STYLE=$(grep -oP '(?<=^STYLE=).*' "$LAUNCHER_SCRIPT" | tr -d '"' | tr -d "'")
+RASI="$HOME/.config/bspwm/themes/$STYLE/rofi/launcher.rasi"
+
+declare -A confedit_list
+# confedit_list[alacritty]="$HOME/dotfiles/alacritty/.config/alacritty/alacritty.yml"
+confedit_list[dotinstall]="$HOME/dotfiles/install.sh"
+confedit_list[bash]="$HOME/dotfiles/bashrc/.bashrc"
+confedit_list[doom emacs]="$HOME/dotfiles/doom-emacs/.config/doom/config.org"
+confedit_list[dunstrc]="$HOME/dotfiles/dunst/.config/dunst/dunstrc"
+confedit_list[dwm]="$HOME/dotfiles/suckless/.config/dwm/config.def.h"
+confedit_list[dwm startup]="$HOME/dotfiles/DWMScripts/.dwm/autostart.sh"
+confedit_list[mpd]="$HOME/dotfiles/mpd/.mpd/mpd.conf"
+confedit_list[mpv]="$HOME/dotfiles/mpv/.config/mpv/mpv.conf"
+confedit_list[ncmpcpp]="$HOME/dotfiles/ncmpcpp/.ncmpcpp/config"
+confedit_list[neovim]="$HOME/dotfiles/nvim/.config/nvim/init.lua"
+confedit_list[newsboat urls]="$HOME/dotfiles/newsboat/.config/newsboat/urls"
+confedit_list[ranger]="$HOME/dotfiles/ranger/.config/ranger/rc.conf"
+confedit_list[st]="$HOME/dotfiles/suckless/.config/st/config.h"
+confedit_list[slstatus]="$HOME/dotfiles/suckless/.config/slstatus/config.def.h"
+confedit_list[ytfzf]="$HOME/dotfiles/ytfzf/.config/ytfzf/conf.sh"
+confedit_list[ytfzf subs]="$HOME/dotfiles/ytfzf/.config/ytfzf/subscriptions"
+confedit_list[zathura]="$HOME/dotfiles/zathura/.config/zathura/zathurarc"
+confedit_list[zsh]="$HOME/dotfiles/zsh/.zshrc"
+confedit_list[sxhkd]="$HOME/dotfiles/bspwm/.config/bspwm/sxhkdrc"
+
+main() {
+  # Clean options array, ensuring files exist
+  declare -A _clean_list
+  for i in "${!confedit_list[@]}"; do
+    [[ -f ${confedit_list["${i}"]} ]] && _clean_list["${i}"]=${confedit_list["${i}"]}
+  done
+
+  # Use rofi with the dynamically determined theme
+  choice=$(printf '%s\n' "${!_clean_list[@]}" | sort | rofi -dmenu -i -l 15 -p 'Edit config:' -theme "$RASI")
+
+  if [ "$choice" ]; then
+    cfg=$(printf '%s\n' "${_clean_list["${choice}"]}")
+    $DMEDITOR "$cfg"
+  else
+    echo "Program terminated." && exit 0
+  fi
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
