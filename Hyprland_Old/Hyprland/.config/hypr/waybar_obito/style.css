@@ -1,0 +1,500 @@
+/* Global Styling */
+* {
+    border: none;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 11px;
+    min-height: 10px;
+  color: rgba(255, 200, 0, 1);
+text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+@import "theme.css";
+
+/* Main Background */
+window#waybar {
+    background: @background;
+    color: @foreground;
+    /* Adjust text color globally */
+}
+
+/* Drop Shadow (No Border Color) */
+window#waybar>box {
+    background-color: transparent;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.8);
+    /* Subtle black glow for depth */
+    margin: 2px 2px 2px 2px;
+}
+
+/* Tooltip Styling */
+tooltip {
+  background: @main-bg;
+  border: solid;
+  border-width: 1.5px;
+  border-radius: 8px;
+  border-color: @main-br;
+}
+tooltip label {
+  /* color: rgba(255, 77, 0, 1); */
+  color: rgba(255, 200, 0, 1);
+  font-weight: bold;
+  margin: 0.25px;
+}
+
+/* Workspace Button */
+#workspaces button {
+    color: rgba(255, 255, 0, 1);
+    background: @background;
+    /* Text matches the main theme */
+    border-radius: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 0px 1px;
+    /* Adjusted padding for a cleaner look */
+    transition: all 0.3s ease;
+}
+
+/* Active Workspace Button */
+#workspaces button.active {
+    color: #fff;
+    /* White text */
+    background: @active-bg;
+    /* Fiery red background */
+    text-shadow: 0px 0px 4px rgba(255, 77, 77, 0.8);
+    /* Glow effect for active */
+    box-shadow: none;
+    transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+/* Hover Effect for Workspace Buttons */
+#workspaces button:hover {
+    color: @active-fg;
+    /* White text for hover */
+    background: rgba(255, 77, 77, 0.4);;
+    /* Warm orange background */
+    box-shadow: 0px 0px 4px rgba(255, 77, 77, 0.8);
+    /* Orange glow */
+    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+/* Custom Text Colors */
+#clock,
+#cpu,
+#memory,
+#network {
+    color: rgba(255, 200, 0, 1);
+    /* Ensure consistent text color for modules */
+}
+
+/* Tooltip Text */
+tooltip {
+    /* color: #ffffff; */
+    /* White for readability */
+}
+
+/* General Module Styling */
+#custom-ws,
+#workspaces,
+#window,
+#custom-cpuinfo,
+#memory,
+#network,
+#cpu,
+#clock,
+#custom-wifi,
+#pulseaudio,
+#idle_inhibitor,
+#backlight,
+#battery,
+#custom-power {
+    opacity: 1;
+    margin-bottom: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+}
+
+/* General Left Arrow Styling */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8 {
+    font-size: 11pt;
+    text-shadow: -1px 0px 2px rgba(0, 0, 0, 1);
+}
+
+/* General Right Arrow Styling */
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5 {
+    font-size: 11pt;
+    padding-right: 3px;
+    text-shadow: 1px 0px 2px rgba(0, 0, 0, 1);
+}
+
+/* Color Definitions */
+@define-color workspaces #181825;
+@define-color cpuinfo #181825;
+@define-color memory #1e1e2e;
+@define-color cpu #313244;
+@define-color arch #9399b2;
+@define-color time #313244;
+@define-color date #1e1e2e;
+@define-color wifi #181825;
+@define-color pulseaudio #181825;
+@define-color backlight #1e1e2e;
+@define-color battery #313244;
+@define-color power #6c7086;
+
+/* Window Icon */
+#custom-ws {
+    background: @background;
+}
+
+/* Workspaces */
+#custom-left1 {
+    color: rgba(255, 77, 77, 0.15);
+    background: @background;
+    padding-left: 2px;
+}
+
+#workspaces {
+    background: #000000;
+    /* background: rgba(255, 165, 79, 0.1); */
+}
+
+#custom-right1 {
+    color: rgba(255, 165, 79, 0.15);
+    /* background: @background; */
+}
+
+/* Temperature */
+#custom-paddc {
+    padding-right: 3px;
+}
+
+#custom-left2 {
+    /* color: rgba(255, 165, 79, 0.2); */
+  color: rgba(255, 77, 77, 0.3);
+    background: rgba(255, 77, 77, 0.15);
+    /* border-radius: 10px; */
+    /* padding-left: 3px; */
+}
+
+#custom-cpuinfo {
+    /* background: rgba(255, 165, 79, 0.1); */
+  background: rgba(255, 77, 77, 0.3);
+    padding-left: 1px;
+    padding-right: 0px;
+}
+
+/* Memory */
+#custom-left3 {
+    color: rgba(255, 77, 77, 0.3);
+    /* background: @cpuinfo; */
+    padding-left: 3px;
+}
+
+#memory {
+    /* background: rgba(255, 165, 79, 0.1); */
+  background: rgba(255, 77, 77, 0.3);
+    padding-left: 1px;
+    padding-right: 0px;
+}
+
+#custom-kernelinfo {
+    /* background: rgba(255, 165, 79, 0.1); */
+  background: rgba(255, 77, 77, 0.15);
+    padding-left: 1px;
+    padding-right: 0px;
+}
+
+/* CPU */
+#custom-left4 {
+    /* color: rgba(255, 165, 79, 0.2); */
+  color: rgba(255, 77, 77, 0.5);
+    background: rgba(255, 77, 77, 0.3);
+    padding-left: 3px;
+}
+
+#cpu {
+    /* background: rgba(255, 165, 79, 0.2); */
+  background: rgba(255, 77, 77, 0.5);
+}
+
+#custom-leftin1 {
+    color: rgba(255, 77, 77, 0.5);
+  background: #000;
+    font-size: 12.2pt;
+    margin-bottom: -2px;
+}
+
+/* Arch Logo */
+#custom-left5 {
+    color: rgba(255, 77, 77, 0.8);
+    /* Bright orange */
+    background: transparent;
+    text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.6);
+    padding-left: 3px;
+}
+
+#custom-arch {
+    color: black;
+    background: rgba(255, 165, 79, 0.2);
+    /* Light orange with 20% opacity */
+    font-size: 11pt;
+    margin-right: -1px;
+    margin-bottom: -2px;
+    padding-right: 0px;
+    padding-left: 3px;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+}
+
+#idle_inhibitor {
+    /* color: #ffae42; */
+  color: rgba(255, 255, 50, 1);
+    /* Warm orange to match the theme */
+    /* background: rgba(255, 174, 66, 0.3); */
+    background: rgba(255, 77, 77, 0.8);
+    /* Light orange with 30% opacity */
+    font-size: 11pt;
+    /* Retain font size */
+    margin-right: -1px;
+    margin-bottom: -2px;
+    padding-right: 0px;
+    padding-left: 3px;
+    text-shadow: 0px 0px 4px rgba(255, 174, 66, 0.8);
+    /* Soft golden glow for emphasis */
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+    /* Smooth transitions */
+}
+
+/* Hover Effect for Idle Inhibitor */
+#idle_inhibitor:hover {
+    color: #ff4d4d;
+    /* Fiery red for hover effect */
+    text-shadow: 0px 0px 6px rgba(255, 77, 77, 1);
+    /* Stronger glow on hover */
+    background: rgba(0, 0, 0, 0.2);
+    /* Slight dark background for hover */
+}
+
+#custom-right2 {
+    color: rgba(255, 77, 77, 0.8);
+    /* Bright orange */
+    background: transparent;
+    text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.6);
+    padding-left: 3px;
+}
+
+/* Time */
+#custom-rightin1 {
+    color: rgba(255, 77, 77, 0.5);
+  background: #000;
+    font-size: 12.2pt;
+    margin-bottom: -2px;
+}
+
+#clock.time {
+    background: rgba(255, 77, 77, 0.5);
+}
+
+#custom-right3 {
+    color: rgba(255, 77, 77, 0.5);
+    background: rgba(255, 77, 77, 0.3);
+}
+
+/* Date */
+#clock.date {
+    background: rgba(255, 77, 77, 0.3);
+}
+
+#custom-right4 {
+    color: rgba(255, 77, 77, 0.3);
+    background: rgba(255, 77, 77, 0.15);
+}
+
+/* Network */
+#custom-wi {
+    background: @wifi;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
+    margin-right: -2px;
+    padding-left: 5px;
+}
+
+#custom-wifi {
+    background: @wifi;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#network {
+  background: rgba(255, 77, 77, 0.15);
+}
+
+#custom-right5 {
+    color: rgba(255, 77, 77, 0.15);
+    background: #000;
+    /* background: @background; */
+}
+
+/* Media Info */
+#custom-media {
+    /* background-color: @background; */
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+/* PulseAudio */
+#custom-left6 {
+    color: rgba(255, 77, 77, 0.3);
+    background: rgba(255, 77, 77, 0.15);
+    padding-left: 3px;
+}
+
+#custom-left11 {
+    color: rgba(255, 77, 77, 0.1);
+    /* background: @background; */
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#pulseaudio {
+    background: rgba(255, 77, 77, 0.3);
+}
+
+/* Brightness */
+#custom-left7 {
+    color: rgba(255, 77, 77, 0.5);
+    background: rgba(255, 77, 77, 0.3);
+    padding-left: 2px;
+}
+
+#backlight {
+    background: rgba(255, 77, 77, 0.5);
+}
+
+/* Battery */
+#custom-left8 {
+    color: rgba(255, 77, 77, 0.8);
+    background: rgba(255, 77, 77, 0.5);
+    padding-left: 2px;
+}
+
+#custom-left9 {
+    color: rgba(255, 165, 79, 0.15);
+    background: #000;
+    padding-left: 2px;
+}
+
+#battery {
+    background: rgba(255, 77, 77, 0.8);
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical {
+    color: #f38ba8;
+}
+
+/* Power Button */
+#custom-leftin2 {
+    color: rgba(255, 77, 77, 0.8);
+    background: @background;
+    font-size: 12.2pt;
+    margin-bottom: -2px;
+}
+
+#custom-power {
+    color: @background;
+    background: @power;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 1);
+    border-radius: 20px;
+    margin-top: 2px;
+    margin-right: 4px;
+    margin-bottom: 2px;
+    padding-right: 6px;
+    padding-left: 9px;
+}
+
+#custom-power:hover {
+    color: @hover-fg;
+    background: @hover-bg;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+/* Pomodoro Module */
+
+#custom-pomodoro {
+    color: rgba(255, 150, 0, 0.8);
+    background: rgba(255, 77, 77, 0.15);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+/* Pomodoro States */
+#custom-pomodoro.work {
+    background: rgba(100, 50, 50, 1);
+    /* Active state background for work */
+    color: rgba(255, 255, 0, 1);
+    /* Active state foreground for work */
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.6);
+    /* Bright shadow */
+}
+
+#custom-pomodoro.break {
+    background: @hover-bg;
+    /* Hover state background for breaks */
+    color: rgba(255, 150, 0, 0.5);
+    /* Hover state foreground for breaks */
+}
+
+#custom-pomodoro.pause {
+    background: rgba(255, 77, 77, 0.15);
+    /* Neutral background for pause */
+    color: rgba(255, 150, 0, 0.7);
+    /* Match foreground color */
+    opacity: 0.8;
+    /* Slightly dimmed for paused state */
+}
+
+@define-color light-background #4c4c4c;
+
+/* Manually lightened color */
+/* Hover Effect for Pomodoro */
+#custom-pomodoro:hover {
+    background: @light-background;
+    /* Adjust lightness */
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.8);
+    /* Enhanced hover shadow */
+    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+    /* Smooth hover effect */
+}
+
+/* #tray { */
+/*     color: rgba(255, 165, 79, 0.2); */
+/*     background: rgba(255, 174, 66, 0.3); */
+/*     box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.8); */
+/*     transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682); */
+/*     padding: 5px; */
+/*     border-radius: 4px; */
+/* } */
+
+#bluetooth {
+    color: rgba(255, 150, 0, 1);
+    background: rgba(255, 77, 77, 0.3);
+    padding: 5px;
+    border-radius: 0px;
+}

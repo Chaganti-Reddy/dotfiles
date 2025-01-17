@@ -1,0 +1,282 @@
+@import "mocha.css";
+
+/* ================================ */
+/*            Common CSS            */
+/* ================================ */
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 11pt;
+  font-weight: bold;
+  padding: 0;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  border: none;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+  color: @text;
+}
+
+/* The whole window */
+window#waybar {
+  background-color: shade(@base, 0.9);
+  border: 2px solid alpha(@crust, 0.3);
+  padding: 0px 5px;
+  margin: 0;
+  border-radius: 15px;
+}
+
+.modules-left {
+  padding-left: 5px;
+}
+
+.modules-right {
+  padding-right: 5px;
+}
+
+/* Module styling */
+#custom-rofi,
+#workspaces button:hover,
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover,
+#workspaces button.urgent,
+#window,
+#tray,
+#disk,
+#custom-cpu,
+#temperature,
+#temperature.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#clock,
+.tooltip,
+.tooltip-label {
+  font-family: JetBrainsMono Nerd Font Propo;
+  font-size: 14px;
+  font-weight: bold;
+  color: @subtext0;
+  background-color: @base;
+  border-radius: 2px;
+}
+
+#window,
+#tray,
+#disk,
+#custom-cpu,
+#temperature,
+#temperature.critical,
+#backlight,
+#custom-memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#clock,
+.tooltip,
+.tooltip-label {
+  padding-right: 4px;
+  margin: 5px 0px;
+}
+
+#custom-rofi {
+  background-color: shade(@mantle, 0.9);
+  padding: 0 6px;
+  margin: 5px 0px;
+}
+
+/* Workspaces module */
+#workspaces {
+  margin: 0px;
+}
+
+#workspaces button {
+  color: @text;
+  background-color: transparent;
+  min-width: 25px;
+  padding: 0 4px;
+  margin: 5px 3px;
+  border: none;
+}
+
+#workspaces button:hover {
+  background-color: shade(@surface1, 1.1);
+  border: 2px solid @mauve;
+  border-radius: 12px;
+}
+
+#workspaces button.visible {
+  border: 2px solid @green;
+  border-radius: 12px;
+  background-color: @surface1;
+}
+
+#workspaces button.visible:hover {
+  border: 2px solid @green;
+  border-radius: 12px;
+  background-color: shade(@surface1, 1.1);
+}
+
+#workspaces button.active {
+  border: 2px solid @green;
+  border-radius: 12px;
+  background-color: @surface1;
+}
+
+#workspaces button.active:hover {
+  border: 2px solid @green;
+  border-radius: 12px;
+  background-color: shade(@surface1, 1.1);
+}
+
+#workspaces button.urgent {
+  border: 2px solid @red;
+  border-radius: 12px;
+  background-color: @flamingo;
+}
+
+/* Tooltip Styling */
+tooltip {
+  background: @mantle;
+  border: solid;
+  border-width: 1.5px;
+  border-radius: 8px;
+  border-color: @blue;
+}
+tooltip label {
+  color: @teal;
+  font-weight: bold;
+  margin: 0.25px;
+}
+
+/* Window */
+#window {
+  color: @subtext1;
+  background-color: @mantle;
+}
+
+/* Tray */
+#tray {
+  background-color: @mantle;
+}
+
+/* Disk */
+#disk {
+  color: @peach;
+  border: 2px solid @peach;
+}
+
+/* CPU */
+#custom-cpu {
+  color: @yellow;
+  border: 2px solid @yellow;
+}
+
+/* Temperature */
+#temperature {
+  color: @yellow;
+  border: 2px solid @yellow;
+}
+
+#temperature.critical {
+  color: @red;
+  border: 2px solid @red;
+}
+
+/* Backlight */
+#custom-backlight,
+#backlight {
+  color: @peach;
+  background-color: @mantle;
+}
+
+/* Memory */
+#custom-memory {
+  color: @blue;
+  border: 2px solid @blue;
+}
+
+/* PulseAudio */
+#pulseaudio {
+  color: @subtext0;
+  background-color: @mantle;
+}
+
+#pulseaudio.muted {
+  color: @red;
+  background-color: @mantle;
+}
+
+/* Battery */
+#battery {
+  color: @text;
+  background-color: @mantle;
+}
+
+#battery.critical {
+  color: @red;
+  background-color: @mantle;
+}
+
+#battery.warning {
+  color: @yellow;
+  background-color: @mantle;
+}
+
+/* Clock */
+#clock.time {
+  color: @text;
+  background-color: @mantle;
+}
+
+#clock.date {
+  color: @blue;
+  background-color: @mantle;
+}
+
+#mpris {
+  color: @crust;
+  border: 2px solid @mantle;
+  border-radius: 21px;
+  background-color: @text;
+  padding: 5px 5px;
+  margin: 1px 1px; 
+}
+
+#custom-notification {
+  color: @text;
+  font-size: 14px;
+  background-color: @mantle;
+  padding: 2px 2px;
+}
+
+#custom-powermenu {
+  color: @power;
+  font-size: 14px;
+  background-color: @mantle;
+  padding: 2px 2px;
+}
+
+#custom-paddc,
+#custom-paddc:hover,
+#custom-cpuinfo,
+#custom-cpuinfo:hover,
+#cpu {
+  background-color: @mantle;
+}
+
+#idle_inhibitor {
+  color: @inhibitor;
+}
+
+#idle_inhibitor.activated {
+  color: @red;
+}

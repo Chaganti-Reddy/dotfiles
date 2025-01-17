@@ -1,0 +1,35 @@
+/*
+ * bg - background
+ * fg - foreground
+ * act - active
+ * hvr - hover
+ */
+
+/* Main Colors */
+@define-color background #0c0c12;
+/* Deep dark background */
+@define-color foreground #ffae42;
+/* Warm orange for text, matches fiery tones */
+
+/* Workspace Button Colors */
+@define-color active-bg #ff4d4d;
+/* Bright red for active workspace */
+@define-color active-fg #ffffff;
+/* Pure white for text contrast */
+@define-color hover-bg #ffa347;
+/* Warm orange for hover background */
+@define-color hover-fg #ffffff;
+/* Pure white for hover text */
+
+/* Wlogout Colors */
+@define-color bar-bg #0c0c12;
+@define-color main-bg #0c0c12;
+@define-color main-fg #ffae42;
+/* Consistent orange for foreground text */
+@define-color wb-act-bg #ff4d4d;
+/* Red for active buttons */
+@define-color wb-act-fg #ffffff;
+/* White for text contrast */
+@define-color wb-hvr-bg #ffa347;
+/* Orange for hover buttons */
+@define-color wb-hvr-fg #ffffff;
