@@ -40,12 +40,13 @@
 "mpd": {
   "server": "localhost",  // Replace with your MPD server address if different
   "port": 6600,           // Default MPD port
-  "format": "{stateIcon} {artist} - {title}",
-"format-paused": " {artist} - {title}",
-    "format-playing": " {artist} - {title}",
+  "format": "{stateIcon} {title} - {artist}",
+"format-paused": " {title} - {artist}",
+    "format-playing": " {title} - {artist}",
   "format-disconnected": "󰝛 ",
   "format-stopped": " ",
   "interval": 10,
+  "max-length": 50,
   "consume-icons": {
     "on": " " // Icon shows only when "consume" is on
   },
