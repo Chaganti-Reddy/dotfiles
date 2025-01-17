@@ -655,7 +655,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   echo "Hyprland installation will begin now."
 
   # Install Hyprland and related packages
-  sudo pacman -S --noconfirm kitty system-config-printer  chafa hypridle waybar wl-clipboard speech-dispatcher brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
+  sudo pacman -S --noconfirm kitty system-config-printer  chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
 
   paru -S wlrobs-hg hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git
 
