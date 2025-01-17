@@ -465,6 +465,7 @@ rm kubectl
   17)
     echo "Installing OBS Studio..."
     sudo pacman -S --noconfirm obs-studio
+    paru -S --needed --noconfirm wlrobs-hg
     ;;
   18)
     echo "Installing Inkscape..."
@@ -657,7 +658,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   # Install Hyprland and related packages
   sudo pacman -S --noconfirm kitty system-config-printer  chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
 
-  paru -S wlrobs-hg hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git
+  paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git
 
   # Set up Hyprland configuration
   echo "Configuring Hyprland..."
