@@ -1,0 +1,955 @@
+{
+	"file_history":
+	[
+		"/mnt/Karna/CP/1.cpp",
+		"/mnt/Karna/CP/Progvar/Recursion/1.py",
+		"/mnt/Karna/CP/1.py",
+		"/mnt/Karna/CP/1.py:tests",
+		"/home/karna/dotfiles/Sublime-Text/.config/sublime-text/Packages/CppFastOlympicCoding/FastOlympicCoding (Linux).sublime-settings",
+		"/home/karna/dotfiles/Sublime-Text/.config/sublime-text/Packages/User/FastOlympicCoding.sublime-settings",
+		"/mnt/Karna/CP/1.py__tests",
+		"/mnt/Karna/CP/Algorithms/SS/linear.py",
+		"/mnt/Karna/CP/debug.txt",
+		"/mnt/Karna/CP/outputf.in",
+		"/mnt/Karna/CP/inputf.in",
+		"/home/karna/dotfiles/Sublime-Text/.config/sublime-text/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/karna/dotfiles/Sublime-Text/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap",
+		"/home/karna/dotfiles/Sublime-Text/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+		"/home/karna/dotfiles/Sublime-Text/.config/sublime-text/Packages/User/Preferences.sublime-settings",
+		"/home/karna/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+		"/home/karna/.config/sublime-text/Packages/User/Preferences.sublime-settings",
+		"/home/karna/.config/sublime-text/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/karna/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap",
+		"/home/ram/Downloads/Astroid-Diameter-Prediction/.gitignore",
+		"/home/ram/Downloads/Astroid-Diameter-Prediction/.gitattributes",
+		"/home/ram/Downloads/Astroid-Diameter-Prediction/streamlit_app.py",
+		"/home/ram/Downloads/wget-log",
+		"/home/ram/.xscreensaver",
+		"/home/ram/Downloads/physionet.org/robots.txt",
+		"/mnt/Karna/Oral-cancer-detection-using-deep-learning\n/Oral-cancer-detection-using-deep-learning-main/README.md",
+		"/home/ram/dotfiles/CP/CP/outputf.in",
+		"/home/ram/dotfiles/CP/CP/inputf.in",
+		"/home/ram/dotfiles/CP/CP/1.cpp",
+		"/home/ram/CP/outputf.in",
+		"/home/ram/CP/inputf.in",
+		"/home/ram/CP/1.cpp",
+		"/home/ram/kaggle.json",
+		"/home/ram/.config/sublime-text/Packages/User/C++17.sublime-build",
+		"/home/ram/Downloads/C++/C Single File.sublime-build",
+		"/home/ram/Downloads/C++/C++ Single File.sublime-build",
+		"/home/ram/.config/sublime-text/Packages/User/C Single File.sublime-build",
+		"/home/ram/.config/sublime-text/Packages/User/C++ Single File.sublime-build",
+		"/home/ram/Downloads/sublime-text/Packages/User/Preferences.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/ram/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap",
+		"/home/ram/.config/sublime-text/Packages/Default/Preferences.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/User/Preferences.sublime-settings",
+		"/home/ram/Downloads/sublime-text/Packages/User/Package Control.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/User/Package Control.sublime-settings",
+		"/home/ram/Downloads/sublime-text/Packages/User/noinput.sublime-snippet",
+		"/home/ram/.config/sublime-text/Packages/User/LSP-copilot.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/LSP-copilot/LSP-copilot.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/User/LSP.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/LSP/LSP.sublime-settings",
+		"/home/ram/Downloads/sublime-text/Packages/User/Default (Linux).sublime-keymap",
+		"/home/ram/Downloads/sublime-text/Packages/User/LSP.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/LSP-clangd/LSP-clangd.sublime-settings",
+		"/home/ram/.config/sublime-text/Packages/User/LSP-clangd.sublime-settings"
+	],
+	"folder_history":
+	[
+		"/mnt/Karna/CP"
+	],
+	"last_version": 4180,
+	"last_window_id": 25,
+	"log_indexing": false,
+	"next_update_check": 1728110745,
+	"settings":
+	{
+		"new_window_full_screen": false,
+		"new_window_height": 1050.0,
+		"new_window_maximized": true,
+		"new_window_position":
+		[
+			0.0,
+			0.0
+		],
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"using",
+						"using namespace"
+					]
+				]
+			},
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/C++/C++ Single File.sublime-build",
+							""
+						],
+						[
+							"Packages/C++/C++ Single File.sublime-build",
+							"Run"
+						]
+					],
+					[
+						"Packages/C++/C++ Single File.sublime-build",
+						"Run"
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"enable",
+						"LSP: Enable Language Server in Project"
+					],
+					[
+						"copilot",
+						"Copilot: Chat"
+					],
+					[
+						"copilo",
+						"Copilot: Check Status"
+					],
+					[
+						"remo",
+						"Package Control: Remove Package"
+					],
+					[
+						"copi",
+						"Copilot: Sign In"
+					],
+					[
+						"disb",
+						"LSP: Disable Language Server Globally"
+					],
+					[
+						"copilot: si",
+						"Copilot: Sign In"
+					],
+					[
+						"build ",
+						"Build: New Build System"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"lsp",
+						"Preferences: LSP-clangd Settings"
+					],
+					[
+						"ins",
+						"Package Control: Install Package"
+					],
+					[
+						"inst",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 0.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/mnt/Karna/CP/debug.txt",
+				"/mnt/Karna/CP/outputf.in",
+				"/mnt/Karna/CP/inputf.in",
+				"/mnt/Karna/CP/1.cpp",
+				"/mnt/Karna/CP/Progvar/Recursion/1.py",
+				"/mnt/Karna/CP/1.py",
+				"/mnt/Karna/CP/1.py:tests",
+				"/mnt/Karna/CP/1.py__tests",
+				"/mnt/Karna/CP/Algorithms/SS/linear.py",
+				"/home/ram/Downloads/Astroid-Diameter-Prediction/.gitignore",
+				"/home/ram/Downloads/Astroid-Diameter-Prediction/.gitattributes",
+				"/home/ram/Downloads/Astroid-Diameter-Prediction/streamlit_app.py",
+				"/home/ram/Downloads/wget-log",
+				"/home/ram/.xscreensaver",
+				"/home/ram/Downloads/physionet.org/robots.txt",
+				"/mnt/Karna/Oral-cancer-detection-using-deep-learning\n/Oral-cancer-detection-using-deep-learning-main/README.md",
+				"/home/ram/dotfiles/CP/CP/outputf.in",
+				"/home/ram/dotfiles/CP/CP/inputf.in",
+				"/home/ram/dotfiles/CP/CP/1.cpp",
+				"/home/ram/CP/outputf.in",
+				"/home/ram/CP/inputf.in",
+				"/home/ram/CP/1.cpp",
+				"/home/ram/kaggle.json",
+				"/home/ram/.config/sublime-text/Packages/User/C++17.sublime-build",
+				"/home/ram/Downloads/C++/C Single File.sublime-build",
+				"/home/ram/Downloads/C++/C++ Single File.sublime-build",
+				"/home/ram/.config/sublime-text/Packages/User/C Single File.sublime-build",
+				"/home/ram/.config/sublime-text/Packages/User/C++ Single File.sublime-build",
+				"/home/ram/Downloads/sublime-text/Packages/User/Preferences.sublime-settings",
+				"/home/ram/.config/sublime-text/Packages/User/Preferences.sublime-settings",
+				"/home/ram/Downloads/sublime-text/Packages/User/Package Control.sublime-settings",
+				"/home/ram/.config/sublime-text/Packages/User/Package Control.sublime-settings",
+				"/home/ram/Downloads/sublime-text/Packages/User/noinput.sublime-snippet"
+			],
+			"find":
+			{
+				"height": 33.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"scrollbar_highlights": true,
+				"show_context": true,
+				"use_buffer2": true,
+				"use_gitignore": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 33.0
+			},
+			"input":
+			{
+				"height": 45.0
+			},
+			"menu_visible": false,
+			"output.LSP Log Panel":
+			{
+				"height": 0.0
+			},
+			"output.diagnostics":
+			{
+				"height": 132.0
+			},
+			"output.exec":
+			{
+				"height": 132.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups-dummy":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "Packages/User/C++17.sublime-build",
+			"replace":
+			{
+				"height": 62.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": false,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 181.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+				"max_columns": 2
+			}
+		},
+		"new_window_width": 960.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"using",
+						"using namespace"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/mnt/Karna/CP/inputf.in",
+					"settings":
+					{
+						"buffer_size": 7,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					},
+					"undo_stack":
+					[
+						[
+							7,
+							1,
+							"left_delete",
+							null,
+							"AQAAAAAAAAAAAAAAAAAAAAAAAAACAAAAMTE",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							8,
+							1,
+							"insert_snippet",
+							{
+								"contents": "[$0]"
+							},
+							"AQAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							9,
+							1,
+							"insert",
+							{
+								"characters": "1,2,"
+							},
+							"BAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAADAAAAAAAAAAAAAAADAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAABQAAAAAAAAAAAAAA",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							10,
+							1,
+							"left_delete",
+							null,
+							"AQAAAAQAAAAAAAAABAAAAAAAAAABAAAALA",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAABQAAAAAAAAAFAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							11,
+							1,
+							"insert",
+							{
+								"characters": "3"
+							},
+							"AQAAAAQAAAAAAAAABQAAAAAAAAAAAAAA",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							12,
+							1,
+							"left_delete",
+							null,
+							"AQAAAAQAAAAAAAAABAAAAAAAAAABAAAAMw",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAABQAAAAAAAAAFAAAAAAAAAAAAAAAAAPC/"
+						],
+						[
+							13,
+							1,
+							"insert",
+							{
+								"characters": ",3"
+							},
+							"AgAAAAQAAAAAAAAABQAAAAAAAAAAAAAABQAAAAAAAAAGAAAAAAAAAAAAAAA",
+							"DQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAPC/"
+						]
+					]
+				},
+				{
+					"file": "/mnt/Karna/CP/outputf.in",
+					"settings":
+					{
+						"buffer_size": 15,
+						"line_ending": "Unix"
+					},
+					"undo_stack":
+					[
+					]
+				},
+				{
+					"file": "/mnt/Karna/CP/debug.txt",
+					"settings":
+					{
+						"buffer_size": 168,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"build_system_choices":
+			[
+				[
+					[
+						[
+							"Packages/C++/C++ Single File.sublime-build",
+							""
+						],
+						[
+							"Packages/C++/C++ Single File.sublime-build",
+							"Run"
+						]
+					],
+					[
+						"Packages/C++/C++ Single File.sublime-build",
+						"Run"
+					]
+				]
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"remove",
+						"Package Control: Remove Package"
+					],
+					[
+						"enable",
+						"LSP: Enable Language Server in Project"
+					],
+					[
+						"copilot",
+						"Copilot: Chat"
+					],
+					[
+						"copilo",
+						"Copilot: Check Status"
+					],
+					[
+						"remo",
+						"Package Control: Remove Package"
+					],
+					[
+						"copi",
+						"Copilot: Sign In"
+					],
+					[
+						"disb",
+						"LSP: Disable Language Server Globally"
+					],
+					[
+						"copilot: si",
+						"Copilot: Sign In"
+					],
+					[
+						"build ",
+						"Build: New Build System"
+					],
+					[
+						"insta",
+						"Package Control: Install Package"
+					],
+					[
+						"lsp",
+						"Preferences: LSP-clangd Settings"
+					],
+					[
+						"ins",
+						"Package Control: Install Package"
+					],
+					[
+						"inst",
+						"Package Control: Install Package"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 0.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/mnt/Karna/CP"
+			],
+			"file_history":
+			[
+				"/mnt/Karna/CP/1.cpp",
+				"/mnt/Karna/CP/Progvar/Recursion/1.py",
+				"/mnt/Karna/CP/1.py",
+				"/mnt/Karna/CP/1.py:tests",
+				"/mnt/Karna/CP/1.py__tests",
+				"/mnt/Karna/CP/Algorithms/SS/linear.py",
+				"/mnt/Karna/CP/debug.txt",
+				"/mnt/Karna/CP/outputf.in",
+				"/mnt/Karna/CP/inputf.in",
+				"/home/ram/Downloads/Astroid-Diameter-Prediction/.gitignore",
+				"/home/ram/Downloads/Astroid-Diameter-Prediction/.gitattributes",
+				"/home/ram/Downloads/Astroid-Diameter-Prediction/streamlit_app.py",
+				"/home/ram/Downloads/wget-log",
+				"/home/ram/.xscreensaver",
+				"/home/ram/Downloads/physionet.org/robots.txt",
+				"/mnt/Karna/Oral-cancer-detection-using-deep-learning\n/Oral-cancer-detection-using-deep-learning-main/README.md",
+				"/home/ram/dotfiles/CP/CP/outputf.in",
+				"/home/ram/dotfiles/CP/CP/inputf.in",
+				"/home/ram/dotfiles/CP/CP/1.cpp",
+				"/home/ram/CP/outputf.in",
+				"/home/ram/CP/inputf.in",
+				"/home/ram/CP/1.cpp",
+				"/home/ram/kaggle.json",
+				"/home/ram/.config/sublime-text/Packages/User/C++17.sublime-build",
+				"/home/ram/Downloads/C++/C Single File.sublime-build",
+				"/home/ram/Downloads/C++/C++ Single File.sublime-build",
+				"/home/ram/.config/sublime-text/Packages/User/C Single File.sublime-build",
+				"/home/ram/.config/sublime-text/Packages/User/C++ Single File.sublime-build",
+				"/home/ram/Downloads/sublime-text/Packages/User/Preferences.sublime-settings",
+				"/home/ram/.config/sublime-text/Packages/User/Preferences.sublime-settings",
+				"/home/ram/Downloads/sublime-text/Packages/User/Package Control.sublime-settings",
+				"/home/ram/.config/sublime-text/Packages/User/Package Control.sublime-settings",
+				"/home/ram/Downloads/sublime-text/Packages/User/noinput.sublime-snippet"
+			],
+			"find":
+			{
+				"height": 33.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"scrollbar_highlights": true,
+				"show_context": true,
+				"use_buffer2": true,
+				"use_gitignore": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/mnt/Karna/CP"
+				}
+			],
+			"groups":
+			[
+				{
+					"sheets":
+					[
+					]
+				},
+				{
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/mnt/Karna/CP/inputf.in",
+							"selected": true,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 7,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										7,
+										7
+									]
+								],
+								"settings":
+								{
+									"auto_complete_triggers":
+									[
+										{
+											"characters": "<",
+											"selector": "text.html, text.xml"
+										},
+										{
+											"rhs_empty": true,
+											"selector": "punctuation.accessor"
+										}
+									],
+									"copilot.completion._is_modified": false,
+									"copilot.completion._is_saving": false,
+									"copilot.completion.is_visible": false,
+									"copilot.completion.is_visible_panel_completions": false,
+									"copilot.completion.is_waiting_completion": false,
+									"copilot.completion.is_waiting_panel_completions": false,
+									"copilot.completion.original_layout": null,
+									"lsp_active": true,
+									"lsp_uri": "file:///mnt/Karna/CP/inputf.in",
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"stack_multiselect": false,
+							"type": "text"
+						}
+					]
+				},
+				{
+					"sheets":
+					[
+						{
+							"buffer": 1,
+							"file": "/mnt/Karna/CP/outputf.in",
+							"selected": true,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 15,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										15,
+										15
+									]
+								],
+								"settings":
+								{
+									"auto_complete_triggers":
+									[
+										{
+											"characters": "<",
+											"selector": "text.html, text.xml"
+										},
+										{
+											"rhs_empty": true,
+											"selector": "punctuation.accessor"
+										}
+									],
+									"copilot.completion._is_modified": false,
+									"copilot.completion.is_visible": false,
+									"copilot.completion.is_visible_panel_completions": false,
+									"copilot.completion.is_waiting_completion": false,
+									"copilot.completion.is_waiting_panel_completions": false,
+									"copilot.completion.original_layout": null,
+									"lsp_active": true,
+									"lsp_uri": "file:///mnt/Karna/CP/outputf.in",
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"stack_multiselect": false,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/mnt/Karna/CP/debug.txt",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 168,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"auto_complete_triggers":
+									[
+										{
+											"characters": "<",
+											"selector": "text.html, text.xml"
+										},
+										{
+											"rhs_empty": true,
+											"selector": "punctuation.accessor"
+										}
+									],
+									"copilot.completion.is_visible": false,
+									"copilot.completion.is_visible_panel_completions": false,
+									"copilot.completion.is_waiting_completion": false,
+									"copilot.completion.is_waiting_panel_completions": false,
+									"copilot.completion.original_layout": null,
+									"lsp_active": true,
+									"lsp_uri": "file:///mnt/Karna/CP/debug.txt",
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"stack_multiselect": false,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 33.0
+			},
+			"input":
+			{
+				"height": 45.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						2
+					],
+					[
+						1,
+						0,
+						2,
+						1
+					],
+					[
+						1,
+						1,
+						2,
+						2
+					]
+				],
+				"cols":
+				[
+					0.0,
+					0.656625897943,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					0.5,
+					1.0
+				]
+			},
+			"menu_visible": false,
+			"output.LSP Log Panel":
+			{
+				"height": 0.0
+			},
+			"output.diagnostics":
+			{
+				"height": 132.0
+			},
+			"output.exec":
+			{
+				"height": 132.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups":
+			{
+				"height": 0.0
+			},
+			"output.mdpopups-dummy":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "Packages/User/C++17.sublime-build",
+			"position": "0,1,0,0,0,0,0,941,1026,1920,1080,0",
+			"project": "",
+			"replace":
+			{
+				"height": 62.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+				"copilot.conversation.code_block_index":
+				{
+				},
+				"copilot.conversation.conversation_entries":
+				[
+				],
+				"copilot.conversation.conversation_id": "",
+				"copilot.conversation.follow_up": "",
+				"copilot.conversation.is_visible": false,
+				"copilot.conversation.is_waiting_conversation": false,
+				"copilot.conversation.last_active_view_id": 16,
+				"copilot.conversation.original_layout": null,
+				"copilot.conversation.reference_block_state":
+				{
+				},
+				"copilot.conversation.suggested_title": "",
+				"copilot.copilotignore.patterns":
+				{
+				},
+				"last_automatic_layout":
+				[
+					[
+						0,
+						0,
+						1,
+						2
+					],
+					[
+						1,
+						0,
+						2,
+						1
+					],
+					[
+						1,
+						1,
+						2,
+						2
+					]
+				]
+			},
+			"show_minimap": false,
+			"show_open_files": true,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 181.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+				"max_columns": 2
+			},
+			"window_id": 23,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+			"/home/ram/CP/CPP.sublime-workspace",
+			"/home/ram/dotfiles/CP/CP/Normal.sublime-workspace",
+			"/home/ram/CP/Normal.sublime-workspace"
+		]
+	}
+}

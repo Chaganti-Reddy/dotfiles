@@ -1,0 +1,14 @@
+[
+	{
+        "command": "lsp_show_diagnostics_panel",
+        "keys": [
+            "f9"
+        ],
+        "context": [
+            {
+                "key": "setting.lsp_active"
+            }
+        ]
+    },
+    { "keys": ["f10"], "command": "build", "args": {"select": true} },	
+]
