@@ -1,0 +1,26 @@
+
+1. Install pass
+
+sudo apt-get install pass
+
+2. Download, extract, make executable, and move docker-credential-pass
+
+wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz && tar -xf docker-credential-pass-v0.6.0-amd64.tar.gz && chmod +x docker-credential-pass && sudo mv docker-credential-pass /usr/local/bin/
+
+3. Create a new gpg2 key.
+
+gpg2 --gen-key
+
+4. Follow prompts from gpg2 utility
+
+5. Initialize pass using the newly created key
+
+pass init "<Your Name>"
+
+6. Add credsStore to your docker config. This can be done with sed if you don't already have credStore added to your config or you can manually add "credStore":"pass" to the config.json.
+
+sed -i '0,/{/s/{/{\n\t"credsStore": "pass",/' ~/.docker/config.json
+
+7. Login to docker
+
+docker login
