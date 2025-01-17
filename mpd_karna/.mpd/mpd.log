@@ -1,0 +1,75 @@
+Jan 15 15:08 : update: added /Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3
+Jan 15 15:12 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:16 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:26 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Jan 15 15:27 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:30 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:40 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:43 : exception: Failed to commit /home/karna/.mpd/mpdstate: File exists
+Jan 15 15:43 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:43 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 15:44 : update: added /Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
+Jan 15 15:44 : update: added /NEFFEX - Grateful [Copyright Free].mp3
+Jan 15 15:44 : update: added /Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
+Jan 15 15:44 : update: added /N3WPORT - Power (feat. braev) [NCS Release].mp3
+Jan 15 15:44 : update: added /Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
+Jan 15 15:47 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 15 16:06 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 16:24 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 15 16:35 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 16 15:42 : exception: Failed to decode /home/karna/Music/Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3; Failed to open '/home/karna/Music/Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3': No such file or directory
+Jan 16 15:42 : player: played "Usure Usure (From ＂Amaran＂) (Telugu) [IllLc0XM8KY].mp3"
+Jan 16 17:30 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/NEFFEX - Grateful [Copyright Free].mp3; Failed to open '/home/karna/Music/NEFFEX - Grateful [Copyright Free].mp3': No such file or directory
+Jan 16 19:19 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3; Failed to open '/home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3; Failed to open '/home/karna/Music/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3; Failed to open '/home/karna/Music/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/N3WPORT - Power (feat. braev) [NCS Release].mp3; Failed to open '/home/karna/Music/N3WPORT - Power (feat. braev) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/NEFFEX - Grateful [Copyright Free].mp3; Failed to open '/home/karna/Music/NEFFEX - Grateful [Copyright Free].mp3': No such file or directory
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3; Failed to open '/home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3; Failed to open '/home/karna/Music/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3; Failed to open '/home/karna/Music/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3; Failed to open '/home/karna/Music/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 16 19:19 : exception: Failed to decode /home/karna/Music/N3WPORT - Power (feat. braev) [NCS Release].mp3; Failed to open '/home/karna/Music/N3WPORT - Power (feat. braev) [NCS Release].mp3': No such file or directory
+Jan 16 19:19 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 16 19:23 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 16 19:26 : player: played "Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 16 19:29 : player: played "Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 16 19:33 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 16 19:36 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 16 19:38 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 16 19:39 : exception: Failed to open /home/karna/.mpd/playlists: No such file or directory
+Jan 16 19:42 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 16 19:45 : player: played "Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 16 19:48 : player: played "Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 16 19:52 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 16 19:55 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 17 11:29 : player: played "Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 17 11:32 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 11:32 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 17 11:35 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 17 11:38 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 17 11:41 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 17 11:46 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 17 11:51 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Jan 17 11:51 : player: played "NEFFEX - Grateful [Copyright Free].mp3"
+Jan 17 12:00 : player: played "Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 17 12:03 : player: played "Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 17 12:07 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 12:16 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 12:38 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 12:46 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 12:52 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 13:24 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 14:04 : player: played "Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 17 14:05 : player: played "N3WPORT - Power (feat. braev) [NCS Release].mp3"
