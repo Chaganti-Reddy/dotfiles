@@ -245,13 +245,14 @@ install_browser() {
     case $choice in
     1)
       echo "Installing Zen-Browser..."
-      paru -S --noconfirm --needed zen-browser-bin
+      paru -S --noconfirm --needed zen-browser-bin firefoxpwa
       # Video Download Helper
       curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
       ;;
     2)
       echo "Installing Firefox..."
-      sudo pacman -S --noconfirm firefox
+      sudo pacman -S --noconfirm firefox firefoxpwa
+      curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
       ;;
     3)
       echo "Installing Chromium..."
