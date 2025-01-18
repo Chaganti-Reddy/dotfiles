@@ -836,7 +836,7 @@ if [[ "$install_pip_packages" == "y" || "$install_pip_packages" == "Y" ]]; then
   echo "PIP packages installation will begin now."
 
   # Install the PIP packages
-  pip install pynvim numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel ipywidgets tensorflow python-prctl inotify-simple psutil opencv-python keras mov-cli-youtube mov-cli mov-cli-test otaku-watcher film-central daemon jupyterlab_wakatime pygobject
+  pip install pynvim numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel ipywidgets tensorflow python-prctl inotify-simple psutil opencv-python keras mov-cli-youtube mov-cli mov-cli-test otaku-watcher film-central daemon jupyterlab_wakatime pygobject spotdl
 
   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu # pytorch cpu version
   clear
