@@ -75,6 +75,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# source ~/dotfiles/zsh_karna/todoist_functions.sh
+
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
