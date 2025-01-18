@@ -136,7 +136,8 @@
     "memory": {
         "format": "󰘚 {}%",
         "tooltip": true,
-        "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB"
+        "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB",
+        "on-click-right": "kitty -e btop"
     },
  "battery": {
    "interval": 5,
