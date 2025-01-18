@@ -14,6 +14,7 @@ M.general = {
     },
     -- compile vimtex
     ["<leader>cc"] = { ":VimtexCompile<CR>", "compile vimtex" },
+    ["<leader>tf"] = { ":Lspsaga term_toggle<CR>", "Toggle Terminal" },
     -- view using vintex
     ["<leader>cv"] = { ":VimtexView<CR>", "view vimtex" },
     -- Enter Zen Mode using z 
