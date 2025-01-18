@@ -377,7 +377,7 @@ echo "19) GIMP                     20) VLC"
 echo "21) Audacity                 22) Krita"
 echo "23) Shotcut                  24) Steam"
 echo "25) Minecraft                26) YouTUI"
-echo "27) YTerMusic"
+echo "27) YTerMusic                28) Todoist"
 echo ""
 echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
 
@@ -509,6 +509,9 @@ rm kubectl
     echo "Installing YTerMusic..."
     cargo install ytermusic
     ;;
+  28)
+    echo "Installing Todoist CLI..."
+    paru -S todoist-bin peco
   *)
     echo "Invalid choice: $app"
     ;;
@@ -785,7 +788,8 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
     echo "Ollama not found, installing Ollama from AUR..."
 
     # Install Ollama from the AUR using paru (if not already installed)
-    paru -S --noconfirm ollama
+    # paru -S --noconfirm ollama
+curl -fsSL https://ollama.com/install.sh | sh
 
     echo "Ollama has been installed. You can now use it to run local large language models." && sleep 2 
 
