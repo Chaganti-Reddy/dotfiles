@@ -139,6 +139,7 @@
         "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB"
     },
  "battery": {
+   "interval": 5,
     "states": {
       "good": 98,
       "warning": 30,
@@ -150,10 +151,10 @@
     "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%",
     "format-warning": "<span color='#d8a657' > {icon} </span>{capacity}%",
     "format-full": " {icon} {capacity}%",
-    "format-charging": "  {capacity}%",
+    "format-charging": "<span color='#8ec07c' >  </span>{capacity}%",
     "format-charging-warning": "<span color='#d8a657' > 󰢝 </span>{capacity}%",
     "format-charging-critical": "<span color='#cc241d' > 󰢜 </span>{capacity}%",
-    "format-plugged": "  {capacity}%",
+    "format-plugged": "<span color='#8ec07c' >  </span>{capacity}%",
     "format-alt": " 󱧥 {time}",
         "tooltip-format": "Capacity - {capacity}%\nPower draw - {power}W\nCycles - {cycles}\nHealth - {health}%\n{timeTo}",
         "on-click-middle": "~/.config/rofi/applets/bin/battery.sh"
