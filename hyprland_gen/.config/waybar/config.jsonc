@@ -1,0 +1,232 @@
+{
+    "position": "top",
+    "height": 35,
+    "modules-left": ["hyprland/workspaces", "pulseaudio#output", "pulseaudio#input", "bluetooth", "idle_inhibitor", "hyprland/window"],
+    "modules-center": ["mpd", "mpris", "tray"],
+    "modules-right": ["backlight" ,"custom/cpuinfo", "memory", "network", "clock","battery" , "custom/powermenu"],
+
+  "hyprland/window": {
+    "format": "{class} - {title}",
+    "max-length": 30,
+    "icon": true,
+    "icon-size": 12,
+    "separate-outputs": true
+  },
+    "custom/cpuinfo": {
+        "exec": "~/.config/waybar/scripts/cpuinfo.sh",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "interval": 5
+    },
+    "tray": {
+"icon-size": 15,
+        "spacing": 10
+    },
+    "mpris": {
+      "format": "<span color='#cc241d'> {player_icon} </span>  {dynamic}  ",
+  "format-paused": "<span color='#cc241d'> {status_icon} </span> <i>{dynamic}</i>",
+"player-icons": {
+		"default": "󰎇",
+		"mpv": "󰝚"
+	},
+	"status-icons": {
+		"paused": ""
+	},
+      "max-length": 50
+    },
+
+
+"mpd": {
+  "server": "localhost",  // Replace with your MPD server address if different
+  "port": 6600,           // Default MPD port
+  "format": "{stateIcon} {title} - {artist}",
+"format-paused": " {title} - {artist}",
+    "format-playing": " {title} - {artist}",
+  "format-disconnected": "󰝛 ",
+  "format-stopped": " ",
+  "interval": 10,
+  "max-length": 50,
+  "consume-icons": {
+    "on": " " // Icon shows only when "consume" is on
+  },
+  "random-icons": {
+    "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+    "on": " "
+  },
+  "repeat-icons": {
+    "on": " "
+  },
+  "single-icons": {
+    "on": "1 "
+  },
+  "state-icons": {
+    "paused": "",   // Icon for paused state
+    "playing": ""    // Icon for playing state
+  },
+  "tooltip-format": "MPD (connected)",
+  // "tooltip-format": "MPD (connected) \n({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+  "tooltip-format-disconnected": "MPD (disconnected)",
+
+  // Mouse interaction
+  "on-click": "mpc toggle",        // Play/Pause when left-clicked
+  "on-click-middle": "mpc next",   // Next when middle-clicked
+  "on-click-right": "mpc prev",    // Previous when right-clicked
+  "on-scroll-up": "mpc volume +10",  // Volume up on scroll up
+  "on-scroll-down": "mpc volume -10",  // Volume down on scroll down
+},
+
+      "custom/powermenu": {
+    "format": " ",
+    "on-click": "~/.config/rofi/powermenu/type-4/powermenu.sh",
+    "tooltip": false
+  },
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰈈",
+      "deactivated": "󰈉"
+    },
+// "format-icons": {
+//       "deactivated": " ",
+//       "activated": " "
+//     },
+    "tooltip": true,
+    "tooltip-format-activated": "Presentation Mode",
+    "tooltip-format-deactivated": "Idle Mode",
+    "start-activated": false,
+    "timeout": 600
+  },
+    "clock": {
+    	"format": " {:%a %d %b   %I:%M %p}",
+    
+"tooltip-format": "<tt><small>{tz_list}New_York, Los_Angeles\n\n{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    },
+    "on-click-middle": "~/.config/scripts/hyprstyle",
+"timezones": [
+        "Asia/Kolkata",
+        "America/New_York",
+        "America/Los_Angeles"
+    ]
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "󰘚 {}%",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB",
+        "on-click-right": "kitty -e btop"
+    },
+ "battery": {
+   "interval": 5,
+    "states": {
+      "good": 98,
+      "warning": 30,
+      "critical": 25
+    },
+    // "format-icons": [" "," "," "," "," "],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "format": " {icon} {capacity}%",
+    "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%",
+    "format-warning": "<span color='#d8a657' > {icon} </span>{capacity}%",
+    "format-full": " {icon} {capacity}%",
+    "format-charging": "<span color='#8ec07c' >  </span>{capacity}%",
+    "format-charging-warning": "<span color='#d8a657' > 󰢝 </span>{capacity}%",
+    "format-charging-critical": "<span color='#cc241d' > 󰢜 </span>{capacity}%",
+    "format-plugged": "<span color='#8ec07c' >  </span>{capacity}%",
+    "format-alt": " 󱧥 {time}",
+        "tooltip-format": "Capacity - {capacity}%\nPower draw - {power}W\nCycles - {cycles}\nHealth - {health}%\n{timeTo}",
+        "on-click-middle": "~/.config/rofi/applets/bin/battery.sh"
+  },
+  "network": {
+    "interval": 1,
+"tooltip": true,
+    "format-wifi": 
+        " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "format-ethernet": 
+      " {bandwidthDownBytes}  {bandwidthUpBytes}",
+
+    "tooltip-format": 
+      "Network: <b>{essid}</b>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+    "format-alt": "說 {essid}",
+    "format-linked": "說 {essid} (No IP)",
+    "format-disconnected": "說 Disconnected",
+    "interval": 2,
+    "on-click-right": "kitty -e nm-applet"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "on-scroll-up": "brightnessctl s 5%+",
+    "on-scroll-down": "brightnessctl s 5%-",
+    "format": "{icon} {percent}%",
+    "format-icons": ["","","",""],
+        "tooltip-format": "{icon} {percent}% Brightness",
+    "on-click-right": "~/.config/rofi/applets/bin/brightness.sh"
+  },
+    "pulseaudio#output": {
+        "format": "  {volume}%",
+        "format-bluetooth": "󰋋 {volume}%",
+        "format-bluetooth-muted": "󰟎 {volume}%",
+        "format-muted": "  {volume}%",
+        "on-click": "~/.config/waybar/scripts/volumecontrol.sh -o m",
+        "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -o i",
+        "on-scroll-down": "~/.config/waybar/scripts/volumecontrol.sh -o d",
+    "on-click-right": "pavucontrol -t 3",
+    // "tooltip": false,
+    "max-volume": 153
+    },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": " {num_connections}",
+    "format-connected-battery": "󰂱 {device_alias}",
+"format-icons": ["󰥇", "󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+
+"tooltip-format": 
+      "{controller_alias}\n{num_connections} connected",
+    "tooltip-format-connected": 
+      "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": 
+      "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": 
+      "{device_alias}\t{icon} {device_battery_percentage}%",
+
+    "on-click-right": "~/.config/waybar/scripts/bluetooth-menu.sh",
+    "on-click-middle": "blueman-manager", 
+    "interval": 1,
+    "min-length": 1,
+    "max-length": 10
+  },
+"pulseaudio#input": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "  {volume}%",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
+        "on-click-right": "pavucontrol -t 4",
+        "scroll-step": 5
+    }
+}

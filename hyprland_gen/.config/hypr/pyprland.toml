@@ -1,0 +1,47 @@
+[pyprland]
+plugins = [
+    "scratchpads",
+    "magnify"
+]
+
+[scratchpads.music]
+command = "st -c Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
+class = "Music"
+position = "431px 175px"
+size = "1100px 700px"
+animate = ""
+margin = 50
+
+[scratchpads.clipse]
+command = "kitty --class clipse -e clipse"
+class = "clipse"
+position = "621px 167px"
+size = "700px 700px"
+animate = ""
+margin = 50
+
+[scratchpads.calc]
+command = "qalculate-gtk"
+class = "qalculate-gtk"
+position = "431px 175px"
+size = "1100px 700px"
+animate = ""
+margin = 50
+
+[scratchpads.news]
+command = "kitty --class news -e newsboat"
+class = "news"
+lazy = true
+position = "431px 175px"
+size = "1100px 700px"
+animate = ""
+margin = 50
+
+[scratchpads.term]
+animation = ""
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "60% 60%"
+max_size = "1920px 100%"
+margin = 50
+
