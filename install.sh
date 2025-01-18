@@ -81,9 +81,9 @@ clear
 # Install base-devel and required packages
 echo "Installing dependencies.." && sleep 2
 
-sudo pacman -S --noconfirm --needed base-devel intel-ucode vim zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting bash-completion openssh wget curl btop neofetch bat exa fd ripgrep fzf stow stylua tar tree time acpilight aria2 unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipmenu clipnotify inotify-tools psutils dunst e2fsprogs gvfs gvfs-afc gvfs-google gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-onedrive gvfs-smb efibootmgr zoxide gc git-lfs gnome-keyring polkit-kde-agent polkit-gnome pass udiskie gstreamer jq xdotool screenkey xorg-xprop xorg-xinit xf86-video-intel lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli tlp tlp-rdw neovim xorg-xinput xclip xcompmgr xorg-xrandr xorg-xsetroot xsel xwallpaper pandoc starship python-pywal glow xarchiver xfce4-clipman-plugin libguestfs bc xorg-xman man-db man-pages ncdu python-adblock dnsmasq python-pip nwg-look python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server pass pinentry gnupg pass-otp zbar xorg-xlsclients xscreensaver os-prober qt5ct pamixer qt5-wayland qt6-wayland parallel shfmt tesseract html-xml-utils tumbler thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman thunar-vcs-plugin flameshot playerctl ncmpcpp mpd mpv mpc poppler poppler-glib adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans gnu-free-fonts libnewt baobab gnome-disk-utility gparted pavucontrol ranger yad timeshift go hugo hunspell hunspell-en_us imagemagick ueberzug luacheck yt-dlp mlocate nodejs npm translate-shell jdk-openjdk openjdk-doc openjdk-src blueman zenity rofi rofi-emoji rofi-calc newsboat fcitx5 fcitx5-configtool papirus-icon-theme acpi powertop dart-sass speedtest-cli lynx atool lf figlet luarocks kitty network-manager-applet xfce4-power-manager navi glfw pulsemixer alsa-firmware sof-firmware alsa-ucm-conf viewnior
+sudo pacman -S --noconfirm --needed base-devel intel-ucode vim zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting bash-completion openssh wget curl btop neofetch bat exa fd ripgrep fzf stow stylua tar tree time acpilight aria2 unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipmenu clipnotify inotify-tools psutils dunst e2fsprogs gvfs gvfs-afc gvfs-google gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-onedrive gvfs-smb efibootmgr zoxide gc git-lfs gnome-keyring polkit-kde-agent polkit-gnome pass udiskie gstreamer jq xdotool screenkey xorg-xprop xorg-xinit xf86-video-intel lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli tlp tlp-rdw neovim xorg-xinput xclip xcompmgr xorg-xrandr xorg-xsetroot xsel xwallpaper pandoc starship python-pywal glow xarchiver xfce4-clipman-plugin libguestfs bc xorg-xman man-db man-pages ncdu python-adblock dnsmasq python-pip nwg-look python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server pass pinentry gnupg pass-otp zbar xorg-xlsclients xscreensaver os-prober qt5ct pamixer qt5-wayland qt6-wayland parallel shfmt tesseract html-xml-utils tumbler thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman thunar-vcs-plugin flameshot playerctl ncmpcpp mpd mpv mpc poppler poppler-glib adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans gnu-free-fonts libnewt baobab gnome-disk-utility gparted pavucontrol ranger yad timeshift go hugo hunspell hunspell-en_us imagemagick ueberzug luacheck yt-dlp mlocate nodejs npm translate-shell jdk-openjdk openjdk-doc openjdk-src blueman zenity rofi-wayland rofi-emoji newsboat fcitx5 fcitx5-configtool papirus-icon-theme acpi powertop dart-sass speedtest-cli lynx atool lf figlet luarocks kitty network-manager-applet xfce4-power-manager navi glfw pulsemixer alsa-firmware sof-firmware alsa-ucm-conf viewnior qalculate-gtk 
 
-paru -S --noconfirm --needed base-devel python-psutil preload git-remote-gcrypt ttf-ms-fonts qt6ct-kde ccrypt didyoumean-git arch-wiki-docs kvantum kvantum-theme-catppuccin-git catppuccin-fcitx5-git apple_cursor cava sysstat --noconfirm
+paru -S --noconfirm --needed base-devel python-psutil preload git-remote-gcrypt ttf-ms-fonts qt6ct-kde ccrypt didyoumean-git arch-wiki-docs kvantum kvantum-theme-catppuccin-git catppuccin-fcitx5-git apple_cursor cava sysstat pyprland-git --noconfirm
 
 echo "Dependencies installed... executing services & permissions..." && sleep 1
 
@@ -245,13 +245,14 @@ install_browser() {
     case $choice in
     1)
       echo "Installing Zen-Browser..."
-      paru -S --noconfirm --needed zen-browser-bin firefoxpwa
+      paru -S --noconfirm --needed zen-browser-bin 
+      sudo npm install -g nativefier
       # Video Download Helper
       curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
       ;;
     2)
       echo "Installing Firefox..."
-      sudo pacman -S --noconfirm firefox firefoxpwa
+      sudo pacman -S --noconfirm firefox 
       curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
       ;;
     3)
@@ -659,7 +660,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   # Install Hyprland and related packages
   sudo pacman -S --noconfirm kitty system-config-printer  chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
 
-  paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git
+  paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git pyprland-git
 
   # Set up Hyprland configuration
   echo "Configuring Hyprland..."
