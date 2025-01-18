@@ -1,0 +1,41 @@
+layout {
+    new_tab_template{
+        pane size=1 borderless=true {
+            plugin location="compact-bar"
+        }
+        pane {
+            children
+        }
+    }
+    tab name="Leetcode" focus=true {
+        pane size=1 borderless=true{
+            plugin location="compact-bar"
+        }
+        pane {
+          command "nvim"
+          args "leetcode.nvim"
+          cwd "/mnt/Karna/Git/Project-K/DSA/Leetcode/"
+          start_suspended true
+        }
+    }
+    tab name="Codeforces" {
+        pane size=1 borderless=true {
+            plugin location="compact-bar"
+        }
+        pane {
+          command "nvim"
+          cwd "/mnt/Karna/Git/Project-K/DSA/"
+start_suspended true
+        }
+    }
+    tab name="Git" {
+        pane size=1 borderless=true {
+            plugin location="compact-bar"
+        }
+        pane {
+          command "lazygit"
+          cwd "/mnt/Karna/Git/Project-K/"
+          start_suspended false
+        }
+    }
+}
