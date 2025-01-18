@@ -65,14 +65,14 @@ clear
 echo "This script requires an AUR helper to install the dependencies. Installing paru..." && sleep 2
 if ! command -v paru &>/dev/null; then
   echo "Installing Paru, an AUR helper..."
-  cd ~/Downloads
+  cd ~/Downloads || return
   git clone https://aur.archlinux.org/paru-bin.git
-  cd paru-bin
+  cd paru-bin || return
   makepkg -si
   cd ..
   echo "Paru installed" && sleep 1
   rm -rf paru-bin
-  cd ~/dotfiles
+  cd ~/dotfiles || return
 fi
 clear
 
@@ -298,6 +298,7 @@ echo "6) TeamViewer (Recommended)"
 echo "7) AnyDesk (Remote Desktop)"
 echo "8) xrdp (Remote Desktop Protocol)"
 echo "9) OpenVPN (VPN)"
+echo "10) WireGuard (VPN)"
 echo ""
 echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
 
@@ -349,6 +350,10 @@ for app in $apps; do
     echo "Installing OpenVPN..."
     sudo pacman -S --noconfirm openvpn
     ;;
+  10)
+    echo "Installing WireGuard..."
+    sudo pacman -S --noconfirm wireguard-tools
+    ;;
   *)
     echo "Invalid choice: $app"
     ;;
@@ -378,6 +383,7 @@ echo "21) Audacity                 22) Krita"
 echo "23) Shotcut                  24) Steam"
 echo "25) Minecraft                26) YouTUI"
 echo "27) YTerMusic                28) Todoist"
+echo "29) Geary                    30) KeepassXC"
 echo ""
 echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
 
@@ -512,6 +518,15 @@ rm kubectl
   28)
     echo "Installing Todoist CLI..."
     paru -S todoist-bin peco
+    ;;
+  29)
+    echo "Installing Geary..."
+    sudo pacman -S --noconfirm geary
+    ;;
+  30)
+    echo "Installing KeepassXC..."
+    sudo pacman -S --noconfirm keepassxc
+    ;;
   *)
     echo "Invalid choice: $app"
     ;;
@@ -554,7 +569,7 @@ for app in $extra_tools_choices; do
   2)
     echo "Installing ani-cli python version..."
     pip install anipy-cli
-    cd ~/dotfiles/
+    cd ~/dotfiles/ || return
     stow anipy-cli
     ;;
   3)
@@ -567,15 +582,15 @@ for app in $extra_tools_choices; do
       stow_folder="ytfzf"
     fi
     # Apply the stow configuration
-    cd ~/dotfiles
+    cd ~/dotfiles || return
     stow "$stow_folder"
     ;;
   4)
     echo "Installing Zathura..."
     sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps zathura-cb --noconfirm
-    cd ~/dotfiles/Extras/Extras/Zathura-Pywal-master/
+    cd ~/dotfiles/Extras/Extras/Zathura-Pywal-master/ || return
     ./install.sh
-    cd ~/dotfiles/
+    cd ~/dotfiles/ || return
     ;;
   5)
     echo "Installing Evince..."
@@ -635,7 +650,7 @@ fi
 echo "Setting up Fonts..." && sleep 1
 
 mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts
+cd ~/.local/share/fonts || return
 
 curl -L -o my-fonts.zip https://github.com/Chaganti-Reddy/my-fonts/archive/main.zip
 
@@ -643,7 +658,7 @@ unzip my-fonts.zip
 
 rm my-fonts.zip
 
-cd ~/dotfiles/
+cd ~/dotfiles/ || return
 
 clear
 
@@ -655,7 +670,7 @@ echo "Setting up Hyprland..." && sleep 1
 
 # Ask the user if they want to install Hyprland
 echo "Would you like to install Hyprland (a dynamic Wayland compositor)? (y/n)"
-read install_hyprland
+read -r install_hyprland
 
 if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   echo "Hyprland installation will begin now."
@@ -674,11 +689,11 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   # else
   #   stow_folder="Hypr_ALL"
   # fi
-  stow_folder = "hyprland"
+  stow_folder="hyprland"
 
   # Create the configuration file if it doesn't exist
   if [ ! -f "$HOME/.config/hypr/hyprland.conf" ]; then
-    cd ~/dotfiles
+    cd ~/dotfiles || return
     stow "$stow_folder"
     stow wofi
     stow rofi
@@ -686,7 +701,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   else
     echo "Hyprland configuration file already exists."
   fi
-  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles
+  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
   clear
   echo "Setup is complete. Proceeding to next modules..." && sleep 2
 else
@@ -700,28 +715,25 @@ echo "Setting up dwm..."
 
 # Ask the user if they want to install dwm
 echo "Would you like to install dwm (Dynamic Window Manager)? (y/n)"
-read install_dwm
+read -r install_dwm
 
 if [[ "$install_dwm" == "y" || "$install_dwm" == "Y" ]]; then
   echo "dwm installation will begin now."
 
   # Install dwm and related packages
-  cd ~/dotfiles
+  cd ~/dotfiles || return
   stow suckless/
   stow DWMScripts
 
-  cd ~/.config/dwm && sudo make clean install && cd
-  cd ~/.config/slstatus && sudo make clean install && cd
-  cd ~/.config/st && sudo make install && cd
-  cd ~/.config/dmenu && sudo make install && cd
-  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles
+  cd ~/.config/dwm && sudo make clean install 
+  cd ~/.config/slstatus && sudo make clean install
+  cd ~/.config/st && sudo make install
+  cd ~/.config/dmenu && sudo make install
+  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
 
   sudo mkdir -p /usr/share/xsessions/
   sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions
 
-  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles
-
-  # Inform the user that dwm has been installed
   echo "dwm has been installed. Please configure your system as needed." && sleep 2
 
   clear
@@ -736,7 +748,7 @@ echo "Setting up BSPWM..."
 
 # Ask the user if they want to install bspwm
 echo "Would you like to install bspwm (Dynamic Window Manager)? (y/n)"
-read install_bspwm
+read -r install_bspwm
 
 if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
   echo "bspwm installation will begin now."
@@ -747,21 +759,21 @@ if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
   paru -S --noconfirm ksuperkey betterlockscreen light networkmanager-dmenu-git
 
   # Setup configuration files
-  cd ~/dotfiles
+  cd ~/dotfiles || return
   stow feh
   stow bspwm/
   stow network-dmenu/
   sudo cp -r ~/dotfiles/Extras/Extras/archcraft_wall/* /usr/share/backgrounds/
-  cd ~/Downloads/ 
+  cd ~/Downloads/ || return 
 curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
   unzip wall.zip 
-cd wallpapers-main
+cd wallpapers-main || return
 sudo mkdir -p /usr/share/backgrounds
 sudo mv wall /usr/share/backgrounds/
-cd ~/dotfiles/
+cd ~/dotfiles/ || return
   sudo cp -r ~/dotfiles/bspwm/.config/bspwm/dunst/ /usr/share/icons/dunst
 
-  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles
+  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
   echo "bspwm has been installed. Please configure your system as needed." && sleep 2
   clear
 else
@@ -775,7 +787,7 @@ echo "Setting up Ollama..."
 
 # Ask the user if they want to install Ollama
 echo "Would you like to install Ollama (a tool to run large language models locally)? (y/n)"
-read install_ollama
+read -r install_ollama
 
 if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
   echo "Ollama installation will begin now."
@@ -806,7 +818,7 @@ curl -fsSL https://ollama.com/install.sh | sh
     for model in "${models[@]}"; do
       clear
       echo "Would you like to install the model '$model'? (y/n)"
-      read install_model
+      read -r install_model
 
       if [[ "$install_model" == "y" || "$install_model" == "Y" ]]; then
         echo "Installing model '$model'..."
@@ -835,7 +847,7 @@ echo "Installing PIP Packages..."
 
 # Ask the user if they want to install the PIP packages
 echo "Would you like to install my PIP Packages? (y/n)"
-read install_pip_packages
+read -r install_pip_packages
 
 if [[ "$install_pip_packages" == "y" || "$install_pip_packages" == "Y" ]]; then
   echo "PIP packages installation will begin now."
@@ -857,7 +869,7 @@ echo "Setting up GRUB theme..."
 
 # Ask if the user wants to set up a GRUB theme
 echo "Would you like to install a GRUB theme? (y/n)"
-read install_grub_theme
+read -r install_grub_theme
 
 if [[ "$install_grub_theme" == "y" || "$install_grub_theme" == "Y" ]]; then
   echo "GRUB theme setup will begin now."
@@ -908,7 +920,7 @@ echo "Setting up Zsh..."
 
 # Ask the user if they want to install and set up Zsh
 echo "Would you like to install Zsh and set it as your default shell? (y/n)"
-read install_zsh
+read -r install_zsh
 
 if [[ "$install_zsh" == "y" || "$install_zsh" == "Y" ]]; then
   echo "Zsh installation will begin now."
@@ -921,7 +933,7 @@ if [[ "$install_zsh" == "y" || "$install_zsh" == "Y" ]]; then
 
   # Install Oh My Zsh
   #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
-  cd ~/dotfiles
+  cd ~/dotfiles || return
   sh install_zsh.sh
 
   rm ~/.zshrc
@@ -935,13 +947,13 @@ if [[ "$install_zsh" == "y" || "$install_zsh" == "Y" ]]; then
   fi
 
   # Use stow to set up the Zsh configuration
-  cd ~/dotfiles
+  cd ~/dotfiles || return
   stow "$stow_folder"
 
   cp Extras/Extras/archcraft-dwm.zsh-theme ~/.oh-my-zsh/themes/archcraft-dwm.zsh-theme
 
   echo "Zsh has been installed and set as your default shell. Please restart your terminal to apply the changes." && sleep 2
-  cd ~/dotfiles
+  cd ~/dotfiles || return
   clear
 else
   echo "Zsh installation skipped. Proceeding with the setup."
@@ -962,22 +974,22 @@ rm -rf ~/.bashrc
 
 echo "Installing Themes and Icons..."
 # Install themes and icons
-cd ~/Downloads/
+cd ~/Downloads/ || return 
 curl -L -o archcraft-themes.zip https://codeload.github.com/Chaganti-Reddy/archcraft-themes/zip/refs/heads/main
 unzip archcraft-themes.zip
 rm archcraft-themes.zip
 mkdir -p ~/.icons ~/.themes
-cd archcraft-themes-main
+cd archcraft-themes-main || return 
 mv themes/* ~/.themes
 mv icons/* ~/.icons
-cd ~/Downloads
+cd ~/Downloads || return 
 rm -rf archcraft-themes-main
-cd ~/dotfiles/
+cd ~/dotfiles/ || return 
 sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
 echo "Themes and Icons have been installed successfully..." && sleep 2
 # Ask the user if they want to install extras
 echo "Would you like to install my configs? (y/n)"
-read install_extras
+read -r install_extras
 
 if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
   echo "Extras installation will begin now."
@@ -988,7 +1000,7 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     echo "Stowing configurations for non-karna user..."
     stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt screensaver sxiv Templates themes Thunar xsettingsd zathura
 
-    cd ~/dotfiles/Extras/Extras/
+    cd ~/dotfiles/Extras/Extras/ || return
 #
     sudo cp etc/nanorc /etc/nanorc
     sudo cp etc/bash.bashrc /etc/bash.bashrc
@@ -1001,7 +1013,7 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     echo "Stowing configurations for karna..."
     stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser ranger_karna redyt screenlayout screensaver sxiv Templates Thunar xarchiver xsettingsd zathura
 
-    cd ~/dotfiles/Extras/Extras/
+    cd ~/dotfiles/Extras/Extras/ || return
 
     sudo cp etc/nanorc /etc/nanorc
     sudo cp etc/bash.bashrc /etc/bash.bashrc
