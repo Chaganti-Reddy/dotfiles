@@ -408,21 +408,8 @@ function rmfzf() {
 zle -N rmfzf
 bindkey '^X^A' rmfzf
 
-function zln {
-    local session_name=$(basename "$PWD")
-
-    local session_exists=$(zellij list-sessions | grep -w "$session_name")
-
-    if [[ -z "$session_exists" ]]; then
-        echo "Session '$session_name' does not exist. Creating a new session..."
-        zellij --layout karna attach --create "$session_name"
-    else
-        echo "Session '$session_name' already exists."
-    fi
-}
-
-alias zla="zellij --layout karna attach"
-alias zl="zellij --layout karna"
+alias zlk="zellij --layout karna attach --create 'Karna'"
+alias zlc="zellij --layout compi attach --create 'DSA'"
 
 
 export STARSHIP_LOG="error"
