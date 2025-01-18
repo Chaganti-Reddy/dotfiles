@@ -50,6 +50,7 @@ animation = ""
 command = "~/chess-linux-x64/chess"
 class = "chess-nativefier-703820"
 size = "80% 80%"
+lazy = true
 position = "181px 97px"
 max_size = "1920px 100%"
 margin = 50
