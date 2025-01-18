@@ -684,12 +684,11 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   echo "Configuring Hyprland..."
 
   # Check if the username is "karna"
-  # if [ "$(whoami)" == "karna" ]; then
-  #   stow_folder="Hyprland"
-  # else
-  #   stow_folder="Hypr_ALL"
-  # fi
-  stow_folder="hyprland"
+  if [ "$(whoami)" == "karna" ]; then
+    stow_folder="hyprland"
+  else
+    stow_folder="hyprland_gen"
+  fi
 
   # Create the configuration file if it doesn't exist
   if [ ! -f "$HOME/.config/hypr/hyprland.conf" ]; then
