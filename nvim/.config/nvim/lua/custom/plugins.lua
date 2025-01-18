@@ -209,6 +209,20 @@ local plugins = {
       vim.g.vimtex_syntax_enabled = 1
     end,
   },
+
+{
+    'nvimdev/lspsaga.nvim',
+    lazy = false,
+    event = "LspAttach",
+    config = function()
+        require('lspsaga').setup({})
+    end,
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- optional
+        'nvim-tree/nvim-web-devicons',     -- optional
+    }
+},
+
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
