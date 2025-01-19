@@ -1,11 +1,11 @@
 #!/bin/bash
 
-wall_dir=$(ls $HOME/dotfiles/XFCEPic/Pictures/)
+wall_dir=$(ls $HOME/Pictures/pix/)
 wall=""
 
 # now search recursively in all the dirs in wall_dir 
 for dir in $wall_dir; do 
-  wall+=$(find $HOME/dotfiles/XFCEPic/Pictures/$dir -type f -name "*.jpg" -o -name "*.png")
+  wall+=$(find $HOME/Pictures/pix/$dir -type f -name "*.jpg" -o -name "*.png")
 done
 
 # now select a random wallpaper from the list
