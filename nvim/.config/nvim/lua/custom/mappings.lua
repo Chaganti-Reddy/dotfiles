@@ -26,6 +26,8 @@ M.general = {
     ["<leader>cs"] = { "<cmd>CompilerStop<cr>", "Compiler Stop" },
     ["<leader>ct"] = { "<cmd>CompilerToggleResults<cr>", "Compiler Toggle Results" },
 
+    ["<leader>pm"] = { "<cmd>lua require('nabla').popup()<cr>", "Nabla" },
+
     -- CompetiTest
     ["<leader>pr"] = { "<cmd>CompetiTest run<cr>", "Competitest run" },
     ["<leader>pa"] = { "<cmd>CompetiTest receive testcases<cr>", "Competitest Receive Testcases" },
