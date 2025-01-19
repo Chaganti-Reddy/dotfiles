@@ -17,11 +17,17 @@ fancy_subs=1
 ##}}}
 #
 ##Functions {{{
+
 external_menu () {
-   #use rofi instead of dmenu
-   # rofi -dmenu -width 1500 -p "$1"
-   dmenu -i -l 30 -p "Enter Search Query"
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        # Use rofi on Wayland
+        rofi -dmenu -theme "~/.config/rofi/dt-center.rasi" -i -p "$1" -width 1500
+    else
+        # Use dmenu on X11
+        dmenu -i -l 30 -p "Enter Search Query"
+    fi
 }
+
 
 #use vlc instead of mpv
 #video_player () {
