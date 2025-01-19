@@ -81,7 +81,7 @@ clear
 # Install base-devel and required packages
 echo "Installing dependencies.." && sleep 2
 
-sudo pacman -S --noconfirm --needed base-devel intel-ucode vim zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting bash-completion openssh wget curl btop neofetch bat exa fd ripgrep fzf stow stylua tar tree time acpilight aria2 unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipmenu clipnotify inotify-tools psutils dunst e2fsprogs gvfs gvfs-afc gvfs-google gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-onedrive gvfs-smb efibootmgr zoxide gc git-lfs gnome-keyring polkit-kde-agent polkit-gnome pass udiskie gstreamer jq xdotool screenkey xorg-xprop xorg-xinit xf86-video-intel lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli tlp tlp-rdw neovim xorg-xinput xclip xcompmgr xorg-xrandr xorg-xsetroot xsel xwallpaper pandoc starship python-pywal glow xarchiver xfce4-clipman-plugin libguestfs bc xorg-xman man-db man-pages ncdu python-adblock dnsmasq python-pip nwg-look python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server pass pinentry gnupg pass-otp zbar xorg-xlsclients xscreensaver os-prober qt5ct pamixer qt5-wayland qt6-wayland parallel shfmt tesseract html-xml-utils tumbler thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman thunar-vcs-plugin flameshot playerctl ncmpcpp mpd mpv mpc poppler poppler-glib adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans gnu-free-fonts libnewt baobab gnome-disk-utility gparted pavucontrol ranger yad timeshift go hugo hunspell hunspell-en_us imagemagick ueberzug luacheck yt-dlp mlocate nodejs npm translate-shell jdk-openjdk openjdk-doc openjdk-src blueman zenity rofi-wayland rofi-emoji newsboat fcitx5 fcitx5-configtool papirus-icon-theme acpi powertop dart-sass speedtest-cli lynx atool lf figlet luarocks kitty network-manager-applet navi glfw pulsemixer alsa-firmware sof-firmware alsa-ucm-conf viewnior qalculate-gtk pyright 
+sudo pacman -S --noconfirm --needed base-devel intel-ucode vim zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting bash-completion openssh wget curl btop neofetch bat exa fd ripgrep fzf stow stylua tar tree time acpilight aria2 unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipmenu clipnotify inotify-tools psutils dunst e2fsprogs gvfs gvfs-afc gvfs-google gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-onedrive gvfs-smb efibootmgr zoxide gc git-lfs gnome-keyring polkit-kde-agent polkit-gnome pass udiskie gstreamer jq xdotool screenkey xorg-xprop xorg-xinit xf86-video-intel lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli tlp tlp-rdw neovim xorg-xinput xclip xcompmgr xorg-xrandr xorg-xsetroot xsel xwallpaper pandoc starship python-pywal glow xarchiver xfce4-clipman-plugin libguestfs bc xorg-xman man-db man-pages ncdu python-adblock dnsmasq python-pip nwg-look python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server pass pinentry gnupg pass-otp zbar xorg-xlsclients xscreensaver os-prober qt5ct pamixer qt5-wayland qt6-wayland parallel shfmt tesseract html-xml-utils tumbler thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman thunar-vcs-plugin flameshot playerctl ncmpcpp mpd mpv mpc poppler poppler-glib adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans gnu-free-fonts libnewt baobab gnome-disk-utility gparted pavucontrol ranger yad timeshift go hugo hunspell hunspell-en_us imagemagick ueberzug luacheck yt-dlp mlocate nodejs npm translate-shell jdk-openjdk openjdk-doc openjdk-src blueman zenity rofi-wayland rofi-emoji newsboat fcitx5 fcitx5-configtool papirus-icon-theme acpi powertop dart-sass speedtest-cli lynx atool lf figlet luarocks kitty network-manager-applet navi glfw pulsemixer alsa-firmware sof-firmware alsa-ucm-conf viewnior qalculate-gtk pyright
 
 paru -S --noconfirm --needed base-devel python-psutil preload git-remote-gcrypt ttf-ms-fonts qt6ct-kde ccrypt didyoumean-git arch-wiki-docs kvantum kvantum-theme-catppuccin-git catppuccin-fcitx5-git apple_cursor cava sysstat pyprland-git --noconfirm
 
@@ -168,7 +168,7 @@ else
   wget https://repo.anaconda.com/miniconda/Miniconda3-py310_24.3.0-0-Linux-x86_64.sh
 
   # Run the installer
-  bash Miniconda3-py310_24.3.0-0-Linux-x86_64.sh 
+  bash Miniconda3-py310_24.3.0-0-Linux-x86_64.sh
   conda init
   # Remove the installer after installation
   rm Miniconda3-py310_24.3.0-0-Linux-x86_64.sh
@@ -245,14 +245,14 @@ install_browser() {
     case $choice in
     1)
       echo "Installing Zen-Browser..."
-      paru -S --noconfirm --needed zen-browser-bin 
+      paru -S --noconfirm --needed zen-browser-bin
       sudo npm install -g nativefier
       # Video Download Helper
       curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
       ;;
     2)
       echo "Installing Firefox..."
-      sudo pacman -S --noconfirm firefox 
+      sudo pacman -S --noconfirm firefox
       curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
       ;;
     3)
@@ -421,10 +421,10 @@ for app in $tools_choices; do
     echo "Installing Kubernetes..."
     paru -S --noconfirm kind-bin
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-rm kubectl
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+    echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    rm kubectl
     ;;
   6)
     echo "Installing LaTeX (texlive)..."
@@ -676,7 +676,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   echo "Hyprland installation will begin now."
 
   # Install Hyprland and related packages
-  sudo pacman -S --noconfirm kitty system-config-printer  chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
+  sudo pacman -S --noconfirm kitty system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
 
   paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git pyprland-git
 
@@ -724,7 +724,7 @@ if [[ "$install_dwm" == "y" || "$install_dwm" == "Y" ]]; then
   stow suckless/
   stow DWMScripts
 
-  cd ~/.config/dwm && sudo make clean install 
+  cd ~/.config/dwm && sudo make clean install
   cd ~/.config/slstatus && sudo make clean install
   cd ~/.config/st && sudo make install
   cd ~/.config/dmenu && sudo make install
@@ -747,7 +747,11 @@ echo "Setting up BSPWM..."
 
 # Ask the user if they want to install bspwm
 echo "Would you like to install bspwm (Dynamic Window Manager)? (y/n)"
-read -r install_bspwm
+read -r install_bspwm 
+
+if [[ "$install_bspwm" != "y" && "$install_bspwm" != "Y" ]]; then
+  install_bspwm="n"
+fi
 
 if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
   echo "bspwm installation will begin now."
@@ -762,15 +766,6 @@ if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
   stow feh
   stow bspwm/
   stow network-dmenu/
-  sudo cp -r ~/dotfiles/Extras/Extras/archcraft_wall/* /usr/share/backgrounds/
-  cd ~/Downloads/ || return 
-curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
-  unzip wall.zip 
-cd wallpapers-main || return
-sudo mkdir -p /usr/share/backgrounds
-sudo mv wall /usr/share/backgrounds/
-cd ~/dotfiles/ || return
-  sudo cp -r ~/dotfiles/bspwm/.config/bspwm/dunst/ /usr/share/icons/dunst
 
   cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
   echo "bspwm has been installed. Please configure your system as needed." && sleep 2
@@ -800,9 +795,9 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
 
     # Install Ollama from the AUR using paru (if not already installed)
     # paru -S --noconfirm ollama
-curl -fsSL https://ollama.com/install.sh | sh
+    curl -fsSL https://ollama.com/install.sh | sh
 
-    echo "Ollama has been installed. You can now use it to run local large language models." && sleep 2 
+    echo "Ollama has been installed. You can now use it to run local large language models." && sleep 2
 
     clear
 
@@ -958,7 +953,43 @@ else
   echo "Zsh installation skipped. Proceeding with the setup."
   clear
 fi
-#
+
+# --------------------------------------------------------------------------------------
+
+echo "Downloading Wallpapers..." && sleep 1
+
+# ask user if they want to download wallpapers
+echo "Would you like to download wallpapers? (y/n)"
+read -r download_wallpapers
+
+if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
+
+  cd ~/Downloads/ || return
+  curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
+  unzip wall.zip
+  cd wallpapers-main || return
+  # move if install_bspwm == "y" 
+
+  if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
+    sudo mkdir -p /usr/share/backgrounds/
+    sudo mv wall/* /usr/share/backgrounds/
+    cd ~/dotfiles/ || return  
+  fi 
+
+  mv pix ~/Pictures/ 
+  cd ~/Downloads/
+  rm -rf wallpapers-main
+  cd ~/dotfiles/ || return
+
+  echo "Wallpapers have been downloaded and installed successfully..." && sleep 2
+  clear
+
+else
+
+  echo "Wallpapers download skipped. Proceeding with the setup."
+  clear
+fi
+
 # -------------------------------------------------------------------------------------
 
 echo "Setting Extra Packages for System..." && sleep 1
@@ -973,17 +1004,17 @@ rm -rf ~/.bashrc
 
 echo "Installing Themes and Icons..."
 # Install themes and icons
-cd ~/Downloads/ || return 
+cd ~/Downloads/ || return
 curl -L -o archcraft-themes.zip https://codeload.github.com/Chaganti-Reddy/archcraft-themes/zip/refs/heads/main
 unzip archcraft-themes.zip
 rm archcraft-themes.zip
 mkdir -p ~/.icons ~/.themes
-cd archcraft-themes-main || return 
+cd archcraft-themes-main || return
 mv themes/* ~/.themes
 mv icons/* ~/.icons
-cd ~/Downloads || return 
+cd ~/Downloads || return
 rm -rf archcraft-themes-main
-cd ~/dotfiles/ || return 
+cd ~/dotfiles/ || return
 sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
 echo "Themes and Icons have been installed successfully..." && sleep 2
 # Ask the user if they want to install extras
@@ -1000,7 +1031,7 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt screensaver sxiv Templates themes Thunar xsettingsd zathura
 
     cd ~/dotfiles/Extras/Extras/ || return
-#
+    #
     sudo cp etc/nanorc /etc/nanorc
     sudo cp etc/bash.bashrc /etc/bash.bashrc
     sudo cp etc/DIR_COLORS /etc/DIR_COLORS
