@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory containing wallpapers
-WALL="$HOME/dotfiles/XFCEPic/Pictures/"
+WALL="$HOME/Pictures/pix/"
 dir=$(ls $WALL)
 choice=$(echo -e "Random\n$dir\nDownload to Collection\nTemporary Wallpaper\nQuit" | dmenu -i -l 10 -p "Choose an Option: ")
 
