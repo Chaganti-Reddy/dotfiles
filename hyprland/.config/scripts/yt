@@ -15,16 +15,16 @@ case $chosen_option in
     choice=$(printf "Relevent\nDate\nRating\nViews" | rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p "Sort by:")
     case $choice in
     "Relevent")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=relevance
+        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=relevance --pages=2
         ;;
     "Date")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=upload_date
+        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=upload_date --pages=2
         ;;
     "Rating")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=rating
+        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=rating --pages=2
         ;;
     "Views")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=view_count
+        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=view_count --pages=2
         ;;
     *)
         # If an invalid option is chosen
@@ -45,16 +45,16 @@ case $chosen_option in
     choice=$(printf "Relevent\nDate\nRating\nViews" | rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p "Sort by:")
     case $choice in
     "Relevent")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=relevance
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=relevance --pages=2
         ;;
     "Date")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=upload_date
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=upload_date --pages=2
         ;;
     "Rating")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=rating
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=rating --pages=2
         ;;
     "Views")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=view_count
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=view_count --pages=2
         ;;
     *)
         echo "Invalid option. Exiting..."
