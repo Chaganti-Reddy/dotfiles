@@ -11,9 +11,10 @@
 #ytdl_pref="248+bestaudio/best"
 ##scrape 1 video link per channel instead of the default 2
 sub_link_count=60
-show_thumbnails=1
+show_thumbnails=0
 notify_playing=1
 fancy_subs=1
+pages_to_scrape=4
 ##}}}
 #
 ##Functions {{{
