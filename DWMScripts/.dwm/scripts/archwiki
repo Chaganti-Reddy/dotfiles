@@ -9,7 +9,7 @@
 # get hidden bugs that are hard to discover.
 set -euo pipefail
 
-DMBROWSER="floorp"
+DMBROWSER="qutebrowser"
 DMENU="dmenu -i -l 8 -p"
 wikidir="/usr/share/doc/arch-wiki/html/"
 lang=""
