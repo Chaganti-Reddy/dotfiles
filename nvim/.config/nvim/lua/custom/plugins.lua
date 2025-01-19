@@ -123,6 +123,15 @@ local plugins = {
   },
 },
 
+  {
+    "jbyuki/nabla.nvim",
+    lazy = false,
+    -- config = function()
+    --   require "custom.configs.nabla"
+    -- end,
+  },
+
+
   -- {
   --   "zbirenbaum/copilot.lua",
   --   cmd = "Copilot",
