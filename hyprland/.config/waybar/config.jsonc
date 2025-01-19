@@ -40,9 +40,9 @@
 "mpd": {
   "server": "localhost",  // Replace with your MPD server address if different
   "port": 6600,           // Default MPD port
-  "format": "{stateIcon} {title} - {artist}",
-"format-paused": " {title} - {artist}",
-    "format-playing": " {title} - {artist}",
+  "format": "{stateIcon} {randomIcon} {repeatIcon} {singleIcon} {title} - {artist}",
+  "format-paused": " {title} - {artist}",
+  "format-playing": " {title} - {artist}",
   "format-disconnected": "󰝛 ",
   "format-stopped": " ",
   "interval": 10,
@@ -51,14 +51,15 @@
     "on": " " // Icon shows only when "consume" is on
   },
   "random-icons": {
-    "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
-    "on": " "
+    "off": " ", // Icon grayed out when "random" is off
+    "on": "<span color=\"#f53c3c\"> </span>"
   },
   "repeat-icons": {
-    "on": " "
+    "on": " ",
+    "off": ""
   },
   "single-icons": {
-    "on": "1 "
+    "on": " "
   },
   "state-icons": {
     "paused": "",   // Icon for paused state
