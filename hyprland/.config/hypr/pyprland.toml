@@ -10,6 +10,8 @@ class = "Music"
 position = "431px 175px"
 size = "1100px 700px"
 animate = ""
+lazy = true
+unfocus = "hide"
 margin = 50
 
 [scratchpads.clipse]
