@@ -1,0 +1,15 @@
+base-devel 
+python-psutil 
+preload 
+git-remote-gcrypt 
+ttf-ms-fonts 
+qt6ct-kde ccrypt 
+didyoumean-git 
+arch-wiki-docs 
+kvantum 
+kvantum-theme-catppuccin-git 
+catppuccin-fcitx5-git 
+apple_cursor 
+cava 
+sysstat 
+
