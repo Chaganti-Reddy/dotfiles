@@ -754,12 +754,8 @@ fi
 echo "Setting up BSPWM..."
 
 # Ask the user if they want to install bspwm
-echo "Would you like to install bspwm (Dynamic Window Manager)? (y/n)"
+echo "Would you like to install bspwm? (y/n)"
 read -r install_bspwm 
-
-if [[ "$install_bspwm" != "y" && "$install_bspwm" != "Y" ]]; then
-  install_bspwm="n"
-fi
 
 if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
   echo "bspwm installation will begin now."
@@ -977,13 +973,9 @@ if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
   unzip wall.zip
   cd wallpapers-main || return
   # move if install_bspwm == "y" 
-
-  if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
     sudo mkdir -p /usr/share/backgrounds/
     sudo mv wall/* /usr/share/backgrounds/
     cd ~/dotfiles/ || return  
-  fi 
-
   mv pix ~/Pictures/ 
   cd ~/Downloads/
   rm -rf wallpapers-main
