@@ -1,7 +1,7 @@
 # Path to user files, this includes history, seasonals files and more.
 # 
 # You may use `~` or environment vars in your path.
-user_files_path: $HOME/miniconda3/lib/python3.10/site-packages/anipy_cli/user_files
+user_files_path: $HOME/miniconda/lib/python3.10/site-packages/anipy_cli/user_files
 
 # Path to your download folder/directory.
 # 
@@ -11,7 +11,7 @@ download_folder_path: $HOME/Downloads/anipy_cli
 # Path to your seasonal downloads directory.
 # 
 # You may use `~` or environment vars in your path.
-seasonals_dl_path: $HOME/miniconda3/lib/python3.10/site-packages/anipy_cli/download/seasonals
+seasonals_dl_path: $HOME/miniconda/lib/python3.10/site-packages/anipy_cli/download/seasonals
 
 # A list of pairs defining which providers will search for anime
 # in different parts of the program. Configurable areas are as follows:
