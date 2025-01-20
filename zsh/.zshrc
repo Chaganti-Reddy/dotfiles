@@ -166,7 +166,7 @@ function ex ()
 
 export EDITOR='/usr/bin/nvim'
 export PAGER='bat'
-export PATH="$HOME/dotfiles/hyprland/.config/scripts:$PATH"
+export PATH="$HOME/.config/scripts:$PATH"
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
