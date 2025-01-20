@@ -2,7 +2,7 @@ sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
 state: stop
-current: 0
+current: 9
 random: 1
 repeat: 0
 single: 0
@@ -20,4 +20,86 @@ playlist_begin
 6:playlists/Telugu/Jithin Raj - Sivangi Pilla.mp3
 7:playlists/Telugu/Raghu Dixit, Sooraj Santhosh, Rita Thyagarajan - Chal Chalo Chalo.mp3
 8:playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
+9:playlists/EdSheeran/Ed Sheeran - Salt Water.mp3
+10:playlists/EdSheeran/Ed Sheeran - Life Goes On.mp3
+11:playlists/EdSheeran/Ed Sheeran - Dusty.mp3
+12:playlists/EdSheeran/Ed Sheeran - End Of Youth.mp3
+13:playlists/EdSheeran/Ed Sheeran - Colourblind.mp3
+14:playlists/EdSheeran/Ed Sheeran - Curtains.mp3
+15:playlists/EdSheeran/Ed Sheeran - Borderline.mp3
+16:playlists/EdSheeran/Ed Sheeran - Spark.mp3
+17:playlists/EdSheeran/Ed Sheeran - Vega.mp3
+18:playlists/EdSheeran/Ed Sheeran - Sycamore.mp3
+19:playlists/EdSheeran/Ed Sheeran - No Strings.mp3
+20:playlists/EdSheeran/Ed Sheeran - The Hills of Aberfeldy.mp3
+21:playlists/EdSheeran/Ed Sheeran - Wildflowers - Bonus Track.mp3
+22:playlists/EdSheeran/Ed Sheeran - Stoned - Bonus Track.mp3
+23:playlists/EdSheeran/Ed Sheeran - Toughest - Bonus Track.mp3
+24:playlists/EdSheeran/Ed Sheeran - Moving - Bonus Track.mp3
+25:playlists/EdSheeran/Ed Sheeran - The A Team.mp3
+26:playlists/EdSheeran/Ed Sheeran - Drunk.mp3
+27:playlists/EdSheeran/Ed Sheeran - Small Bump.mp3
+28:playlists/EdSheeran/Ed Sheeran - Lego House.mp3
+29:playlists/EdSheeran/Ed Sheeran - You Need Me, I Don't Need You.mp3
+30:playlists/EdSheeran/Ed Sheeran - Kiss Me.mp3
+31:playlists/EdSheeran/Ed Sheeran - Give Me Love.mp3
+32:playlists/EdSheeran/Ed Sheeran - Castle on the Hill.mp3
+33:playlists/EdSheeran/Ed Sheeran - Dive.mp3
+34:playlists/EdSheeran/Ed Sheeran - Shape of You.mp3
+35:playlists/EdSheeran/Ed Sheeran - Perfect.mp3
+36:playlists/EdSheeran/Ed Sheeran - Galway Girl.mp3
+37:playlists/EdSheeran/Ed Sheeran - Happier.mp3
+38:playlists/EdSheeran/Ed Sheeran - New Man.mp3
+39:playlists/EdSheeran/Ed Sheeran - Hearts Don't Break Around Here.mp3
+40:playlists/EdSheeran/Ed Sheeran - What Do I Know.mp3
+41:playlists/EdSheeran/Ed Sheeran - How Would You Feel (Paean).mp3
+42:playlists/EdSheeran/Ed Sheeran - Supermarket Flowers.mp3
+43:playlists/EdSheeran/Ed Sheeran - Barcelona.mp3
+44:playlists/EdSheeran/Ed Sheeran - Bibia Be Ye Ye.mp3
+45:playlists/EdSheeran/Ed Sheeran - Save Myself.mp3
+46:playlists/EdSheeran/Ed Sheeran - Tides.mp3
+47:playlists/EdSheeran/Ed Sheeran - First Times.mp3
+48:playlists/EdSheeran/Ed Sheeran - Overpass Graffiti.mp3
+49:playlists/EdSheeran/Ed Sheeran - Leave Your Life.mp3
+50:playlists/EdSheeran/Ed Sheeran - Collide.mp3
+51:playlists/EdSheeran/Ed Sheeran - Stop The Rain.mp3
+52:playlists/EdSheeran/Ed Sheeran - Love In Slow Motion.mp3
+53:playlists/EdSheeran/Ed Sheeran - Sandman.mp3
+54:playlists/EdSheeran/Ed Sheeran - Be Right Now.mp3
+55:playlists/EdSheeran/Ed Sheeran, Lil Baby - 2step (feat. Lil Baby).mp3
+56:playlists/EdSheeran/Ed Sheeran - Afterglow.mp3
+57:playlists/EdSheeran/Ed Sheeran - Magical.mp3
+58:playlists/EdSheeran/Ed Sheeran - Blue.mp3
+59:playlists/EdSheeran/Ed Sheeran - American Town.mp3
+60:playlists/EdSheeran/Ed Sheeran - Bad Habits.mp3
+61:playlists/EdSheeran/Camila Cabello, Ed Sheeran - Bam Bam (feat. Ed Sheeran).mp3
+62:playlists/EdSheeran/Ed Sheeran, Khalid - Beautiful People (feat. Khalid).mp3
+63:playlists/EdSheeran/Ed Sheeran, Yebba - Best Part of Me (feat. YEBBA).mp3
+64:playlists/EdSheeran/Fuse ODG, Ed Sheeran, Mugeez - Boa Me (feat. Ed Sheeran & Mugeez).mp3
+65:playlists/EdSheeran/Ed Sheeran - Boat.mp3
+66:playlists/EdSheeran/Ed Sheeran - Celestial.mp3
+67:playlists/EdSheeran/Ed Sheeran, Chance the Rapper, PnB Rock - Cross Me (feat. Chance the Rapper & PnB Rock).mp3
+68:playlists/EdSheeran/Ed Sheeran - Eyes Closed.mp3
+69:playlists/EdSheeran/Ed Sheeran - F64.mp3
+70:playlists/EdSheeran/Ed Sheeran, Justin Bieber - I Don't Care (with Justin Bieber).mp3
+71:playlists/EdSheeran/Burna Boy, Ed Sheeran - For My Hand (feat. Ed Sheeran).mp3
+72:playlists/EdSheeran/Ed Sheeran, Camila Cabello, Cardi B - South of the Border (feat. Camila Cabello & Cardi B).mp3
+73:playlists/EdSheeran/Ed Sheeran, Stormzy - Take Me Back to London (feat. Stormzy).mp3
+74:playlists/EdSheeran/Ed Sheeran, Ella Mai - Put It All on Me (feat. Ella Mai).mp3
+75:playlists/EdSheeran/Fireboy DML, Ed Sheeran - Peru.mp3
+76:playlists/EdSheeran/Ed Sheeran - Shivers.mp3
+77:playlists/EdSheeran/J Balvin, Ed Sheeran - Sigue.mp3
+78:playlists/EdSheeran/Ed Sheeran, Taylor Swift - The Joker And The Queen (feat. Taylor Swift).mp3
+79:playlists/EdSheeran/Ed Sheeran - Under the Tree (from “That Christmas”).mp3
+80:playlists/EdSheeran/Ed Sheeran - Visiting Hours.mp3
+81:playlists/EdSheeran/Ed Sheeran - I'm a Mess.mp3
+82:playlists/EdSheeran/Ed Sheeran - Sing.mp3
+83:playlists/EdSheeran/Ed Sheeran - Don't.mp3
+84:playlists/EdSheeran/Ed Sheeran - Photograph.mp3
+85:playlists/EdSheeran/Ed Sheeran - Bloodstream.mp3
+86:playlists/EdSheeran/Ed Sheeran - Thinking out Loud.mp3
+87:playlists/EdSheeran/Ed Sheeran - I See Fire.mp3
+88:playlists/EdSheeran/Ed Sheeran - Tenerife Sea.mp3
+89:playlists/EdSheeran/Ed Sheeran - All of the Stars.mp3
+90:playlists/EdSheeran/Ed Sheeran - Touch and Go.mp3
 playlist_end
