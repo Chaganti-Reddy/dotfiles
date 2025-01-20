@@ -576,9 +576,10 @@ for app in $extra_tools_choices; do
     ;;
   2)
     echo "Installing ani-cli python version..."
-    pip install anipy-cli
-    cd ~/dotfiles/ || return
-    stow anipy-cli
+    paru -S --noconfirm --needed ani-cli-git
+    # pip install anipy-cli
+    # cd ~/dotfiles/ || return
+    # stow anipy-cli
     ;;
   3)
     echo "Installing ytfzf..."
@@ -684,9 +685,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   echo "Hyprland installation will begin now."
 
   # Install Hyprland and related packages
-  sudo pacman -S --noconfirm kitty system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
-
-  paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git pyprland-git
+  paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git hyprlang-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git pyprland-git kitty system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
 
   # Set up Hyprland configuration
   echo "Configuring Hyprland..."
@@ -841,25 +840,25 @@ fi
 #
 # --------------------------------------------------------------------------------------
 #
-echo "Installing PIP Packages..."
-
-# Ask the user if they want to install the PIP packages
-echo "Would you like to install my PIP Packages? (y/n)"
-read -r install_pip_packages
-
-if [[ "$install_pip_packages" == "y" || "$install_pip_packages" == "Y" ]]; then
-  echo "PIP packages installation will begin now."
-
-  # Install the PIP packages
-  pip install pynvim numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel ipywidgets tensorflow python-prctl inotify-simple psutil opencv-python keras mov-cli-youtube mov-cli mov-cli-test otaku-watcher film-central daemon jupyterlab_wakatime pygobject spotdl
-
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu # pytorch cpu version
-  clear
-  echo "PIP Packages have been installed. Please configure your system as needed." && sleep 2
-else
-  echo "PIP packages installation skipped. Proceeding with the setup."
-  clear
-fi
+# echo "Installing PIP Packages..."
+#
+# # Ask the user if they want to install the PIP packages
+# echo "Would you like to install my PIP Packages? (y/n)"
+# read -r install_pip_packages
+#
+# if [[ "$install_pip_packages" == "y" || "$install_pip_packages" == "Y" ]]; then
+#   echo "PIP packages installation will begin now."
+#
+#   # Install the PIP packages
+#   pip install pynvim numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel ipywidgets tensorflow python-prctl inotify-simple psutil opencv-python keras mov-cli-youtube mov-cli mov-cli-test otaku-watcher film-central daemon jupyterlab_wakatime pygobject spotdl
+#
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu # pytorch cpu version
+#   clear
+#   echo "PIP Packages have been installed. Please configure your system as needed." && sleep 2
+# else
+#   echo "PIP packages installation skipped. Proceeding with the setup."
+#   clear
+# fi
 
 # --------------------------------------------------------------------------------------
 
@@ -972,7 +971,6 @@ if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
   curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
   unzip wall.zip
   cd wallpapers-main || return
-  # move if install_bspwm == "y" 
     sudo mkdir -p /usr/share/backgrounds/
     sudo mv wall/* /usr/share/backgrounds/
     cd ~/dotfiles/ || return  
