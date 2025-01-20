@@ -633,10 +633,10 @@ done
 echo "Setting up MariaDB..."
 
 # Ask the user if they want to install MariaDB
-echo "Would you like to install MariaDB (a relational database management system)? (yes/no)"
+echo "Would you like to install MariaDB (a relational database management system)? (y/n)"
 read -r mariadb_installation
 
-if [[ "$mariadb_installation" != "yes" && "$mariadb_installation" != "y" ]]; then
+if [[ "$mariadb_installation" != "Y" && "$mariadb_installation" != "y" ]]; then
   clear
   echo "MariaDB installation skipped. Proceeding with the setup."
   clear
