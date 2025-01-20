@@ -1,7 +1,15 @@
 #!/bin/env bash
 # set -e
-#
-# # Introduction & Warning
+
+
+# Check if the script is run with sudo permissions
+if [[ $EUID -eq 0 ]]; then
+    echo "Do not run this script with sudo or as root!"
+    exit 1
+fi
+
+echo "Running without sudo permissions. Proceeding..." && sleep 1
+
 echo "Welcome to my Arch Setup!" && sleep 2
 echo "Some parts of the script require sudo, so if you're planning on leaving the desktop while the installation script does its thing, better drop it already!." && sleep 4
 #
