@@ -1149,3 +1149,41 @@ Jan 19 23:16 : player: played "playlists/Telugu/Naveen Madhav, Ranjith - I Hate 
 Jan 19 23:21 : player: played "playlists/Telugu/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
 Jan 20 13:36 : player: played "playlists/Telugu/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
 Jan 20 18:43 : player: played "playlists/EdSheeran/Ed Sheeran - Salt Water.mp3"
+Jan 20 19:17 : player: played "playlists/EdSheeran/Ed Sheeran - Salt Water.mp3"
+Jan 20 20:13 : player: played "playlists/Telugu/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+Jan 20 20:16 : player: played "playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Jan 20 20:20 : player: played "playlists/Telugu/Jithin Raj - Sivangi Pilla.mp3"
+Jan 20 20:24 : player: played "playlists/Telugu/Anirudh Ravichander, Shweta Mohan - Emannavoo.mp3"
+Jan 20 20:29 : player: played "playlists/Telugu/Raghu Dixit, Sooraj Santhosh, Rita Thyagarajan - Chal Chalo Chalo.mp3"
+Jan 20 20:49 : player: played "playlists/Telugu/Amit Mishra - Dhruva Dhruva.mp3"
+Jan 20 20:53 : player: played "playlists/Telugu/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+Jan 20 20:58 : player: played "playlists/Telugu/Jubin Nautiyal, Sameera Bharadwaj - Telusaa Telusaa.mp3"
+Jan 20 20:59 : player: played "playlists/Telugu/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
+Jan 20 22:05 : exception: No such song
+Jan 20 22:05 : exception: No such song
+Jan 20 22:05 : exception: No such song
+Jan 20 22:05 : exception: No such song
+Jan 20 22:05 : exception: No such song
+Jan 20 22:05 : exception: Bad song index
+Jan 20 22:05 : exception: Bad song index
+Jan 20 22:05 : exception: Bad song index
+Jan 20 22:05 : player: played "playlists/Telugu/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+Jan 20 22:09 : player: played "playlists/NCS/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 20 22:13 : player: played "playlists/Telugu/Anirudh Ravichander, Shweta Mohan - Emannavoo.mp3"
+Jan 20 22:16 : player: played "playlists/Telugu/Jithin Raj - Sivangi Pilla.mp3"
+Jan 20 22:32 : player: played "playlists/Telugu/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
+Jan 20 22:36 : player: played "playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 20 22:40 : player: played "playlists/NCS/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3"
+Jan 20 22:43 : player: played "playlists/Telugu/Amit Mishra - Dhruva Dhruva.mp3"
+Jan 20 22:47 : player: played "playlists/Telugu/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+Jan 20 22:51 : player: played "playlists/Telugu/Jubin Nautiyal, Sameera Bharadwaj - Telusaa Telusaa.mp3"
+Jan 20 22:57 : player: played "playlists/Telugu/Raghu Dixit, Sooraj Santhosh, Rita Thyagarajan - Chal Chalo Chalo.mp3"
+Jan 20 23:00 : player: played "playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Jan 20 23:03 : player: played "playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 20 23:07 : player: played "playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Jan 20 23:13 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Jan 20 23:15 : player: played "playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 20 23:17 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Jan 20 23:19 : player: played "playlists/Telugu/Jubin Nautiyal, Sameera Bharadwaj - Telusaa Telusaa.mp3"
+Jan 20 23:23 : player: played "playlists/Telugu/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
+Jan 20 23:27 : player: played "playlists/Telugu/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
