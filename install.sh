@@ -1,5 +1,5 @@
 #!/bin/env bash
-# set -e
+set -e
 
 
 # Check if the script is run with sudo permissions
@@ -59,29 +59,37 @@ clear
 
 # System update
 echo "Performing a full system update..."
-sudo pacman --noconfirm -Syu
+sudo pacman --noconfirm -Syu --noconfirm --needed git
 clear
 echo "System update done" && sleep 2
 clear
 
-# Install Git if not present
-echo "Installing git..." && sleep 1
-sudo pacman -S --noconfirm --needed git
-clear
+# --------------------------------------------------------------------------------------
 
-# Clone and install Paru if not installed
-echo "This script requires an AUR helper to install the dependencies. Installing paru..." && sleep 2
+echo "This script requires an AUR helper to install the dependencies. Checking for paru..." && sleep 2
+
+# Check if paru is installed
 if ! command -v paru &>/dev/null; then
-  echo "Installing Paru, an AUR helper..."
-  cd ~/Downloads || return
+  echo "Paru is not installed. Installing Paru, an AUR helper..."
+  
+  # Navigate to Downloads and install paru
+  cd ~/Downloads || { echo "Failed to navigate to ~/Downloads"; exit 1; }
   git clone https://aur.archlinux.org/paru-bin.git
-  cd paru-bin || return
-  makepkg -si
-  cd ..
-  echo "Paru installed" && sleep 1
-  rm -rf paru-bin
-  cd ~/dotfiles || return
+  cd paru-bin || { echo "Failed to navigate to paru-bin"; exit 1; }
+  makepkg -si --noconfirm
+  
+  # Clean up
+  echo "Cleaning up installation files..."
+  cd .. && rm -rf paru-bin
+  echo "Paru installed successfully." && sleep 1
+else
+  echo "Paru is already installed."
 fi
+
+# Navigate back to dotfiles directory
+cd ~/dotfiles || { echo "Failed to navigate to ~/dotfiles"; exit 1; }
+
+# Clear the terminal for the next steps
 clear
 
 # --------------------------------------------------------------------------------------
@@ -89,9 +97,36 @@ clear
 # Install base-devel and required packages
 echo "Installing dependencies.." && sleep 2
 
-sudo pacman -S --noconfirm --needed base-devel intel-ucode vim zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting bash-completion openssh wget curl btop neofetch bat exa fd ripgrep fzf stow stylua tar tree time acpilight aria2 unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipmenu clipnotify inotify-tools psutils dunst e2fsprogs gvfs gvfs-afc gvfs-google gvfs-goa gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-onedrive gvfs-smb efibootmgr zoxide gc git-lfs gnome-keyring polkit-kde-agent polkit-gnome pass udiskie gstreamer jq xdotool screenkey xorg-xprop xorg-xinit xf86-video-intel lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli tlp tlp-rdw neovim xorg-xinput xclip xcompmgr xorg-xrandr xorg-xsetroot xsel xwallpaper pandoc starship python-pywal glow xarchiver xfce4-clipman-plugin libguestfs bc xorg-xman man-db man-pages ncdu python-adblock dnsmasq python-pip nwg-look python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server pass pinentry gnupg pass-otp zbar xorg-xlsclients xscreensaver os-prober qt5ct pamixer qt5-wayland qt6-wayland parallel shfmt tesseract html-xml-utils tumbler thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman thunar-vcs-plugin flameshot playerctl ncmpcpp mpd mpv mpc poppler poppler-glib adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans gnu-free-fonts libnewt baobab gnome-disk-utility gparted pavucontrol ranger yad timeshift go hugo hunspell hunspell-en_us imagemagick ueberzug luacheck yt-dlp mlocate nodejs npm translate-shell jdk-openjdk openjdk-doc openjdk-src blueman zenity rofi-wayland rofi-emoji newsboat fcitx5 fcitx5-configtool papirus-icon-theme acpi powertop dart-sass speedtest-cli lynx atool lf figlet luarocks kitty network-manager-applet navi glfw pulsemixer alsa-firmware sof-firmware alsa-ucm-conf viewnior qalculate-gtk pyright
+# Define package files
+PACMAN_PACKAGES_FILE="packages.txt"
+PARU_PACKAGES_FILE="paru-packages.txt"
 
-paru -S --noconfirm --needed base-devel python-psutil preload git-remote-gcrypt ttf-ms-fonts qt6ct-kde ccrypt didyoumean-git arch-wiki-docs kvantum kvantum-theme-catppuccin-git catppuccin-fcitx5-git apple_cursor cava sysstat pyprland-git --noconfirm
+# Function to install packages using a package manager
+install_packages() {
+  local package_manager=$1
+  local package_file=$2
+
+  echo "Installing packages using $package_manager from $package_file..."
+
+  while IFS= read -r package; do
+    if ! pacman -Q "$package" &>/dev/null; then
+      echo "Installing $package..."
+      $package_manager -S --noconfirm --needed "$package"
+    else
+      echo "$package is already installed."
+    fi
+  done <"$package_file"
+}
+
+# Install packages from pacman and paru lists
+install_packages "sudo pacman" "$PACMAN_PACKAGES_FILE" 
+clear
+echo "All Pacman packages are installed and up-to-date!"
+sleep 1
+install_packages "paru" "$PARU_PACKAGES_FILE"
+clear
+echo "All Paru packages are installed and up-to-date!"
+sleep 1
 
 echo "Dependencies installed... executing services & permissions..." && sleep 1
 
@@ -112,580 +147,220 @@ clear
 
 # --------------------------------------------------------------------------------------
 
-echo "Setting up Git configuration..."
+echo "Setting up Git configuration..." && sleep 1
 
 # Ask user whether to proceed with Git setup
-echo "Do you want to proceed with setting up Git configuration? (y/n) [default: y]"
-read -r response
-response=${response:-y} # Default to 'y' if the user presses Enter without input
+read -rp "Do you want to proceed with setting up Git configuration? (y/n) [default: y]: " response
+response=${response:-y} # Default to 'y' if the user presses Enter
 if [[ ! "$response" =~ ^[Yy]$ ]]; then
-  # User pressed "No", skip Git setup
-  echo "Git setup skipped. Proceeding with the next module."
+  echo "Git setup skipped. Proceeding with the next module." && sleep 1
   clear
-else
-  # Proceed with Git configuration if user clicked "Yes"
+  exit 0
+fi
 
-  # Prompt for Git username
-  echo "Enter your Git username:"
-  read -r git_username
-  if [ -z "$git_username" ]; then
-    echo "Git username setup canceled or empty. Skipping Git configuration." && sleep 1
+# Prompt for Git username
+while true; do
+  read -rp "Enter your Git username: " git_username
+  if [ -n "$git_username" ]; then
+    break
   else
-    # Prompt for Git email
-    echo "Enter your Git email:"
-    read -r git_email
-    if [ -z "$git_email" ]; then
-      echo "Git email setup canceled or empty. Skipping Git configuration." && sleep 1
-    else
-      # Confirm Git configuration
-      echo "Please confirm the Git configuration:"
-      echo "Username: $git_username"
-      echo "Email: $git_email"
-      echo "Do you want to proceed with this configuration? (y/n) [default: y]"
-      read -r confirm
-      confirm=${confirm:-y} # Default to 'y' if the user presses Enter without input
-      if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-        echo "Git configuration canceled. No changes were made." && sleep 1
-      else
-        # Set Git configuration if confirmed
-        git config --global user.name "$git_username"
-        git config --global user.email "$git_email"
-        echo "Git has been successfully configured." && sleep 2
-      fi
-    fi
+    echo "Git username cannot be empty. Please try again."
   fi
+done
+
+# Prompt for Git email
+while true; do
+  read -rp "Enter your Git email: " git_email
+  if [[ "$git_email" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+    break
+  else
+    echo "Invalid email address. Please try again."
+  fi
+done
+
+# Allow the user to select an editor
+echo "Select your preferred editor for Git:"
+echo "1) Vim"
+echo "2) Nano"
+echo "3) VSCode"
+echo "4) Neovim"
+echo "5) None (skip editor configuration)"
+read -rp "Enter the number corresponding to your choice [default: 1]: " editor_choice
+editor_choice=${editor_choice:-1} # Default to Vim if the user presses Enter
+
+case $editor_choice in
+  1) editor="vim" ;;
+  2) editor="nano" ;;
+  3) editor="code" ;;
+  4) editor="nvim" ;;
+  5) editor="" ;;
+  *) 
+    echo "Invalid choice. Defaulting to Vim."
+    editor="vim"
+    ;;
+esac
+
+# Confirm Git configuration
+echo -e "\nPlease confirm the Git configuration:"
+echo "Username: $git_username"
+echo "Email: $git_email"
+[[ -n $editor ]] && echo "Editor: $editor" || echo "Editor: None (skipped)"
+read -rp "Do you want to proceed with this configuration? (y/n) [default: y]: " confirm
+confirm=${confirm:-y} # Default to 'y' if the user presses Enter
+if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+  echo "Git configuration canceled. No changes were made." 
+  clear
+  exit 0
 fi
 
+# Apply Git configuration
+echo "Applying Git configuration..."
+git config --global user.name "$git_username"
+git config --global user.email "$git_email"
+if [[ -n $editor ]]; then
+  git config --global core.editor "$editor"
+  echo "Editor set to $editor."
+else
+  echo "Editor configuration skipped."
+fi
+
+# Additional Git tweaks for better usability
+echo "Applying additional Git tweaks..."
+git config --global core.autocrlf input
+git config --global init.defaultBranch main
+git config --global pull.rebase true
+git config --global credential.helper "cache --timeout=3600"
+git config --global color.ui auto
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.unstage 'reset HEAD --'
+git config --global log.decorate true
+git config --global push.default simple
+
+echo "Git has been successfully configured with the following settings:"
+git config --list | grep -E "user.name|user.email|core.editor|init.defaultBranch|alias|push.default"
+
+sleep 4
 clear
 
 # -------------------------------------------------------------------------------------
-#
-echo "Setting up Miniconda..." && sleep 1
 
-# Ask the user if they want to install Miniconda
-echo "Would you like to install Miniconda? (y/n) [default: y]"
-read -r response
-response=${response:-y} # Default to 'y' if the user presses Enter without input
-if [[ ! "$response" =~ ^[Yy]$ ]]; then
-  echo "Miniconda installation skipped. Proceeding with the setup."
-  clear
-else
-  echo "Miniconda installation will begin now."
+echo "Setting up Zsh..."
 
-  # Download Miniconda installer
-  wget https://repo.anaconda.com/miniconda/Miniconda3-py310_24.3.0-0-Linux-x86_64.sh
+# Default to 'y' if no input is provided
+read -rp "Would you like to install Zsh and set it as your default shell? (y/n) [default: y]: " install_zsh
+install_zsh=${install_zsh:-y} # Default to 'y' if no input is provided
 
-  # Run the installer
-  bash Miniconda3-py310_24.3.0-0-Linux-x86_64.sh
-  conda init
-  # Remove the installer after installation
-  rm Miniconda3-py310_24.3.0-0-Linux-x86_64.sh
+if [[ "$install_zsh" =~ ^[Yy]$ ]]; then
+  echo "Zsh installation will begin now."
 
-  clear
+  # Install Zsh and related tools if not already installed
+  sudo pacman -S --noconfirm zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting
 
-  echo "Miniconda installation completed." && sleep 2
-fi
+  # Change the default shell to Zsh
+  chsh -s /bin/zsh
 
-#
-# # -------------------------------------------------------------------------------------
-#
-echo "Setting up KVM..." && sleep 1
+  # Install Oh My Zsh and set up custom configurations
+  echo "Installing Oh My Zsh..."
+  cd ~/dotfiles || return
+  sh install_zsh.sh
 
-# Ask the user if they want to install KVM QEMU
-echo "Would you like to install KVM QEMU Virtual Machine? (y/n) [default: y]"
-read -r response
-response=${response:-y} # Default to 'y' if the user presses Enter without input
+  # Remove any existing Zsh configuration file
+  rm -f ~/.zshrc
 
-if [[ ! "$response" =~ ^[Yy]$ ]]; then
-  echo "KVM installation skipped. Proceeding with the setup."
-  clear
-else
-  echo "KVM installation will begin now."
-
-  # Install necessary packages for KVM
-  sudo pacman -S qemu-full qemu-img libvirt virt-install virt-manager virt-viewer spice-vdagent edk2-ovmf dnsmasq swtpm guestfs-tools libosinfo tuned
-
-  # Enable and start the libvirt service
-  sudo systemctl enable --now libvirtd.service
-
-  # Add user to libvirt group
-  sudo usermod -aG libvirt "$USER"
-
-  # Autostart libvirt network
-  sudo virsh net-autostart default
-
-  # Enable KVM with nested virtualization
-  sudo modprobe -r kvm_intel
-  sudo modprobe kvm_intel nested=1
-
-  echo "KVM installation completed." && sleep 2
-  clear
-  echo "For VM sharing details visit: https://docs.getutm.app/guest-support/linux/" && sleep 1
-fi
-
-# -------------------------------------------------------------------------------------
-
-echo "Installing Browsers that I personally use the most..." && sleep 1
-
-# Function to display the browser selection menu using echo
-install_browser() {
-  echo "Select the browsers you want to install (you can select multiple by entering numbers separated by spaces):"
-  echo "1) Zen-Browser"
-  echo "2) Firefox"
-  echo "3) Chromium"
-  echo "4) Vivaldi"
-  echo "5) qutebrowser"
-  echo "6) Brave"
-  echo ""
-  echo "Enter the numbers corresponding to your choices (e.g., 1 3 5), or press Enter to skip:"
-
-  # Read user input (browser choices)
-  read -r choices
-  choices=${choices:-} # Default to empty if no input is provided
-
-  if [ -z "$choices" ]; then
-    echo "No Browsers are installing today...going on..."
-    clear
+  # Check if the username is "karna" and choose the correct stow folder
+  if [ "$(whoami)" == "karna" ]; then
+    stow_folder="zsh_karna"
+  else
+    stow_folder="zsh"
   fi
 
-  # Process the selected options
-  for choice in $choices; do
-    case $choice in
-    1)
-      echo "Installing Zen-Browser..."
-      paru -S --noconfirm --needed zen-browser-bin
-      sudo npm install -g nativefier
-      # Video Download Helper
-      curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
-      ;;
-    2)
-      echo "Installing Firefox..."
-      sudo pacman -S --noconfirm firefox
-      curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
-      ;;
-    3)
-      echo "Installing Chromium..."
-      sudo pacman -S --noconfirm chromium
-      ;;
-    4)
-      echo "Installing Vivaldi..."
-      paru -S --noconfirm vivaldi
-      ;;
-    5)
-      echo "Installing qutebrowser..."
-      sudo pacman -S --noconfirm qutebrowser
-      ;;
-    6)
-      echo "Installing Brave..."
-      paru -S --noconfirm brave-bin
-      ;;
-    *)
-      echo "Invalid choice: $choice"
-      ;;
-    esac
-    echo "Selected browsers have been installed." && sleep 2
-    clear
-  done
-}
+  # Use stow to set up the Zsh configuration
+  stow "$stow_folder"
 
-# Call the browser installation function
-install_browser
+  # Copy additional theme if present
+  cp Extras/Extras/archcraft-dwm.zsh-theme ~/.oh-my-zsh/themes/archcraft-dwm.zsh-theme
 
-# -------------------------------------------------------------------------------------
-
-echo "Setting up torrent and remote working applications..."
-
-# Display the list of available applications and ask for input
-echo "Choose the applications you want to install by entering the corresponding numbers, separated by spaces:"
-echo "1) torrent-cli (webtorrent-cli, webtorrent-mpv-hook, peerflix)"
-echo "2) qBittorrent (Recommended)"
-echo "3) Transmission"
-echo "4) Remmina (Remote Desktop Client)"
-echo "5) VNC Server"
-echo "6) TeamViewer (Recommended)"
-echo "7) AnyDesk (Remote Desktop)"
-echo "8) xrdp (Remote Desktop Protocol)"
-echo "9) OpenVPN (VPN)"
-echo "10) WireGuard (VPN)"
-echo ""
-echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
-
-# Read user input
-read -r apps
-apps=${apps:-} # Default to empty if no input is provided
-
-if [ -z "$apps" ]; then
-  echo "No applications selected. Continuing without this installation"
-  clear
-fi
-
-# Process selected applications and install them
-for app in $apps; do
-  case $app in
-  1)
-    echo "Installing torrent-cli (webtorrent-cli, webtorrent-mpv-hook, peerflix)..."
-    paru -S --noconfirm --needed webtorrent-cli webtorrent-mpv-hook peerflix
-    ;;
-  2)
-    echo "Installing qBittorrent..."
-    sudo pacman -S --noconfirm qbittorrent
-    ;;
-  3)
-    echo "Installing Transmission..."
-    sudo pacman -S --noconfirm transmission-qt
-    ;;
-  4)
-    echo "Installing Remmina (Remote Desktop Client)..."
-    sudo pacman -S --noconfirm remmina
-    ;;
-  5)
-    echo "Installing VNC Server..."
-    sudo pacman -S --noconfirm tigervnc
-    ;;
-  6)
-    echo "Installing TeamViewer..."
-    sudo pacman -S --noconfirm teamviewer
-    ;;
-  7)
-    echo "Installing AnyDesk..."
-    sudo pacman -S --noconfirm anydesk
-    ;;
-  8)
-    echo "Installing xrdp (Remote Desktop Protocol)..."
-    sudo pacman -S --noconfirm xrdp
-    ;;
-  9)
-    echo "Installing OpenVPN..."
-    sudo pacman -S --noconfirm openvpn
-    ;;
-  10)
-    echo "Installing WireGuard..."
-    sudo pacman -S --noconfirm wireguard-tools
-    ;;
-  *)
-    echo "Invalid choice: $app"
-    ;;
-  esac
-  echo "Selected applications have been installed." && sleep 2
-  clear
-done
-
-# -------------------------------------------------------------------------------------
-#
-echo "Setting up development tools, office tools, communication tools, and multimedia tools..."
-
-# Display the list of available tools in two columns
-echo "Choose the tools you want to install by entering the corresponding numbers, separated by spaces:"
-echo ""
-echo "1) Visual-Studio-Code        2) GitHub-Desktop"
-echo "3) Docker                    4) Docker-Desktop"
-echo "5) Kubernetes                6) Latex"
-echo "7) Discord                   8) Obsidian"
-echo "9) Telegram                  10) LibreOffice"
-echo "11) OnlyOffice               12) Skype"
-echo "13) Slack                    14) Zoom"
-echo "15) Blender                  16) Octave"
-echo "17) OBS-Studio               18) Inkscape"
-echo "19) GIMP                     20) VLC"
-echo "21) Audacity                 22) Krita"
-echo "23) Shotcut                  24) Steam"
-echo "25) Minecraft                26) YouTUI"
-echo "27) YTerMusic                28) Todoist"
-echo "29) Geary                    30) KeepassXC"
-echo ""
-echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
-
-# Read user input
-read -r tools_choices
-tools_choices=${tools_choices:-} # Default to empty if no input is provided
-
-if [ -z "$tools_choices" ]; then
-  echo "No tools selected for installation. Continuing..."
-  clear
-fi
-
-# Process selected tools and install them
-for app in $tools_choices; do
-  case $app in
-  1)
-    echo "Installing Visual Studio Code..."
-    paru -S --noconfirm --needed visual-studio-code-bin
-    ;;
-  2)
-    echo "Installing GitHub Desktop..."
-    paru -S --noconfirm --needed github-desktop-bin
-    ;;
-  3)
-    echo "Installing Docker..."
-    sudo pacman -S --noconfirm docker docker-compose
-    sudo systemctl enable --now docker.service
-    sudo usermod -aG docker "$USER"
-    ;;
-  4)
-    echo "Installing Docker Desktop..."
-    paru -S --noconfirm docker-desktop
-    ;;
-  5)
-    echo "Installing Kubernetes..."
-    paru -S --noconfirm kind-bin
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-    echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-    rm kubectl
-    ;;
-  6)
-    echo "Installing LaTeX (texlive)..."
-    sudo pacman -S --noconfirm texlive-bin texlive-meta texlive-latex texlive-basic texlive-binextra perl-yaml-tiny perl-file-homedir perl-unicode-linebreak
-    ;;
-  7)
-    echo "Installing Discord..."
-    sudo pacman -S --noconfirm discord
-    ;;
-  8)
-    echo "Installing Obsidian..."
-    sudo pacman -S --noconfirm obsidian
-    ;;
-  9)
-    echo "Installing Telegram..."
-    paru -S --noconfirm telegram-desktop-bin
-    ;;
-  10)
-    echo "Installing LibreOffice..."
-    sudo pacman -S --noconfirm libreoffice-fresh
-    ;;
-  11)
-    echo "Installing OnlyOffice..."
-    paru -S --noconfirm onlyoffice-bin
-    ;;
-  12)
-    echo "Installing Skype..."
-    paru -S --noconfirm skypeforlinux-bin
-    ;;
-  13)
-    echo "Installing Slack..."
-    paru -S --noconfirm slack-desktop
-    ;;
-  14)
-    echo "Installing Zoom..."
-    paru -S --noconfirm zoom
-    ;;
-  15)
-    echo "Installing Blender..."
-    sudo pacman -S --noconfirm blender
-    ;;
-  16)
-    echo "Installing Octave..."
-    sudo pacman -S --noconfirm octave
-    ;;
-  17)
-    echo "Installing OBS Studio..."
-    sudo pacman -S --noconfirm obs-studio
-    paru -S --needed --noconfirm wlrobs-hg
-    ;;
-  18)
-    echo "Installing Inkscape..."
-    sudo pacman -S --noconfirm inkscape
-    ;;
-  19)
-    echo "Installing GIMP..."
-    sudo pacman -S --noconfirm gimp
-    ;;
-  20)
-    echo "Installing VLC..."
-    sudo pacman -S --noconfirm vlc
-    ;;
-  21)
-    echo "Installing Audacity..."
-    sudo pacman -S --noconfirm audacity
-    ;;
-  22)
-    echo "Installing Krita..."
-    sudo pacman -S --noconfirm krita
-    ;;
-  23)
-    echo "Installing Shotcut..."
-    sudo pacman -S --noconfirm shotcut
-    ;;
-  24)
-    echo "Installing Steam..."
-    paru -S --noconfirm steam
-    ;;
-  25)
-    echo "Installing Minecraft..."
-    paru -S --noconfirm minecraft-launcher
-    ;;
-  26)
-    echo "Installing YouTUI..."
-    cargo install youtui
-    ;;
-  27)
-    echo "Installing YTerMusic..."
-    cargo install ytermusic
-    ;;
-  28)
-    echo "Installing Todoist CLI..."
-    paru -S todoist-bin peco
-    ;;
-  29)
-    echo "Installing Geary..."
-    sudo pacman -S --noconfirm geary
-    ;;
-  30)
-    echo "Installing KeepassXC..."
-    sudo pacman -S --noconfirm keepassxc
-    ;;
-  *)
-    echo "Invalid choice: $app"
-    ;;
-  esac
-  echo "Selected tools have been installed." && sleep 2
-  clear
-done
-#
-# -------------------------------------------------------------------------------------
-
-echo "Setting up additional tools and packages..."
-
-# Display the list of available extra tools in two columns
-echo "Choose the tools you want to install by entering the corresponding numbers, separated by spaces:"
-echo ""
-echo "1) Ani-Cli                    2) Ani-Cli-PY"
-echo "3) ytfzf                      4) Zathura"
-echo "5) Evince                     6) Okular"
-echo "7) Foxit-Reader               8) Master-PDF-Editor"
-echo "9) MuPDF"
-echo ""
-echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
-
-# Read user input
-read -r extra_tools_choices
-extra_tools_choices=${extra_tools_choices:-} # Default to empty if no input is provided
-
-if [ -z "$extra_tools_choices" ]; then
-  echo "No packages selected. Continuing without installation..."
-  clear
-fi
-
-# Process selected tools and install them
-for app in $extra_tools_choices; do
-  case $app in
-  1)
-    echo "Installing ani-cli..."
-    paru -S --noconfirm --needed ani-cli-git
-    ;;
-  2)
-    echo "Installing ani-cli python version..."
-    paru -S --noconfirm --needed ani-cli-git
-    # pip install anipy-cli
-    # cd ~/dotfiles/ || return
-    # stow anipy-cli
-    ;;
-  3)
-    echo "Installing ytfzf..."
-    paru -S --noconfirm --needed ytfzf-git
-    # Stow configuration based on username
-    if [ "$(whoami)" == "karna" ]; then
-      stow_folder="ytfzf_karna"
-    else
-      stow_folder="ytfzf"
-    fi
-    # Apply the stow configuration
-    cd ~/dotfiles || return
-    stow "$stow_folder"
-    ;;
-  4)
-    echo "Installing Zathura..."
-    sudo pacman -S zathura zathura-pdf-mupdf zathura-djvu zathura-ps zathura-cb --noconfirm
-    cd ~/dotfiles/Extras/Extras/Zathura-Pywal-master/ || return
-    ./install.sh
-    cd ~/dotfiles/ || return
-    ;;
-  5)
-    echo "Installing Evince..."
-    sudo pacman -S --noconfirm evince
-    ;;
-  6)
-    echo "Installing Okular..."
-    sudo pacman -S --noconfirm okular
-    ;;
-  7)
-    echo "Installing Foxit Reader..."
-    paru -S --noconfirm foxitreader
-    ;;
-  8)
-    echo "Installing Master PDF Editor..."
-    paru -S --noconfirm masterpdfeditor
-    ;;
-  9)
-    echo "Installing MuPDF..."
-    sudo pacman -S --noconfirm mupdf
-    ;;
-  *)
-    echo "Invalid choice: $app"
-    ;;
-  esac
-  echo "Selected extra tools and packages have been installed." && sleep 2
-  clear
-done
-
-# -------------------------------------------------------------------------------------
-
-echo "Setting up MariaDB..."
-
-# Ask the user if they want to install MariaDB
-echo "Would you like to install MariaDB (a relational database management system)? (y/n)"
-read -r mariadb_installation
-
-if [[ "$mariadb_installation" != "Y" && "$mariadb_installation" != "y" ]]; then
-  clear
-  echo "MariaDB installation skipped. Proceeding with the setup."
+  echo "Zsh has been installed and set as your default shell."
+  echo "Please restart your terminal to apply the changes." && sleep 2
   clear
 else
-  echo "MariaDB installation will begin now."
-
-  sudo pacman -S mariadb --noconfirm
-  sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-  sudo systemctl enable --now mariadb
-  sudo mariadb-secure-installation
-
-  # Inform the user that MariaDB has been installed and configured
-  echo "MariaDB has been installed and secured. You can now use it for your database needs." && sleep 2
   clear
+  echo "Zsh installation skipped. Proceeding with the setup."
 fi
 
 # -------------------------------------------------------------------------------------
-
-echo "Setting up Fonts..." && sleep 1
-
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts || return
-
-curl -L -o my-fonts.zip https://github.com/Chaganti-Reddy/my-fonts/archive/main.zip
-
-unzip my-fonts.zip
-
-rm my-fonts.zip
-
-cd ~/dotfiles/ || return
-
-clear
-
-echo "Fonts have been installed successfully..." && sleep 2
-
-# --------------------------------------------------------------------------------------
 
 echo "Setting up Hyprland..." && sleep 1
 
-# Ask the user if they want to install Hyprland
-echo "Would you like to install Hyprland (a dynamic Wayland compositor)? (y/n)"
+# Function to check if a package is installed
+is_installed() {
+  pacman -Qi "$1" &>/dev/null || paru -Q "$1" &>/dev/null
+}
+
+# Function to install a package if not already installed
+install_package() {
+  local package_name=$1
+  local display_name=$2
+  local command=$3
+
+  if is_installed "$package_name"; then
+    echo "$display_name ($package_name) is already installed."
+  else
+    echo "Installing $display_name ($package_name)..."
+    $command "$package_name"
+  fi
+}
+
+# Ask the user if they want to install Hyprland (default is yes)
+echo "Would you like to install Hyprland (a dynamic Wayland compositor)? (y/n) [default: y]"
 read -r install_hyprland
+install_hyprland=${install_hyprland:-y}  # Default to "y" if no input is provided
 
 if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   echo "Hyprland installation will begin now."
 
-  # Install Hyprland and related packages
-  paru -S hyprland-git hyprlock-git xdg-desktop-portal-hyprland-git hyprlang-git clipse-bin hyde-cli-git wlogout-git hyprshot-git hyprland-qtutils-git bluetui hyprpicker-git hyprpaper-git pyprland-git kitty system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher foot brightnessctl cmake meson cpio grim slurp wtype wf-recorder wofi
+  # List of packages to install
+  packages=(
+    "hyprland-git"
+    "hyprlock-git"
+    "xdg-desktop-portal-hyprland-git"
+    "hyprlang-git"
+    "clipse-bin"
+    "hyde-cli-git"
+    "wlogout-git"
+    "hyprshot-git"
+    "hyprland-qtutils-git"
+    "bluetui"
+    "hyprpicker-git"
+    "hyprpaper-git"
+    "pyprland-git"
+    "kitty"
+    "system-config-printer"
+    "chafa"
+    "hypridle"
+    "waybar"
+    "wl-clipboard"
+    "speech-dispatcher"
+    "foot"
+    "brightnessctl"
+    "cmake"
+    "meson"
+    "cpio"
+    "grim"
+    "slurp"
+    "wtype"
+    "wf-recorder"
+    "wofi"
+    "pyprland-git"
+  )
+
+  # Install the packages
+  for package in "${packages[@]}"; do
+    install_package "$package" "$package" "paru -S --noconfirm --needed"
+  done
 
   # Set up Hyprland configuration
   echo "Configuring Hyprland..."
@@ -707,11 +382,674 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
   else
     echo "Hyprland configuration file already exists."
   fi
+
+  # Install waldl if not already installed
+  echo "Installing waldl..."
   cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
-  clear
+
   echo "Setup is complete. Proceeding to next modules..." && sleep 2
+  clear
 else
-  echo "Hyprland installation skipped. Proceeding with the setup."
+  echo "Hyprland installation skipped. Proceeding with the setup." && sleep 1
+fi
+
+
+# -------------------------------------------------------------------------------------
+
+echo "Setting up Miniconda..." && sleep 1
+
+# Ask the user if they want to install Miniconda
+read -rp "Would you like to install Miniconda? (y/n) [default: y]: " response
+response=${response:-y} # Default to 'y' if the user presses Enter
+if [[ ! "$response" =~ ^[Yy]$ ]]; then
+  echo "Miniconda installation skipped. Proceeding with the setup." 
+  clear
+else
+  echo "Miniconda installation will begin now." && sleep 1
+
+  # Define Miniconda installer URL
+  MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-py310_24.3.0-0-Linux-x86_64.sh"
+  INSTALLER_NAME="Miniconda3.sh"
+
+  # Download Miniconda installer
+  echo "Downloading Miniconda installer..."
+  wget -q --show-progress -O "$INSTALLER_NAME" "$MINICONDA_URL"
+
+  # Run the installer
+  echo "Running the Miniconda installer..."
+  bash "$INSTALLER_NAME" -b -p "$HOME/miniconda" # Install silently in the $HOME/miniconda directory
+
+  # Remove the installer after installation
+  echo "Cleaning up installer files..."
+  rm "$INSTALLER_NAME"
+
+  # Check if .bashrc and .zshrc exist and set Conda initialization
+  SHELL_CONFIGS=()
+  if [[ -f "$HOME/.bashrc" ]]; then
+    SHELL_CONFIGS+=("$HOME/.bashrc")
+  fi
+  if [[ -f "$HOME/.zshrc" ]]; then
+    SHELL_CONFIGS+=("$HOME/.zshrc")
+  fi
+
+  if [[ ${#SHELL_CONFIGS[@]} -eq 0 ]]; then
+    echo "Neither .bashrc nor .zshrc found. Exiting setup."
+    exit 1
+  fi
+
+  # Conda initialization block
+  CONDA_BLOCK='
+# >>> conda initialize >>>
+# !! Contents within this block are managed by "conda init" !!
+__conda_setup="$('$HOME/miniconda/bin/conda' shell.${SHELL##*/} hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<'
+
+  # Add Conda initialization to both files if not already present
+  for config in "${SHELL_CONFIGS[@]}"; do
+    if ! grep -q "conda initialize" "$config"; then
+      echo "Adding Conda initialization to $config..."
+      echo "$CONDA_BLOCK" >> "$config"
+    else
+      echo "Conda initialization block already present in $config."
+    fi
+  done
+
+  # Now execute the Conda initialization code directly to initialize Conda
+  if [[ "$SHELL" == *"bash"* ]]; then
+    # Bash initialization
+    eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+    echo "Evaluating $HOME/miniconda/bin/conda shell.bash hook"
+  elif [[ "$SHELL" == *"zsh"* ]]; then
+    # Zsh initialization
+    eval "$($HOME/miniconda/bin/conda shell.zsh hook)"
+    echo "Evaluating $HOME/miniconda/bin/conda shell.zsh hook"
+  else
+    echo "Unsupported shell detected. Unable to initialize Conda."
+    exit 1
+  fi
+
+  # Verify Conda and Python installation
+  echo "Verifying Miniconda installation..."
+  conda --version
+  python --version
+
+  echo -e "\nMiniconda installation and initialization completed successfully."
+  echo "Python Version: $(python --version)"
+  echo "Conda Version: $(conda --version)"
+  echo -e "Installation path: $HOME/miniconda\n"
+
+  sleep 3
+  echo "Miniconda setup is complete. Proceeding with the script..."
+fi
+#
+# # -------------------------------------------------------------------------------------
+#
+echo "Setting up KVM..." && sleep 1
+
+# Ask the user if they want to install KVM QEMU
+read -rp "Would you like to install KVM QEMU Virtual Machine? (y/n) [default: y]: " response
+response=${response:-y} # Default to 'y' if the user presses Enter without input
+
+if [[ ! "$response" =~ ^[Yy]$ ]]; then
+  echo "KVM installation skipped. Proceeding with the setup."
+  clear
+else
+  echo "KVM installation will begin now." && sleep 1
+
+  # Install necessary packages for KVM and associated tools
+  echo "Installing KVM and required packages..."
+  sudo pacman -S --noconfirm qemu-full qemu-img libvirt virt-install virt-manager virt-viewer spice-vdagent edk2-ovmf dnsmasq swtpm guestfs-tools libosinfo tuned
+
+  # Ensure system is ready for virtualization (nested virtualization check)
+  echo "Checking for hardware virtualization support..."
+  if ! grep -qE '(vmx|svm)' /proc/cpuinfo; then
+    echo "Error: Your CPU does not support virtualization or it's disabled in BIOS. Please enable virtualization in BIOS settings." && sleep 2
+  fi
+
+  # Enable and start the libvirt service
+  echo "Starting libvirt service..."
+  sudo systemctl enable --now libvirtd.service
+
+  # Add user to the libvirt group to allow access to KVM
+  echo "Adding user '$USER' to the libvirt group..."
+  sudo usermod -aG libvirt "$USER"
+
+  # Autostart libvirt network (default network for virtual machines)
+  echo "Configuring libvirt network to autostart..."
+  sudo virsh net-autostart default
+
+  # Enable KVM with nested virtualization (useful for running KVM inside a VM)
+  echo "Enabling KVM with nested virtualization..."
+  sudo modprobe -r kvm_intel
+  sudo modprobe kvm_intel nested=1
+
+  # Verify KVM modules
+  echo "Verifying KVM modules are loaded..."
+  lsmod | grep kvm
+
+  echo "KVM installation completed." && sleep 2
+  clear
+
+  # Provide user with additional info and documentation
+  echo "For VM sharing details, visit: https://docs.getutm.app/guest-support/linux/" && sleep 1
+  echo "Please restart your machine to apply all changes."
+fi
+
+# -------------------------------------------------------------------------------------
+
+echo "Installing Browsers that I personally use the most..." && sleep 1
+
+# Function to check if a package is installed
+is_installed() {
+  pacman -Qi "$1" &>/dev/null
+  return $?
+}
+
+# Function to display the browser selection menu
+install_browser() {
+  echo "Select the browsers you want to install (you can select multiple by entering numbers separated by spaces):"
+  echo "1) Zen-Browser(If none - Default)"
+  echo "2) Firefox"
+  echo "3) Chromium"
+  echo "4) Vivaldi"
+  echo "5) qutebrowser"
+  echo "6) Brave"
+  echo "100) None (skip installation)"
+  echo ""
+  echo "Enter the numbers corresponding to your choices (e.g., 1 3 5), or press Enter to skip:"
+
+  # Read user input (browser choices)
+  read -r choices
+  choices=${choices:-1}  # Default to installing Zen-Browser if no input is provided 
+
+  # Process the selected options
+  for choice in $choices; do
+    case $choice in
+      1)
+        if is_installed "zen-browser-bin"; then
+          echo "Zen-Browser is already installed."
+        else
+          echo "Installing Zen-Browser..."
+          paru -S --noconfirm --needed zen-browser-bin
+          sudo npm install -g nativefier
+          # Video Download Helper
+          curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
+        fi
+        ;;
+      2)
+        if is_installed "firefox"; then
+          echo "Firefox is already installed."
+        else
+          echo "Installing Firefox..."
+          sudo pacman -S --noconfirm firefox
+          curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
+        fi
+        ;;
+      3)
+        if is_installed "chromium"; then
+          echo "Chromium is already installed."
+        else
+          echo "Installing Chromium..."
+          sudo pacman -S --noconfirm chromium
+        fi
+        ;;
+      4)
+        if is_installed "vivaldi"; then
+          echo "Vivaldi is already installed."
+        else
+          echo "Installing Vivaldi..."
+          paru -S --noconfirm vivaldi
+        fi
+        ;;
+      5)
+        if is_installed "qutebrowser"; then
+          echo "qutebrowser is already installed."
+        else
+          echo "Installing qutebrowser..."
+          sudo pacman -S --noconfirm qutebrowser
+        fi
+        ;;
+      6)
+        if is_installed "brave-bin"; then
+          echo "Brave is already installed."
+        else
+          echo "Installing Brave..."
+          paru -S --noconfirm brave-bin
+        fi
+        ;;
+      100)
+        clear
+        echo "Skipping all installations." && sleep 2
+        return
+        ;;
+      *)
+        echo "Invalid choice: $choice"
+        ;;
+    esac
+    echo "Selected browsers have been installed." && sleep 2
+    clear
+  done
+}
+
+# Call the browser installation function
+install_browser
+
+# -------------------------------------------------------------------------------------
+
+echo "Setting up torrent and remote working applications..." && sleep 1
+
+# Function to check if a package is installed
+is_installed() {
+  pacman -Qi "$1" &>/dev/null
+  return $?
+}
+
+# Display the list of available applications and ask for input
+echo "Choose the applications you want to install by entering the corresponding numbers, separated by spaces:"
+echo "1) torrent-cli (webtorrent-cli, webtorrent-mpv-hook, peerflix)"
+echo "2) qBittorrent (Recommended)"
+echo "3) Transmission"
+echo "4) Remmina (Remote Desktop Client)"
+echo "5) VNC Server"
+echo "6) TeamViewer (Recommended)"
+echo "7) AnyDesk (Remote Desktop)"
+echo "8) xrdp (Remote Desktop Protocol)"
+echo "9) OpenVPN (VPN)"
+echo "10) WireGuard (VPN)"
+echo ""
+echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
+
+# Read user input
+read -r apps
+apps=${apps:-} # Default to empty if no input is provided
+
+if [ -z "$apps" ]; then
+  echo "No applications selected. Continuing without this installation." && sleep 2
+  clear
+fi
+
+# Process selected applications and install them
+for app in $apps; do
+  case $app in
+  1)
+    if is_installed "webtorrent-cli" && is_installed "webtorrent-mpv-hook" && is_installed "peerflix"; then
+      echo "torrent-cli is already installed."
+    else
+      echo "Installing torrent-cli (webtorrent-cli, webtorrent-mpv-hook, peerflix)..."
+      paru -S --noconfirm --needed webtorrent-cli webtorrent-mpv-hook peerflix
+    fi
+    ;;
+  2)
+    if is_installed "qbittorrent"; then
+      echo "qBittorrent is already installed."
+    else
+      echo "Installing qBittorrent..."
+      sudo pacman -S --noconfirm qbittorrent
+    fi
+    ;;
+  3)
+    if is_installed "transmission-qt"; then
+      echo "Transmission is already installed."
+    else
+      echo "Installing Transmission..."
+      sudo pacman -S --noconfirm transmission-qt
+    fi
+    ;;
+  4)
+    if is_installed "remmina"; then
+      echo "Remmina (Remote Desktop Client) is already installed."
+    else
+      echo "Installing Remmina (Remote Desktop Client)..."
+      sudo pacman -S --noconfirm remmina
+    fi
+    ;;
+  5)
+    if is_installed "tigervnc"; then
+      echo "VNC Server is already installed."
+    else
+      echo "Installing VNC Server..."
+      sudo pacman -S --noconfirm tigervnc
+    fi
+    ;;
+  6)
+    if is_installed "teamviewer"; then
+      echo "TeamViewer is already installed."
+    else
+      echo "Installing TeamViewer..."
+      sudo pacman -S --noconfirm teamviewer
+    fi
+    ;;
+  7)
+    if is_installed "anydesk"; then
+      echo "AnyDesk is already installed."
+    else
+      echo "Installing AnyDesk..."
+      sudo pacman -S --noconfirm anydesk
+    fi
+    ;;
+  8)
+    if is_installed "xrdp"; then
+      echo "xrdp (Remote Desktop Protocol) is already installed."
+    else
+      echo "Installing xrdp (Remote Desktop Protocol)..."
+      sudo pacman -S --noconfirm xrdp
+    fi
+    ;;
+  9)
+    if is_installed "openvpn"; then
+      echo "OpenVPN is already installed."
+    else
+      echo "Installing OpenVPN..."
+      sudo pacman -S --noconfirm openvpn
+    fi
+    ;;
+  10)
+    if is_installed "wireguard-tools"; then
+      echo "WireGuard is already installed."
+    else
+      echo "Installing WireGuard..."
+      sudo pacman -S --noconfirm wireguard-tools
+    fi
+    ;;
+  *)
+    echo "Invalid choice: $app"
+    ;;
+  esac
+  echo "Selected applications have been installed." && sleep 2
+  clear
+done
+# -------------------------------------------------------------------------------------
+#
+echo "Setting up development tools, office tools, communication tools, and multimedia tools..." && sleep 1
+
+# Function to check if a package is installed
+is_installed() {
+  pacman -Qi "$1" &>/dev/null || paru -Q "$1" &>/dev/null
+}
+
+# Function to install a package if not already installed
+install_package() {
+  local package_name=$1
+  local display_name=$2
+  local command=$3
+
+  if is_installed "$package_name"; then
+    echo "$display_name ($package_name) is already installed."
+  else
+    echo "Installing $display_name ($package_name)..."
+    $command "$package_name"
+  fi
+}
+
+# Function to install multiple packages for a single tool
+install_multiple_packages() {
+  local packages=("$@")
+  for package in "${packages[@]}"; do
+    install_package "$package" "$package" "paru -S --noconfirm --needed"
+  done
+}
+
+# Display tool options
+echo "Choose tools to install (enter numbers separated by spaces):"
+cat << EOF
+1) Visual Studio Code        2) GitHub Desktop        3) Docker
+4) Docker Desktop            5) Kubernetes            6) LaTeX
+7) Discord                   8) Obsidian              9) Telegram
+10) LibreOffice              11) OnlyOffice           12) Skype
+13) Slack                    14) Zoom                 15) Blender
+16) Octave                   17) OBS Studio           18) Inkscape
+19) GIMP                     20) VLC                  21) Audacity
+22) Krita                    23) Shotcut              24) Steam
+25) Minecraft                26) YouTUI               27) YTerMusic
+28) Todoist CLI              29) Geary                30) KeepassXC
+EOF
+
+echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
+read -r tools_choices
+tools_choices=${tools_choices:-} # Default to empty if no input is provided
+
+if [ -z "$tools_choices" ]; then
+  echo "No tools selected for installation. Continuing..." && sleep 1
+  clear
+fi
+
+# Process the selected tools
+for app in $tools_choices; do
+  case $app in
+  1) install_package "visual-studio-code-bin" "Visual Studio Code" "paru -S --noconfirm --needed" ;;
+  2) install_package "github-desktop-bin" "GitHub Desktop" "paru -S --noconfirm --needed" ;;
+  3)
+    install_multiple_packages "docker" "docker-compose"
+    sudo systemctl enable --now docker.service
+    sudo usermod -aG docker "$USER"
+    ;;
+  4) install_package "docker-desktop" "Docker Desktop" "paru -S --noconfirm --needed" ;;
+  5)
+    install_package "kind-bin" "Kubernetes (kind-bin)" "paru -S --noconfirm --needed"
+    if ! is_installed "kubectl"; then
+      echo "Installing kubectl..."
+      curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      sudo install -m 0755 kubectl /usr/local/bin/kubectl
+      rm kubectl
+    else
+      echo "kubectl is already installed."
+    fi
+    ;;
+  6)
+    install_multiple_packages "texlive-bin" "texlive-meta" "texlive-latex" "perl-yaml-tiny" \
+                               "perl-file-homedir" "perl-unicode-linebreak"
+    ;;
+  7) install_package "discord" "Discord" "sudo pacman -S --noconfirm" ;;
+  8) install_package "obsidian" "Obsidian" "sudo pacman -S --noconfirm" ;;
+  9) install_package "telegram-desktop-bin" "Telegram" "paru -S --noconfirm --needed" ;;
+  10) install_package "libreoffice-fresh" "LibreOffice" "sudo pacman -S --noconfirm" ;;
+  11) install_package "onlyoffice-bin" "OnlyOffice" "paru -S --noconfirm --needed" ;;
+  12) install_package "skypeforlinux-bin" "Skype" "paru -S --noconfirm --needed" ;;
+  13) install_package "slack-desktop" "Slack" "paru -S --noconfirm --needed" ;;
+  14) install_package "zoom" "Zoom" "paru -S --noconfirm --needed" ;;
+  15) install_package "blender" "Blender" "sudo pacman -S --noconfirm" ;;
+  16) install_package "octave" "Octave" "sudo pacman -S --noconfirm" ;;
+  17)
+    install_package "obs-studio" "OBS Studio" "sudo pacman -S --noconfirm"
+    install_package "wlrobs-hg" "OBS Studio Wayland Support" "paru -S --noconfirm --needed"
+    ;;
+  18) install_package "inkscape" "Inkscape" "sudo pacman -S --noconfirm" ;;
+  19) install_package "gimp" "GIMP" "sudo pacman -S --noconfirm" ;;
+  20) install_package "vlc" "VLC" "sudo pacman -S --noconfirm" ;;
+  21) install_package "audacity" "Audacity" "sudo pacman -S --noconfirm" ;;
+  22) install_package "krita" "Krita" "sudo pacman -S --noconfirm" ;;
+  23) install_package "shotcut" "Shotcut" "sudo pacman -S --noconfirm" ;;
+  24) install_package "steam" "Steam" "paru -S --noconfirm --needed" ;;
+  25) install_package "minecraft-launcher" "Minecraft" "paru -S --noconfirm --needed" ;;
+  26) cargo install youtui ;;
+  27) cargo install ytermusic ;;
+  28) install_multiple_packages "todoist-bin" "peco" ;;
+  29) install_package "geary" "Geary" "sudo pacman -S --noconfirm" ;;
+  30) install_package "keepassxc" "KeepassXC" "sudo pacman -S --noconfirm" ;;
+  *) echo "Invalid choice: $app" ;;
+  esac
+  echo "Processing completed for the selected tool(s)." && sleep 2
+done
+
+# -------------------------------------------------------------------------------------
+
+echo "Setting up additional tools and packages..." && sleep 1
+
+# Function to check if a package is installed
+is_installed() {
+  pacman -Qi "$1" &>/dev/null || paru -Q "$1" &>/dev/null
+}
+
+# Function to install a package if not already installed
+install_package() {
+  local package_name=$1
+  local display_name=$2
+  local command=$3
+
+  if is_installed "$package_name"; then
+    echo "$display_name ($package_name) is already installed."
+  else
+    echo "Installing $display_name ($package_name)..."
+    $command "$package_name"
+  fi
+}
+
+# Display the list of extra tools
+echo "Choose the tools you want to install by entering the corresponding numbers, separated by spaces:"
+cat << EOF
+1) Ani-Cli                    2) Ani-Cli-PY
+3) ytfzf                      4) Zathura
+5) Evince                     6) Okular
+7) Foxit-Reader               8) Master-PDF-Editor
+9) MuPDF
+EOF
+
+echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
+read -r extra_tools_choices
+extra_tools_choices=${extra_tools_choices:-} # Default to empty if no input is provided
+
+if [ -z "$extra_tools_choices" ]; then
+  echo "No packages selected. Continuing without installation..." && sleep 1
+fi
+
+# Process the selected tools
+for app in $extra_tools_choices; do
+  case $app in
+  1)
+    install_package "ani-cli-git" "Ani-Cli" "paru -S --noconfirm --needed"
+    ;;
+  2)
+    install_package "ani-cli-git" "Ani-Cli Python" "paru -S --noconfirm --needed"
+    pip install anipy-cli
+    cd ~/dotfiles/ || return
+    stow anipy-cli
+    ;;
+  3)
+    install_package "ytfzf-git" "YTFZF" "paru -S --noconfirm --needed"
+    # Stow configuration based on username
+    stow_folder="ytfzf"
+    [ "$(whoami)" == "karna" ] && stow_folder="ytfzf_karna"
+    cd ~/dotfiles || return
+    stow "$stow_folder"
+    ;;
+  4)
+    install_package "zathura" "Zathura" "sudo pacman -S --noconfirm"
+    install_package "zathura-pdf-mupdf" "Zathura PDF Backend" "sudo pacman -S --noconfirm"
+    install_package "zathura-djvu" "Zathura DJVU Backend" "sudo pacman -S --noconfirm"
+    install_package "zathura-ps" "Zathura PS Backend" "sudo pacman -S --noconfirm"
+    install_package "zathura-cb" "Zathura Comic Backend" "sudo pacman -S --noconfirm"
+    cd ~/dotfiles/Extras/Extras/Zathura-Pywal-master/ || return
+    ./install.sh
+    cd ~/dotfiles/ || return
+    ;;
+  5)
+    install_package "evince" "Evince" "sudo pacman -S --noconfirm"
+    ;;
+  6)
+    install_package "okular" "Okular" "sudo pacman -S --noconfirm"
+    ;;
+  7)
+    install_package "foxitreader" "Foxit Reader" "paru -S --noconfirm --needed"
+    ;;
+  8)
+    install_package "masterpdfeditor" "Master PDF Editor" "paru -S --noconfirm --needed"
+    ;;
+  9)
+    install_package "mupdf" "MuPDF" "sudo pacman -S --noconfirm"
+    ;;
+  *)
+    echo "Invalid choice: $app"
+    ;;
+  esac
+  echo "Processing for the selected extra tool(s) completed." && sleep 2
+done
+# -------------------------------------------------------------------------------------
+
+echo "Setting up MariaDB..."
+
+# Ask the user if they want to install and configure MariaDB
+echo "Would you like to install and configure MariaDB (a relational database management system)? (y/n)"
+read -r mariadb_installation
+
+# Check if the user wants to proceed with MariaDB setup
+if [[ "$mariadb_installation" == "Y" || "$mariadb_installation" == "y" || -z "$mariadb_installation" ]]; then
+  # Check if MariaDB is installed
+  if ! command -v mariadb &> /dev/null; then
+    echo "MariaDB is not installed. Installing now..."
+    
+    # Install MariaDB
+    sudo pacman -S mariadb --noconfirm
+
+    # Initialize the database
+    sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+    # Enable and start MariaDB service
+    sudo systemctl enable --now mariadb
+
+    echo "MariaDB has been installed and initialized."
+  else
+    echo "MariaDB is already installed."
+
+    # Check if MariaDB is running or configured
+    if systemctl is-active --quiet mariadb; then
+      echo "MariaDB is already configured and running."
+    else
+      echo "MariaDB is installed but not configured. Do you want to configure it now? (y/n)"
+      read -r mariadb_configure
+
+      if [[ "$mariadb_configure" == "Y" || "$mariadb_configure" == "y" || -z "$mariadb_configure" ]]; then
+        # Run the MariaDB secure installation
+        sudo mariadb-secure-installation
+
+        # Enable and start MariaDB service if not already running
+        sudo systemctl enable --now mariadb
+
+        echo "MariaDB has been configured and started."
+      else
+        echo "Skipping MariaDB configuration."
+      fi
+    fi
+  fi
+else
+  echo "MariaDB installation and configuration skipped. Proceeding with the setup."
+fi
+sleep 2
+clear
+
+# -------------------------------------------------------------------------------------
+
+echo "Setting up Fonts..." && sleep 1
+
+# Check if the fonts directory exists
+if [ -d "$HOME/.local/share/fonts/my-fonts-main" ]; then
+  echo "Fonts directory already exists. Skipping installation..." && sleep 1
+else
+  # Create fonts directory if it doesn't exist
+  echo "Creating fonts directory..."
+  mkdir -p ~/.local/share/fonts
+
+  # Download the zip file
+  echo "Downloading fonts..."
+  curl -L -o ~/.local/share/fonts/my-fonts.zip https://github.com/Chaganti-Reddy/my-fonts/archive/main.zip
+
+  # Extract the fonts
+  echo "Extracting fonts..."
+  unzip -q ~/.local/share/fonts/my-fonts.zip -d ~/.local/share/fonts
+
+  # Clean up the downloaded zip file
+  echo "Cleaning up..."
+  rm ~/.local/share/fonts/my-fonts.zip
+  echo "Fonts have been installed successfully." && sleep 2
   clear
 fi
 
@@ -719,63 +1057,97 @@ fi
 
 echo "Setting up dwm..."
 
-# Ask the user if they want to install dwm
-echo "Would you like to install dwm (Dynamic Window Manager)? (y/n)"
-read -r install_dwm
+# Ask the user if they want to install dwm with default to "yes"
+read -p "Would you like to install dwm (Dynamic Window Manager)? (y/n): " install_dwm
+install_dwm="${install_dwm:-y}"  # Default to "y" if no input is provided
 
 if [[ "$install_dwm" == "y" || "$install_dwm" == "Y" ]]; then
-  echo "dwm installation will begin now."
+  echo "Starting dwm installation..."
 
-  # Install dwm and related packages
-  cd ~/dotfiles || return
-  stow suckless/
-  stow DWMScripts
+  # Check if dwm and required directories already exist
+  if command -v dwm &>/dev/null && [ -d ~/.config/dwm ] && [ -d ~/.config/slstatus ] && [ -d ~/.config/st ] && [ -d ~/.config/dmenu ]; then
+    echo "dwm and its configurations are already installed. Skipping installation."
+  else
+    # Install dwm and related packages if missing
+    echo "Installing dwm and related packages..."
+    cd ~/dotfiles || return
+    stow suckless/
+    stow DWMScripts
 
-  cd ~/.config/dwm && sudo make clean install
-  cd ~/.config/slstatus && sudo make clean install
-  cd ~/.config/st && sudo make install
-  cd ~/.config/dmenu && sudo make install
-  cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
+    # Install dwm, slstatus, st, and dmenu
+    if [ ! -d ~/.config/dwm ]; then
+      cd ~/.config/dwm && sudo make clean install
+    fi
+    if [ ! -d ~/.config/slstatus ]; then
+      cd ~/.config/slstatus && sudo make clean install
+    fi
+    if [ ! -d ~/.config/st ]; then
+      cd ~/.config/st && sudo make install
+    fi
+    if [ ! -d ~/.config/dmenu ]; then
+      cd ~/.config/dmenu && sudo make install
+    fi
 
-  sudo mkdir -p /usr/share/xsessions/
-  sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions
+    # Install extra tools from the dotfiles repository
+    cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
 
-  echo "dwm has been installed. Please configure your system as needed." && sleep 2
+    # Set up dwm session if not already set up
+    if [ ! -f /usr/share/xsessions/dwm.desktop ]; then
+      sudo mkdir -p /usr/share/xsessions/
+      sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions
+    fi
 
+    echo "dwm has been successfully installed and configured."
+  fi
+  sleep 2
   clear
 else
-  echo "dwm installation skipped. Proceeding with the setup."
-  clear
+  echo "dwm installation skipped. Proceeding with the setup." && sleep 1 
 fi
 
 # --------------------------------------------------------------------------------------
 
 echo "Setting up BSPWM..."
 
-# Ask the user if they want to install bspwm
-echo "Would you like to install bspwm? (y/n)"
-read -r install_bspwm 
+# Ask the user if they want to install bspwm with default to "yes"
+read -p "Would you like to install bspwm? (y/n): " install_bspwm
+install_bspwm="${install_bspwm:-y}"  # Default to "y" if no input is provided
 
 if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
-  echo "bspwm installation will begin now."
+  echo "Starting bspwm installation..."
 
-  # Install bspwm and related packages
-  sudo pacman -S --noconfirm bspwm sxhkd pastel alacritty polybar xfce4-power-manager xsettingsd xorg-xsetroot wmname xcolor yad pulsemixer maim feh
+  # List of packages to install
+  bspwm_packages=(
+    "bspwm" "sxhkd" "pastel" "alacritty" "polybar" "xfce4-power-manager"
+    "xsettingsd" "xorg-xsetroot" "wmname" "xcolor" "yad" "pulsemixer"
+    "maim" "feh" "ksuperkey" "betterlockscreen" "light" "networkmanager-dmenu-git"
+  )
 
-  paru -S --noconfirm ksuperkey betterlockscreen light networkmanager-dmenu-git
+  # Loop through each package and install if not already installed
+  for pkg in "${bspwm_packages[@]}"; do
+    if ! pacman -Q "$pkg" &>/dev/null; then
+      echo "$pkg is not installed. Installing..."
+      paru -S --noconfirm --needed "$pkg"
+    else
+      echo "$pkg is already installed."
+    fi
+  done
 
-  # Setup configuration files
+  # Set up configuration files
+  echo "Setting up bspwm configurations..."
   cd ~/dotfiles || return
   stow feh
   stow bspwm/
   stow network-dmenu/
 
+  # Install additional extras if needed
   cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
-  echo "bspwm has been installed. Please configure your system as needed." && sleep 2
+
+  echo "bspwm has been successfully installed and configured."
+  sleep 2
   clear
 else
-  echo "bspwm installation skipped. Proceeding with the setup."
-  clear
+  echo "bspwm installation skipped. Proceeding with the setup." && sleep 1
 fi
 
 # --------------------------------------------------------------------------------------
@@ -834,157 +1206,186 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
     echo "Ollama is already installed on your system." && sleep 1
   fi
 else
-  echo "Ollama installation skipped. Proceeding with the setup."
-  clear
+  echo "Ollama installation skipped. Proceeding with the setup." && sleep 1
 fi
 #
 # --------------------------------------------------------------------------------------
-#
-# echo "Installing PIP Packages..."
-#
-# # Ask the user if they want to install the PIP packages
-# echo "Would you like to install my PIP Packages? (y/n)"
-# read -r install_pip_packages
-#
-# if [[ "$install_pip_packages" == "y" || "$install_pip_packages" == "Y" ]]; then
-#   echo "PIP packages installation will begin now."
-#
-#   # Install the PIP packages
-#   pip install pynvim numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel ipywidgets tensorflow python-prctl inotify-simple psutil opencv-python keras mov-cli-youtube mov-cli mov-cli-test otaku-watcher film-central daemon jupyterlab_wakatime pygobject spotdl
-#
-#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu # pytorch cpu version
-#   clear
-#   echo "PIP Packages have been installed. Please configure your system as needed." && sleep 2
-# else
-#   echo "PIP packages installation skipped. Proceeding with the setup."
-#   clear
-# fi
 
+echo "Setting up PIP Packages..."
+
+# Ask the user if they want to install PIP packages, defaulting to "yes"
+read -p "Would you like to install my PIP packages? (y/n): " install_pip_packages
+install_pip_packages="${install_pip_packages:-y}"  # Default to "y" if no input is provided
+
+eval "$($HOME/miniconda/bin/conda shell.zsh hook)"
+
+# Check if conda is available, if not, skip the installation
+if command -v conda &>/dev/null; then
+  if [[ "$install_pip_packages" == "y" || "$install_pip_packages" == "Y" ]]; then
+    echo "Conda detected, installing PIP packages..."
+
+    # List of packages to install
+    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl")
+    
+    # Install each package if it's not already installed
+    for package in "${pip_packages[@]}"; do
+      if ! pip show "$package" &>/dev/null; then
+        echo "Installing $package..."
+        pip install "$package"
+      else
+        echo "$package is already installed."
+      fi
+    done
+
+    # Install PyTorch (CPU version)
+    if ! pip show "torch" &>/dev/null; then
+      echo "Installing PyTorch (CPU version)..."
+      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+    else
+      echo "PyTorch is already installed."
+    fi
+
+    echo "PIP packages installation completed."
+    sleep 2
+    clear
+  else
+    echo "PIP packages installation skipped. Proceeding with the setup." && sleep 1
+    clear
+  fi
+else
+  echo "Conda not found, skipping PIP packages installation." && sleep 1
+fi
 # --------------------------------------------------------------------------------------
 
 echo "Setting up GRUB theme..."
 
-# Ask if the user wants to set up a GRUB theme
-echo "Would you like to install a GRUB theme? (y/n)"
-read -r install_grub_theme
+# Ask the user if they want to set up a GRUB theme, defaulting to "yes"
+read -p "Would you like to install a GRUB theme? (y/n): " install_grub_theme
+install_grub_theme="${install_grub_theme:-y}"  # Default to "y" if no input is provided
 
+# Check if the user wants to install the GRUB theme
 if [[ "$install_grub_theme" == "y" || "$install_grub_theme" == "Y" ]]; then
   echo "GRUB theme setup will begin now."
 
-  # Copy the GRUB theme files
-  sudo cp -r ~/dotfiles/Extras/Extras/boot/grub/themes/SekiroShadow/ /boot/grub/themes/
+  # Check if the theme directory exists before copying
+  if [[ -d ~/dotfiles/Extras/Extras/boot/grub/themes/SekiroShadow/ ]]; then
+    # Copy the GRUB theme files if they exist
+    sudo cp -r ~/dotfiles/Extras/Extras/boot/grub/themes/SekiroShadow/ /boot/grub/themes/
+    echo "GRUB theme files copied successfully."
+  else
+    echo "GRUB theme files not found. Skipping theme setup."
+    exit 1  # Exit if the theme files are missing
+  fi
 
-  # Enable the GRUB theme
+  # Enable the GRUB theme in the GRUB configuration
   echo "Setting GRUB theme..."
-  echo 'GRUB_THEME="/boot/grub/themes/SekiroShadow/theme.txt"' | sudo tee -a /etc/default/grub
+  if ! grep -q 'GRUB_THEME="/boot/grub/themes/SekiroShadow/theme.txt"' /etc/default/grub; then
+    echo 'GRUB_THEME="/boot/grub/themes/SekiroShadow/theme.txt"' | sudo tee -a /etc/default/grub
+  fi
 
-  # Enable os-prober in GRUB configuration
+  # Enable os-prober in GRUB configuration if not already set
   echo "Enabling os-prober in GRUB configuration..."
-  echo 'GRUB_DISABLE_OS_PROBER="false"' | sudo tee -a /etc/default/grub
+  if ! grep -q 'GRUB_DISABLE_OS_PROBER="false"' /etc/default/grub; then
+    echo 'GRUB_DISABLE_OS_PROBER="false"' | sudo tee -a /etc/default/grub
+  fi
 
   # Regenerate GRUB configuration
   echo "Regenerating GRUB configuration..."
   sudo grub-mkconfig -o /boot/grub/grub.cfg
-  echo "GRUB theme setup is complete, and GRUB config has been updated." && sleep 2
+
+  echo "GRUB theme setup is complete, and GRUB config has been updated."
+  sleep 2
   clear
 else
-  echo "GRUB theme setup skipped. Proceeding with the setup."
-  clear
+  echo "GRUB theme setup skipped. Proceeding with the setup." && sleep 1
 fi
 
 # --------------------------------------------------------------------------------------
 
 echo "Setting up SDDM (Simple Desktop Display Manager)..."
 
-# Install SDDM
-echo "Installing SDDM..."
-sudo pacman -S --noconfirm sddm qt6-5compat qt6-declarative qt6-svg
+# Ask if the user wants to install SDDM, defaulting to "yes"
+read -p "Would you like to install SDDM (Simple Desktop Display Manager)? (y/n): " install_sddm
+install_sddm="${install_sddm:-y}"  # Default to "y" if no input is provided
 
-echo "Enabling SDDM to start at boot..."
-sudo systemctl enable sddm.service
+# Check if the user wants to install SDDM
+if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" ]]; then
+  echo "Installing SDDM..."
 
-# Copy the SDDM theme files
-sudo cp -r ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ /usr/share/sddm/themes
+  # Install SDDM and related packages
+  sudo pacman -S --noconfirm sddm qt6-5compat qt6-declarative qt6-svg
 
-# Copy the SDDM configuration file
-sudo cp ~/dotfiles/Extras/Extras/etc/sddm.conf /etc/sddm.conf
-clear
-echo "SDDM has been installed and enabled to start at boot." && sleep 1
+  echo "Enabling SDDM to start at boot..."
+  sudo systemctl enable sddm.service
 
-# --------------------------------------------------------------------------------------
-
-echo "Setting up Zsh..."
-
-# Ask the user if they want to install and set up Zsh
-echo "Would you like to install Zsh and set it as your default shell? (y/n)"
-read -r install_zsh
-
-if [[ "$install_zsh" == "y" || "$install_zsh" == "Y" ]]; then
-  echo "Zsh installation will begin now."
-
-  # Install Zsh if not already installed
-  sudo pacman -S --noconfirm zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting
-
-  # Change the default shell to Zsh
-  chsh -s /bin/zsh
-
-  # Install Oh My Zsh
-  #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed '/\s*env\s\s*zsh\s*/d')"
-  cd ~/dotfiles || return
-  sh install_zsh.sh
-
-  rm ~/.zshrc
-
-  # Check if the username is "karna"
-  if [ "$(whoami)" == "karna" ]; then
-    stow_folder="zsh_karna"
+  # Check if the theme directory exists before copying
+  if [[ -d ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ ]]; then
+    # Copy the SDDM theme files
+    sudo cp -r ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ /usr/share/sddm/themes
+    echo "SDDM theme files copied successfully."
   else
-
-    stow_folder="zsh"
+    echo "SDDM theme files not found. Skipping theme setup."
   fi
 
-  # Use stow to set up the Zsh configuration
-  cd ~/dotfiles || return
-  stow "$stow_folder"
+  # Check if the SDDM configuration file exists before copying
+  if [[ -f ~/dotfiles/Extras/Extras/etc/sddm.conf ]]; then
+    # Copy the SDDM configuration file
+    sudo cp ~/dotfiles/Extras/Extras/etc/sddm.conf /etc/sddm.conf
+    echo "SDDM configuration file copied successfully."
+  else
+    echo "SDDM configuration file not found. Skipping configuration setup."
+  fi
 
-  cp Extras/Extras/archcraft-dwm.zsh-theme ~/.oh-my-zsh/themes/archcraft-dwm.zsh-theme
-
-  echo "Zsh has been installed and set as your default shell. Please restart your terminal to apply the changes." && sleep 2
-  cd ~/dotfiles || return
   clear
+  echo "SDDM has been installed and enabled to start at boot." && sleep 1
 else
-  echo "Zsh installation skipped. Proceeding with the setup."
-  clear
+  echo "SDDM installation skipped. Proceeding with the setup." && sleep 1
 fi
+
 
 # --------------------------------------------------------------------------------------
 
 echo "Downloading Wallpapers..." && sleep 1
 
-# ask user if they want to download wallpapers
-echo "Would you like to download wallpapers? (y/n)"
-read -r download_wallpapers
+# Ask user if they want to download wallpapers
+read -p "Would you like to download wallpapers? (y/n): " download_wallpapers
+download_wallpapers="${download_wallpapers:-y}"  # Default to "y" if no input is provided
 
+# Check if the user wants to download wallpapers
 if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
+  # Check if pix folder is already in ~/Pictures/
+  if [ ! -d "$HOME/Pictures/pix" ]; then
+    echo "Pix folder not found in Pictures. Downloading wallpapers..."
 
-  cd ~/Downloads/ || return
-  curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
-  unzip wall.zip
-  cd wallpapers-main || return
-  sudo mkdir -p /usr/share/backgrounds/
-  sudo mv wall/* /usr/share/backgrounds/
-  mv pix ~/Pictures/ 
-  cd ~/Downloads/
-  rm -rf wallpapers-main
-  cd ~/dotfiles/ || return
+    cd ~/Downloads/ || return
+    curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
+    unzip wall.zip
+    cd wallpapers-main || return
 
-  echo "Wallpapers have been downloaded and installed successfully..." && sleep 2
-  clear
+    # Check if bspwm is installed using pacman
+    if pacman -Q bspwm &>/dev/null; then
+      # Move wallpapers to /usr/share/backgrounds/ from the wall folder
+      sudo mkdir -p /usr/share/backgrounds/
+      sudo mv wall/* /usr/share/backgrounds/
+    fi
+
+    # Move the pix folder to ~/Pictures/
+    echo "Moving pix folder to ~/Pictures/"
+    mv pix ~/Pictures/
+
+    # Clean up and reset directories
+    cd ~/Downloads/
+    rm -rf wallpapers-main
+    cd ~/dotfiles/ || return
+
+    echo "Wallpapers have been downloaded and installed successfully..." && sleep 2
+    clear
+  else
+    echo "Pix folder already exists in ~/Pictures/, skipping download." && sleep 1
+  fi
 
 else
-
-  echo "Wallpapers download skipped. Proceeding with the setup."
-  clear
+  echo "Wallpapers download skipped. Proceeding with the setup." && sleep 1
 fi
 
 # -------------------------------------------------------------------------------------
@@ -992,34 +1393,52 @@ fi
 echo "Setting Extra Packages for System..." && sleep 1
 
 # Install the bash language server globally using npm
-sudo npm i -g bash-language-server
+if ! command -v bash-language-server &>/dev/null; then
+  echo "Installing bash-language-server..."
+  sudo npm i -g bash-language-server
+else
+  echo "bash-language-server is already installed."
+fi
 
-sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
+# Ask the user if they want to install themes and icons
+read -p "Would you like to install themes and icons? (y/n): " install_themes_icons
+install_themes_icons="${install_themes_icons:-y}" # Default to "y" if no input is provided
 
-# Remove existing bashrc and zshrc
-rm -rf ~/.bashrc
+if [[ "$install_themes_icons" == "y" || "$install_themes_icons" == "Y" ]]; then
+  echo "Installing Themes and Icons..."
+  cd ~/Downloads/ || return
+  if [ ! -d "archcraft-themes-main" ]; then
+    curl -L -o archcraft-themes.zip https://codeload.github.com/Chaganti-Reddy/archcraft-themes/zip/refs/heads/main
+    unzip archcraft-themes.zip
+    rm archcraft-themes.zip
+  fi
 
-echo "Installing Themes and Icons..."
-# Install themes and icons
-cd ~/Downloads/ || return
-curl -L -o archcraft-themes.zip https://codeload.github.com/Chaganti-Reddy/archcraft-themes/zip/refs/heads/main
-unzip archcraft-themes.zip
-rm archcraft-themes.zip
-mkdir -p ~/.icons ~/.themes
-cd archcraft-themes-main || return
-mv themes/* ~/.themes
-mv icons/* ~/.icons
-cd ~/Downloads || return
-rm -rf archcraft-themes-main
-cd ~/dotfiles/ || return
-sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
-echo "Themes and Icons have been installed successfully..." && sleep 2
-# Ask the user if they want to install extras
-echo "Would you like to install my configs? (y/n)"
-read -r install_extras
+  mkdir -p ~/.icons ~/.themes
+  cd archcraft-themes-main || return
+  mv themes/* ~/.themes
+  mv icons/* ~/.icons
+  cd ~/Downloads || return
+  rm -rf archcraft-themes-main
+  cd ~/dotfiles/ || return
+
+  # Copy Dunst icons
+  sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
+
+  echo "Themes and Icons have been installed successfully..." && sleep 2
+else
+  echo "Themes and Icons installation skipped." && sleep 1
+fi
+
+# Ask the user if they want to install extra configurations
+read -p "Would you like to install my configs? (y/n): " install_extras
+install_extras="${install_extras:-y}" # Default to "y" if no input is provided
 
 if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
   echo "Extras installation will begin now."
+
+  # Remove existing bashrc and zshrc files
+  echo "Removing existing bashrc..."
+  rm -rf ~/.bashrc
 
   # Check if the username is "karna"
   if [ "$(whoami)" != "karna" ]; then
@@ -1027,38 +1446,39 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     echo "Stowing configurations for non-karna user..."
     stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt screensaver sxiv Templates themes Thunar xsettingsd zathura
 
-    cd ~/dotfiles/Extras/Extras/ || return
-    #
-    sudo cp etc/nanorc /etc/nanorc
-    sudo cp etc/bash.bashrc /etc/bash.bashrc
-    sudo cp etc/DIR_COLORS /etc/DIR_COLORS
-    sudo cp etc/environment /etc/environment
+    # Copy essential system files for non-karna users
+    sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
+    sudo cp ~/dotfiles/Extras/Extras/etc/bash.bashrc /etc/bash.bashrc
+    sudo cp ~/dotfiles/Extras/Extras/etc/DIR_COLORS /etc/DIR_COLORS
+    sudo cp ~/dotfiles/Extras/Extras/etc/environment /etc/environment
+    sudo cp ~/dotfiles/Extras/Extras/kunst /usr/bin/kusnt
+    sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
 
-    echo "Extras have been installed." && sleep 1
+    echo "Extras have been installed" && sleep 1
   else
     # Install for "karna" user
     echo "Stowing configurations for karna..."
     sudo pacman -S zellij
     stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser ranger_karna redyt screenlayout screensaver sxiv Templates Thunar xarchiver xsettingsd zathura zellij
 
-    cd ~/dotfiles/Extras/Extras/ || return
+    # Copy essential system files for karna user
+    sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
+    sudo cp ~/dotfiles/Extras/Extras/etc/bash.bashrc /etc/bash.bashrc
+    sudo cp ~/dotfiles/Extras/Extras/etc/DIR_COLORS /etc/DIR_COLORS
+    sudo cp ~/dotfiles/Extras/Extras/etc/environment /etc/environment
+    sudo cp ~/dotfiles/Extras/Extras/etc/mpd.conf /etc/mpd.conf
+    sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
 
-    sudo cp etc/nanorc /etc/nanorc
-    sudo cp etc/bash.bashrc /etc/bash.bashrc
-    sudo cp etc/DIR_COLORS /etc/DIR_COLORS
-    sudo cp etc/environment /etc/environment
-    sudo cp etc/mpd.conf /etc/mpd.conf
-
+    # Install custom tools for karna
     sudo cp ~/dotfiles/Extras/Extras/kunst /usr/bin/kusnt
 
     echo "Setup kaggle JSON and wakatime files using ccrypt... also read essential_info.md file" && sleep 1
-
     echo "Extras have been installed for KARNA." && sleep 1
   fi
 else
   echo "Extras installation skipped. Proceeding with the setup." && sleep 1
 fi
 
+# Final message
 clear
-
 echo "All done! Please go through essentials.md before rebooting your system." && sleep 2
