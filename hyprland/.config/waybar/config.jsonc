@@ -24,15 +24,8 @@
         "spacing": 10
     },
     "mpris": {
-      "format": "<span color='#cc241d'> {player_icon} </span>  {dynamic}  ",
-  "format-paused": "<span color='#cc241d'> {status_icon} </span> <i>{dynamic}</i>",
-"player-icons": {
-		"default": "󰎇",
-		"mpv": "󰝚"
-	},
-	"status-icons": {
-		"paused": ""
-	},
+      "format": "<span color='#cc241d'> 󰎇 </span>  {dynamic}  ",
+  "format-paused": "<span color='#cc241d'>  </span> <i>{dynamic}</i>",
       "max-length": 50
     },
 
