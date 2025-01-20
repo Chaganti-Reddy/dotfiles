@@ -971,9 +971,8 @@ if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
   curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
   unzip wall.zip
   cd wallpapers-main || return
-    sudo mkdir -p /usr/share/backgrounds/
-    sudo mv wall/* /usr/share/backgrounds/
-    cd ~/dotfiles/ || return  
+  sudo mkdir -p /usr/share/backgrounds/
+  sudo mv wall/* /usr/share/backgrounds/
   mv pix ~/Pictures/ 
   cd ~/Downloads/
   rm -rf wallpapers-main
