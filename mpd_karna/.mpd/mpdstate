@@ -1,9 +1,7 @@
 sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
-state: play
-current: 7
-time: 120.091000
+state: stop
 random: 1
 repeat: 1
 single: 0
@@ -12,18 +10,4 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:playlists/NCS/NEFFEX - Grateful [Copyright Free].mp3
-1:playlists/NCS/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
-2:playlists/NCS/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
-3:playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
-4:playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3
-5:playlists/Telugu/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3
-6:playlists/Telugu/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3
-7:playlists/Telugu/Amit Mishra - Dhruva Dhruva.mp3
-8:playlists/Telugu/Naveen Madhav, Ranjith - I Hate Love Stories.mp3
-9:playlists/Telugu/Anirudh Ravichander, Shweta Mohan - Emannavoo.mp3
-10:playlists/Telugu/Jubin Nautiyal, Sameera Bharadwaj - Telusaa Telusaa.mp3
-11:playlists/Telugu/Jithin Raj - Sivangi Pilla.mp3
-12:playlists/Telugu/Raghu Dixit, Sooraj Santhosh, Rita Thyagarajan - Chal Chalo Chalo.mp3
-13:playlists/Telugu/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
 playlist_end
