@@ -417,23 +417,22 @@ export STARSHIP_LOG="error"
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/karna/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/karna/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/karna/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/karna/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 (cat ~/.cache/wal/sequences &)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by "conda init" !!
+__conda_setup="$(/home/karna/miniconda/bin/conda shell.${SHELL##*/} hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
