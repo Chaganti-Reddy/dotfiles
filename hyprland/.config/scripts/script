@@ -12,7 +12,8 @@ options=(["Edit Config Files"]=~/.config/scripts/confedit
          ["Watch YouTube Videos"]=~/.config/scripts/yt 
          ["Open Youtube Video in MPV using URL"]=~/.config/scripts/mpv_yt 
          ["Watch YouTube Playlists"]=~/.config/scripts/yt_plst 
-         ["Use Reddit Script for Images"]=~/.config/scripts/redyt)
+         ["Use Reddit Script for Images"]=~/.config/scripts/redyt
+         ["Download Some new wallpapers"]=/usr/local/bin/waldl)
 
 choice=$(printf '%s\n' "${!options[@]}" | sort -g | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -i -l 15 -p 'Choose an Option: ' "${@}")
 
