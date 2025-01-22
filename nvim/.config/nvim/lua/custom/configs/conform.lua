@@ -14,6 +14,8 @@ local options = {
     cpp = { "clang-format" },
 
     python = { "black" },
+
+    go = { "gofmt" },
 	},
 
   -- adding same formatter for multiple filetypes can look too much work for some
