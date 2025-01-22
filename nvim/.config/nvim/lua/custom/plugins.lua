@@ -185,14 +185,13 @@ local plugins = {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    config = function()
-      -- vim.g.codeium_disable_bindings = 1
-      vim.g.codeium_enabled = true
-      -- vim.g.codeium_filetypes_disabled_by_default = true
-      vim.g.codeium_filetypes = {
-        -- py = false,
-      }
-    end,
+    -- config = function()
+    --   -- vim.g.codeium_disable_bindings = 1
+    --   vim.g.codeium_enabled = true
+    --   vim.g.codeium_filetypes_disabled_by_default = true
+    --   vim.g.codeium_filetypes = {
+    --   }
+    -- end,
 
     -- config = function ()
     --     -- Change '<C-g>' here to any keycode you like.
