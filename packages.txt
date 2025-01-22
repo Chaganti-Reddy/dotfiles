@@ -196,3 +196,4 @@ alsa-ucm-conf
 viewnior 
 qalculate-gtk 
 pyright
+python-black
