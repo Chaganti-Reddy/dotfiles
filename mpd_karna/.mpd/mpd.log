@@ -1680,3 +1680,12 @@ Jan 23 12:38 : pipewire_output: Decoder is too slow; playing silence to avoid xr
 Jan 23 12:39 : player: played "playlists/English/Jung Kook, BTS, FIFA Sound - Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack].mp3"
 Jan 23 12:43 : player: played "playlists/English/Lady Gaga, Bruno Mars - Die With A Smile.mp3"
 Jan 23 12:45 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Jan 23 16:23 : player: played "playlists/English/Jung Kook, BTS, FIFA Sound - Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack].mp3"
+Jan 23 16:27 : player: played "playlists/English/M83 - Midnight City.mp3"
+Jan 23 16:28 : player: played "playlists/English/Justin Bieber - Love Me.mp3"
+Jan 23 16:28 : exception: No such directory
+Jan 23 16:29 : player: played "playlists/English/Justin Bieber - Love Me.mp3"
+Jan 23 16:30 : exception: No such directory
+Jan 23 16:32 : player: played "playlists/Study/Aqua Scholar, Mey Andog, Sonic Strokes - Tranquility by the Shore.mp3"
+Jan 23 16:33 : player: played "playlists/NCS/NEFFEX - Grateful [Copyright Free].mp3"
+Jan 23 16:37 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
