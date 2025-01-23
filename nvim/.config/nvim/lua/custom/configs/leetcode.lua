@@ -1,6 +1,6 @@
 local options = {
   lang = "python3",
-  image_support = true,
+  image_support = false,
   logging = true,
   storage = {
     home = vim.fn.getcwd(),
