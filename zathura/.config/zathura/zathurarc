@@ -64,7 +64,7 @@ map [fullscreen] f toggle_fullscreen
 # set inputbar-fg			"#C9CBFF"
 # set inputbar-bg 		"#1A1823"
 #
-# set recolor			"true"
+set recolor			"true"
 # set recolor-lightcolor		"#D9E0EE"
 # set recolor-darkcolor		"#1A1823"
 #
