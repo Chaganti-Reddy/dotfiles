@@ -59,15 +59,16 @@
     "playing": ""    // Icon for playing state
   },
   "tooltip-format": "MPD (connected)",
-  // "tooltip-format": "MPD (connected) \n({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+  // "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})",
   "tooltip-format-disconnected": "MPD (disconnected)",
+  "smooth-scrolling-threshold":3,
 
   // Mouse interaction
-  "on-click": "mpc toggle",        // Play/Pause when left-clicked
-  "on-click-middle": "mpc next",   // Next when middle-clicked
-  "on-click-right": "mpc prev",    // Previous when right-clicked
-  "on-scroll-up": "mpc volume +10",  // Volume up on scroll up
-  "on-scroll-down": "mpc volume -10",  // Volume down on scroll down
+  "on-click": "mpc --quiet toggle",        // Play/Pause when left-clicked
+  "on-click-middle": "mpc --quiet stop",   // Next when middle-clicked
+  "on-scroll-down": "mpc --quiet random",    // Previous when right-clicked
+  "on-scroll-up": "mpc --quiet next",  // Volume up on scroll up
+  "on-click-right": "mpc --quiet prev"  // Volume down on scroll down
 },
 
       "custom/powermenu": {
