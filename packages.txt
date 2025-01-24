@@ -197,3 +197,4 @@ viewnior
 qalculate-gtk 
 pyright
 python-black
+vscode-html-languageserver 
