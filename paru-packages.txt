@@ -12,4 +12,4 @@ catppuccin-fcitx5-git
 apple_cursor 
 cava 
 sysstat 
-
+tex-fmt-bin
