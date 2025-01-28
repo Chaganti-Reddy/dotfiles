@@ -198,3 +198,4 @@ qalculate-gtk
 pyright
 python-black
 vscode-html-languageserver 
+typescript-language-server 
