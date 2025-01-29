@@ -2122,3 +2122,28 @@ Jan 29 15:28 : player: played "playlists/English/The Weeknd - Save Your Tears.mp
 Jan 29 15:29 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
 Jan 29 15:29 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
 Jan 29 15:29 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 15:32 : player: played "playlists/Liked/Amit Mishra - Dhruva Dhruva.mp3"
+Jan 29 15:35 : player: played "playlists/NCS/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3"
+Jan 29 16:05 : player: played "playlists/English/Wiz Khalifa, Charlie Puth - See You Again (feat. Charlie Puth).mp3"
+Jan 29 16:05 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 16:05 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 16:05 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 16:09 : player: played "playlists/Liked/MM Sreelekha, Sid Sriram, Ramya Behara - Urike Urike.mp3"
+Jan 29 16:13 : player: played "playlists/English/Ed Sheeran - Shivers.mp3"
+Jan 29 16:17 : player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+Jan 29 16:21 : player: played "playlists/English/Kendrick Lamar, SZA - All The Stars (with SZA).mp3"
+Jan 29 16:21 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 16:21 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 16:21 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 16:25 : player: played "playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
+Jan 29 16:27 : player: played "playlists/English/Justin Bieber - Ghost.mp3"
+Jan 29 16:32 : player: played "playlists/English/Coldplay - A Sky Full of Stars.mp3"
+Jan 29 16:32 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 16:32 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 16:32 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 16:36 : player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+Jan 29 16:39 : player: played "playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3"
+Jan 29 16:43 : player: played "playlists/English/Justin Bieber, Ludacris - Baby.mp3"
+Jan 29 16:46 : player: played "playlists/English/Ed Sheeran - Stop The Rain.mp3"
+Jan 29 16:50 : player: played "playlists/English/Jung Kook, BTS, FIFA Sound - Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack].mp3"
+Jan 29 16:53 : player: played "playlists/English/Charlie Puth, Selena Gomez - We Don't Talk Anymore (feat. Selena Gomez).mp3"
