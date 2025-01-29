@@ -2157,3 +2157,69 @@ Jan 29 17:09 : mpg123: mpg123_getformat() failed: Message: I am done with this t
 Jan 29 17:09 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
 Jan 29 17:09 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
 Jan 29 17:13 : player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
+Jan 29 17:16 : player: played "playlists/English/Sabrina Carpenter - Espresso.mp3"
+Jan 29 17:22 : player: played "playlists/English/M83 - Midnight City.mp3"
+Jan 29 17:26 : player: played "playlists/English/Ed Sheeran - Bad Habits.mp3"
+Jan 29 17:30 : player: played "playlists/English/Lady Gaga - Judas.mp3"
+Jan 29 17:30 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 17:30 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 17:30 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 17:35 : player: played "playlists/English/Ed Sheeran - Shape of You.mp3"
+Jan 29 17:39 : player: played "playlists/English/Charlie Puth - How Long.mp3"
+Jan 29 17:39 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 17:39 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 17:39 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 17:43 : player: played "playlists/Liked/Jubin Nautiyal, Sameera Bharadwaj - Telusaa Telusaa.mp3"
+Jan 29 17:48 : player: played "playlists/English/Ed Sheeran - Perfect.mp3"
+Jan 29 17:51 : player: played "playlists/English/Justin Bieber - Sorry.mp3"
+Jan 29 17:51 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 17:51 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 17:51 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 17:57 : player: played "playlists/Liked/Pritam, Arijit Singh - Channa Mereya.mp3"
+Jan 29 17:57 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 17:57 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 17:57 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:01 : player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+Jan 29 18:04 : player: played "playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3"
+Jan 29 18:04 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 18:04 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 18:04 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:04 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Jan 29 18:07 : player: played "playlists/Liked/MUSASHI PROJECT - 哀と悲.mp3"
+Jan 29 18:11 : player: played "playlists/English/Lady Gaga, Bruno Mars - Die With A Smile.mp3"
+Jan 29 18:15 : player: played "playlists/English/Alan Walker - Faded.mp3"
+Jan 29 18:18 : player: played "playlists/English/KALEO - Way down We Go.mp3"
+Jan 29 18:22 : player: played "playlists/English/Charlie Puth - Attention.mp3"
+Jan 29 18:22 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 18:22 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 18:22 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:25 : player: played "playlists/Liked/Anirudh Ravichander, Shweta Mohan - Emannavoo.mp3"
+Jan 29 18:29 : player: played "playlists/English/The Weeknd, Daft Punk - Starboy.mp3"
+Jan 29 18:33 : player: played "playlists/English/Justin Bieber - What Do You Mean.mp3"
+Jan 29 18:33 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 18:33 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 18:33 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:37 : player: played "playlists/English/Ed Sheeran - Sandman.mp3"
+Jan 29 18:40 : player: played "playlists/English/Charlie Puth - Dangerously.mp3"
+Jan 29 18:43 : player: played "playlists/English/The Kid LAROI, Justin Bieber - STAY (with Justin Bieber).mp3"
+Jan 29 18:43 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 18:43 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 18:43 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:46 : player: played "playlists/Liked/Jithin Raj - Sivangi Pilla.mp3"
+Jan 29 18:47 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 18:47 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 18:47 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:50 : player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+Jan 29 18:51 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 18:51 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 18:51 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 18:53 : player: played "playlists/Liked/MUSASHI PROJECT - 哀と悲.mp3"
+Jan 29 18:57 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Jan 29 19:00 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 19:00 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 19:00 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 19:04 : player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
+Jan 29 19:07 : player: played "playlists/English/Sabrina Carpenter - Espresso.mp3"
+Jan 29 19:11 : player: played "playlists/English/Justin Bieber, Ludacris - Baby.mp3"
+Jan 29 19:14 : player: played "playlists/English/The Weeknd - Blinding Lights.mp3"
+Jan 29 19:18 : player: played "playlists/English/Ed Sheeran - Photograph.mp3"
