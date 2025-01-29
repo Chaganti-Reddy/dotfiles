@@ -52,9 +52,12 @@ apply_theme() {
   # Apply color scheme using pywal
   wal -i "$wallpaper" 
 
+     
   # Restart dunst to apply theme-related changes
   pkill dunst
   dunst &
+
+  command -v pywalfox &>/dev/null && pywalfox update 
 
   dunstify -u low -i "/usr/share/icons/dunst/themes.png" "Theme applied based on $wallpaper"
 }
