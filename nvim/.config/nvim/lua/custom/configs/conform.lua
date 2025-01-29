@@ -11,6 +11,8 @@ local options = {
 
 		sh = { "shfmt" },
 
+    markdown = { "mdformat" },
+
     cpp = { "clang-format" },
 
     python = { "black" },
