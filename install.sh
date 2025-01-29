@@ -582,6 +582,8 @@ install_browser() {
           echo "Installing Zen-Browser..."
           paru -S --noconfirm --needed zen-browser-bin
           sudo npm install -g nativefier
+          pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
+          pywalfox install
           # Video Download Helper
           curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
         fi
@@ -592,6 +594,8 @@ install_browser() {
         else
           echo "Installing Firefox..."
           sudo pacman -S --noconfirm firefox
+          pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
+          pywalfox install
           curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
         fi
         ;;
@@ -1226,9 +1230,6 @@ if command -v conda &>/dev/null; then
 
     # List of packages to install
     pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl", "beautifulsoup4", "requests", "flask", "streamlit", "pywal16")
-
-    pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
-    pywalfox install
     
     # Install each package if it's not already installed
     for package in "${pip_packages[@]}"; do
