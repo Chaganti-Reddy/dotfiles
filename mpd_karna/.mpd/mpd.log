@@ -2106,3 +2106,19 @@ Jan 29 13:02 : player: played "playlists/Liked/MUSASHI PROJECT - 哀と悲.mp3"
 Jan 29 13:05 : player: played "playlists/English/The Weeknd - Save Your Tears.mp3"
 Jan 29 13:08 : player: played "playlists/English/OneRepublic - I Ain't Worried.mp3"
 Jan 29 14:15 : player: played "playlists/English/Ed Sheeran - Photograph.mp3"
+Jan 29 15:11 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Jan 29 15:11 : player: played "playlists/English/Sia - Unstoppable.mp3"
+Jan 29 15:14 : player: played "playlists/English/Ed Sheeran - Galway Girl.mp3"
+Jan 29 15:18 : player: played "playlists/English/The Weeknd - Blinding Lights.mp3"
+Jan 29 15:18 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 15:18 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 15:18 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 15:21 : player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Jan 29 15:21 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 15:21 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 15:21 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Jan 29 15:25 : player: played "playlists/Liked/Jithin Raj - Sivangi Pilla.mp3"
+Jan 29 15:28 : player: played "playlists/English/The Weeknd - Save Your Tears.mp3"
+Jan 29 15:29 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Jan 29 15:29 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Jan 29 15:29 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
