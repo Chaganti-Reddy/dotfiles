@@ -1,9 +1,8 @@
 sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
-state: play
-current: 15
-time: 120.091000
+state: stop
+current: 35
 random: 1
 repeat: 1
 single: 0
@@ -68,4 +67,7 @@ playlist_begin
 53:playlists/NCS/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
 54:playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
 55:playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3
+56:playlists/English/Alan Walker - Faded.mp3
+57:playlists/English/Sia - Cheap Thrills.mp3
+58:playlists/English/Sia - Unstoppable.mp3
 playlist_end
