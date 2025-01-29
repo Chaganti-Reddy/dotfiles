@@ -197,6 +197,7 @@ export PATH="$HOME/dotfiles/DWMScripts/.dwm/bin/:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
+export PATH="$HOME/miniconda:$PATH"
 
 SUDO_EDITOR=/usr/bin/nvim
 export SUDO_EDITOR
