@@ -92,6 +92,8 @@ else
   export EDITOR='nvim'
 fi
 
+export VISUAL='nvim'
+
 export BROWSER='/usr/bin/zen-browser'
 
 # Compilation flags
