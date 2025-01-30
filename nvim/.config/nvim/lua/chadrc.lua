@@ -18,7 +18,7 @@ M.base46 = {
   },
   integrations = {},
   -- changed_themes = {},
-  -- theme_toggle = { "onedark", "one_light" },
+  theme_toggle = { "chadwal", "nightowl" },
 }
 
 M.nvdash = { load_on_startup = true }
