@@ -200,6 +200,3 @@ python-black
 vscode-html-languageserver 
 typescript-language-server 
 mdformat
-layer-shell-qt5
-qt6-virtualkeyboard
-qt6-multimedia-ffmpeg
