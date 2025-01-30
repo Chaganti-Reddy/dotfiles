@@ -344,7 +344,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
     "waybar"
     "wl-clipboard"
     "speech-dispatcher"
-    "foot"
+    "foot-git"
     "brightnessctl"
     "cmake"
     "meson"
