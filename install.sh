@@ -1317,7 +1317,7 @@ if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" ]]; then
   echo "Installing SDDM..."
 
   # Install SDDM and related packages
-  sudo pacman -S --noconfirm sddm qt6-5compat qt6-declarative qt6-svg
+  paru -S --noconfirm --needed sddm-git qt6-5compat qt6-declarative qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg layer-shell-qt5
 
   echo "Enabling SDDM to start at boot..."
   sudo systemctl enable sddm.service
@@ -1346,6 +1346,37 @@ else
   echo "SDDM installation skipped. Proceeding with the setup." && sleep 1
 fi
 
+# --------------------------------------------------------------------------------------
+
+echo "Setting up LY (Simple TUI Login Manager)..."
+
+read -p "Would you like to install LY (Simple TUI Login Manager)? (y/n): " install_ly
+install_ly="${install_ly:-y}"  # Default to "y" if no input is provided
+
+# Check if the user wants to install LY
+if [[ "$install_ly" == "y" || "$install_ly" == "Y" ]]; then
+  echo "Installing LY..."
+
+  # Install LY and related packages
+  paru -S --noconfirm --needed ly
+
+  echo "Enabling LY to start at boot..."
+  sudo systemctl enable ly.service
+
+  # Check if the LY configuration file exists before copying
+  if [[ -f ~/dotfiles/Extras/Extras/etc/ly/config.ini ]]; then
+    # Copy the LY configuration file
+    sudo cp ~/dotfiles/Extras/Extras/etc/ly/config.ini /etc/ly/config.ini
+    echo "LY configuration file copied successfully."
+  else
+    echo "LY configuration file not found. Skipping configuration setup."
+  fi
+
+  clear
+  echo "LY has been installed and enabled to start at boot." && sleep 1
+else
+  echo "LY installation skipped. Proceeding with the setup." && sleep 1
+fi
 
 # --------------------------------------------------------------------------------------
 
