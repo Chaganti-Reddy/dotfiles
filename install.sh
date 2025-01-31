@@ -354,8 +354,8 @@ EOF
 
     # Secure GPG - Disable key caching
     echo "Reducing GPG key caching time for better security..." && sleep 0.5
-    echo "default-cache-ttl 10" >> ~/.gnupg/gpg-agent.conf
-    echo "max-cache-ttl 10" >> ~/.gnupg/gpg-agent.conf
+    echo "default-cache-ttl 60" >> ~/.gnupg/gpg-agent.conf
+    echo "max-cache-ttl 60" >> ~/.gnupg/gpg-agent.conf
     gpgconf --kill gpg-agent  # Restart agent to apply changes
 
     echo "GPG and Pass setup completed successfully!" && sleep 2
