@@ -293,6 +293,77 @@ fi
 
 # -------------------------------------------------------------------------------------
 
+setup_gpg_pass() {
+    echo "Do you want to set up GPG and Pass for password management? (Y/n)"
+    read -r RESPONSE
+    RESPONSE=${RESPONSE:-y}  # Default to 'y' if user presses Enter
+
+    if [[ "$RESPONSE" =~ ^[Nn]$ ]]; then
+        echo "Skipping GPG and Pass setup." && sleep 1
+        return
+    fi
+
+    echo "Setting up GPG and Pass..."
+
+    # Check if required packages are already installed
+    if ! pacman -Q gnupg pass rofi-pass-wayland-git qrencode &> /dev/null; then
+        echo "Installing GPG and Pass..."
+        sudo pacman -S --noconfirm gnupg pass qrencode
+        paru -S --noconfirm rofi-pass-wayland-git
+    else
+        echo "Required packages are already installed. Skipping installation."
+    fi
+
+    # Ask for user details
+    echo -n "Enter your name: "
+    read -r NAME
+    echo -n "Enter your email: "
+    read -r EMAIL
+    echo -n "Enter a comment (optional): "
+    read -r COMMENT
+
+    # Check if a GPG key for the email already exists
+    if gpg --list-keys "$EMAIL" > /dev/null 2>&1; then
+        echo "GPG key for $EMAIL already exists. Skipping key generation."
+    else
+        echo "Generating a new GPG key..."
+
+        cat >key-config <<EOF
+        %echo Generating a GPG key
+        Key-Type: RSA
+        Key-Length: 4096
+        Name-Real: $NAME
+        Name-Comment: ${COMMENT:-None}
+        Name-Email: $EMAIL
+        Expire-Date: 0
+        %commit
+        %echo Done
+EOF
+        gpg --batch --full-generate-key key-config
+        rm -f key-config
+    fi
+
+    # Check if pass is already initialized
+    if pass show test-check > /dev/null 2>&1; then
+        echo "Pass is already initialized. Skipping initialization."
+    else
+        echo "Initializing pass with GPG key linked to $EMAIL..."
+        pass init "$EMAIL"
+    fi
+
+    # Secure GPG - Disable key caching
+    echo "Reducing GPG key caching time for better security..." && sleep 0.5
+    echo "default-cache-ttl 10" >> ~/.gnupg/gpg-agent.conf
+    echo "max-cache-ttl 10" >> ~/.gnupg/gpg-agent.conf
+    gpgconf --kill gpg-agent  # Restart agent to apply changes
+
+    echo "GPG and Pass setup completed successfully!" && sleep 2
+}
+
+setup_gpg_pass
+
+# -------------------------------------------------------------------------------------
+
 echo "Setting up Hyprland..." && sleep 1
 
 # Function to check if a package is installed
@@ -330,7 +401,6 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
     "hyprlang-git"
     "clipse-bin"
     "hyde-cli-git"
-    "wlogout-git"
     "hyprshot-git"
     "hyprland-qtutils-git"
     "bluetui"
@@ -1229,7 +1299,7 @@ if command -v conda &>/dev/null; then
     echo "Conda detected, installing PIP packages..."
 
     # List of packages to install
-    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl", "beautifulsoup4", "requests", "flask", "streamlit", "pywal16")
+    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16")
     
     # Install each package if it's not already installed
     for package in "${pip_packages[@]}"; do
