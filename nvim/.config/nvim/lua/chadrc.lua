@@ -119,6 +119,7 @@ function QuickAccessMenu()
     finder = finders.new_table({
       results = {
         { "Dotfiles", "~/dotfiles" },
+        { "Hyprland Configs", "~/.config/hypr/" },
         { "Nvim Config", "~/.config/nvim/lua/" },
         { "Portfolio", "/mnt/Karna/Git/portfolio/" },
       },
