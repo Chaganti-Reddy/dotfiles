@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 
-dir="$HOME/.config/rofi/launchers/type-1"
-theme='style-5'
+dir="$HOME/.config/rofi/"
+theme='dt-center'
 
 ## Run
 rofi \
     -modi emoji -show emoji  \
-    -theme ${dir}/${theme}.rasi
+    -theme ${dir}/${theme}.rasi 
