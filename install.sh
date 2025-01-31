@@ -344,7 +344,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
     "waybar"
     "wl-clipboard"
     "speech-dispatcher"
-    "foot-git"
+    "foot"
     "brightnessctl"
     "cmake"
     "meson"
@@ -1306,76 +1306,73 @@ fi
 
 # --------------------------------------------------------------------------------------
 
-echo "Setting up SDDM (Simple Desktop Display Manager)..."
+echo "Display/Login Manager Setup"
 
-# Ask if the user wants to install SDDM, defaulting to "yes"
-read -p "Would you like to install SDDM (Simple Desktop Display Manager)? (y/n): " install_sddm
-install_sddm="${install_sddm:-y}"  # Default to "y" if no input is provided
+# Ask if the user wants to install a Display Manager
+read -p "Would you like to install a Display/Login Manager? (y/n): " install_dm
+install_dm="${install_dm:-y}"  # Default to "y" if no input is provided
 
-# Check if the user wants to install SDDM
-if [[ "$install_sddm" == "y" || "$install_sddm" == "Y" ]]; then
-  echo "Installing SDDM..."
+if [[ "$install_dm" == "y" || "$install_dm" == "Y" ]]; then
+  echo "Choose a Display Manager:"
+  echo "1) SDDM (Simple Desktop Display Manager - GUI)"
+  echo "2) LY (Simple TUI Login Manager - Terminal-based)"
+  
+  read -p "Enter your choice (1/2): " dm_choice
+  
+  if [[ "$dm_choice" == "1" ]]; then
+    echo "Installing SDDM..."
 
-  # Install SDDM and related packages
-  paru -S --noconfirm --needed sddm-git qt6-5compat qt6-declarative qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg layer-shell-qt5
+    # Install SDDM and related packages
+    paru -S --noconfirm --needed sddm qt6-5compat qt6-declarative qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg layer-shell-qt5
 
-  echo "Enabling SDDM to start at boot..."
-  sudo systemctl enable sddm.service
+    echo "Enabling SDDM to start at boot..."
+    sudo systemctl enable sddm.service
 
-  # Check if the theme directory exists before copying
-  if [[ -d ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ ]]; then
-    # Copy the SDDM theme files
-    sudo cp -r ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ /usr/share/sddm/themes
-    echo "SDDM theme files copied successfully."
+    # Check if the theme directory exists before copying
+    if [[ -d ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ ]]; then
+      sudo cp -r ~/dotfiles/Extras/Extras/usr/share/sddm/themes/simple-sddm/ /usr/share/sddm/themes
+      echo "SDDM theme files copied successfully."
+    else
+      echo "SDDM theme files not found. Skipping theme setup."
+    fi
+
+    # Check if the SDDM configuration file exists before copying
+    if [[ -f ~/dotfiles/Extras/Extras/etc/sddm.conf ]]; then
+      sudo cp ~/dotfiles/Extras/Extras/etc/sddm.conf /etc/sddm.conf
+      echo "SDDM configuration file copied successfully."
+    else
+      echo "SDDM configuration file not found. Skipping configuration setup."
+    fi
+
+    clear
+    echo "SDDM has been installed and enabled to start at boot." && sleep 1
+
+  elif [[ "$dm_choice" == "2" ]]; then
+    echo "Installing LY..."
+
+    # Install LY and related packages
+    paru -S --noconfirm --needed ly
+
+    echo "Enabling LY to start at boot..."
+    sudo systemctl enable ly.service
+
+    # Check if the LY configuration file exists before copying
+    if [[ -f ~/dotfiles/Extras/Extras/etc/ly/config.ini ]]; then
+      sudo cp ~/dotfiles/Extras/Extras/etc/ly/config.ini /etc/ly/config.ini
+      echo "LY configuration file copied successfully."
+    else
+      echo "LY configuration file not found. Skipping configuration setup."
+    fi
+
+    clear
+    echo "LY has been installed and enabled to start at boot." && sleep 1
+
   else
-    echo "SDDM theme files not found. Skipping theme setup."
+    echo "Invalid choice. No display manager installed." && sleep 1
   fi
 
-  # Check if the SDDM configuration file exists before copying
-  if [[ -f ~/dotfiles/Extras/Extras/etc/sddm.conf ]]; then
-    # Copy the SDDM configuration file
-    sudo cp ~/dotfiles/Extras/Extras/etc/sddm.conf /etc/sddm.conf
-    echo "SDDM configuration file copied successfully."
-  else
-    echo "SDDM configuration file not found. Skipping configuration setup."
-  fi
-
-  clear
-  echo "SDDM has been installed and enabled to start at boot." && sleep 1
 else
-  echo "SDDM installation skipped. Proceeding with the setup." && sleep 1
-fi
-
-# --------------------------------------------------------------------------------------
-
-echo "Setting up LY (Simple TUI Login Manager)..."
-
-read -p "Would you like to install LY (Simple TUI Login Manager)? (y/n): " install_ly
-install_ly="${install_ly:-y}"  # Default to "y" if no input is provided
-
-# Check if the user wants to install LY
-if [[ "$install_ly" == "y" || "$install_ly" == "Y" ]]; then
-  echo "Installing LY..."
-
-  # Install LY and related packages
-  paru -S --noconfirm --needed ly
-
-  echo "Enabling LY to start at boot..."
-  sudo systemctl enable ly.service
-
-  # Check if the LY configuration file exists before copying
-  if [[ -f ~/dotfiles/Extras/Extras/etc/ly/config.ini ]]; then
-    # Copy the LY configuration file
-    sudo cp ~/dotfiles/Extras/Extras/etc/ly/config.ini /etc/ly/config.ini
-    echo "LY configuration file copied successfully."
-  else
-    echo "LY configuration file not found. Skipping configuration setup."
-  fi
-
-  clear
-  echo "LY has been installed and enabled to start at boot." && sleep 1
-else
-  echo "LY installation skipped. Proceeding with the setup." && sleep 1
+  echo "Display Manager installation skipped. Proceeding with the setup." && sleep 1
 fi
 
 # --------------------------------------------------------------------------------------
