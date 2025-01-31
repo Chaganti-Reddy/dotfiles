@@ -238,6 +238,7 @@ git config --global alias.ci commit
 git config --global alias.unstage 'reset HEAD --'
 git config --global log.decorate true
 git config --global push.default simple
+git config --global push.autoSetupRemote true
 
 echo "Git has been successfully configured with the following settings:"
 git config --list | grep -E "user.name|user.email|core.editor|init.defaultBranch|alias|push.default"
@@ -306,10 +307,10 @@ setup_gpg_pass() {
     echo "Setting up GPG and Pass..."
 
     # Check if required packages are already installed
-    if ! pacman -Q gnupg pass rofi-pass-wayland-git qrencode &> /dev/null; then
+    if ! pacman -Q gnupg pass rofi-pass-wayland-git qrencode pass-import &> /dev/null; then
         echo "Installing GPG and Pass..."
         sudo pacman -S --noconfirm gnupg pass qrencode
-        paru -S --noconfirm rofi-pass-wayland-git
+        paru -S --noconfirm rofi-pass-wayland-git pass-import
     else
         echo "Required packages are already installed. Skipping installation."
     fi
@@ -1299,7 +1300,7 @@ if command -v conda &>/dev/null; then
     echo "Conda detected, installing PIP packages..."
 
     # List of packages to install
-    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16")
+    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml")
     
     # Install each package if it's not already installed
     for package in "${pip_packages[@]}"; do
