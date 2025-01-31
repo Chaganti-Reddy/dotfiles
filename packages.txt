@@ -170,8 +170,6 @@ openjdk-doc
 openjdk-src 
 blueman 
 zenity 
-rofi-wayland 
-rofi-emoji 
 newsboat 
 fcitx5 
 fcitx5-configtool 
@@ -200,3 +198,4 @@ python-black
 vscode-html-languageserver 
 typescript-language-server 
 mdformat
+ydotool
