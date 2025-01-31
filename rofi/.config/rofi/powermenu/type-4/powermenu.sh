@@ -86,9 +86,11 @@ run_cmd() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
+    echo "$(uptime -p) from $(uptime -s) till $(date '+%Y-%m-%d %H:%M:%S')...  Shutting Down" >> ~/dotfiles/Uptime.log
 		run_cmd --shutdown
         ;;
     $reboot)
+    echo "$(uptime -p) from $(uptime -s) till $(date '+%Y-%m-%d %H:%M:%S')...  Rebooting" >> ~/dotfiles/Uptime.log
 		run_cmd --reboot
         ;;
     $lock)
