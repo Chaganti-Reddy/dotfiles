@@ -16,3 +16,16 @@ tex-fmt-bin
 lazydocker-bin
 rofi-lbonn-wayland-git
 rofi-emoji
+gopls 
+gomodifytags 
+gotests 
+gore 
+graphviz 
+python-pyflakes 
+python-isort 
+python-pipenv 
+python-nose 
+python-pytest 
+tidy 
+stylelint 
+js-beautify
