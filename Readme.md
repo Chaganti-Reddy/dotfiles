@@ -2,7 +2,7 @@
       
 This repository contains my personal configuration files for various applications and settings on Arch Linux with the DWM window manager. These files are essential for my system to look and function as I prefer. I recommend cloning this repository into your home directory (`~/`) for easy integration into your own setup.
 
-`NOTE - Please don't create any issues of pull requests. These dotfiles are only for my personal use.`
+`NOTE - Please don't create any Issues or Pull Requests. These dotfiles are only for my personal use.`
 
 ## Prerequisites
 
