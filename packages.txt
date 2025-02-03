@@ -201,3 +201,4 @@ mdformat
 ydotool
 ccls
 jedi-language-server
+wakatime
