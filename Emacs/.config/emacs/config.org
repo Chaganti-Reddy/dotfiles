@@ -820,6 +820,10 @@ Format the code on save
   (dt/leader-keys
     "i" '(:ignore t :wk "Custom")
     "i a" '(dt/insert-auto-tangle-tag :wk "Insert auto-tangle tag"))
+  
+  (dt/leader-keys
+    "q" '(:ignore t :wk "Quit")
+    "q q" '(evil-quit :wk " Quit Emacs"))
  
   (dt/leader-keys
     "m b" '(:ignore t :wk "Tables")
