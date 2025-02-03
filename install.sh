@@ -14,7 +14,7 @@ echo "Welcome to my Arch Setup!" && sleep 2
 echo "Some parts of the script require sudo, so if you're planning on leaving the desktop while the installation script does its thing, better drop it already!." && sleep 4
 #
 # # Creating all required home directories if not present
-mkdir -p ~/Downloads ~/Documents ~/Music ~/Pictures ~/Videos ~/Templates
+mkdir -p ~/Downloads ~/dox ~/Music ~/Pictures ~/vid ~/Templates
 #
 echo "Created Directories..." && sleep 1
 #
@@ -1563,6 +1563,8 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     echo "Stowing configurations for karna..."
     sudo pacman -S zellij
     stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser ranger_karna redyt screenlayout screensaver sxiv Templates Thunar xarchiver xsettingsd zathura zellij
+
+    cargo install taplo-cli --features lsp
 
     # Copy essential system files for karna user
     sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
