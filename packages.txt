@@ -199,3 +199,5 @@ vscode-html-languageserver
 typescript-language-server 
 mdformat
 ydotool
+ccls
+jedi-language-server
