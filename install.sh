@@ -139,6 +139,8 @@ sudo systemctl enable --now bluetooth.service
 
 sudo usermod -aG video "$USER"
 
+pipx install my_cookies
+
 # paru -S material-black-colors-theme apple_cursor kvantum-theme-materia kvantum --noconfirm
 
 echo "Done with permissions..." && sleep 2
