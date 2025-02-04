@@ -202,3 +202,4 @@ ydotool
 ccls
 jedi-language-server
 wakatime
+python-pipx
