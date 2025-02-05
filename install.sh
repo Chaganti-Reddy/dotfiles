@@ -139,8 +139,6 @@ sudo systemctl enable --now bluetooth.service
 
 sudo usermod -aG video "$USER"
 
-pipx install my_cookies
-
 # paru -S material-black-colors-theme apple_cursor kvantum-theme-materia kvantum --noconfirm
 
 echo "Done with permissions..." && sleep 2
@@ -1260,7 +1258,7 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
     # Ask the user if they want to install models
     ollama serve &
     clear
-    models=("mistral" "gemma:7b")
+    models=("llama3" "mistral" "gemma:7b")
     for model in "${models[@]}"; do
       clear
       echo "Would you like to install the model '$model'? (y/n)"
