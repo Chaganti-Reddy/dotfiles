@@ -52,7 +52,6 @@ apply_theme() {
   # Apply color scheme using pywal
   wal -i "$wallpaper" 
 
-     
   # Restart dunst to apply theme-related changes
   pkill dunst
   dunst &
@@ -62,18 +61,15 @@ apply_theme() {
   dunstify -u low -i "/usr/share/icons/dunst/themes.png" "Theme applied based on $wallpaper"
 }
 
-# check if ~/.config/waybar/colors-waybar.css is not exist then create it 
-waybar-colors(){
-  if [ ! -f ~/.config/waybar/colors-waybar.css ]; then
-    ln -s ~/.cache/wal/colors-waybar.css ~/.config/waybar/colors-waybar.css
-    echo "~/.config/waybar/colors-waybar.css created"
-  fi
-}
-
 # Function to reload Waybar configuration
 reload_waybar() {
+  # Check if colors-waybar.css exists and create a symlink if not
+  if [[ ! -f ~/.config/waybar/colors-waybar.css ]]; then
+    ln -s ~/.cache/wal/colors-waybar.css ~/.config/waybar/colors-waybar.css
+    dunstify -u low -i "/usr/share/icons/dunst/themes.png" "Created symlink for Waybar colors."
+  fi
+
   # Reload Waybar to apply the new theme
-  # You can either use `waybar-msg` if it supports your configuration or restart Waybar entirely
   if pgrep -x "waybar" >/dev/null; then
     # Waybar already running, reload it
     pkill waybar
@@ -87,25 +83,25 @@ reload_waybar() {
 }
 
 reload_hypr() {
-WAL_COLORS=~/.cache/wal/colors.json
+  WAL_COLORS=~/.cache/wal/colors.json
 
-# Extract the colors using jq
-active_border_start=$(jq -r '.colors.color3' "$WAL_COLORS")  # color1
-active_border_end=$(jq -r '.colors.color14' "$WAL_COLORS")    # color2
-inactive_border=$(jq -r '.colors.color12' "$WAL_COLORS")       # color4
+  # Extract the colors using jq
+  active_border_start=$(jq -r '.colors.color3' "$WAL_COLORS")  # color1
+  active_border_end=$(jq -r '.colors.color14' "$WAL_COLORS")    # color2
+  inactive_border=$(jq -r '.colors.color12' "$WAL_COLORS")       # color4
 
-# Convert hex to rgba (keep full opacity, change if needed)
-active_border_start_rgba=$(echo $active_border_start | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
-active_border_end_rgba=$(echo $active_border_end | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
-inactive_border_rgba=$(echo $inactive_border | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
+  # Convert hex to rgba (keep full opacity, change if needed)
+  active_border_start_rgba=$(echo $active_border_start | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
+  active_border_end_rgba=$(echo $active_border_end | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
+  inactive_border_rgba=$(echo $inactive_border | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
 
-# Apply these colors to the Hyprland config
-sed -i "s|col.active_border = .*|col.active_border = $active_border_start_rgba $active_border_end_rgba 45deg|" ~/.config/hypr/hyprland.conf
-sed -i "s|col.inactive_border = .*|col.inactive_border = $inactive_border_rgba|" ~/.config/hypr/hyprland.conf
+  # Apply these colors to the Hyprland config
+  sed -i "s|col.active_border = .*|col.active_border = $active_border_start_rgba $active_border_end_rgba 45deg|" ~/.config/hypr/hyprland.conf
+  sed -i "s|col.inactive_border = .*|col.inactive_border = $inactive_border_rgba|" ~/.config/hypr/hyprland.conf
 
-# Reload Hyprland to apply the changes
-hyprctl reload
-dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Hyprland reloaded with new theme"
+  # Reload Hyprland to apply the changes
+  hyprctl reload
+  dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Hyprland reloaded with new theme"
 }
 
 # Main logic (execute all functions one by one)
@@ -121,7 +117,6 @@ main() {
 
   set_wallpaper "$random_wallpaper" # Set the random wallpaper
   apply_theme "$random_wallpaper"   # Apply the theme based on the wallpaper
-  waybar-colors
   reload_waybar                     # Reload Waybar to apply the new theme
   reload_hypr
 }
