@@ -9,7 +9,7 @@ start_hyprpaper() {
   if ! pgrep -x "hyprpaper" >/dev/null; then
     hyprpaper &
     sleep 0.5 # Give it time to start
-    notify-send -u low "Hyprpaper is not running. Starting it..."
+    dunstify -u low "Hyprpaper is not running. Starting it..."
   fi
 }
 
@@ -26,7 +26,7 @@ set_wallpaper() {
 
   # Ensure the file exists
   if [[ ! -f "$wallpaper" ]]; then
-    notify-send -u low "Error: File not found →> $wallpaper"
+    dunstify -u low "Error: File not found →> $wallpaper"
     exit 1
   fi
 
@@ -34,7 +34,7 @@ set_wallpaper() {
   hyprctl hyprpaper preload "$wallpaper"
   sleep 0.5                                       # Give time for preload
   hyprctl hyprpaper wallpaper "$MONITOR, $wallpaper"
-  notify-send -u low -i "/usr/share/icons/dunst/picture.png" "Wallpaper set: $wallpaper"
+  dunstify -u low -i "/usr/share/icons/dunst/picture.png" "Wallpaper set: $wallpaper"
 }
 
 # Function to apply color scheme (theming)
@@ -45,18 +45,29 @@ apply_theme() {
 
   # Ensure wallpaper exists before applying
   if [[ ! -f "$wallpaper" ]]; then
-    notify-send -u low "Error: Wallpaper file not found →> $wallpaper"
+    dunstify -u low "Error: Wallpaper file not found →> $wallpaper"
     exit 1
   fi
 
   # Apply color scheme using pywal
   wal -i "$wallpaper" 
 
+     
   # Restart dunst to apply theme-related changes
   pkill dunst
   dunst &
 
-  notify-send -u low -i "/usr/share/icons/dunst/themes.png" "Theme applied based on $wallpaper"
+  command -v pywalfox &>/dev/null && pywalfox update 
+
+  dunstify -u low -i "/usr/share/icons/dunst/themes.png" "Theme applied based on $wallpaper"
+}
+
+# check if ~/.config/waybar/colors-waybar.css is not exist then create it 
+waybar-colors(){
+  if [ ! -f ~/.config/waybar/colors-waybar.css ]; then
+    ln -s ~/.cache/wal/colors-waybar.css ~/.config/waybar/colors-waybar.css
+    echo "~/.config/waybar/colors-waybar.css created"
+  fi
 }
 
 # Function to reload Waybar configuration
@@ -67,11 +78,11 @@ reload_waybar() {
     # Waybar already running, reload it
     pkill waybar
     waybar &
-    notify-send -u low -i "/usr/share/icons/dunst/palette.png" "Waybar reloaded with new theme"
+    dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Waybar reloaded with new theme"
   else
     # If Waybar isn't running, start it (or restart it manually based on your system's setup)
     waybar &
-    notify-send -u low -i "/usr/share/icons/dunst/palette.png" "Waybar started with new theme"
+    dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Waybar started with new theme"
   fi
 }
 
@@ -94,6 +105,7 @@ sed -i "s|col.inactive_border = .*|col.inactive_border = $inactive_border_rgba|"
 
 # Reload Hyprland to apply the changes
 hyprctl reload
+dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Hyprland reloaded with new theme"
 }
 
 # Main logic (execute all functions one by one)
@@ -103,12 +115,13 @@ main() {
   random_wallpaper=$(get_random_wallpaper) # Get a random wallpaper from all subdirectories in Pictures
 
   if [[ -z "$random_wallpaper" ]]; then
-    notify-send "No wallpapers found!"
+    dunstify "No wallpapers found!"
     exit 1
   fi
 
   set_wallpaper "$random_wallpaper" # Set the random wallpaper
   apply_theme "$random_wallpaper"   # Apply the theme based on the wallpaper
+  waybar-colors
   reload_waybar                     # Reload Waybar to apply the new theme
   reload_hypr
 }
