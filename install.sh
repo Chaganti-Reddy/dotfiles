@@ -1300,7 +1300,7 @@ if command -v conda &>/dev/null; then
     echo "Conda detected, installing PIP packages..."
 
     # List of packages to install
-    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies")
+    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter")
     
     # Install each package if it's not already installed
     for package in "${pip_packages[@]}"; do
@@ -1542,12 +1542,21 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
   # Remove existing bashrc and zshrc files
   echo "Removing existing bashrc..."
   rm -rf ~/.bashrc
+  cd ~/dotfiles/ || return
 
   # Check if the username is "karna"
   if [ "$(whoami)" != "karna" ]; then
     # Install for non-karna users
     echo "Stowing configurations for non-karna user..."
     stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt screensaver sxiv Templates themes Thunar xsettingsd zathura
+
+    # ask user to confirm to stow nvim_gen 
+    read -p "Would you like to stow nvim_gen? (y/n): " stow_nvim_gen
+    stow_nvim_gen="${stow_nvim_gen:-y}" # Default to "y" if no input is provided
+
+    if [[ "$stow_nvim_gen" == "y" || "$stow_nvim_gen" == "Y" ]]; then
+      stow nvim_gen
+    fi 
 
     # Copy essential system files for non-karna users
     sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
