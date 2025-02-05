@@ -381,6 +381,8 @@ alias fontc="fc-cache -fv"
 alias autocommit="sh ~/dotfiles/gitAutoCommitter.sh"
 alias debugwaybar="waybar -l trace"
 alias rm="trash-put"
+alias lazyg="lazygit"
+alias lazyd="lazydocker"
 
 function cheat() {
     curl cht.sh/$1
