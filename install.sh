@@ -721,6 +721,7 @@ install_browser
 
 # -------------------------------------------------------------------------------------
 
+
 echo "Setting up torrent and remote working applications..." && sleep 1
 
 # Function to check if a package is installed
@@ -741,6 +742,7 @@ echo "7) AnyDesk (Remote Desktop)"
 echo "8) xrdp (Remote Desktop Protocol)"
 echo "9) OpenVPN (VPN)"
 echo "10) WireGuard (VPN)"
+echo "11) varia (Download Manager on ARIA2)"  # New option added here
 echo ""
 echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
 
@@ -835,6 +837,10 @@ for app in $apps; do
       echo "Installing WireGuard..."
       sudo pacman -S --noconfirm wireguard-tools
     fi
+    ;;
+  11)
+    echo "Installing varia..."
+    flatpak install flathub io.github.giantpinkrobots.varia
     ;;
   *)
     echo "Invalid choice: $app"
