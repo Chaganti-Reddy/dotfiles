@@ -164,6 +164,49 @@ function ex ()
   fi
 }
 
+function compress () {
+  if [ -z "$1" ]; then
+    echo "Usage: compress <file_or_directory>"
+    return 1
+  fi
+
+  input="$1"
+  echo "Select a compression format:"  
+  typeset -a options
+  options=("tar.gz" "zip" "rar" "7z" "tar.xz" "tar.zst" "gz" "tar.bz2" "tar" "tbz2" "tgz" "bz2")
+  for i in {1..${#options[@]}}; do
+    echo "$i) ${options[$i]}"
+  done
+
+  echo -n "Enter the number of your choice: "
+  read choice
+  if [[ "$choice" -lt 1 || "$choice" -gt ${#options[@]} ]]; then
+    echo "Invalid choice. Exiting."
+    return 1
+  fi
+
+  format="${options[$choice]}"
+  output="${input}.${format}"
+
+  case $format in
+    tar.bz2)   tar cjf "$output" "$input"   ;;
+    tar.gz)    tar czf "$output" "$input"   ;;
+    bz2)       bzip2 -k "$input"             ;;
+    rar)       rar a "$output" "$input"     ;;
+    gz)        gzip -k "$input"              ;;
+    tar)       tar cf "$output" "$input"   ;;
+    tbz2)      tar cjf "$output" "$input"  ;;
+    tgz)       tar czf "$output" "$input"  ;;
+    zip)       zip -r "$output" "$input"   ;;
+    7z)        7z a "$output" "$input"     ;;
+    tar.xz)    tar cJf "$output" "$input"  ;;
+    tar.zst)   tar --zstd -cf "$output" "$input"  ;;
+    *)         echo "Unsupported format: $format" ; return 1;;
+  esac
+
+  echo "Compression successful: $output"
+}
+
 function ctime() {
     g++ -std=c++17 $1".cpp" -o $1
     time ./$1
