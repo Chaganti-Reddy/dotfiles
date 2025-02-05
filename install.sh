@@ -742,7 +742,8 @@ echo "7) AnyDesk (Remote Desktop)"
 echo "8) xrdp (Remote Desktop Protocol)"
 echo "9) OpenVPN (VPN)"
 echo "10) WireGuard (VPN)"
-echo "11) varia (Download Manager on ARIA2)"  # New option added here
+echo "11) Varia (Download Manager on ARIA2)" 
+echo "12) Warehouse (Flatpak App Manager)"
 echo ""
 echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
 
@@ -842,6 +843,9 @@ for app in $apps; do
     echo "Installing varia..."
     flatpak install flathub io.github.giantpinkrobots.varia
     ;;
+  12)
+    echo "Installing warehouse..."
+    flatpak install flathub io.github.flattool.Warehouse
   *)
     echo "Invalid choice: $app"
     ;;
@@ -1532,6 +1536,12 @@ if [[ "$install_themes_icons" == "y" || "$install_themes_icons" == "Y" ]]; then
 
   # Copy Dunst icons
   sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
+
+  # Override Flatpak GTK Themes and Icons
+  sudo flatpak override --filesystem=$HOME/.themes
+  sudo flatpak override --filesystem=$HOME/.icons
+  sudo flatpak override --env=GTK_THEME=Kripton
+  sudo flatpak override --env=ICON_THEME=Luv-Folders-Dark
 
   echo "Themes and Icons have been installed successfully..." && sleep 2
 else
