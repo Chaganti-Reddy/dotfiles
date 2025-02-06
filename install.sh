@@ -722,7 +722,7 @@ install_browser
 # -------------------------------------------------------------------------------------
 
 
-echo "Setting up torrent and remote working applications..." && sleep 1
+echo "Setting up torrent and working applications..." && sleep 1
 
 # Function to check if a package is installed
 is_installed() {
@@ -744,6 +744,7 @@ echo "9) OpenVPN (VPN)"
 echo "10) WireGuard (VPN)"
 echo "11) Varia (Download Manager on ARIA2)" 
 echo "12) Warehouse (Flatpak App Manager)"
+echo "13) Gromit-MPX (On Screen Drawing Tool)"
 echo ""
 echo "Enter your choices (e.g., 1 2 4), or press Enter to skip:"
 
@@ -846,6 +847,15 @@ for app in $apps; do
   12)
     echo "Installing warehouse..."
     flatpak install flathub io.github.flattool.Warehouse
+    ;;
+  13)
+    if is_installed "gromit-mpx"; then
+      echo "Gromit-MPX is already installed."
+    else
+      echo "Installing Gromit-MPX..."
+      paru -S --noconfirm --needed gromit-mpx
+    fi 
+    ;;
   *)
     echo "Invalid choice: $app"
     ;;
