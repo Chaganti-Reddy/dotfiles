@@ -35,17 +35,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-        "html",
-        "css",
-      },
+      ensure_installed = 'all',
+      ignore_install = { 'org' },
     },
   },
-
-
 
   {
     "max397574/better-escape.nvim",
@@ -222,6 +215,26 @@ return {
       vim.g.vimtex_syntax_enabled = 1
     end,
   },
+
+{
+  'nvim-orgmode/orgmode',
+  event = 'VeryLazy',
+  ft = { 'org' },
+  config = function()
+    -- Setup orgmode
+    require('orgmode').setup({
+      org_agenda_files = '/mnt/Karna/Git/Project-K/Org/**/*',
+      org_default_notes_file = '/mnt/Karna/Git/Project-K/Org/notes.org',
+    })
+
+    -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
+    -- add ~org~ to ignore_install
+    -- require('nvim-treesitter.configs').setup({
+    --   ensure_installed = 'all',
+    --   ignore_install = { 'org' },
+    -- })
+  end,
+},
 
   -- https://nvimdev.github.io/lspsaga/
   {
