@@ -402,7 +402,7 @@ if [[ "$install_hyprland" == "y" || "$install_hyprland" == "Y" ]]; then
     "hyprlang-git"
     "clipse-bin"
     "hyde-cli-git"
-    "hyprshot-git"
+    # "hyprshot-git"
     "hyprland-qtutils-git"
     "bluetui"
     "hyprpicker-git"
