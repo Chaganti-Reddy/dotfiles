@@ -164,9 +164,9 @@ function ex ()
   fi
 }
 
-function compress () {
+function comp () {
   if [ -z "$1" ]; then
-    echo "Usage: compress <file_or_directory>"
+    echo "Usage: comp <file_or_directory>"
     return 1
   fi
 
@@ -206,6 +206,8 @@ function compress () {
 
   echo "Compression successful: $output"
 }
+
+compdef '_files' comp
 
 function ctime() {
     g++ -std=c++17 $1".cpp" -o $1
