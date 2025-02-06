@@ -205,3 +205,4 @@ wakatime
 python-pipx
 flatpak
 ghostscript
+qpdf
