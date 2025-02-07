@@ -2,7 +2,7 @@ sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
 state: stop
-current: 47
+current: 28
 random: 1
 repeat: 1
 single: 0
@@ -24,8 +24,8 @@ playlist_begin
 10:playlists/English/Lady Gaga - Judas.mp3
 11:playlists/English/Måneskin - Beggin'.mp3
 12:playlists/English/Lady Gaga, Bruno Mars - Die With A Smile.mp3
-13:playlists/English/Jung Kook, BTS, FIFA Sound - Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack].mp3
-14:playlists/English/Sabrina Carpenter - Espresso.mp3
+13:playlists/English/Sabrina Carpenter - Espresso.mp3
+14:playlists/English/Jung Kook, BTS, FIFA Sound - Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack].mp3
 15:playlists/English/The Kid LAROI, Justin Bieber - STAY (with Justin Bieber).mp3
 16:playlists/English/Coldplay - A Sky Full of Stars.mp3
 17:playlists/English/M83 - Midnight City.mp3
