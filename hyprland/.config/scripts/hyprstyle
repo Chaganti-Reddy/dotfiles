@@ -56,8 +56,6 @@ apply_theme() {
   pkill dunst
   dunst &
 
-  command -v pywalfox &>/dev/null && pywalfox update 
-
   dunstify -u low -i "/usr/share/icons/dunst/themes.png" "Theme applied based on $wallpaper"
 }
 
@@ -119,6 +117,14 @@ main() {
   apply_theme "$random_wallpaper"   # Apply the theme based on the wallpaper
   reload_waybar                     # Reload Waybar to apply the new theme
   reload_hypr
+
+  PYWALFOX_BIN=$(command -v pywalfox)
+  if [[ -n "$PYWALFOX_BIN" ]]; then
+    "$PYWALFOX_BIN" update 
+    # dunstify -u low "ZEN update"
+  else
+    dunstify -u low "Pywalfox not found in PATH"
+  fi
 }
 
 # Execute main function
