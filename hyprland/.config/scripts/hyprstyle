@@ -34,7 +34,7 @@ set_wallpaper() {
   hyprctl hyprpaper preload "$wallpaper"
   sleep 0.5                                       # Give time for preload
   hyprctl hyprpaper wallpaper "$MONITOR, $wallpaper"
-  dunstify -u low -i "/usr/share/icons/dunst/picture.png" "Wallpaper set: $wallpaper"
+  #dunstify -u low -i "/usr/share/icons/dunst/picture.png" "Wallpaper set: $wallpaper"
 }
 
 # Function to apply color scheme (theming)
@@ -72,11 +72,11 @@ reload_waybar() {
     # Waybar already running, reload it
     pkill waybar
     waybar &
-    dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Waybar reloaded with new theme"
+    #dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Waybar reloaded with new theme"
   else
     # If Waybar isn't running, start it (or restart it manually based on your system's setup)
     waybar &
-    dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Waybar started with new theme"
+    #dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Waybar started with new theme"
   fi
 }
 
@@ -99,7 +99,7 @@ reload_hypr() {
 
   # Reload Hyprland to apply the changes
   hyprctl reload
-  dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Hyprland reloaded with new theme"
+  # dunstify -u low -i "/usr/share/icons/dunst/palette.png" "Hyprland reloaded with new theme"
 }
 
 # Main logic (execute all functions one by one)
@@ -118,12 +118,13 @@ main() {
   reload_waybar                     # Reload Waybar to apply the new theme
   reload_hypr
 
-  PYWALFOX_BIN=$(command -v pywalfox)
-  if [[ -n "$PYWALFOX_BIN" ]]; then
-    "$PYWALFOX_BIN" update 
+  PYWALFOX_BIN="/home/karna/miniconda/bin/pywalfox"
+
+  if [[ -x "$PYWALFOX_BIN" ]]; then
+    "$PYWALFOX_BIN" update
     # dunstify -u low "ZEN update"
   else
-    dunstify -u low "Pywalfox not found in PATH"
+    dunstify -u low "Pywalfox not found at $PYWALFOX_BIN"
   fi
 }
 
