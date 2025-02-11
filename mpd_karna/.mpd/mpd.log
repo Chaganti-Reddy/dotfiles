@@ -2473,3 +2473,6 @@ Feb 09 17:48 : player: played "playlists/English/Alan Walker - Faded.mp3"
 Feb 09 20:00 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
 Feb 09 20:02 : player: played "playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
 Feb 09 20:02 : player: played "playlists/English/Justin Bieber - Sorry.mp3"
+Feb 11 10:06 : update: added playlists/English/Modern Talking - Cheri Cheri Lady.mp3
+Feb 11 10:47 : player: played "playlists/Liked/Padmalatha, Vishnupriya Ravi - Pareshanura.mp3"
+Feb 11 13:45 : exception: Not playing
