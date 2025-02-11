@@ -260,7 +260,7 @@ export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f
 ## Aliases
 
 #list
-alias emacs="emacsclient -c -a 'emacs'"
+# alias emacs="emacsclient -c -a 'emacs'"
 alias zathura="$HOME/.local/bin/zathura"
 alias cd="z"
 alias cdi="zi"
@@ -427,6 +427,8 @@ alias debugwaybar="waybar -l trace"
 alias rm="trash-put"
 alias lazyg="lazygit"
 alias lazyd="lazydocker"
+alias llama3="ollama run llama3:8b"
+alias llama3k="ollama run llama3:8b-instruct-q6_K"
 
 function cheat() {
     curl cht.sh/$1
