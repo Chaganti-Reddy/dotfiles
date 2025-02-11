@@ -6,3 +6,7 @@ export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
 sh ~/dotfiles/hyprland/.config/scripts/hyprstyle &
+
+
+# Run ollama serve in the background silently.
+ollama serve > /dev/null 2>&1 &
