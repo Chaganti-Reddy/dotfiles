@@ -260,7 +260,7 @@ export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f
 ## Aliases
 
 #list
-# alias emacs="emacsclient -c -a 'emacs'"
+alias emacs="emacsclient -c -a 'emacs'"
 alias zathura="$HOME/.local/bin/zathura"
 alias cd="z"
 alias cdi="zi"
