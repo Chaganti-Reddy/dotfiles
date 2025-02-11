@@ -1278,7 +1278,7 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
     # Ask the user if they want to install models
     ollama serve &
     clear
-    models=("deepseek-r1:8b" "llama3:8b" "llama3:8b-instruct-q6_K" "mistral" "zephyr" "qwen2.5:3b" "qwen2.5-coder:3b" "gemma:7b")
+    models=("deepseek-r1:8b" "deepseek-coder:6.7b" "llama3:8b" "llama3:8b-instruct-q6_K" "mistral" "zephyr" "qwen2.5:3b" "gemma:7b")
     for model in "${models[@]}"; do
       clear
       echo "Would you like to install the model '$model'? (y/n)"
@@ -1320,7 +1320,7 @@ if command -v conda &>/dev/null; then
     echo "Conda detected, installing PIP packages..."
 
     # List of packages to install
-    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter" "pymupdf")
+    pip_packages=("pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab" "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil" "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher" "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4" "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter" "pymupdf" "tk-tools")
     
     # Install each package if it's not already installed
     for package in "${pip_packages[@]}"; do
