@@ -246,6 +246,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
 export PATH="$HOME/miniconda:$PATH"
 export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
+export PUPPETEER_EXECUTABLE_PATH="/home/karna/.cache/puppeteer/chrome-headless-shell/linux-133.0.6943.53/chrome-headless-shell-linux64/chrome-headless-shell"
 
 SUDO_EDITOR=/usr/bin/nvim
 export SUDO_EDITOR
@@ -487,3 +488,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
