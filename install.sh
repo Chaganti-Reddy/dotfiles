@@ -307,10 +307,10 @@ setup_gpg_pass() {
     echo "Setting up GPG and Pass..."
 
     # Check if required packages are already installed
-    if ! pacman -Q gnupg pass rofi-pass-wayland-git qrencode pass-import &> /dev/null; then
+    if ! pacman -Q gnupg pass rofi-wayland qrencode pass-import &> /dev/null; then
         echo "Installing GPG and Pass..."
-        sudo pacman -S --noconfirm gnupg pass qrencode
-        paru -S --noconfirm rofi-pass-wayland-git pass-import
+        sudo pacman -S --noconfirm gnupg pass qrencode rofi-wayland
+        paru -S --noconfirm pass-import
     else
         echo "Required packages are already installed. Skipping installation."
     fi
@@ -1573,7 +1573,7 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
   # Check if the username is "karna"
   if [ "$(whoami)" != "karna" ]; then
     # Install for non-karna users
-    echo "Stowing configurations for non-karna user..."
+    echo "Stowing configurations for ${USER} user..."
     stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt screensaver sxiv Templates themes Thunar xsettingsd zathura
 
     # ask user to confirm to stow nvim_gen 
@@ -1611,6 +1611,11 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
 
     # Install custom tools for karna
     sudo cp ~/dotfiles/Extras/Extras/kunst /usr/bin/kusnt
+
+    cargo install leetcode-cli
+
+    sudo npm install -g @mermaid-js/mermaid-cli
+    npx puppeteer browsers install chrome-headless-shell
 
     echo "Setup kaggle JSON and wakatime files using ccrypt... also read essential_info.md file" && sleep 1
     echo "Extras have been installed for KARNA." && sleep 1
