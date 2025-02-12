@@ -14,7 +14,7 @@ cava
 sysstat 
 tex-fmt-bin
 lazydocker-bin
-rofi-lbonn-wayland-git
+rofi-wayland
 rofi-emoji
 gopls 
 gomodifytags 
