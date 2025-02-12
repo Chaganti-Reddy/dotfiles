@@ -207,3 +207,7 @@ flatpak
 ghostscript
 qpdf
 mupdf-tools
+gcc 
+openssl 
+dbus 
+sqlite
