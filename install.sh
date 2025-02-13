@@ -1616,6 +1616,7 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
 
     sudo npm install -g @mermaid-js/mermaid-cli
     npx puppeteer browsers install chrome-headless-shell
+    sudo npx puppeteer browsers install chrome-headless-shell
 
     echo "Setup kaggle JSON and wakatime files using ccrypt... also read essential_info.md file" && sleep 1
     echo "Extras have been installed for KARNA." && sleep 1
