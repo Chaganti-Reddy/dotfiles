@@ -26,7 +26,7 @@ fi
 
 # Merge the files: copy the template first, then append the secrets file.
 cat "$TEMPLATE_FILE" > "$CONFIG_FILE"
-echo "" >> "$CONFIG_FILE"  # Add a newline to separate content if needed.
+# echo "" >> "$CONFIG_FILE"  # Add a newline to separate content if needed.
 cat "$SECRETS_FILE" >> "$CONFIG_FILE"
 
 echo "Local configuration regenerated at $CONFIG_FILE."
