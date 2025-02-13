@@ -430,6 +430,12 @@ alias lazyg="lazygit"
 alias lazyd="lazydocker"
 alias llama3="ollama run llama3:8b"
 alias llama3k="ollama run llama3:8b-instruct-q6_K"
+alias ollzephyr="ollama run zephyr:latest"
+alias ollmistral="ollama run mistral:latest"
+alias olldeepcode="ollama run deepseek-coder:6.7b"
+alias ollquen25="ollama run quen2.5:3b"
+alias olldeep="ollama run deepseek-r1:8b"
+alias dsa="cd /mnt/Karna/Git/Project-K/Map/DSA/"
 
 function cheat() {
     curl cht.sh/$1
