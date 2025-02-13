@@ -1,0 +1,25 @@
+[code]
+editor = "nvim"
+editor_args = ["-c", "startinsert"]
+lang = "python"
+# # Automatically insert these lines before your code (at the top)
+# inject_before = [
+#   "#include<bits/stdc++.h>",
+#   "using namespace std;"
+# ]
+# # Automatically insert these lines after your code (at the bottom)
+# inject_after = [
+#   "int main() {",
+#   "    Solution solution;",
+#   "    return 0;",
+#   "}"
+# ]
+# if include problem description
+comment_problem_desc = false
+
+# Store all solutions in a custom directory
+[storage]
+root = "/mnt/Karna/Git/Project-K/Map/DSA/Leetcode/"
+cache = "cache"
+code = "solutions"
+scripts = "scripts"
