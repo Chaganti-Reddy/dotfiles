@@ -23,3 +23,6 @@ root = "/mnt/Karna/Git/Project-K/Map/DSA/Leetcode/"
 cache = "cache"
 code = "solutions"
 scripts = "scripts"
+
+[cookies]
+site = "leetcode.com"
