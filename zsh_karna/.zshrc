@@ -463,6 +463,39 @@ bindkey '^X^A' rmfzf
 alias zlk="zellij --layout karna attach --create 'Karna'"
 alias zlc="zellij --layout compi attach --create 'DSA'"
 
+# -----------------CP PARSER -----------------
+# Run CPParse in server mode (parsing)
+function cparse() {
+  ~/.config/scripts/CPParse
+}
+
+# Edit a problem solution
+# Usage: cpedit A   (opens nvim in folder A/solution.py)
+function cpedit() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: cpedit <problem letter>"
+    return 1
+  fi
+  ~/.config/scripts/CPParse edit "$1"
+}
+
+# Run tests for a single problem folder
+# Usage: cprun A   (runs tests for folder A)
+function cprun() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: cprun <problem letter>"
+    return 1
+  fi
+  ~/.config/scripts/CPParse run "$1"
+}
+
+# Global run: run tests for all problem folders in the current contest folder
+# Usage: cpRun
+function cpRun() {
+  ~/.config/scripts/CPParse Run
+}
+# --------------------------------------------
+
 
 export STARSHIP_LOG="error"
 
