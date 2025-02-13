@@ -28,7 +28,7 @@ if [[ -z "$login" ]]; then
 fi
 
 # Present the list of actions via rofi
-action=$(printf '%s\n' "autotype" "type login" "type pass" "copy login" "copy pass" | rofi -dmenu -p "action:")
+action=$(printf '%s\n' "autotype" "type login" "type pass" "copy login" "copy pass" | rofi -dmenu -theme "$HOME/.config/rofi/dt-center.rasi" -p "action:")
 [[ -z "$action" ]] && exit 0
 
 # Optional notification function (requires notify-send)
