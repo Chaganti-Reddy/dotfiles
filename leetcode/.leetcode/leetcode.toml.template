@@ -25,4 +25,6 @@ code = "solutions"
 scripts = "scripts"
 
 [cookies]
+# csrf="csrftoken"
+# session="sessionid"
 site = "leetcode.com"
