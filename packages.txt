@@ -211,3 +211,8 @@ gcc
 openssl 
 dbus 
 sqlite
+hspell
+nuspell
+libvoikko
+aspell
+emacs-nativecomp
