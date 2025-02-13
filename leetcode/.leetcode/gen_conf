@@ -1,0 +1,32 @@
+#!/bin/bash
+# gen_conf.sh
+
+# Define file locations
+CONFIG_FILE="$HOME/.leetcode/leetcode.toml"
+TEMPLATE_FILE="leetcode.toml.template"
+SECRETS_FILE="leetcode_secrets.toml"
+
+# Ensure the configuration directory exists
+CONFIG_DIR=$(dirname "$CONFIG_FILE")
+mkdir -p "$CONFIG_DIR"
+
+# Delete the main config file (if it exists)
+rm -f "$CONFIG_FILE"
+
+# Check that the template and secrets files exist
+if [ ! -f "$TEMPLATE_FILE" ]; then
+    echo "Template file $TEMPLATE_FILE not found. Exiting."
+    exit 1
+fi
+
+if [ ! -f "$SECRETS_FILE" ]; then
+    echo "Secrets file $SECRETS_FILE not found. Exiting."
+    exit 1
+fi
+
+# Merge the files: copy the template first, then append the secrets file.
+cat "$TEMPLATE_FILE" > "$CONFIG_FILE"
+echo "" >> "$CONFIG_FILE"  # Add a newline to separate content if needed.
+cat "$SECRETS_FILE" >> "$CONFIG_FILE"
+
+echo "Local configuration regenerated at $CONFIG_FILE."
