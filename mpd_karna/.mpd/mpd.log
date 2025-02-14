@@ -2520,3 +2520,44 @@ Feb 13 21:52 : player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp
 Feb 13 21:56 : player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
 Feb 13 22:00 : player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
 Feb 13 22:02 : player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
+Feb 14 17:04 : update: added playlists/Liked/Darshan Raval - Needa Padadhani.mp3
+Feb 14 17:04 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:04 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:04 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:04 : update: updating playlists/Liked/Darshan Raval - Needa Padadhani.mp3
+Feb 14 17:04 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:04 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:04 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:05 : update: added playlists/Liked/Kala Bhairava - Spirit Of Jersey (Jersey).mp3
+Feb 14 17:05 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:05 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:05 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:07 : player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+Feb 14 17:10 : player: played "playlists/English/Justin Bieber - Love Me.mp3"
+Feb 14 17:11 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Feb 14 17:31 : update: added playlists/Liked/Kola Kalle Ilaa Lyrical ｜ #VaruduKaavalenu Songs ｜ Naga Shaurya, Ritu Varma ｜ Sid Sriram ｜ Vishal C [VCtVrJLNR1c].mp3
+Feb 14 17:31 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:31 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:31 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:31 : update: removing playlists/Liked/Kola Kalle Ilaa Lyrical ｜ #VaruduKaavalenu Songs ｜ Naga Shaurya, Ritu Varma ｜ Sid Sriram ｜ Vishal C [VCtVrJLNR1c].mp3
+Feb 14 17:31 : update: added playlists/Liked/Kola Kalle Ilaa.mp3
+Feb 14 17:31 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:31 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:31 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:31 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:31 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:31 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:32 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:32 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:32 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:32 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:32 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:32 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:32 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:32 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:32 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:32 : update: removing playlists/Liked/Kola Kalle Ilaa.mp3
+Feb 14 17:32 : mpg123: mpg123_getformat() failed: Message: I am done with this track.
+Feb 14 17:32 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
+Feb 14 17:32 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
+Feb 14 17:33 : player: played "playlists/English/Justin Bieber - Ghost.mp3"
