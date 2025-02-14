@@ -469,6 +469,9 @@ bindkey '^X^A' rmfzf
 alias zlk="zellij --layout karna attach --create 'Karna'"
 alias zlc="zellij --layout compi attach --create 'DSA'"
 
+
+
+
 # -----------------CP PARSER -----------------
 # Run CPParse in server mode (parsing)
 function cparse() {
