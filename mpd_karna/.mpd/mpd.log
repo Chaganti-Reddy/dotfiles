@@ -2561,3 +2561,17 @@ Feb 14 17:32 : mpg123: mpg123_getformat() failed: Message: I am done with this t
 Feb 14 17:32 : ffmpeg/mp3: Format mp3 detected only with low score of 24, misdetection possible!
 Feb 14 17:32 : ffmpeg/mp3: Failed to find two consecutive MPEG audio frames.
 Feb 14 17:33 : player: played "playlists/English/Justin Bieber - Ghost.mp3"
+Feb 15 12:04 : exception: Not playing
+Feb 15 12:04 : exception: Not playing
+Feb 15 21:28 : player: played "playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
+Feb 15 22:31 : player: played "playlists/Liked/Kala Bhairava - Spirit Of Jersey (Jersey).mp3"
+Feb 16 10:10 : update: removing playlists/Liked/Yo Yo Honey Singh - Millionaire.mp3
+Feb 16 10:10 : update: added playlists/Liked/G. V. Prakash, Dhee - Kaatuka Kanule (From 'Aakaasam Nee Haddhu Ra').mp3
+Feb 16 10:11 : update: added playlists/Liked/Sid Sriram - Maate Vinadhuga.mp3
+Feb 16 10:11 : update: updating playlists/Liked/Sid Sriram - Maate Vinadhuga.mp3
+Feb 16 10:11 : update: added playlists/Liked/GowraHari, Saicharan Bhaskaruni - Hanuman Chalisa (From 'HanuMan') [Hindi].mp3
+Feb 16 10:14 : update: removing playlists/Liked/GowraHari, Saicharan Bhaskaruni - Hanuman Chalisa (From 'HanuMan') [Hindi].mp3
+Feb 16 10:14 : update: added playlists/Liked/GowraHari, Saicharan Bhaskaruni - Hanuman Chalisa (From 'HanuMan') [Telugu].mp3
+Feb 16 10:16 : player: played "playlists/Liked/GowraHari, Saicharan Bhaskaruni - Hanuman Chalisa (From 'HanuMan') [Hindi].mp3"
+Feb 16 10:17 : player: played "playlists/Liked/GowraHari, Saicharan Bhaskaruni - Hanuman Chalisa (From 'HanuMan') [Telugu].mp3"
+Feb 16 10:17 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
