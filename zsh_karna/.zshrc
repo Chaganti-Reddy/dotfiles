@@ -243,6 +243,7 @@ export PATH="$HOME/dotfiles/hyprland/.config/scripts:$PATH"
 export PATH="$HOME/dotfiles/DWMScripts/.dwm/bin/:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.config/rofi/scripts:$PATH"
 export PATH="$HOME/miniconda:$PATH"
 export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
@@ -531,3 +532,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
