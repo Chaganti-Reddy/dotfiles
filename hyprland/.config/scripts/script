@@ -2,7 +2,7 @@
 
 declare -A options
 options=(["Edit Config Files"]=~/.config/scripts/confedit 
-         ["Open Dictionary"]=~/.config/scripts/dict 
+         ["Open Dictionary"]=~/.config/scripts/dictionary
          ["Kill an Existing Process"]=~/.config/scripts/kill 
          ["Open Man Page of an Installed Program"]=~/.config/scripts/manpages 
          ["Pick a color"]=~/.local/bin/dm-colpick 
