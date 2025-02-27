@@ -32,3 +32,4 @@ stylelint
 js-beautify
 ttf-iosevka
 ttf-iosevka-nerd
+ttf-merriweather
