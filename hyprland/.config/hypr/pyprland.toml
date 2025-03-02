@@ -28,6 +28,7 @@ class = "qalculate-gtk"
 position = "431px 175px"
 size = "1100px 700px"
 animate = ""
+lazy = true
 margin = 50
 
 [scratchpads.news]
@@ -45,6 +46,7 @@ command = "kitty --class kitty-dropterm"
 class = "kitty-dropterm"
 size = "60% 60%"
 max_size = "1920px 100%"
+lazy = true
 margin = 50
 
 [scratchpads.chess]
