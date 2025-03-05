@@ -216,5 +216,4 @@ nuspell
 libvoikko
 aspell
 emacs-nativecomp
-ttf-roboto-mono-nerd
 dictd
