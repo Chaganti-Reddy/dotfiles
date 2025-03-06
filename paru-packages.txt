@@ -31,4 +31,3 @@ tidy
 stylelint 
 js-beautify
 ttc-iosevka-aile
-ttf-iosevka-comfy
