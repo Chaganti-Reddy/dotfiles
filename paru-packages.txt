@@ -30,5 +30,5 @@ python-pytest
 tidy 
 stylelint 
 js-beautify
-ttf-iosevka-nerd
-ttf-merriweather
+ttc-iosevka-aile
+ttf-iosevka-comfy
