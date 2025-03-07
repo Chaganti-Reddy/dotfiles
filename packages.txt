@@ -185,7 +185,7 @@ figlet
 luarocks 
 kitty 
 network-manager-applet 
-navi 
+# navi 
 glfw 
 pulsemixer 
 alsa-firmware 
@@ -215,5 +215,5 @@ hspell
 nuspell
 libvoikko
 aspell
-emacs-nativecomp
+emacs
 dictd
