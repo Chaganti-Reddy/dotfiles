@@ -39,6 +39,7 @@ if [[ "$install_bspwm" == "y" || "$install_bspwm" == "Y" ]]; then
   stow feh
   stow bspwm/
   stow network-dmenu/
+  stow rofi/
 
   # Install additional extras if needed
   echo -e "${YELLOW}Installing additional extras from the dotfiles repository...${RESET}"
