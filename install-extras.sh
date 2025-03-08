@@ -89,11 +89,9 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     echo -e "${GREEN}Extras have been installed.${RESET}" && sleep 1
   else
     # Install for "karna" user
-    echo -e "${CYAN}Stowing configurations for karna...${RESET}"
+    echo -e "${CYAN}Stowing configurations for Karna...${RESET}"
     # sudo pacman -S zellij
     stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser ranger_karna redyt screenlayout screensaver sxiv Templates Thunar xarchiver xsettingsd zathura zellij
-
-    cargo install taplo-cli --features lsp
 
     # Copy essential system files for karna user
     sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
