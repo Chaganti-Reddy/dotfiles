@@ -44,7 +44,6 @@ if command -v conda &>/dev/null; then
 
     echo -e "${GREEN}PIP packages installation completed.${RESET}"
     sleep 2
-    clear
   else
     echo -e "${YELLOW}PIP packages installation skipped. Proceeding with the setup.${RESET}" && sleep 1
   fi
