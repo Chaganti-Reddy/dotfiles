@@ -5,7 +5,7 @@ plugins = [
 ]
 
 [scratchpads.music]
-command = "st -c Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
+command = "kitty --class Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
 class = "Music"
 position = "431px 175px"
 size = "1100px 700px"
