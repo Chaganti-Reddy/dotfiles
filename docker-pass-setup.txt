@@ -1,4 +1,3 @@
-
 1. Install pass
 
 sudo apt-get install pass
