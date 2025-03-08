@@ -34,7 +34,7 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
     # Ask the user if they want to install models
     ollama serve &
     clear
-    models=("deepseek-r1:8b" "deepseek-coder:6.7b" "llama3:8b" "llama3:8b-instruct-q6_K" "mistral" "zephyr" "llava:7b")
+    models=("deepseek-r1:8b" "deepseek-coder:6.7b" "llama3:8b" "mistral" "zephyr" "llava:7b")
     for model in "${models[@]}"; do
       clear
       echo -e "${CYAN}Would you like to install the model '$model'? (y/n)${RESET}"
