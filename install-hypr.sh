@@ -56,7 +56,6 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "waybar"
     "wl-clipboard"
     "speech-dispatcher"
-    "foot"
     "brightnessctl"
     "cmake"
     "meson"
