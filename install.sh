@@ -1,89 +1,103 @@
 #!/bin/env bash
-set -e
+set -euo pipefail
 
-# Check if the script is run with sudo permissions
-if [[ $EUID -eq 0 ]]; then
-    echo "Do not run this script with sudo or as root!"
-    exit 1
-fi
+# -------------------------- Configuration ---------------------------
+SUB_SCRIPTS=(
+  install-aur-helper.sh
+  install-packages.sh
+  install-git.sh
+  install-shell.sh
+  install-gpg.sh
+  install-hypr.sh
+  install-conda.sh
+  install-kvm.sh
+  install-browser.sh
+  install-torrent.sh
+  install-dev-apps.sh
+  install-tools.sh
+  install-mariadb.sh
+  install-fonts.sh
+  install-dwm.sh
+  install-bspwm.sh
+  install-ollama.sh
+  install-pip-pack.sh
+  install-grub.sh
+  install-display-manager.sh
+  install-wallpapers.sh
+  install-extras.sh
+)
 
-echo "Running without sudo permissions. Proceeding..." && sleep 1
+# -------------------------- Functions ---------------------------
+die() {
+  echo -e "\033[1;31mERROR:\033[0m $*" >&2
+  exit 1
+}
 
-echo "Welcome to my Arch Setup!" && sleep 2
-echo "Some parts of the script require sudo, so if you're planning on leaving the desktop while the installation script does its thing, better drop it already!." && sleep 4
-#
-# # Creating all required home directories if not present
-mkdir -p ~/Downloads ~/dox ~/Music ~/Pictures ~/vid ~/Templates
-#
-echo "Created Directories..." && sleep 1
-#
-#
-echo "Setting up pacman.conf..."
-# Define the target line to find under which the lines should be appended
-target_line="#UseSyslog"
-# Define the first line to check (ILoveCandy)
-check_line="ILoveCandy"
+info() {
+  echo -e "\033[1;34mINFO:\033[0m $*"
+}
 
-# Check if the 'ILoveCandy' line is already present under the target line
-if sudo grep -q "$target_line" /etc/pacman.conf && sudo grep -q "$check_line" /etc/pacman.conf; then
-  echo "'$check_line' is already present under '$target_line'. No changes are needed." && sleep 2
-else
-  # Provide an explanation of what will happen
-  echo "This script will modify the /etc/pacman.conf file."
-  echo "It will search for the line '$target_line' and append the following settings under it if 'ILoveCandy' is not found:"
-  echo "ILoveCandy"
-  echo "ParallelDownloads=10"
-  echo "Color"
-  echo ""
-  echo "Do you want to proceed with this change? (y/n) [default: y]"
+success() {
+  echo -e "\033[1;32mSUCCESS:\033[0m $*"
+}
 
-  # Read user input
-  read -r response
-  response=${response:-y} # Default to 'y' if the user presses Enter without input
-
-  if [[ ! "$response" =~ ^[Yy]$ ]]; then
-    echo "Operation canceled. No changes were made."
-    exit 0
-  else
-    # Perform the sed operation if the user confirms
-    sudo sed -i "/$target_line/a\
-ILoveCandy\nParallelDownloads=10\nColor" /etc/pacman.conf
-
-    echo "The settings have been successfully added under '$target_line'." && sleep 2
+check_privileges() {
+  if [[ $EUID -eq 0 ]]; then
+    die "This script should not be run as root. Please run as regular user."
   fi
-fi
+  
+  if ! sudo -v; then
+    die "User does not have sudo privileges or password is incorrect."
+  fi
+}
 
-# System update
-echo "Performing a full system update..."
-sudo pacman --noconfirm -Syu --noconfirm --needed git
+setup_user_dirs() {
+  info "Creating standard user directories..."
+  mkdir -p ~/{Downloads,dox,Music,Pictures,vid,Templates} || true
+}
+
+configure_pacman() {
+  local target_line="#UseSyslog"
+  local check_line="ILoveCandy"
+
+  if grep -q "$check_line" /etc/pacman.conf; then
+    info "Pacman already configured with candy theme"
+    return
+  fi
+
+  info "Configuring pacman..."
+  sudo sed -i "/$target_line/a ILoveCandy\nParallelDownloads=10\nColor" /etc/pacman.conf
+}
+
+system_update() {
+  info "Performing full system update..."
+  sudo pacman --noconfirm -Syu
+  sudo pacman -S --needed --noconfirm git
+}
+
+run_subscripts() {
+  for script in "${SUB_SCRIPTS[@]}"; do
+    if [[ ! -f "$script" ]]; then
+      die "Missing required sub-script: $script"
+    fi
+    
+    info "Executing $script..."
+    if ! bash "$script"; then
+      die "Failed during execution of $script"
+    fi
+  done
+}
+
+# -------------------------- Main Program ---------------------------
 clear
-echo "System update done" && sleep 2
-clear
+echo -e "\n\033[1;36mArch Linux Setup Script\033[0m\n"
+sleep 1
 
-# --------------------------------------------------------------------------------------
+check_privileges
+setup_user_dirs
+configure_pacman
+system_update
+run_subscripts
 
-bash ./install-aur-helper.sh
-bash ./install-packages.sh
-bash ./install-git.sh
-bash ./install-shell.sh
-bash ./install-gpg.sh
-bash ./install-hypr.sh
-bash ./install-conda.sh
-bash ./install-kvm.sh
-bash ./install-browser.sh
-bash ./install-torrent.sh
-bash ./install-dev-apps.sh
-bash ./install-tools.sh
-bash ./install-mariadb.sh
-bash ./install-fonts.sh
-bash ./install-dwm.sh
-bash ./install-bspwm.sh
-bash ./install-ollama.sh
-bash ./install-pip-pack.sh
-bash ./install-grub.sh
-bash ./install-display-manager.sh
-bash ./install-wallpapers.sh
-bash ./install-extras.sh
-
-clear
-echo "All done! Please go through essentials.md before rebooting your system." && sleep 2
+success "All installations completed!"
+info "Please review essentials.md before rebooting your system."
