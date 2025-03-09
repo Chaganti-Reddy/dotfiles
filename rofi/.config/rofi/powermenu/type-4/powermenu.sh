@@ -75,6 +75,8 @@ run_cmd() {
         hyprctl dispatch exit 0
       elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
         swaymsg exit 0
+      elif [[ "$DESKTOP_SESSION" == 'qtile' ]]; then
+        qtile cmd-obj -o cmd -f shutdown
 			fi
 		fi
 	else
