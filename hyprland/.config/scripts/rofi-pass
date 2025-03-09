@@ -13,6 +13,22 @@ for i in "${!password_files[@]}"; do
   password_files[$i]="${password_files[$i]%.gpg}"
 done
 
+# Determine environment and set appropriate commands
+detect_environment() {
+    if [[ "${XDG_SESSION_TYPE:-}" == "wayland" || -n "${WAYLAND_DISPLAY:-}" ]]; then
+        # Wayland commands
+        type_text() { wtype "$1"; }
+        type_tab() { wtype -P TAB; }
+        copy() { echo -n "$1" | wl-copy; }
+    else
+        # X11 commands
+        type_text() { xdotool type --delay 0 "$1"; }
+        type_tab() { xdotool key Tab; }
+        copy() { echo -n "$1" | xclip -selection clipboard; }
+    fi
+}
+detect_environment
+
 # Use rofi to select an entry
 selected_entry=$(printf '%s\n' "${password_files[@]}" | rofi -i -dmenu -theme "$HOME/.config/rofi/dt-center.rasi" -p "pass:")
 [[ -z "$selected_entry" ]] && exit 0
@@ -38,76 +54,68 @@ notify() {
 
 case "$action" in
   "autotype")
-    # Check for a custom autotype template in the entry.
-    # This looks for a line starting with "autotype:" and returns its value.
+    # Check for a custom autotype template in the entry
     custom_autotype=$(echo "$entry_content" | sed -n 's/^autotype:[[:space:]]*//p')
     if [[ -n "$custom_autotype" ]]; then
-      # Process the custom autotype template word by word.
-      # Recognized tokens:
-      #   - ":tab"    => sends a Tab key via wtype -P TAB
-      #   - "pass"    => types the password (first line of the entry)
-      #   - "login" or "user" => types the login (or, if not found, the last segment of the entry name)
+      # Process the custom autotype template
       for word in $custom_autotype; do
         if [[ "$word" == ":tab" ]]; then
-          wtype -P TAB
+          type_tab
           sleep 0.2
         elif [[ "$word" == "pass" ]]; then
-          wtype "$password"
+          type_text "$password"
           sleep 0.2
         elif [[ "$word" == "login" || "$word" == "user" ]]; then
           if [[ -n "$login" ]]; then
-            wtype "$login"
+            type_text "$login"
           else
-            # Fallback: use the last segment of the entry name
             fallback="${selected_entry##*/}"
-            wtype "$fallback"
+            type_text "$fallback"
           fi
           sleep 0.2
         else
-          # For any other token, type it literally.
-          wtype "$word"
+          type_text "$word"
           sleep 0.2
         fi
       done
       notify "Auto-typed using custom template for: $selected_entry"
     else
-      # No custom autotype defined; use default behavior:
-      # Type login (if available), then Tab, then password.
+      # Default autotype behavior
       if [[ -n "$login" ]]; then
-        wtype "$login"
+        type_text "$login"
         sleep 0.2
-        wtype -P TAB
+        type_tab
         sleep 0.2
-        wtype "$password"
+        type_text "$password"
         notify "Auto-typed login & password for: $selected_entry (default autotype)"
       else
-        wtype "$password"
+        type_text "$password"
         notify "Auto-typed password for: $selected_entry (default autotype, no login)"
       fi
     fi
     ;;
   "type login")
     if [[ -n "$login" ]]; then
-      wtype "$login"
+      type_text "$login"
       notify "Typed login for: $selected_entry"
     else
       notify "No login field found for: $selected_entry"
     fi
     ;;
   "type pass")
-    wtype "$password"
+    type_text "$password"
     notify "Typed password for: $selected_entry"
     ;;
   "copy login")
     if [[ -n "$login" ]]; then
-      echo -n "$login" | wl-copy
+      copy "$login"
       notify "Copied login for: $selected_entry"
     else
       notify "No login field found for: $selected_entry"
     fi
     ;;
   "copy pass")
-    echo -n "$password" | wl-copy
+    copy "$password"
     notify "Copied password for: $selected_entry"
     ;;
   *)
