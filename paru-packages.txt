@@ -47,3 +47,4 @@ otf-apple-fonts
 ttf-material-design-icons-webfont
 python-pulsectl-asyncio
 python-mpd2
+python-pywalfox
