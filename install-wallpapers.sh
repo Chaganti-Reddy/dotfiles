@@ -40,6 +40,7 @@ if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
     # Clean up and reset directories
     cd ~/Downloads/
     rm -rf wallpapers-main
+    rm wall.zip
     cd ~/dotfiles/ || return
 
     echo -e "${GREEN}Wallpapers have been downloaded and installed successfully...${RESET}" && sleep 2
