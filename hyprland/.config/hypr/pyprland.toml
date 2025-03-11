@@ -1,7 +1,6 @@
 [pyprland]
 plugins = [
     "scratchpads",
-    "magnify"
 ]
 
 [scratchpads.music]
