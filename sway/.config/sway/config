@@ -11,6 +11,10 @@ font pango: JetBrainsMono Nerd Font Medium 10
 gaps inner 4px
 gaps outer 4px
 
+# Remove all borders and tab heading 
+default_border none 
+default_floating_border none
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -21,7 +25,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu rofi -show drun
+set $menu rofi -show drun -theme ~/.config/rofi/dt-center.rasi
 
 ### Output configuration
 #
@@ -70,6 +74,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Kill focused window
     bindsym $mod+q kill
+    
+    bindsym $mod+w exec brave
+    bindsym $mod+Shift+n exec thunar
+    bindsym $mod+Shift+a exec ~/.config/scripts/script &
+    bindsym $mod+Alt+p exec ~/.config/scripts/rofi-pass &
+    bindsym $mod+Shift+p exec ~/.config/rofi/powermenu/type-4/powermenu.sh &
 
     # Start your launcher
     bindsym $mod+d exec $menu
@@ -85,7 +95,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes' 'swaymsg exit'
+    bindsym $mod+Shift+q exec swaymsg exit
 #
 # Moving around:
 #
@@ -148,14 +158,14 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+Shift+w layout tabbed
+    bindsym $mod+Shift+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -187,7 +197,7 @@ mode "resize" {
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
+# Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
@@ -216,18 +226,27 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
+# Start Waybar
+exec_always "pgrep -x waybar || waybar"
+exec_always "pgrep -x mpd || mpd"
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+# Optional: System tray requirements
+exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec_always xdg-desktop-portal-wlr -r &
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# bar {
+#     position top
+#
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#     status_command waybar
+#
+#     # colors {
+#     #     statusline #ffffff
+#     #     background #323232
+#     #     inactive_workspace #32323200 #32323200 #5c5c5c
+#     # }
+# }
 
 include /etc/sway/config.d/*
