@@ -42,5 +42,3 @@ ttf-ubuntu-mono-nerd
 ttf-roboto-mono-nerd
 otf-apple-fonts
 ttf-material-design-icons-webfont
-python-pulsectl-asyncio
-python-mpd2
