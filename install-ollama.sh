@@ -22,8 +22,7 @@ if [[ "$install_ollama" == "y" || "$install_ollama" == "Y" ]]; then
   if ! command -v ollama &>/dev/null; then
     echo -e "${YELLOW}Ollama not found, installing Ollama from AUR...${RESET}"
 
-    # Install Ollama from the AUR using curl (if not already installed)
-    curl -fsSL https://ollama.com/install.sh | sh
+    sudo pacman -S ollama
 
     echo -e "${GREEN}Ollama has been installed. You can now use it to run local large language models.${RESET}" && sleep 2
     clear
