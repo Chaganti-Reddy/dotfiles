@@ -118,14 +118,6 @@ main() {
   reload_waybar                     # Reload Waybar to apply the new theme
   reload_hypr
 
-  PYWALFOX_BIN="/home/karna/miniconda/bin/pywalfox"
-
-  if [[ -x "$PYWALFOX_BIN" ]]; then
-    "$PYWALFOX_BIN" update
-    # dunstify -u low "ZEN update"
-  else
-    dunstify -u low "Pywalfox not found at $PYWALFOX_BIN"
-  fi
 }
 
 # Execute main function
