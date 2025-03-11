@@ -65,6 +65,8 @@ configure_pacman() {
     return
   fi
 
+  sudo sed -i '/^ParallelDownloads/d' /etc/pacman.conf
+
   info "Configuring pacman..."
   sudo sed -i "/$target_line/a ILoveCandy\nParallelDownloads=10\nColor" /etc/pacman.conf
 }
@@ -97,7 +99,7 @@ check_privileges
 setup_user_dirs
 configure_pacman
 system_update
-run_subscripts
+# run_subscripts
 
 success "All installations completed!"
 info "Please review essentials.md before rebooting your system."
