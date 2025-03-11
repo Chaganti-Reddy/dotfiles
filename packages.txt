@@ -216,3 +216,4 @@ libvoikko
 aspell
 emacs
 dictd
+cargo
