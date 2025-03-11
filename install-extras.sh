@@ -104,8 +104,6 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     cargo install leetcode-cli
 
     sudo npm install -g @mermaid-js/mermaid-cli
-    npx puppeteer browsers install chrome-headless-shell
-    sudo npx puppeteer browsers install chrome-headless-shell
     go install github.com/maaslalani/typer@latest
     cp ~/dotfiles/Extras/Extras/.wakatime.cfg.cpt ~/
     ccrypt -d ~/.wakatime.cfg.cpt
