@@ -50,6 +50,7 @@ if [[ "$install_sway" =~ ^[Yy]$ ]]; then
     "slurp"
     "wtype"
     "wf-recorder"
+    "xdg-desktop-portal-wlr"
   )
 
   # Install the packages
