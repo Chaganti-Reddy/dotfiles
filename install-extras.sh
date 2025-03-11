@@ -106,6 +106,8 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     sudo npm install -g @mermaid-js/mermaid-cli
     go install github.com/maaslalani/typer@latest
     cp ~/dotfiles/Extras/Extras/.wakatime.cfg.cpt ~/
+    echo "decrypting you wakatime API key ..."
+    sleep 1
     ccrypt -d ~/.wakatime.cfg.cpt
 
     echo -e "${YELLOW}Setup kaggle JSON and wakatime files using ccrypt... also read essential_info.md file.${RESET}" && sleep 1
