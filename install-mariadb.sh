@@ -23,7 +23,7 @@ if [[ "$mariadb_installation" == "Y" || "$mariadb_installation" == "y" || -z "$m
     sudo pacman -S mariadb --noconfirm
 
     # Initialize the database
-    sudo mysql-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
     # Enable and start MariaDB service
     sudo systemctl enable --now mariadb
