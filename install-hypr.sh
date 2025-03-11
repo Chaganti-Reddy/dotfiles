@@ -87,6 +87,7 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     stow "$stow_folder"
     stow wofi
     stow rofi
+    stow kitty
     echo -e "${GREEN}Hyprland configuration ($stow_folder) has been set up.${RESET}"
   else
     echo -e "${YELLOW}Hyprland configuration file already exists.${RESET}"
