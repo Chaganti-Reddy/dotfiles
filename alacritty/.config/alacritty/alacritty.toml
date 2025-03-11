@@ -37,22 +37,22 @@ text = "CellForeground"
 TERM = "xterm-256color"
 
 [font]
-size = 10.0
+size = 14.0
 
 [font.bold]
-family = "JetBrains Mono Nerd Font"
+family = "Aporetic Sans Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrains Mono Nerd Font"
+family = "Aporetic Sans Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "JetBrains Mono Nerd Font"
+family = "Aporetic Sans Mono"
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
+family = "Aporetic Sans Mono"
 style = "Regular"
 
 [font.offset]
