@@ -51,9 +51,9 @@ efibootmgr
 zoxide 
 gc 
 git-lfs 
-# gnome-keyring 
+gnome-keyring 
 polkit-kde-agent 
-# polkit-gnome 
+polkit-gnome 
 pass 
 udiskie 
 gstreamer 
@@ -115,9 +115,7 @@ xorg-xlsclients
 xscreensaver 
 os-prober 
 qt5ct 
-pamixer 
-qt5-wayland 
-qt6-wayland 
+pamixer  
 parallel 
 shfmt 
 tesseract 
@@ -217,3 +215,4 @@ aspell
 emacs
 dictd
 cargo
+ttf-font-awesome
