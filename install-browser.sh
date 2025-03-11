@@ -20,19 +20,19 @@ is_installed() {
 # Function to display the browser selection menu
 install_browser() {
   echo -e "${YELLOW}Select the browsers you want to install (you can select multiple by entering numbers separated by spaces):${RESET}"
-  echo -e "1) Zen-Browser (If none - Default)"
+  echo -e "1) Zen-Browser"
   echo -e "2) Firefox"
   echo -e "3) Chromium"
   echo -e "4) Vivaldi"
   echo -e "5) qutebrowser"
-  echo -e "6) Brave"
+  echo -e "6) Brave (If none - Default)"
   echo -e "100) None (skip installation)"
   echo ""
   echo -e "${CYAN}Enter the numbers corresponding to your choices (e.g., 1 3 5), or press Enter to skip:${RESET}"
 
   # Read user input (browser choices)
   read -r choices
-  choices=${choices:-1}  # Default to installing Zen-Browser if no input is provided 
+  choices=${choices:-6}  # Default to installing Zen-Browser if no input is provided 
 
   # Process the selected options
   for choice in $choices; do
