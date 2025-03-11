@@ -24,12 +24,9 @@ install_themes_icons="${install_themes_icons:-y}" # Default to "y" if no input i
 if [[ "$install_themes_icons" == "y" || "$install_themes_icons" == "Y" ]]; then
   echo -e "${CYAN}Installing Themes and Icons...${RESET}"
   cd ~/Downloads/ || return
-  if [ ! -d "archcraft-themes-main" ]; then
-    curl -L -o archcraft-themes.zip https://codeload.github.com/Chaganti-Reddy/archcraft-themes/zip/refs/heads/main
-    unzip archcraft-themes.zip
-    rm archcraft-themes.zip
-  fi
-
+  curl -L -o archcraft-themes.zip https://codeload.github.com/Chaganti-Reddy/archcraft-themes/zip/refs/heads/main
+  unzip archcraft-themes.zip
+  rm archcraft-themes.zip
   mkdir -p ~/.icons ~/.themes
   cd archcraft-themes-main || return
   mv themes/* ~/.themes
