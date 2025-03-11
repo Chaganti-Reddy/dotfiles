@@ -222,16 +222,6 @@ function mosspy() {
     perl -i moss.pl -l python $1 $2
 }
 
-function Restart() {
-  sh ~/.dwm/scripts/uptime reboot
-  systemctl reboot
-}
-
-function Shutdown() {
-  sh ~/.dwm/scripts/uptime shutdown
-  systemctl poweroff
-}
-
 ##Exports
 
 export EDITOR='/usr/bin/nvim'
@@ -239,7 +229,7 @@ export PAGER='bat'
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.ncmpcpp/scripts/:$PATH"
-export PATH="$HOME/dotfiles/hyprland/.config/scripts:$PATH"
+export PATH="$HOME/.config/scripts/:$PATH"
 export PATH="$HOME/dotfiles/DWMScripts/.dwm/bin/:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
