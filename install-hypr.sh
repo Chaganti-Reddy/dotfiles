@@ -47,7 +47,6 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "bluetui"
     "hyprpicker"
     "hyprpaper"
-    "pyprland"
     "kitty"
     "system-config-printer"
     "chafa"
@@ -96,7 +95,6 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
   cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
 
   echo -e "${GREEN}Setup is complete. Proceeding to next modules...${RESET}" && sleep 2
-  clear
 else
   echo -e "${YELLOW}Hyprland installation skipped. Proceeding with the setup...${RESET}" && sleep 1
 fi
