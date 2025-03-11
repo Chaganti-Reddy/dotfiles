@@ -506,7 +506,7 @@ export STARSHIP_LOG="error"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by "conda init" !!
