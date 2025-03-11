@@ -24,7 +24,7 @@ if [[ "$install_dm" == "y" || "$install_dm" == "Y" ]]; then
     echo -e "${CYAN}Installing SDDM...${RESET}"
 
     # Install SDDM and related packages
-    paru -S --noconfirm --needed sddm qt6-5compat qt6-declarative qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg layer-shell-qt5
+    paru -S --noconfirm --needed sddm
 
     echo -e "${CYAN}Enabling SDDM to start at boot...${RESET}"
     sudo systemctl enable sddm.service
