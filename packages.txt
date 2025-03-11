@@ -173,7 +173,6 @@ openjdk-src
 blueman 
 zenity 
 newsboat 
-papirus-icon-theme 
 acpi 
 powertop 
 dart-sass 
