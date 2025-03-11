@@ -3,12 +3,13 @@ set -euo pipefail
 
 # -------------------------- Configuration ---------------------------
 SUB_SCRIPTS=(
+  install-git.sh
   install-aur-helper.sh
   install-packages.sh
-  install-git.sh
   install-shell.sh
   install-gpg.sh
   install-hypr.sh
+  install-qtile.sh
   install-conda.sh
   install-kvm.sh
   install-browser.sh
