@@ -1,14 +1,12 @@
-base-devel 
 python-psutil 
 preload 
 git-remote-gcrypt 
 ttf-ms-fonts 
-qt6ct-kde ccrypt 
-didyoumean-git 
+qt6ct-kde 
+ccrypt 
+didyoumean-bin
 arch-wiki-docs 
 kvantum 
-kvantum-theme-catppuccin-git 
-catppuccin-fcitx5-git 
 apple_cursor 
 cava 
 sysstat 
@@ -39,7 +37,6 @@ otf-font-awesome
 ttf-hack-nerd
 ttf-ibmplex-mono-nerd
 ttf-aporetic
-ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-ubuntu-mono-nerd
 ttf-roboto-mono-nerd
@@ -47,4 +44,3 @@ otf-apple-fonts
 ttf-material-design-icons-webfont
 python-pulsectl-asyncio
 python-mpd2
-python-pywalfox
