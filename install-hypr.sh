@@ -62,6 +62,8 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "wtype"
     "wf-recorder"
     "wofi"
+    "qt5-wayland"
+    "qt6-wayland"
   )
 
   # Install the packages
