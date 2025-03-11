@@ -110,6 +110,8 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     npx puppeteer browsers install chrome-headless-shell
     sudo npx puppeteer browsers install chrome-headless-shell
     go install github.com/maaslalani/typer@latest
+    cp ~/dotfiles/Extras/Extras/.wakatime.cfg.cpt ~/
+    ccrypt -d ~/.wakatime.cfg.cpt
 
     echo -e "${YELLOW}Setup kaggle JSON and wakatime files using ccrypt... also read essential_info.md file.${RESET}" && sleep 1
     echo -e "${GREEN}Extras have been installed for KARNA.${RESET}" && sleep 1
