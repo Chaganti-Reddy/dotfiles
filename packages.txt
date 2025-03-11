@@ -114,7 +114,7 @@ zbar
 xorg-xlsclients 
 xscreensaver 
 os-prober 
-qt5ct 
+qt6ct 
 pamixer  
 parallel 
 shfmt 
