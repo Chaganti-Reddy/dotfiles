@@ -53,7 +53,6 @@ else
   lsmod | grep kvm
 
   echo -e "${GREEN}KVM installation completed.${RESET}" && sleep 2
-  clear
 
   # Provide user with additional info and documentation
   echo -e "${CYAN}For VM sharing details, visit: https://docs.getutm.app/guest-support/linux/${RESET}" && sleep 1
