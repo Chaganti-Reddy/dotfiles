@@ -50,6 +50,8 @@ if [[ "$install_qtile" =~ ^[Yy]$ ]]; then
     "alacritty"
     "kitty"
     "qtile-extras"
+    "python-pulsectl-asyncio"
+    "python-mpd2"
   )
 
   # Install the packages
