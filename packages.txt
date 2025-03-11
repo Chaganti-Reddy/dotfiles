@@ -51,9 +51,9 @@ efibootmgr
 zoxide 
 gc 
 git-lfs 
-gnome-keyring 
+# gnome-keyring 
 polkit-kde-agent 
-polkit-gnome 
+# polkit-gnome 
 pass 
 udiskie 
 gstreamer 
@@ -90,6 +90,8 @@ python-pywal
 glow 
 xarchiver 
 xfce4-clipman-plugin 
+xfce4-power-manager
+qemu-full
 libguestfs 
 bc 
 xorg-xman 
@@ -171,8 +173,6 @@ openjdk-src
 blueman 
 zenity 
 newsboat 
-fcitx5 
-fcitx5-configtool 
 papirus-icon-theme 
 acpi 
 powertop 
