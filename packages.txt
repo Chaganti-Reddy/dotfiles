@@ -52,7 +52,7 @@ zoxide
 gc 
 git-lfs 
 gnome-keyring 
-polkit-kde-agent 
+# polkit-kde-agent 
 polkit-gnome 
 pass 
 udiskie 
