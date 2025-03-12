@@ -51,6 +51,14 @@ if [[ "$install_sway" =~ ^[Yy]$ ]]; then
     "wtype"
     "wf-recorder"
     "xdg-desktop-portal-wlr"
+    "sway"
+    "swaybg"
+    "swaylock"
+    "swayidle"
+    "xorg-xwayland"
+    "smartmontools"
+    "libappindicator-gtk3"
+    "libayatana-appindicator"
   )
 
   # Install the packages
