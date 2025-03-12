@@ -12,7 +12,7 @@ gaps inner 4px
 gaps outer 4px
 
 # Remove all borders and tab heading 
-default_border none 
+# default_border none 
 default_floating_border none
 
 # Logo key. Use Mod1 for Alt.
@@ -222,31 +222,41 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+# rules
+for_window [app_id="pavucontrol"] floating enable
+# for_window [app_id="kitty"] floating enable, resize set 1280 720
+for_window [app_id="nwg-look"] floating enable
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 # Start Waybar
-exec_always "pgrep -x waybar || waybar"
-exec_always "pgrep -x mpd || mpd"
+# exec waybar
+exec mpd
 
-# Optional: System tray requirements
-exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec_always xdg-desktop-portal-wlr -r &
-exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-# bar {
-#     position top
-#
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#     status_command waybar
-#
-#     # colors {
-#     #     statusline #ffffff
-#     #     background #323232
-#     #     inactive_workspace #32323200 #32323200 #5c5c5c
-#     # }
-# }
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec xdg-desktop-portal-wlr -r &
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    # Tray 
+    tray_output *
+    tray_bindsym button1 Activate
+    tray_bindsym button2 ContextMenu
+    tray_bindsym button3 SecondaryActivate
+
+    tray_padding 5
+
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
+}
 
 include /etc/sway/config.d/*
