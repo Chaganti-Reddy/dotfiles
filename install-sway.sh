@@ -53,7 +53,7 @@ if [[ "$install_sway" =~ ^[Yy]$ ]]; then
     "xdg-desktop-portal-wlr"
     "sway"
     "swaybg"
-    "swaylock"
+    "swaylock-effects"
     "swayidle"
     "xorg-xwayland"
     "smartmontools"
