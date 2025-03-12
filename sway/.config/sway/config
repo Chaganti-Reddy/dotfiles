@@ -6,14 +6,60 @@
 
 ### Variables
 
+# Cursor size
+exec export XCURSOR_SIZE=24
+exec export HYPRCURSOR_SIZE=24
+
+# Desktop session info (change to Sway)
+exec export XDG_CURRENT_DESKTOP=Sway
+exec export XDG_SESSION_DESKTOP=Sway
+
+# GTK and QT environment variables
+exec export GDK_SCALE=1
+exec export GDK_BACKEND=wayland,x11,*
+exec export QT_AUTO_SCREEN_SCALE_FACTOR=1
+exec export QT_QPA_PLATFORM=wayland;xcb
+exec export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+exec export QT_QPA_PLATFORMTHEME=qt6ct
+
+exec export MOZ_ENABLE_WAYLAND=1
+exec export CLUTTER_BACKEND=wayland
+exec export ECORE_EVAS_ENGINE=wayland_egl
+exec export ELM_ENGINE=wayland_wgl
+exec export SDL_VIDEODRIVER=wayland
+exec export _JAVA_AWT_WM_NONREPARENTING=1
+exec export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+exec export MOZ_ENABLE_WAYLAND=1
+
+# Import essential environment variables for systemd user session
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Start xdg-desktop-portal-wlr for proper Wayland support
+exec xdg-desktop-portal-wlr -r &
+
+# Update DBus environment for Wayland
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+
+# Set Wayland session type
+exec export XDG_SESSION_TYPE=wayland
+
+# Uncomment these if using NVIDIA proprietary drivers
+# exec export LIBVA_DRIVER_NAME=nvidia
+# exec export GBM_BACKEND=nvidia-drm
+# exec export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
 font pango: JetBrainsMono Nerd Font Medium 10
 
 gaps inner 4px
 gaps outer 4px
 
 # Remove all borders and tab heading 
-# default_border none 
-default_floating_border none
+
+default_border pixel 2
+smart_borders on
+smart_gaps on
+titlebar_border_thickness 1
+titlebar_padding 5 5
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -30,8 +76,11 @@ set $menu rofi -show drun -theme ~/.config/rofi/dt-center.rasi
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
+output eDP-1 {
+       background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+       resolution 1920x1080
+}
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -42,10 +91,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle \
+   timeout 900 'swaylock -f -c 000000' \
+   timeout 1800 'swaymsg "output * dpms off"' \
+      resume 'swaymsg "output * dpms on"' \
+   before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -61,6 +111,27 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #       natural_scroll enabled
 #       middle_emulation enabled
 #   }
+
+input * {
+    xkb_layout us
+    xkb_variant ""
+    xkb_model ""
+    xkb_options ""
+    xkb_rules ""
+}
+
+input "type:touchpad" {
+    tap enabled
+    dwt enabled # disable while typing
+    natural_scroll enabled
+    pointer_accel 0.2
+}
+
+input "5426:152:Razer_Razer_DeathAdder_Essential" {
+    pointer_accel -0.5
+    accel_profile adaptive
+    middle_emulation enabled
+}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -80,9 +151,27 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+a exec ~/.config/scripts/script &
     bindsym $mod+Alt+p exec ~/.config/scripts/rofi-pass &
     bindsym $mod+Shift+p exec ~/.config/rofi/powermenu/type-4/powermenu.sh &
+    bindsym Alt+tab exec ~/.config/rofi/launchers/type-7/windows.sh &
+
+# Toggle gromit-mpx drawing mode
+    bindsym $mod+Ctrl+p exec pidof gromit-mpx && gromit-mpx -q || gromit-mpx -k none -u none -a -o 1
+    bindsym $mod+Ctrl+F9 exec gromit-mpx -t
+    bindsym $mod+F9 exec gromit-mpx -v
+    bindsym $mod+Shift+F9 exec gromit-mpx -c
+    bindsym $mod+Shift+F8 exec gromit-mpx -y
+    bindsym $mod+F8 exec gromit-mpx -z
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+
+    # Launch or toggle a floating Kitty scratchpad
+    bindsym F12 exec bash -c 'swaymsg "[app_id=scratchpad-terminal]" scratchpad show || (kitty --class scratchpad-terminal && swaymsg "[app_id=scratchpad-terminal] move scratchpad")'
+
+    for_window [app_id="clipse"] floating enable, resize set 622 652
+
+    # Keybind to launch 'clipse' in a floating window
+    bindsym $mod+v exec kitty --class=clipse -e clipse
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -147,6 +236,15 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Scroll through workspaces with $mainMod + mouse scroll
+    # bindsym --whole-window $mod+button5 workspace prev
+    # bindsym --whole-window $mod+button4 workspace next
+
+    # Alternative: Relative workspace switching
+    bindsym --whole-window $mod+button4 workspace next_on_output
+    bindsym --whole-window $mod+button5 workspace prev_on_output
+
 #
 # Layout stuff:
 #
@@ -154,7 +252,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+Shift+v splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -208,6 +306,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
 #
 # Utilities:
 #
@@ -216,47 +315,130 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    bindsym $mod+Alt+F9 exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
+    bindsym $mod+Shift+s exec ~/.config/rofi/applets/bin/screenshot.sh & 
+
+# Media keys for MPD (Music Player Daemon)
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+
+# Custom keybindings with mainMod + ALT
+bindsym $mod+Alt+1 exec mpc toggle  
+bindsym $mod+Alt+3 exec mpc next
+bindsym $mod+Alt+2 exec mpc prev
+bindsym $mod+Shift+Alt+1 exec mpc stop  
 
 # rules
-for_window [app_id="pavucontrol"] floating enable
-# for_window [app_id="kitty"] floating enable, resize set 1280 720
-for_window [app_id="nwg-look"] floating enable
+for_window [app_id="pavucontrol"] floating enable, resize set 800 600
+
+# Float Viewnior and set size
+for_window [app_id="viewnior"] floating enable, move position center, resize set 1100 700
+
+
+# Float "Library" window and set size
+for_window [title="^Library$"] floating enable
+for_window [title="^Library$"] resize set 1100 700
+
+# Float "Picture-in-Picture" window, set size, and move position
+for_window [title="^Picture-in-Picture$"] floating enable
+for_window [title="^Picture-in-Picture$"] resize set 765 520
+for_window [title="^Picture-in-Picture$"] move position 14 13
+# for_window [title="^Picture in Picture$"] floating enable, sticky enable
+
+assign [app_id="brave"] 2
+
+for_window [title="^File Operation Progress$"] floating enable
+for_window [title="^Network Connections$"] floating enable
+for_window [title="^nwg-look$"] floating enable
+for_window [app_id="blueman-manager"] floating enable, move position center 
+
+bindsym $mod+p exec bash -c 'swaymsg -t get_tree | grep -q "pinned" && swaymsg "[con_mark=pinned] unmark pinned, sticky disable, floating disable" || swaymsg "[con_id=__focused__] mark pinned, floating enable, sticky enable, resize set 700 700, move position center"'
+
+### Touchpad Gestures ###
+
+# Workspace Navigation
+# Swipe 3 fingers right: Switch to the previous workspace
+bindgesture swipe:3:right workspace prev
+
+# Swipe 3 fingers left: Switch to the next workspace
+bindgesture swipe:3:left workspace next
+
+# Swipe 3 fingers up: Toggle between the current and previous workspace
+bindgesture swipe:3:up workspace back_and_forth
+#
+# # Window Management
+# # Swipe 3 fingers down: Close the focused window
+# bindgesture swipe:3:down kill
+#
+# # Pinch 3 fingers inward: Toggle fullscreen for the focused window
+# bindgesture pinch:3:inward fullscreen toggle
+#
+# # Pinch 3 fingers outward: Toggle floating mode for the focused window
+# bindgesture pinch:3:outward floating toggle
+#
+# # Window Movement
+# # Pinch 3 fingers inward + swipe up: Move the focused window up
+# bindgesture pinch:3:inward+up move up
+#
+# # Pinch 3 fingers inward + swipe down: Move the focused window down
+# bindgesture pinch:3:inward+down move down
+#
+# # Pinch 3 fingers inward + swipe left: Move the focused window left
+# bindgesture pinch:3:inward+left move left
+#
+# # Pinch 3 fingers inward + swipe right: Move the focused window right
+# bindgesture pinch:3:inward+right move right
+#
+# # Advanced Navigation
+# # Swipe 4 fingers up: Focus the output above
+# bindgesture swipe:4:up focus output up
+#
+# # Swipe 4 fingers down: Focus the output below
+# bindgesture swipe:4:down focus output down
+#
+# # Pinch 3 fingers clockwise: Shrink the width of the focused window by 10px
+# bindgesture pinch:3:clockwise resize shrink width 10px
+#
+# # Pinch 3 fingers counterclockwise: Grow the width of the focused window by 10px
+# bindgesture pinch:3:counterclockwise resize grow width 10px
+#
+# # Media Control
+# # Swipe 4 fingers left: Play the next track in the media player
+# bindgesture swipe:4:left exec playerctl next
+#
+# # Swipe 4 fingers right: Play the previous track in the media player
+# bindgesture swipe:4:right exec playerctl previouss
+
+# Only for ELAN1200:00 touchpad
+# bindgesture --input-device="ELAN1200:00 04F3:3197 Touchpad" swipe:up:3 workspace next
+
+# Requires exact up+right diagonal swipe
+# bindgesture --exact swipe:up+right:3 exec thunar
+
+# Complex window management
+# bindgesture pinch:inward+clockwise:4 exec swaymsg "move window to scratchpad; scratchpad show"
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-# Start Waybar
-# exec waybar
-exec mpd
 
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec xdg-desktop-portal-wlr -r &
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+xwayland enable
+
 bar {
     position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    # Tray 
-    tray_output *
-    tray_bindsym button1 Activate
-    tray_bindsym button2 ContextMenu
-    tray_bindsym button3 SecondaryActivate
-
-    tray_padding 5
-
-    # colors {
-    #     statusline #ffffff
-    #     background #323232
-    #     inactive_workspace #32323200 #32323200 #5c5c5c
-    # }
+    swaybar_command waybar
+    # Hide default bar when using Waybar
+    mode hide
 }
 
-include /etc/sway/config.d/*
+exec --no-startup-id ~/.config/sway/autostart.sh &
+
+include /etc/sway/config.d/
