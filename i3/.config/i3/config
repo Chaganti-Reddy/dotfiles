@@ -19,14 +19,12 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:JetBrainsMono Nerd Font 10
 
-gaps inner 5
+gaps inner 6
 gaps outer 0
-gaps top 0
-gaps bottom 0
 
-for_window [class   = "^.*"] border pixel 0
-for_window [title   = "^.*"] border pixel 0
-smart_borders on
+for_window [class   = "^.*"] border pixel 1
+for_window [title   = "^.*"] border pixel 1
+# smart_borders on
 # smart_gaps on
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -267,21 +265,53 @@ bar {
 
 # STARTUP
 exec i3-msg restart
-# Screen resolution
-exec ~/.screenlayout/monitor.sh &
-exec --no-startup-id xfce4-power-manager &
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork 
-exec --no-startup-id nm-applet &
-exec --no-startup-id udiskie --smart-tray &
-exec --no-startup-id /usr/bin/dunst &
 exec  xset r rate 300 30
-exec autotiling &
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # exec /usr/bin/gnome-keyring-daemon --start &
-exec mpd &
-exec numlockx &
 # exec --no-startup-id kitty --class dropterm
-exec ~/.config/i3/scripts/start.sh &
+exec_always --no-startup-id ~/.config/i3/scripts/start.sh &
+exec_always --no-startup-id /usr/bin/autotiling &
+workspace_auto_back_and_forth yes
+exec mpd &
+
+######################################
+# color settings for bar and windows #
+######################################
+
+# Define colors variables:
+set $darkbluetrans	#08052be6
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $purple		#e345ff
+set $darkgrey		#383c4a
+set $grey #878787	
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+set $cyan #00dede
+set $warm #ebdbb2
+
+# define colors for windows:
+#class		            	border		bground		text		indicator	child_border
+client.focused		    	$lightblue	$darkblue	$white		$warm   	$warm
+client.unfocused	    	$darkblue	$darkblue	$grey		$grey	$grey
+client.focused_inactive		$darkblutrans	$darkblue	$grey	$grey		$grey
+client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+
+
+# <<--------- System Power Control --------->>
+set $mode_system System (e) logout, (r) reboot, (s) sleep, (Shift+s) shutdown
+mode "$mode_system" {
+	bindsym e       exec --no-startup-id i3-msg exit, mode "default" 
+	bindsym r       exec --no-startup-id systemctl reboot, mode "default"
+	bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+	bindsym s       exec --no-startup-id systemctl suspend, mode "default"
+	bindsym Return  mode "default"
+	bindsym Escape  mode "default"
+}
+bindsym $mod+F1 mode "$mode_system"
