@@ -47,6 +47,7 @@ if [[ "$install_dwm" == "y" || "$install_dwm" == "Y" ]]; then
     # Install extra tools from the dotfiles repository
     echo -e "${YELLOW}Installing extra tools from the dotfiles repository...${RESET}"
     cd ~/dotfiles/Extras/Extras/waldl-master/ && sudo make install && cd ~/dotfiles || return
+    sudo pacman -S xcompmgr
 
     # Set up dwm session if not already set up
     if [ ! -f /usr/share/xsessions/dwm.desktop ]; then
