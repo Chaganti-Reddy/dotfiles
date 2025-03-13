@@ -1,20 +1,27 @@
+/**
+ * ROFI Color theme
+ * NAME: dt-center.rasi
+ * DESCRIPTION: This is a centered prompt.
+ * AUTHOR: Derek Taylor (DT)
+ */
+
 * {
-    background-color:            #181825;
-    border-color:                #181825;
+    background-color:            #282c34;
+    border-color:                #51afef;
     text-color:                  #bbc2cf;
-    font:                        "JetBrainsMono Nerd Font Bold 11";
-    prompt-font:                 "CaskaydiaCove Nerd Font Bold 9";
-    prompt-background:           #ff4d4d;
+    font:                        "Aporetic Sans Mono Bold 12";
+    prompt-font:                 "Aporetic Sans Mono Bold 11";
+    prompt-background:           #51afef;
     prompt-foreground:           #282c34;
     prompt-padding:              4px;
-    alternate-normal-background: #1a1a1a;
+    alternate-normal-background: #1c1f24;
     alternate-normal-foreground: @text-color;
-    selected-normal-background:  rgba(255, 77, 77, 0.3);
+    selected-normal-background:  #ae3f3e;
     selected-normal-foreground:  #ffffff;
     spacing:                     3;
 }
 #window {
-    border:  1;
+    border:  2;
     padding: 5;
 }
 #mainbox {
@@ -27,7 +34,8 @@
 }
 #listview {
     fixed-height: 0;
-    border:       2px dash 0px 0px ;
+    border:       2px solid 0px 0px ;
+    border-color: #1c1f24;
     spacing:      2px ;
     scrollbar:    true;
     padding:      2px 0px 0px ;
@@ -58,14 +66,8 @@
     text-color:       @selected-normal-foreground;
 }
 #inputbar {
-    enabled:    true;
-    spacing:    10px;
+    spacing:    0;
     padding:    1px ;
-    background-color:            transparent;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
 }
 #case-indicator {
     spacing:    0;
@@ -95,3 +97,4 @@ element-icon {
     background-color: inherit;
 }
 */
+
