@@ -8,6 +8,7 @@ SUB_SCRIPTS=(
   install-packages.sh
   install-shell.sh
   install-gpg.sh
+  install-i3.sh
   install-hypr.sh
   install-qtile.sh
   install-conda.sh
