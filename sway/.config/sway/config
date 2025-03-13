@@ -29,7 +29,6 @@ exec export ELM_ENGINE=wayland_wgl
 exec export SDL_VIDEODRIVER=wayland
 exec export _JAVA_AWT_WM_NONREPARENTING=1
 exec export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-exec export MOZ_ENABLE_WAYLAND=1
 
 # Import essential environment variables for systemd user session
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -50,8 +49,8 @@ exec export XDG_SESSION_TYPE=wayland
 
 font pango: JetBrainsMono Nerd Font Medium 10
 
-gaps inner 4px
-gaps outer 4px
+gaps inner 4
+gaps outer 4
 
 # Remove all borders and tab heading 
 
