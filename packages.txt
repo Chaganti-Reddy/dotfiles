@@ -79,14 +79,13 @@ tlp-rdw
 neovim 
 xorg-xinput 
 xclip 
-xcompmgr 
 xorg-xrandr 
 xorg-xsetroot 
 xsel 
 xwallpaper 
 pandoc 
-starship 
-python-pywal 
+# starship 
+# python-pywal 
 glow 
 xarchiver 
 xfce4-clipman-plugin 
@@ -107,7 +106,7 @@ vscode-css-languageserver
 ffmpegthumbnailer 
 lua-language-server 
 pass 
-pinentry 
+# pinentry 
 gnupg 
 pass-otp 
 zbar 
@@ -169,7 +168,6 @@ jdk-openjdk
 openjdk-doc 
 openjdk-src 
 blueman 
-zenity 
 newsboat 
 acpi 
 powertop 
@@ -199,7 +197,6 @@ ydotool
 ccls
 jedi-language-server
 wakatime
-python-pipx
 flatpak
 ghostscript
 qpdf
@@ -216,3 +213,4 @@ emacs
 dictd
 cargo
 ttf-font-awesome
+kitty
