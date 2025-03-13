@@ -32,8 +32,8 @@ xfsprogs
 ntfs-3g 
 clang 
 gcc 
-clipmenu 
 clipnotify 
+rofi-calc
 inotify-tools 
 psutils 
 dunst 
@@ -187,7 +187,7 @@ alsa-firmware
 sof-firmware 
 alsa-ucm-conf 
 viewnior 
-qalculate-gtk 
+# qalculate-gtk 
 pyright
 python-black
 vscode-html-languageserver 
