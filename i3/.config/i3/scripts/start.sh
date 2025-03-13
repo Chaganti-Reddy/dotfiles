@@ -14,5 +14,15 @@ if [ -z "$(pgrep xfce4-clipman)" ]; then
     xfce4-clipman &
 fi
 
+~/.screenlayout/monitor.sh &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+autotiling &
+numlockx &
+dunst &
+udiskie --smart-tray &
+nm-applet &
+xfce4-power-manager &
+
 # Run ollama serve in the background silently.
 ollama serve > /dev/null 2>&1 &
