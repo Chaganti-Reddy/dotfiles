@@ -2,7 +2,6 @@ python-psutil
 preload 
 git-remote-gcrypt 
 ttf-ms-fonts 
-qt6ct-kde 
 ccrypt 
 didyoumean-bin
 arch-wiki-docs 
