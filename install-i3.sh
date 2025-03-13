@@ -40,10 +40,16 @@ if [[ "$install_i3" =~ ^[Yy]$ ]]; then
   packages=(
     "dmenu"
     "i3-wm"
-    "i3-blocks"
+    "i3blocks"
     "i3lock"
+    "feh"
+    "picom"
     "i3status"
     "xss-lock"
+    "autotiling"
+    "alacritty"
+    "kitty"
+    "rofi"
   )
 
   # Install the packages
@@ -60,6 +66,7 @@ if [[ "$install_i3" =~ ^[Yy]$ ]]; then
     stow i3
     stow rofi
     stow kitty
+    stow alacritty
     echo -e "${GREEN}I3 configuration ($stow_folder) has been set up.${RESET}"
   else
     echo -e "${YELLOW}I3 configuration file already exists.${RESET}"
