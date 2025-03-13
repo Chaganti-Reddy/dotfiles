@@ -17,8 +17,9 @@ if [[ "$install_dm" == "y" || "$install_dm" == "Y" ]]; then
   echo -e "${YELLOW}Choose a Display Manager:${RESET}"
   echo "1) SDDM (Simple Desktop Display Manager - GUI)"
   echo "2) LY (Simple TUI Login Manager - Terminal-based)"
+  echo "3) Lightdm (Lightdm Display Manager - XFCE-based)"
   
-  read -p "Enter your choice (1/2): " dm_choice
+  read -p "Enter your choice (1/2/3): " dm_choice
   
   if [[ "$dm_choice" == "1" ]]; then
     echo -e "${CYAN}Installing SDDM...${RESET}"
@@ -69,6 +70,15 @@ if [[ "$install_dm" == "y" || "$install_dm" == "Y" ]]; then
   else
     echo -e "${RED}Invalid choice. No display manager installed.${RESET}" && sleep 1
   fi
+
+elif [[ "$dm_choice" == "3" ]]; then
+    echo -e "${CYAN}Installing Lightdm...${RESET}"
+
+    # Install LY and related packages
+    paru -S --noconfirm --needed lightdm lightdm-gtk-greeter
+
+    echo -e "${CYAN}Enabling Lightdm to start at boot...${RESET}"
+    sudo systemctl enable lightdm.service
 
 else
   echo -e "${YELLOW}Display Manager installation skipped. Proceeding with the setup.${RESET}" && sleep 1
