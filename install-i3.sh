@@ -50,6 +50,7 @@ if [[ "$install_i3" =~ ^[Yy]$ ]]; then
     "alacritty"
     "kitty"
     "rofi"
+    "polybar"
   )
 
   # Install the packages
