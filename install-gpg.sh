@@ -13,7 +13,7 @@ setup_gpg_pass() {
     echo -e "\n[INFO] Setting up GPG and Pass..."
 
     # Check if required packages are already installed
-    if ! pacman -Q gnupg pass rofi-wayland qrencode pass-import &> /dev/null; then
+    if ! pacman -Q gnupg pass rofi qrencode pass-import &> /dev/null; then
         echo -e "\n[INFO] Installing GPG and Pass..."
         sudo pacman -S --noconfirm gnupg pass qrencode rofi-wayland
         paru -S --noconfirm pass-import
