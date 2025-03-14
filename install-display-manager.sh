@@ -25,7 +25,7 @@ if [[ "$install_dm" == "y" || "$install_dm" == "Y" ]]; then
     echo -e "${CYAN}Installing SDDM...${RESET}"
 
     # Install SDDM and related packages
-    paru -S --noconfirm --needed sddm
+    sudo pacman -S --noconfirm sddm
 
     echo -e "${CYAN}Enabling SDDM to start at boot...${RESET}"
     sudo systemctl enable sddm.service
