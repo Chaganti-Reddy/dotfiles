@@ -2,7 +2,7 @@
     "position": "top",
     "height": 35,
     "modules-left": ["hyprland/workspaces", "pulseaudio#output", "pulseaudio#input", "bluetooth", "idle_inhibitor", "hyprland/window"],
-    "modules-center": ["mpd", "mpris", "tray"],
+    "modules-center": ["mpd", "tray"],
     "modules-right": ["backlight" ,"custom/cpuinfo", "memory", "network", "clock","battery" , "custom/powermenu"],
 
   "hyprland/window": {
