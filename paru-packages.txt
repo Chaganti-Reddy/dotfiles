@@ -29,7 +29,6 @@ ttf-firacode-nerd
 otf-droid-nerd
 ttf-cascadia-code-nerd
 ttf-opensans
-otf-font-awesome
 ttf-hack-nerd
 ttf-ibmplex-mono-nerd
 ttf-aporetic
