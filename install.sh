@@ -101,7 +101,7 @@ check_privileges
 setup_user_dirs
 configure_pacman
 system_update
-run_subscripts
+# run_subscripts
 
 success "All installations completed!"
 info "Please review essentials.md before rebooting your system."
