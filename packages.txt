@@ -33,6 +33,8 @@ ntfs-3g
 clang 
 gcc 
 clipnotify 
+rofi-wayland
+rofi-emoji
 rofi-calc
 inotify-tools 
 psutils 
@@ -52,7 +54,6 @@ zoxide
 gc 
 git-lfs 
 gnome-keyring 
-# polkit-kde-agent 
 polkit-gnome 
 pass 
 udiskie 
@@ -60,9 +61,6 @@ gstreamer
 jq 
 xdotool 
 screenkey 
-xorg-xprop 
-xorg-xinit 
-xf86-video-intel 
 lazygit 
 lolcat 
 sxiv 
@@ -79,17 +77,12 @@ tlp-rdw
 neovim 
 xorg-xinput 
 xclip 
-xorg-xrandr 
-xorg-xsetroot 
 xsel 
-xwallpaper 
 pandoc 
-# starship 
-# python-pywal 
+python-pywal 
 glow 
 xarchiver 
 xfce4-clipman-plugin 
-xfce4-power-manager
 qemu-full
 libguestfs 
 bc 
@@ -106,12 +99,9 @@ vscode-css-languageserver
 ffmpegthumbnailer 
 lua-language-server 
 pass 
-# pinentry 
 gnupg 
 pass-otp 
 zbar 
-xorg-xlsclients 
-xscreensaver 
 os-prober 
 qt6ct 
 pamixer  
@@ -165,8 +155,6 @@ nodejs
 npm 
 translate-shell 
 jdk-openjdk 
-openjdk-doc 
-openjdk-src 
 blueman 
 newsboat 
 acpi 
@@ -180,14 +168,13 @@ figlet
 luarocks 
 kitty 
 network-manager-applet 
-# navi 
 glfw 
 pulsemixer 
 alsa-firmware 
 sof-firmware 
 alsa-ucm-conf 
 viewnior 
-# qalculate-gtk 
+qalculate-gtk 
 pyright
 python-black
 vscode-html-languageserver 
