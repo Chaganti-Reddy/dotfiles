@@ -199,5 +199,4 @@ aspell
 emacs
 dictd
 cargo
-ttf-font-awesome
 kitty
