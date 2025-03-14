@@ -60,6 +60,7 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "grim"
     "slurp"
     "wtype"
+    "ydotool"
     "wf-recorder"
     "wofi"
     "qt5-wayland"
