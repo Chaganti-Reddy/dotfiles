@@ -2,8 +2,8 @@
     "position": "top",
     "height": 35,
     "modules-left": ["hyprland/workspaces", "pulseaudio#output", "pulseaudio#input", "bluetooth", "idle_inhibitor", "hyprland/window"],
-    "modules-center": ["mpd", "tray"],
-    "modules-right": ["backlight" ,"custom/cpuinfo", "memory", "network", "clock","battery" , "custom/powermenu"],
+    "modules-center": ["mpd"],
+    "modules-right": ["backlight" ,"custom/cpuinfo", "memory", "network", "clock","battery", "tray"],
 
   "hyprland/window": {
     "format": "{class} - {title}",
@@ -21,7 +21,7 @@
     },
     "tray": {
         "icon-size": 15,
-        "spacing": 10
+        "spacing": 6
     },
     "mpris": {
       "format": "<span color='#cc241d'> 󰎇 </span>  {dynamic}  ",
@@ -141,8 +141,8 @@
       "warning": 30,
       "critical": 25
     },
-    "format-icons": [" "," "," "," "," "],
-    // "format-icons": ["", "", "", "", "", "", "", "", ""],
+    // "format-icons": [" "," "," "," "," "],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
     "format": " {icon} {capacity}%",
     "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%",
     "format-warning": "<span color='#d8a657' > {icon} </span>{capacity}%",
