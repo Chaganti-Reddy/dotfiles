@@ -141,8 +141,8 @@
       "warning": 30,
       "critical": 25
     },
-    // "format-icons": [" "," "," "," "," "],
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "format-icons": [" "," "," "," "," "],
+    // "format-icons": ["", "", "", "", "", "", "", "", ""],
     "format": " {icon} {capacity}%",
     "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%",
     "format-warning": "<span color='#d8a657' > {icon} </span>{capacity}%",
