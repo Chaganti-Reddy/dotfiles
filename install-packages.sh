@@ -52,6 +52,6 @@ sudo systemctl enable --now bluetooth.service
 # Add user to video group for permissions
 echo -e "\e[34mAdding user to video group...\e[0m"
 sudo usermod -aG video "$USER"
-sudo gpasswd -a $USER input
+sudo usermod -aG input $USER
 
 echo -e "\e[32mDone with permissions...\e[0m" && sleep 2
