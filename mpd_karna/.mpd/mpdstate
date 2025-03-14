@@ -2,40 +2,13 @@ sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
 state: stop
-current: 20
 random: 1
 repeat: 1
 single: 0
 consume: 0
 crossfade: 0
-mixrampdb: 0.000000
-mixrampdelay: -1.000000
+mixrampdb: 0
+mixrampdelay: -1
+lastloadedplaylist: 
 playlist_begin
-0:playlists/NCS/NEFFEX - Grateful [Copyright Free].mp3
-1:playlists/NCS/Cartoon - On & On (feat. Daniel Levi) [NCS Release].mp3
-2:playlists/NCS/Culture Code - Make Me Move (feat. Karra) [NCS Release].mp3
-3:playlists/NCS/Janji - Heroes Tonight (feat. Johnning) [NCS Release].mp3
-4:playlists/NCS/N3WPORT - Power (feat. braev) [NCS Release].mp3
-5:playlists/English/KALEO - Way down We Go.mp3
-6:playlists/English/Kendrick Lamar, SZA - All The Stars (with SZA).mp3
-7:playlists/English/Lady Gaga - Judas.mp3
-8:playlists/English/Måneskin - Beggin'.mp3
-9:playlists/English/Coldplay - A Sky Full of Stars.mp3
-10:playlists/English/OneRepublic - I Ain't Worried.mp3
-11:playlists/English/Justin Bieber - Ghost.mp3
-12:playlists/English/Justin Bieber - Love Me.mp3
-13:playlists/English/OneRepublic - Counting Stars.mp3
-14:playlists/Liked/Pritam, Arijit Singh - Channa Mereya.mp3
-15:playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3
-16:playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3
-17:playlists/Liked/Amit Mishra - Dhruva Dhruva.mp3
-18:playlists/Liked/Padmalatha, Vishnupriya Ravi - Pareshanura.mp3
-19:playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3
-20:playlists/Liked/MUSASHI PROJECT - 哀と悲.mp3
-21:playlists/Liked/Anirudh Ravichander, Shweta Mohan - Emannavoo.mp3
-22:playlists/Liked/Jubin Nautiyal, Sameera Bharadwaj - Telusaa Telusaa.mp3
-23:playlists/Liked/Jithin Raj - Sivangi Pilla.mp3
-24:playlists/Liked/Raghu Dixit, Sooraj Santhosh, Rita Thyagarajan - Chal Chalo Chalo.mp3
-25:playlists/Liked/MM Sreelekha, Sid Sriram, Ramya Behara - Urike Urike.mp3
-26:playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
 playlist_end
