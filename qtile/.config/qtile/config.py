@@ -32,7 +32,7 @@ from libqtile.lazy import lazy
 import colors
 
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
-myTerm = "kitty"      # My terminal of choice
+myTerm = "alacritty"      # My terminal of choice
 myBrowser = "brave"       # My browser of choice
 myAltBrowser = "qutebrowser"      
 myEmacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
@@ -484,7 +484,7 @@ def init_widgets_list():
             padding=6,
             mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("/home/karna/.config/rofi/powermenu/type-4/powermenu.sh &")},
         ),
-        widget.Systray(padding=3, icon_size=12),
+        widget.Systray(padding=3, icon_size=15),
         widget.Spacer(length=8),
     ]
     return widgets_list
