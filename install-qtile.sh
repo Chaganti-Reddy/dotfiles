@@ -39,12 +39,9 @@ if [[ "$install_qtile" =~ ^[Yy]$ ]]; then
   # List of packages to install
   packages=(
     "qtile"
-    "python-dbus-next"
     "python-dbus-fast"
     "python-gobject"
     "cairo"
-    "xorg-server"
-    "xorg-xinit"
     "feh"
     "picom"
     "alacritty"
