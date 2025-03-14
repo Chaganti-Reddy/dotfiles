@@ -4,7 +4,7 @@ plugins = [
 ]
 
 [scratchpads.music]
-command = "kitty --class Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
+command = "alacritty --class Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
 class = "Music"
 position = "431px 175px"
 size = "1100px 700px"
@@ -50,8 +50,8 @@ margin = 50
 
 [scratchpads.chess]
 animation = ""
-command = "~/chess-linux-x64/chess"
-class = "chess-nativefier-703820"
+command = "/opt/brave-bin/brave --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc"
+class = "brave-kinpkbniadkppecjaginbegiljofpcfc-Default"
 size = "80% 80%"
 lazy = true
 position = "181px 97px"
