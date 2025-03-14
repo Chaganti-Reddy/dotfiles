@@ -9,7 +9,6 @@ kvantum
 apple_cursor 
 cava 
 sysstat 
-tex-fmt-bin
 lazydocker-bin
 multimarkdown
 gopls 
