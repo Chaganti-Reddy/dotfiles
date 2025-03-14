@@ -82,7 +82,7 @@ keys = [
     Key([mod], "n", lazy.spawn("kitty -e ranger"), desc="Launch ranger in kitty terminal"),
     Key([mod], "e", lazy.spawn(myEmacs), desc="Launch Emacs client"),
     Key([mod, "shift"], "e", lazy.spawn("/home/karna/.config/rofi/applets/bin/emoji.sh &"), desc="Launch emoji picker"),
-    Key([mod, "mod1"], "p", lazy.spawn("/home/karna/.config/scripts/rofi-pass &"), desc="Launch rofi password manager"),
+    Key([mod, "mod1"], "p", lazy.spawn("/home/karna/.config/scripts/rofi-pass-xorg &"), desc="Launch rofi password manager"),
     Key(["mod1"], "Tab", lazy.spawn("/home/karna/.config/rofi/launchers/type-7/windows.sh &"), desc="Launch rofi window switcher"),
     Key([mod, "mod1"], "a", lazy.spawn("/home/karna/.config/scripts/script &"), desc="Run custom script"),
 
@@ -476,14 +476,14 @@ def init_widgets_list():
             padding=6,
             format="⏱ %a, %b %d - %H:%M",
         ),
-        widget.TextBox(
-            text="⏻",
-            foreground=colors[7],
-            font="Font Awesome 6 Free Solid",
-            fontsize=16,
-            padding=6,
-            mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("/home/karna/.config/rofi/powermenu/type-4/powermenu.sh &")},
-        ),
+        # widget.TextBox(
+        #     text="⏻",
+        #     foreground=colors[7],
+        #     font="Font Awesome 6 Free Solid",
+        #     fontsize=16,
+        #     padding=6,
+        #     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("/home/karna/.config/rofi/powermenu/type-4/powermenu.sh &")},
+        # ),
         widget.Systray(padding=3, icon_size=15),
         widget.Spacer(length=8),
     ]
