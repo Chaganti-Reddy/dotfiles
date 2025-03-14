@@ -8,22 +8,20 @@ export GNOME_KEYRING_PID
 xinput --set-prop "DLL09D9:00 04F3:3147 Touchpad" "libinput Natural Scrolling Enabled" 1
 xinput --set-prop "DLL09D9:00 04F3:3147 Touchpad" "libinput Tapping Enabled" 1
 xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Speed" -0.8
-xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Profile Enabled" 0, 1
+xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Profile Enabled" 1, 0
 
 ### AUTOSTART PROGRAMS ###
 # picom --daemon --config ~/.config/qtile/picom.conf &
 # /usr/bin/emacs --daemon &
 nm-applet &
+dunst -conf ~/.config/dunst/dunstrc_xorg &
 "$HOME"/.screenlayout/monitor.sh &
 mpd &
-dunst &
 udiskie --smart-tray &
 # /usr/lib/polkit-kde-authentication-agent-1 &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/bin/gnome-keyring-daemon --start &
 numlockx on &
-xscreensaver --no-splash & 
-xfce4-power-manager &
 
 # ~/.config/qtile/qtile-wall.sh &
 ~/.config/qtile/wall.sh &
