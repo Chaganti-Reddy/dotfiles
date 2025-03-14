@@ -40,6 +40,12 @@ setup_gpg_pass() {
 
         echo -e "\n[INFO] Once done, you can continue with the setup manually. Skipping the automated setup."
         sleep 5
+      
+        echo -e "\n[INFO] Reducing GPG key caching time for better security..." && sleep 0.5
+        echo "default-cache-ttl 150" >> ~/.gnupg/gpg-agent.conf
+        echo "max-cache-ttl 150" >> ~/.gnupg/gpg-agent.conf
+        gpgconf --kill gpg-agent  # Restart agent to apply changes
+
         return
     fi
 
