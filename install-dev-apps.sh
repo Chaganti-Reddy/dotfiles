@@ -83,7 +83,7 @@ for app in $tools_choices; do
       echo -e "${GREEN}kubectl is already installed.${RESET}"
     fi
     ;;
-  6) install_multiple_packages "texlive-bin" "texlive-meta" "texlive-latex" "perl-yaml-tiny" \
+  6) install_multiple_packages "texlive-bin" "texlive-meta" "texlive-latex" "tex-fmt-bin" "perl-yaml-tiny" \
                                "perl-file-homedir" "perl-unicode-linebreak" ;;
   7) install_package "discord" "Discord" "sudo pacman -S --noconfirm" ;;
   8) install_package "obsidian" "Obsidian" "sudo pacman -S --noconfirm" ;;
