@@ -85,7 +85,6 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
   if [ ! -f "$HOME/.config/hypr/hyprland.conf" ]; then
     cd ~/dotfiles || return
     stow "$stow_folder"
-    stow wofi
     stow rofi
     stow kitty
     echo -e "${GREEN}Hyprland configuration ($stow_folder) has been set up.${RESET}"
