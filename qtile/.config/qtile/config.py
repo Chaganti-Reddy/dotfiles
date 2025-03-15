@@ -27,7 +27,7 @@
 import os
 import subprocess
 from libqtile import bar, extension, hook, layout, qtile, widget
-from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 import colors
 
@@ -176,7 +176,7 @@ keys = [
     Key([mod], "m", lazy.layout.maximize(), desc='Toggle between min and max sizes'),
     Key([mod], "t", lazy.window.toggle_floating(), desc='toggle floating'),
     Key([mod], "f", maximize_by_switching_layout(), lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
-    Key([mod, "shift"], "m", minimize_all(), desc="Toggle hide/show all windows on current group"),
+    Key([mod, "mod1"], "m", minimize_all(), desc="Toggle hide/show all windows on current group"),
 
     # Switch focus of monitors
     # Key([mod], "period", lazy.next_screen(), desc='Move focus to next monitor'),
@@ -198,49 +198,64 @@ keys = [
     # ]),
 ]
 
-groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+groups = [
+    ScratchPad("scratchpad", [
+        DropDown("term", "alacritty", opacity=0.8),
+        DropDown("ncmpcpp", "alacritty -e ncmpcpp",
+                 x=0.22, y=0.17, width=0.55, height=0.65, opacity=0.9,
+                 on_focus_lost_hide=True),
+        DropDown("chess", "/opt/brave-bin/brave --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc",
+                 x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
+                 on_focus_lost_hide=True),
+    ]),
 
-#group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-#group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX", "MISC"]
-group_labels = ["", "", "", "", "", "", "𝦝", "", "", "⛨"]
-#group_labels = [" ", " ", " ", " ", " ", " ", "⛨ ", " ", " "]
-
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
-
-
-for i in range(len(group_names)):
-    groups.append(
-        Group(
-            name=group_names[i],
-            layout=group_layouts[i].lower(),
-            label=group_labels[i],
-        ))
+    Group("1", label="", layout="monadtall"),
+    Group("2", label="", layout="monadtall"),
+    Group("3", label="", layout="monadtall"),
+    Group("4", label="", layout="monadtall"),
+    Group("5", label="", layout="monadtall"),
+    Group("6", label="", layout="monadtall"),
+    Group("7", label="𝦝", layout="monadtall"),
+    Group("8", label="", layout="monadtall"),
+    Group("9", label="", layout="monadtall"),
+    Group("0", label="⛨", layout="monadtall"),
+]
  
-for i in groups:
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + letter of group = move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=False),
-                desc="Move focused window to group {}".format(i.name),
-            ),
-        ]
-    )
+keys.extend([
+    # Keybindings for switching to groups
+    Key(["mod4"], "1", lazy.group["1"].toscreen(), desc="Switch to group 1"),
+    Key(["mod4"], "2", lazy.group["2"].toscreen(), desc="Switch to group 2"),
+    Key(["mod4"], "3", lazy.group["3"].toscreen(), desc="Switch to group 3"),
+    Key(["mod4"], "4", lazy.group["4"].toscreen(), desc="Switch to group 4"),
+    Key(["mod4"], "5", lazy.group["5"].toscreen(), desc="Switch to group 5"),
+    Key(["mod4"], "6", lazy.group["6"].toscreen(), desc="Switch to group 6"),
+    Key(["mod4"], "7", lazy.group["7"].toscreen(), desc="Switch to group 7"),
+    Key(["mod4"], "8", lazy.group["8"].toscreen(), desc="Switch to group 8"),
+    Key(["mod4"], "9", lazy.group["9"].toscreen(), desc="Switch to group 9"),
+    Key(["mod4"], "0", lazy.group["0"].toscreen(), desc="Switch to group 0"),
+
+    # Keybindings for moving windows to groups
+    Key(["mod4", "shift"], "1", lazy.window.togroup("1", switch_group=False), desc="Move window to group 1"),
+    Key(["mod4", "shift"], "2", lazy.window.togroup("2", switch_group=False), desc="Move window to group 2"),
+    Key(["mod4", "shift"], "3", lazy.window.togroup("3", switch_group=False), desc="Move window to group 3"),
+    Key(["mod4", "shift"], "4", lazy.window.togroup("4", switch_group=False), desc="Move window to group 4"),
+    Key(["mod4", "shift"], "5", lazy.window.togroup("5", switch_group=False), desc="Move window to group 5"),
+    Key(["mod4", "shift"], "6", lazy.window.togroup("6", switch_group=False), desc="Move window to group 6"),
+    Key(["mod4", "shift"], "7", lazy.window.togroup("7", switch_group=False), desc="Move window to group 7"),
+    Key(["mod4", "shift"], "8", lazy.window.togroup("8", switch_group=False), desc="Move window to group 8"),
+    Key(["mod4", "shift"], "9", lazy.window.togroup("9", switch_group=False), desc="Move window to group 9"),
+    Key(["mod4", "shift"], "0", lazy.window.togroup("0", switch_group=False), desc="Move window to group 0"),
+
+    # ScratchPad Keybindings
+    Key([], "F12", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle ScratchPad terminal"),
+    Key(["mod4", "shift"], "m", lazy.group["scratchpad"].dropdown_toggle("ncmpcpp"), desc="Toggle Ncmpcpp"),
+    Key([], "F11", lazy.group["scratchpad"].dropdown_toggle("chess"), desc="Toggle Chess"),
+])
 
 colors = colors.DoomOne
 
 layout_theme = {"border_width": 3,
-                "margin": 12,
+                "margin": 8,
                 "border_focus": colors[8],
                 "border_normal": colors[0]
                 }
