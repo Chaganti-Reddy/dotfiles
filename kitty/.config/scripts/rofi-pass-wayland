@@ -69,7 +69,7 @@ case "$action" in
           sleep 0.2
         fi
       done
-      notify "Auto-typed using custom template for: $selected_entry"
+      # notify "Auto-typed using custom template for: $selected_entry"
     else
       # No custom autotype defined; use default behavior:
       # Type login (if available), then Tab, then password.
@@ -79,39 +79,39 @@ case "$action" in
         wtype -P TAB
         sleep 0.2
         wtype "$password"
-        notify "Auto-typed login & password for: $selected_entry (default autotype)"
+        # notify "Auto-typed login & password for: $selected_entry (default autotype)"
       else
         wtype "$password"
-        notify "Auto-typed password for: $selected_entry (default autotype, no login)"
+        # notify "Auto-typed password for: $selected_entry (default autotype, no login)"
       fi
     fi
     ;;
   "type login")
     if [[ -n "$login" ]]; then
       wtype "$login"
-      notify "Typed login for: $selected_entry"
+      # notify "Typed login for: $selected_entry"
     else
-      notify "No login field found for: $selected_entry"
+      # notify "No login field found for: $selected_entry"
     fi
     ;;
   "type pass")
     wtype "$password"
-    notify "Typed password for: $selected_entry"
+    # notify "Typed password for: $selected_entry"
     ;;
   "copy login")
     if [[ -n "$login" ]]; then
       echo -n "$login" | wl-copy
-      notify "Copied login for: $selected_entry"
+      # notify "Copied login for: $selected_entry"
     else
-      notify "No login field found for: $selected_entry"
+      # notify "No login field found for: $selected_entry"
     fi
     ;;
   "copy pass")
     echo -n "$password" | wl-copy
-    notify "Copied password for: $selected_entry"
+    # notify "Copied password for: $selected_entry"
     ;;
   *)
-    notify "Unknown action: $action"
+    # notify "Unknown action: $action"
     ;;
 esac
 
