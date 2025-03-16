@@ -24,3 +24,5 @@
 8. If you are installing my nvim config then first change the theme name in ~/.config/nvim/lua/chadrc.lua file to something like `nightowl` then after successfully loading all the plugins and if you have pywal setup then change the theme name back to `chadwal`.
 
 9. If you want to remove password saving in browser then go throught - https://chagantireddy.netlify.app/post/pass-setup/
+
+10. `Note- This is for me` - Install Brave Extension - unhook, leethub, copyfish
