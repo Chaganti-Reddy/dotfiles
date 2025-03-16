@@ -40,6 +40,7 @@ lazy = true
 margin = 50
 
 [scratchpads.news]
+animation = ""
 command = "kitty --class news -e newsboat"
 class = "news"
 lazy = true
