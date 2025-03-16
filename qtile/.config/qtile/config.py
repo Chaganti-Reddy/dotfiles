@@ -204,20 +204,20 @@ groups = [
         DropDown("ncmpcpp", "alacritty -e ncmpcpp",
                  x=0.22, y=0.17, width=0.55, height=0.65, opacity=0.9,
                  on_focus_lost_hide=True),
-    DropDown(
-        "chess",
-        "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-apps/chess --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc --disable-session-crashed-bubble --disable-infobars",
-        x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
-        warp_pointer=True,
-        on_focus_lost_hide=False
-    ),
-    DropDown(
-        "whatsapp",
-        "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-apps/whatsapp --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm --disable-session-crashed-bubble --disable-infobars",
-        x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
-        warp_pointer=True,
-        on_focus_lost_hide=False
-    ),
+        DropDown(
+            "chess",
+            "/home/karna/apps/chess-linux-x64/chess",
+            x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
+            warp_pointer=True,
+            on_focus_lost_hide=False
+        ),
+        DropDown(
+            "whatsapp",
+            "/home/karna/apps/whatsapp-linux-x64/whatsapp",
+            x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
+            warp_pointer=True,
+            on_focus_lost_hide=False
+        ),
     ]),
 
     Group("1", label="", layout="monadtall"),
@@ -261,7 +261,7 @@ keys.extend([
     Key([], "F12", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle ScratchPad terminal"),
     Key(["mod4", "shift"], "m", lazy.group["scratchpad"].dropdown_toggle("ncmpcpp"), desc="Toggle Ncmpcpp"),
     Key([], "F11", lazy.group["scratchpad"].dropdown_toggle("chess"), desc="Toggle Chess"),
-    Key(["mod4"], "F11", lazy.group["scratchpad"].dropdown_toggle("whatsapp"), desc="Toggle Whatsapp"),
+    Key([], "F10", lazy.group["scratchpad"].dropdown_toggle("whatsapp"), desc="Toggle Whatsapp"),
 ])
 
 # colors = colors.DoomOne
