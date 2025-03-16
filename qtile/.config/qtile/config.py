@@ -201,7 +201,7 @@ keys = [
 groups = [
     ScratchPad("scratchpad", [
         DropDown("term", "kitty", opacity=0.8),
-        DropDown("ncmpcpp", "alacritty -e ncmpcpp",
+        DropDown("ncmpcpp", "alacritty -e /home/karna/.ncmpcpp/scripts/ncmpcpp-art",
                  x=0.22, y=0.17, width=0.55, height=0.65, opacity=0.9,
                  on_focus_lost_hide=True),
         DropDown(
