@@ -5511,3 +5511,9 @@ Mar 14 16:35:40 : update: removing Music.zip/playlists/Study/Yvette Young - Sinc
 Mar 14 16:35:40 : update: removing Music.zip/playlists/Study/Yvette Young - Reminisce.mp3
 Mar 16 12:13:44 : exception: Not playing
 Mar 16 17:41:34 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Mar 16 17:43:49 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Mar 16 17:50:23 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Mar 16 17:50:23 : pipewire_output: Decoder is too slow; playing silence to avoid xrun
+Mar 16 17:52:58 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Mar 16 17:53:16 : player: played "playlists/English/Måneskin - Beggin'.mp3"
+Mar 16 17:59:44 : player: played "playlists/English/Kendrick Lamar, SZA - All The Stars (with SZA).mp3"
