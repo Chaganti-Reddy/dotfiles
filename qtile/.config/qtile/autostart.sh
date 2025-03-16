@@ -23,8 +23,8 @@ udiskie --smart-tray &
 /usr/bin/gnome-keyring-daemon --start &
 numlockx on &
 
-# ~/.config/qtile/qtile-wall.sh &
-~/.config/qtile/wall.sh &
+~/.config/qtile/qtile-wall.sh &
+# ~/.config/qtile/wall.sh &
 
 if [ -z "$(pgrep xfce4-clipman)" ]; then
     xfce4-clipman &
