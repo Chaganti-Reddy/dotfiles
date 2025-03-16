@@ -204,9 +204,13 @@ groups = [
         DropDown("ncmpcpp", "alacritty -e ncmpcpp",
                  x=0.22, y=0.17, width=0.55, height=0.65, opacity=0.9,
                  on_focus_lost_hide=True),
-        DropDown("chess", "/opt/brave-bin/brave --user-data-dir=$HOME/.config/brave-apps --app-id=kinpkbniadkppecjaginbegiljofpcfc",
-                 x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
-                 on_focus_lost_hide=True),
+    DropDown(
+        "chess",
+        "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-chess --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc --disable-session-crashed-bubble --disable-infobars",
+        x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
+        warp_pointer=False,
+        on_focus_lost_hide=True
+    ),
     ]),
 
     Group("1", label="", layout="monadtall"),
