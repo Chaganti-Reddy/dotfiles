@@ -50,8 +50,18 @@ margin = 50
 
 [scratchpads.chess]
 animation = ""
-command = "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-chess --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc --disable-session-crashed-bubble --disable-infobars"
+command = "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-apps/chess --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc --disable-session-crashed-bubble --disable-infobars"
 class = "brave-kinpkbniadkppecjaginbegiljofpcfc-Default"
+size = "80% 80%"
+lazy = true
+position = "181px 97px"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.whatsapp]
+animation = ""
+command = "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-apps/whatsapp --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm --disable-session-crashed-bubble --disable-infobars"
+class = "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default"
 size = "80% 80%"
 lazy = true
 position = "181px 97px"
