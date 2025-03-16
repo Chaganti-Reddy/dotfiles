@@ -1,12 +1,20 @@
 #!/bin/bash
 
-# Check if wallpaper path is provided
-if [ -z "$1" ]; then
-    echo "Usage: $0 /path/to/wallpaper"
+# Define the wallpaper directories
+WALLPAPER_DIR="/home/karna/Pictures/pix"
+
+# Find all image files in the directories
+WALLPAPER_FILES=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \)))
+
+# Check if there are any wallpapers available
+if [ ${#WALLPAPER_FILES[@]} -eq 0 ]; then
+    echo "Error: No wallpapers found in $WALLPAPER_DIR"
     exit 1
 fi
 
-WALLPAPER_PATH="$1"
+# Pick a random wallpaper
+WALLPAPER_PATH="${WALLPAPER_FILES[RANDOM % ${#WALLPAPER_FILES[@]}]}"
+
 WAL_CACHE_DIR="$HOME/.cache/wal"
 COLORS_PY="$HOME/.config/qtile/colors.py"
 
@@ -22,7 +30,7 @@ fi
 # Extract colors from wal's colors.json
 COLORS=($(jq -r '.colors | .color0, .color1, .color2, .color3, .color4, .color5, .color6, .color7, .color8, .color9' "$WAL_CACHE_DIR/colors.json"))
 
-# Generate the new color scheme for colors.py without extra newline before WalColors
+# Generate the new color scheme for colors.py
 NEW_COLORS=$(cat <<EOF
 WalColors = [
     ["${COLORS[0]}", "${COLORS[0]}"], # bg
@@ -34,15 +42,14 @@ WalColors = [
     ["${COLORS[6]}", "${COLORS[6]}"], # color05
     ["${COLORS[7]}", "${COLORS[7]}"], # color06
     ["${COLORS[8]}", "${COLORS[8]}"], # color15
-    ["${COLORS[9]}", "${COLORS[9]}"], # color[9]
+    ["${COLORS[9]}", "${COLORS[9]}"], # color09
 ]
 EOF
 )
 
 # Check if WalColors exists in colors.py
 if grep -q "WalColors" "$COLORS_PY"; then
-    # If it exists, delete the entire WalColors block, including everything under it
-    sed -i '/WalColors = \[/,/^\]/d' "$COLORS_PY"
+    sed -i '/WalColors = \[/,/^]/d' "$COLORS_PY"
 fi
 
 # Append the new WalColors block to the end of the file
