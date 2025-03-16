@@ -32,7 +32,7 @@ from libqtile.lazy import lazy
 import colors
 
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
-myTerm = "alacritty"      # My terminal of choice
+myTerm = "kitty"      # My terminal of choice
 myBrowser = "brave"       # My browser of choice
 myAltBrowser = "qutebrowser"      
 myEmacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
@@ -200,11 +200,11 @@ keys = [
 
 groups = [
     ScratchPad("scratchpad", [
-        DropDown("term", "alacritty", opacity=0.8),
+        DropDown("term", "kitty", opacity=0.8),
         DropDown("ncmpcpp", "alacritty -e ncmpcpp",
                  x=0.22, y=0.17, width=0.55, height=0.65, opacity=0.9,
                  on_focus_lost_hide=True),
-        DropDown("chess", "/opt/brave-bin/brave --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc",
+        DropDown("chess", "/opt/brave-bin/brave --user-data-dir=$HOME/.config/brave-apps --app-id=kinpkbniadkppecjaginbegiljofpcfc",
                  x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
                  on_focus_lost_hide=True),
     ]),
@@ -252,7 +252,8 @@ keys.extend([
     Key([], "F11", lazy.group["scratchpad"].dropdown_toggle("chess"), desc="Toggle Chess"),
 ])
 
-colors = colors.DoomOne
+# colors = colors.DoomOne
+colors = colors.WalColors
 
 layout_theme = {"border_width": 3,
                 "margin": 8,
@@ -311,7 +312,7 @@ def init_widgets_list():
         widget.Image(
             filename="~/.config/qtile/icons/infinity-icon.png",
             scale="False",
-            mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(myTerm)},
+            mouse_callbacks={'Button2': lambda: qtile.cmd_spawn(myTerm)},
         ),
         widget.Prompt(
             font="JetBrains Mono Nerd Font Bold",
@@ -328,7 +329,7 @@ def init_widgets_list():
             active=colors[8],
             inactive=colors[9],
             rounded=False,
-            highlight_color=colors[2],
+            # highlight_color=colors[2],
             highlight_method="line",
             this_current_screen_border=colors[7],
             this_screen_border=colors[4],
