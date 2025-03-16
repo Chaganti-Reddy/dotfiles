@@ -23,7 +23,8 @@ if [[ "$install_dwm" == "y" || "$install_dwm" == "Y" ]]; then
     # Install dwm and related packages if missing
     echo -e "${YELLOW}Installing dwm and related packages...${RESET}"
     cd ~/dotfiles || return
-    stow suckless/
+    stow suckless
+    stow st
     stow DWMScripts
 
     # Install dwm, slstatus, st, and dmenu
