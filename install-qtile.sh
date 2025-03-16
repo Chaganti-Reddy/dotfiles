@@ -49,6 +49,7 @@ if [[ "$install_qtile" =~ ^[Yy]$ ]]; then
     "qtile-extras"
     "python-pulsectl-asyncio"
     "python-mpd2"
+    "xdg-desktop-portal-gtk"
   )
 
   # Install the packages
