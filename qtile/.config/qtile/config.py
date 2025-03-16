@@ -218,6 +218,13 @@ groups = [
             warp_pointer=True,
             on_focus_lost_hide=False
         ),
+        DropDown(
+            "typetest",
+            "kitty --class typetest -e typetest -m -c -p -l 50",
+            x=0.32, y=0.09, width=0.35, height=0.25, opacity=0.9,
+            warp_pointer=True,
+            on_focus_lost_hide=True
+        ),
     ]),
 
     Group("1", label="", layout="monadtall"),
@@ -262,6 +269,7 @@ keys.extend([
     Key(["mod4", "shift"], "m", lazy.group["scratchpad"].dropdown_toggle("ncmpcpp"), desc="Toggle Ncmpcpp"),
     Key([], "F11", lazy.group["scratchpad"].dropdown_toggle("chess"), desc="Toggle Chess"),
     Key([], "F10", lazy.group["scratchpad"].dropdown_toggle("whatsapp"), desc="Toggle Whatsapp"),
+    Key(["mod4", "mod1"], "F12", lazy.group["scratchpad"].dropdown_toggle("typetest"), desc="Toggle Typing Test"),
 ])
 
 # colors = colors.DoomOne
