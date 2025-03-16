@@ -6,8 +6,8 @@ ccrypt
 didyoumean-bin
 arch-wiki-docs 
 kvantum 
-apple_cursor 
 cava 
+rose-pine-cursor
 sysstat 
 lazydocker-bin
 multimarkdown
