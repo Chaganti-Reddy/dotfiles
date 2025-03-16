@@ -64,6 +64,7 @@ screenkey
 lazygit 
 lolcat 
 sxiv 
+nsxiv
 shellcheck 
 net-tools 
 numlockx 
