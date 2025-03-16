@@ -7,8 +7,8 @@ didyoumean-bin
 arch-wiki-docs 
 kvantum 
 cava 
-rose-pine-cursor
 sysstat 
+nordzy-cursors
 lazydocker-bin
 multimarkdown
 gopls 
