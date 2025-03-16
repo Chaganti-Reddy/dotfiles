@@ -50,8 +50,7 @@ margin = 50
 
 [scratchpads.chess]
 animation = ""
-# command = "/opt/brave-bin/brave --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc"
-command = "/opt/brave-bin/brave --user-data-dir=$HOME/.config/brave-apps --app-id=kinpkbniadkppecjaginbegiljofpcfc --disable-session-crashed-bubble --disable-infobars"
+command = "/opt/brave-bin/brave --user-data-dir=/home/karna/.config/brave-chess --profile-directory=Default --app-id=kinpkbniadkppecjaginbegiljofpcfc --disable-session-crashed-bubble --disable-infobars"
 class = "brave-kinpkbniadkppecjaginbegiljofpcfc-Default"
 size = "80% 80%"
 lazy = true
