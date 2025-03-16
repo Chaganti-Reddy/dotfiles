@@ -65,7 +65,6 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "wofi"
     "qt5-wayland"
     "qt6-wayland"
-    "rose-pine-hyprcursor"
   )
 
   # Install the packages
