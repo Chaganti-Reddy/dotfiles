@@ -21,6 +21,15 @@ size = "700px 700px"
 animate = ""
 margin = 50
 
+[scratchpads.typetest]
+command = "kitty --class typetest -e typetest -m -c -p -l 50"
+class = "typetest"
+lazy = true
+position = "471px 58px"
+size = "960px 337px"
+animate = ""
+margin = 50
+
 [scratchpads.calc]
 command = "qalculate-gtk"
 class = "qalculate-gtk"
