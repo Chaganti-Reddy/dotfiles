@@ -499,7 +499,7 @@ function cpRun() {
 
 
 export STARSHIP_LOG="error"
-
+export MPLBACKEND=TkAgg
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
