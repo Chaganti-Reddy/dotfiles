@@ -607,6 +607,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),    # ssh-askpass
         Match(wm_class="toolbar"),        # toolbars
         Match(wm_class="Yad"),            # yad boxes
+        Match(wm_class="xdg-desktop-portal-gtk"),
         Match(title="branchdialog"),      # gitk
         Match(title='Confirmation'),      # tastyworks exit box
         Match(title='Qalculate!'),        # qalculate-gtk
