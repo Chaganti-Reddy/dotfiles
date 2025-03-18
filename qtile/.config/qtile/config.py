@@ -608,6 +608,7 @@ floating_layout = layout.Floating(
         Match(wm_class="toolbar"),        # toolbars
         Match(wm_class="Yad"),            # yad boxes
         Match(wm_class="xdg-desktop-portal-gtk"),
+        Match(wm_class="org.telegram.desktop"),
         Match(title="branchdialog"),      # gitk
         Match(title='Confirmation'),      # tastyworks exit box
         Match(title='Qalculate!'),        # qalculate-gtk
