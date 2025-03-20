@@ -135,7 +135,7 @@
         "on-click-right": "kitty -e btop"
     },
  "battery": {
-   "interval": 5,
+   "interval": 1,
     "states": {
       "good": 98,
       "warning": 30,
