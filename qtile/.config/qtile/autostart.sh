@@ -19,9 +19,12 @@ dunst -conf ~/.config/dunst/dunstrc_xorg &
 mpd &
 udiskie --smart-tray &
 # /usr/lib/polkit-kde-authentication-agent-1 &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+if [[ ! `pidof gnome-polkit` ]]; then
+	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+fi
 /usr/bin/gnome-keyring-daemon --start &
 numlockx on &
+xsetroot -cursor_name left_ptr
 
 ~/.config/qtile/qtile-wall.sh &
 # ~/.config/qtile/wall.sh &
