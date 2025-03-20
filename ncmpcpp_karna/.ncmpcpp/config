@@ -9,7 +9,8 @@ mpd_port 		  	= "6600"
 mpd_crossfade_time 	= "2"
 
 ### Script ###
-execute_on_song_change = "kunst --size 60x60 --silent"
+execute_on_song_change = "~/.ncmpcpp/scripts/album-art"
+# execute_on_song_change = "kunst --size 60x60 --silent"
 
 ### Behaviour ###
 message_delay_time 				 = 1
@@ -63,3 +64,25 @@ current_item_inactive_column_prefix = red
 current_item_inactive_column_suffix = red
 color1 = "white"
 color2 = "red"
+
+### Layout ###
+startup_screen = visualizer
+startup_slave_screen = playlist  
+startup_slave_screen_focus = yes
+locked_screen_width_part = 41
+
+### Misc ###
+default_place_to_search_in = "database"
+
+display_bitrate = "no"
+enable_window_title = "yes"
+follow_now_playing_lyrics = "yes"
+empty_tag_marker = ""
+
+cyclic_scrolling = "yes"
+header_text_scrolling = "yes"
+jump_to_now_playing_song_at_start = "yes"
+lines_scrolled = "2"
+
+system_encoding = "utf-8"
+regular_expressions = "extended"
