@@ -9,7 +9,7 @@ start_hyprpaper() {
   if ! pgrep -x "hyprpaper" >/dev/null; then
     hyprpaper &
     sleep 0.5 # Give it time to start
-    dunstify -u low "Hyprpaper is not running. Starting it..."
+    # dunstify -u low "Hyprpaper is not running. Starting it..."
   fi
 }
 
