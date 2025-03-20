@@ -500,6 +500,7 @@ function cpRun() {
 
 export STARSHIP_LOG="error"
 export MPLBACKEND=TkAgg
+export KUNST_MUSIC_DIR="/home/karna/Music/"
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
