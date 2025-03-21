@@ -165,9 +165,9 @@
 
     "tooltip-format": 
       "Network: <b>{essid}</b>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-    "format-alt": "說 {essid}",
-    "format-linked": "說 {essid} (No IP)",
-    "format-disconnected": "說 Disconnected",
+    "format-alt": "󰣺 {essid}",
+    "format-linked": "󰣺  {essid} (No IP)",
+    "format-disconnected": "󰣺  Disconnected",
     "interval": 2,
     "on-click-right": "kitty -e nm-applet"
   },
