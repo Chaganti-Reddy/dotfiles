@@ -65,6 +65,9 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "wofi"
     "qt5-wayland"
     "qt6-wayland"
+    "wlroots"
+    "xdg-desktop-portal-wlr"
+    "wlr-randr"
   )
 
   # Install the packages
