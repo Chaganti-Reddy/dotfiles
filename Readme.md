@@ -1,3 +1,5 @@
+## NOTE: My dotfiles are moved to GitLab - https://gitlab.com/Chaganti-Reddy/dotfiles
+
 # Dotfiles Repository
       
 This repository contains my personal configuration files for various applications and settings on Arch Linux with the DWM window manager. These files are essential for my system to look and function as I prefer. I recommend cloning this repository into your home directory (`~/`) for easy integration into your own setup.
