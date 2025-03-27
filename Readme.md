@@ -13,7 +13,7 @@ To utilize these dotfiles, you need a system running Arch Linux with the DWM win
 Fist install Arch Linux with minimal setup with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
 
 ```bash 
-git clone https://github.com/Chaganti-Reddy/dotfiles.git
+git clone https://gitlab.com/Chaganti-Reddy/dotfiles.git
 ```
 
 Read install.sh carefully and modify options whatever you want and just run 
@@ -33,7 +33,7 @@ sudo pacman -S stow
 
 2. Clone this repository into your home directory:
 ```bash
-git clone https://github.com/Chaganti-Reddy/dotfiles.git ~/dotfiles
+git clone https://gitlab.com/Chaganti-Reddy/dotfiles.git ~/dotfiles
 ```
 
 3. Change into the `dotfiles` directory:
@@ -61,7 +61,7 @@ sudo make clean install
 
 9. Make sure there is no .stow-local-ignore files in the config directory you want to use, else it will ignore the files in that directory.
 
-10. If you have any doubt feel free to comment it and make sure you watch the youtube videos regarding that particular application before commenting in github.
+10. If you have any doubt feel free to comment it and make sure you watch the youtube videos regarding that particular application before commenting in gitlab.
 
 11. Also there is an install.sh script which contains my packages list to install, check it and uncomment or comment lines as per your need
 
