@@ -20,7 +20,7 @@ if [[ "$download_wallpapers" == "y" || "$download_wallpapers" == "Y" ]]; then
     echo -e "${YELLOW}Pix folder not found in Pictures. Downloading wallpapers...${RESET}"
 
     cd ~/Downloads/ || return
-    curl -L -o wall.zip https://codeload.github.com/Chaganti-Reddy/wallpapers/zip/refs/heads/main
+    curl -L -o wall.zip https://gitlab.com/chaganti-reddy1/wallpapers/-/archive/main/wallpapers-main.zip
     unzip wall.zip
     cd wallpapers-main || return
 
