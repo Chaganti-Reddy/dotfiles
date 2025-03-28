@@ -19,7 +19,7 @@ else
 
   # Download the zip file
   echo -e "${YELLOW}Downloading fonts...${RESET}"
-  curl -L -o ~/.local/share/fonts/my-fonts.zip https://github.com/Chaganti-Reddy/my-fonts/archive/main.zip
+  curl -L -o ~/.local/share/fonts/my-fonts.zip https://gitlab.com/chaganti-reddy1/my-fonts/-/archive/main/my-fonts-main.zip
 
   # Extract the fonts
   echo -e "${YELLOW}Extracting fonts...${RESET}"
