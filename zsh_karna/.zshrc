@@ -501,6 +501,7 @@ function cpRun() {
 export STARSHIP_LOG="error"
 export MPLBACKEND=TkAgg
 export KUNST_MUSIC_DIR="/home/karna/Music/"
+eval "$(leetcode completions)"
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
