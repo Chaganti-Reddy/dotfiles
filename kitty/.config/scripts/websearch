@@ -51,7 +51,7 @@ websearch[stackoverflow]="https://stackoverflow.com/search?q="
 
 DMENU="rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -i -l 10 -p"
 #Install python-adblock for qutebrowser
-DMBROWSER="/usr/bin/zen-browser"
+DMBROWSER="/usr/bin/brave"
 
 main() {
   # As this is loaded from other file it is technically not defined
