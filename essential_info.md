@@ -25,4 +25,4 @@
 
 9. If you want to remove password saving in browser then go throught - https://chagantireddy.netlify.app/post/pass-setup/
 
-10. `Note- This is for me` - Install Brave Extension - unhook, copyfish, google translate
+10. `Note- This is for me` - Install Brave Extension - unhook, copyfish, Leetcode Torture, Leetcode Video Solutions, LeetHub V2, Simplify Copilot, 
