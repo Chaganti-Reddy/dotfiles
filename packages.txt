@@ -201,3 +201,4 @@ emacs
 dictd
 cargo
 kitty
+xmlstarlet
