@@ -1,8 +1,9 @@
 sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
-state: stop
-current: 10
+state: pause
+current: 5
+time: 21.859
 random: 1
 repeat: 1
 single: 0
@@ -25,4 +26,8 @@ playlist_begin
 10:playlists/Liked/Raghu Dixit, Sooraj Santhosh, Rita Thyagarajan - Chal Chalo Chalo.mp3
 11:playlists/Liked/MM Sreelekha, Sid Sriram, Ramya Behara - Urike Urike.mp3
 12:playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3
+13:playlists/English/Justin Bieber - Love Me.mp3
+14:playlists/English/Justin Bieber - Ghost.mp3
+15:playlists/EdSheeran/Ed Sheeran - Shape of You.mp3
+16:playlists/EdSheeran/Ed Sheeran - Perfect.mp3
 playlist_end
