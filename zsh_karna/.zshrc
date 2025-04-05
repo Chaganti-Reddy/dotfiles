@@ -257,10 +257,10 @@ export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded
 alias zathura="$HOME/.local/bin/zathura"
 alias cd="z"
 alias cdi="zi"
-alias la='exa -al --colour=always --group-directories-first'
-alias ll='exa -a --colour=always --group-directories-first'
-alias ls='exa -l --colour=always --group-directories-first'
-alias lt='exa -aT --colour=always --group-directories-first'
+alias la='exa -al --colour=always --icons --group-directories-first'
+alias ll='exa -a --colour=always --icons --group-directories-first'
+alias ls='exa -l --colour=always --icons --group-directories-first'
+alias lt='exa -aT --colour=always --icons --group-directories-first'
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
 alias listdir="ls -d */ > list"
