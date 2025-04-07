@@ -188,7 +188,8 @@
         "on-click": "~/.config/waybar/scripts/volumecontrol.sh -o m",
         "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -o i",
         "on-scroll-down": "~/.config/waybar/scripts/volumecontrol.sh -o d",
-    "on-click-right": "pavucontrol -t 3",
+    "on-click-middle": "pavucontrol -t 3",
+    "on-click-right": "~/.config/scripts/rofi-mixer/rofi-mixer.sh &",
     // "tooltip": false,
     "max-volume": 153
     },
