@@ -38,7 +38,6 @@ if [[ "$install_i3" =~ ^[Yy]$ ]]; then
 
   # List of packages to install
   packages=(
-    "dmenu"
     "i3-wm"
     "i3blocks"
     "i3lock"
