@@ -11,7 +11,7 @@
     # paru -S --needed "gcc" "binutils" "dotnet-runtime" "dotnet-sdk" "aspnet-runtime" "mono" "jdk-openjdk" "dart" "kotlin" "elixir" "npm" "nodejs" "typescript" "make" "go" "nasm" "r" "nuitka" "python" "ruby" "perl" "lua" "pyinstaller" "swift-language" "flutter-bin" "gcc-fortran" "fortran-fpm-bin"
     ```
 
-3. If you are installing docker then go through - https://chagantireddy.netlify.app/post/docker-cli/
+3. If you are installing docker then go through - https://karnablog.netlify.app/docker-cli/
 
 4. If you are using zen-browser, for extra theming go through ~/dotfiles/Extras/Extras/Zen Browser/ folder and use them in ~/.zen/ use folder
 
