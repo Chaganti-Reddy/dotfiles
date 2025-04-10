@@ -68,6 +68,7 @@ if [[ "$install_hyprland" =~ ^[Yy]$ ]]; then
     "wlroots"
     "xdg-desktop-portal-wlr"
     "wlr-randr"
+    "pyprland"
   )
 
   # Install the packages
