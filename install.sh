@@ -8,7 +8,7 @@ SUB_SCRIPTS=(
   install-packages.sh
   install-shell.sh
   install-gpg.sh
-  install-i3.sh
+#  install-i3.sh
   install-hypr.sh
   install-qtile.sh
   install-conda.sh
@@ -19,8 +19,8 @@ SUB_SCRIPTS=(
   install-tools.sh
   install-mariadb.sh
   install-fonts.sh
-  install-dwm.sh
-  install-bspwm.sh
+#  install-dwm.sh
+#  install-bspwm.sh
   install-ollama.sh
   install-pip-pack.sh
   install-grub.sh
