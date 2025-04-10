@@ -48,7 +48,6 @@ if [[ "$install_i3" =~ ^[Yy]$ ]]; then
     "autotiling"
     "alacritty"
     "kitty"
-    "rofi"
     "polybar"
   )
 
