@@ -25,6 +25,6 @@
 
 9. If you want to remove password saving in browser then go throught - https://chagantireddy.netlify.app/post/pass-setup/
 
-10. `Note- This is for me` - Install Brave Extension - unhook, copyfish, Leetcode Torture, Leetcode Video Solutions, LeetHub V2, Simplify Copilot, 
+10. `Note- This is for me` - Install Brave Extension - unhook, copyfish, Leetcode Video Solutions, LeetHub V2, Simplify Copilot 
 
 11. If spotdl not working and getting errors like "FFmpegError: Failed to convert" then just change the value of "bitrate":null to "bitrate":"192k" - taken from https://github.com/spotDL/spotify-downloader/issues/1938#issuecomment-2753157035
