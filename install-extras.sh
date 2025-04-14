@@ -99,7 +99,7 @@ if [[ "$install_extras" == "y" || "$install_extras" == "Y" ]]; then
     sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
 
     # Install custom tools for karna
-    sudo rm /usr/bin/kunst && curl -L git.io/raw-kunst > kunst && chmod +x kunst && sudo mv kunst /usr/bin
+    sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst > kunst && chmod +x kunst && sudo mv kunst /usr/bin
 
     cargo install leetcode-cli
 
