@@ -13,26 +13,17 @@ echo -e "${CYAN}Setting up MariaDB...${RESET}"
 echo -e "${YELLOW}Would you like to install and configure MariaDB (a relational database management system)? (y/n)${RESET}"
 read -r mariadb_installation
 
-# Check if the user wants to proceed with MariaDB setup
 if [[ "$mariadb_installation" == "Y" || "$mariadb_installation" == "y" || -z "$mariadb_installation" ]]; then
-  # Check if MariaDB is installed
   if ! command -v mariadb &> /dev/null; then
     echo -e "${YELLOW}MariaDB is not installed. Installing now...${RESET}"
-    
-    # Install MariaDB
     sudo pacman -S mariadb --noconfirm
 
-    # Initialize the database
-    sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-
-    # Enable and start MariaDB service
+    sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
     sudo systemctl enable --now mariadb
 
     echo -e "${GREEN}MariaDB has been installed and initialized.${RESET}"
   else
     echo -e "${GREEN}MariaDB is already installed.${RESET}"
-
-    # Check if MariaDB is running or configured
     if systemctl is-active --quiet mariadb; then
       echo -e "${GREEN}MariaDB is already configured and running.${RESET}"
     else
@@ -40,17 +31,35 @@ if [[ "$mariadb_installation" == "Y" || "$mariadb_installation" == "y" || -z "$m
       read -r mariadb_configure
 
       if [[ "$mariadb_configure" == "Y" || "$mariadb_configure" == "y" || -z "$mariadb_configure" ]]; then
-        # Run the MariaDB secure installation
-        sudo mariadb-secure-installation
-
-        # Enable and start MariaDB service if not already running
+        sudo mysql_secure_installation
         sudo systemctl enable --now mariadb
-
         echo -e "${GREEN}MariaDB has been configured and started.${RESET}"
       else
         echo -e "${YELLOW}Skipping MariaDB configuration.${RESET}"
       fi
     fi
+  fi
+
+  # Prompt for new user creation
+  echo -e "${YELLOW}Would you like to create a new MariaDB user with full privileges? (y/n)${RESET}"
+  read -r create_user
+  if [[ "$create_user" == "Y" || "$create_user" == "y" || -z "$create_user" ]]; then
+    echo -e "${CYAN}Enter the new username:${RESET}"
+    read -r new_user
+    echo -e "${CYAN}Enter the password for ${new_user}:${RESET}"
+    read -rs new_pass
+    echo
+
+    # Run SQL commands to create the user
+    sudo mariadb -u root <<EOF
+CREATE USER '${new_user}'@'localhost' IDENTIFIED BY '${new_pass}';
+GRANT ALL PRIVILEGES ON *.* TO '${new_user}'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EOF
+
+    echo -e "${GREEN}User '${new_user}' created with full privileges.${RESET}"
+  else
+    echo -e "${YELLOW}Skipping user creation.${RESET}"
   fi
 else
   echo -e "${YELLOW}MariaDB installation and configuration skipped. Proceeding with the setup.${RESET}"
