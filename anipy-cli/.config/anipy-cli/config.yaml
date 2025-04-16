@@ -21,7 +21,7 @@ seasonals_dl_path: /home/karna/miniconda/lib/python3.10/site-packages/anipy_cli/
 # 
 # For an updated list of providers look here: https://sdaqo.github.io/anipy-cli/availabilty
 # 
-# Supported providers (as of 3.3.5): gogoanime, anivibe
+# Supported providers (as of 3.4.5): animekai
 # 
 # Examples:
 #     providers:
@@ -55,7 +55,7 @@ provider_urls: {}
 # Path to your video player.
 # For a list of supported players look here: https://sdaqo.github.io/anipy-cli/availabilty
 # 
-# Supported players (as of 3.3.5): mpv, vlc, syncplay, mpvnet, mpv-controlled
+# Supported players (as of 3.4.5): mpv, vlc, syncplay, mpvnet, mpv-controlled
 # 
 # Info for mpv-controlled:
 # Reuse the mpv window instead of closing and reopening.
