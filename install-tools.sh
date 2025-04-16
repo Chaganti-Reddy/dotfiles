@@ -56,7 +56,7 @@ for app in $extra_tools_choices; do
     ;;
   2)
     install_package "ani-cli-git" "Ani-Cli Python" "paru -S --noconfirm --needed"
-    pip install anipy-cli
+    pipx install anipy-cli
     cd ~/dotfiles/ || return
     stow anipy-cli
     ;;
