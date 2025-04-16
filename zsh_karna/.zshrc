@@ -429,6 +429,7 @@ alias olldeepcode="ollama run deepseek-coder:6.7b"
 alias ollquen25="ollama run quen2.5:3b"
 alias olldeep="ollama run deepseek-r1:8b"
 alias dsa="cd /mnt/Karna/Git/Project-K/Map/DSA/"
+alias lampp="sudo /opt/lampp/lampp"
 
 function cheat() {
     curl cht.sh/$1
