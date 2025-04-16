@@ -17,7 +17,7 @@ SUB_SCRIPTS=(
   install-torrent.sh
   install-dev-apps.sh
   install-tools.sh
-  install-mariadb.sh
+  # install-mariadb.sh
   install-fonts.sh
 #  install-dwm.sh
 #  install-bspwm.sh
