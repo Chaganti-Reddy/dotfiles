@@ -210,6 +210,10 @@ function comp () {
 compdef '_files' comp
 
 function ctime() {
+    g++ -std=c++17 $1".c" -o $1
+    time ./$1
+}
+function cptime() {
     g++ -std=c++17 $1".cpp" -o $1
     time ./$1
 }
