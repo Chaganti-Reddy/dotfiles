@@ -198,3 +198,12 @@ PhoneNumbers
 FKs
 src
 img
+malloc
+realloc
+calloc
+longjmp
+setjmp
+Cpp
+Makefiles
+alloc
+SSDs
