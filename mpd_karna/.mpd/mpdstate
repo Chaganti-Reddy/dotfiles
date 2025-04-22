@@ -1,8 +1,9 @@
 sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
-state: stop
-current: 19
+state: pause
+current: 9
+time: 19.323
 random: 1
 repeat: 1
 single: 0
@@ -32,4 +33,6 @@ playlist_begin
 17:playlists/Liked/Sachet-Parampara, Parampara Tandon, Kausar Munir - Raanjhan (From 'Do Patti').mp3
 18:playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3
 19:playlists/Liked/NCTS - NEXT!.mp3
+20:playlists/Liked/glichery, MXCCREE, DJ GL3CHEKY - X-GALACTICO.mp3
+21:playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3
 playlist_end
