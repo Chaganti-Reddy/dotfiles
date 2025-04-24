@@ -230,3 +230,10 @@ FreeRTOS
 ostrisch
 deallocates
 deallocation
+Prefetching
+Lookaside
+Belady's
+GPRs
+const
+namespace
+ISRs
