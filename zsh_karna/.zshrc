@@ -496,6 +496,8 @@ function cprun() {
   ~/.config/scripts/CPParse run "$1"
 }
 
+alias cls="clear"
+
 # Global run: run tests for all problem folders in the current contest folder
 # Usage: cpRun
 function cpRun() {
