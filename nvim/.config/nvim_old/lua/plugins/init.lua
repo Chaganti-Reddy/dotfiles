@@ -36,7 +36,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       -- ensure_installed = 'all',
-      ignore_install = { 'org' },
+      ignore_install = { "org" },
     },
   },
 
@@ -118,7 +118,7 @@ return {
         direction = "bottom",
         min_height = 25,
         max_height = 25,
-        default_detail = 1
+        default_detail = 1,
       },
     },
   },
@@ -175,7 +175,6 @@ return {
   --   end,
   -- },
 
-
   -- Codeium in Neovim
   {
     "Exafunction/codeium.vim",
@@ -216,40 +215,39 @@ return {
     end,
   },
 
-{
-  'nvim-orgmode/orgmode',
-  event = 'VeryLazy',
-  ft = { 'org' },
-  config = function()
-    -- Setup orgmode
-    require('orgmode').setup({
-      org_agenda_files = '/mnt/Karna/Git/Project-K/Org/**/*',
-      org_default_notes_file = '/mnt/Karna/Git/Project-K/Org/notes.org',
-    })
+  {
+    "nvim-orgmode/orgmode",
+    event = "VeryLazy",
+    ft = { "org" },
+    config = function()
+      -- Setup orgmode
+      require("orgmode").setup {
+        org_agenda_files = "/mnt/Karna/Git/Project-K/Org/**/*",
+        org_default_notes_file = "/mnt/Karna/Git/Project-K/Org/notes.org",
+      }
 
-    -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
-    -- add ~org~ to ignore_install
-    -- require('nvim-treesitter.configs').setup({
-    --   ensure_installed = 'all',
-    --   ignore_install = { 'org' },
-    -- })
-  end,
-},
+      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
+      -- add ~org~ to ignore_install
+      -- require('nvim-treesitter.configs').setup({
+      --   ensure_installed = 'all',
+      --   ignore_install = { 'org' },
+      -- })
+    end,
+  },
 
   -- https://nvimdev.github.io/lspsaga/
   {
-    'nvimdev/lspsaga.nvim',
+    "nvimdev/lspsaga.nvim",
     lazy = false,
     event = "LspAttach",
     config = function()
-      require('lspsaga').setup({})
+      require("lspsaga").setup {}
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons',     -- optional
-    }
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
   },
-
 
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -260,7 +258,6 @@ return {
       require "configs.ibl"
     end,
   },
-
 
   -- Alt Dashboard
   -- {
