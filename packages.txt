@@ -203,3 +203,4 @@ cargo
 kitty
 xmlstarlet
 python-pipx
+lua51
