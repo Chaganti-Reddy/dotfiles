@@ -393,7 +393,28 @@ alias makeslstatus="cd ~/.config/slstatus/ && rm config.h --f && make && sudo ma
 alias dwmcon="nvim ~/.config/dwm/config.def.h"
 alias slstatuscon="nvim ~/.config/slstatus/config.def.h"
 alias dotfiles="cd $HOME/dotfiles/"
-alias n="nvim"
+
+n() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: e path/to/file"
+    return 1
+  fi
+  # Expand ~ and get absolute path
+  local file
+  file="${1/#\~/$HOME}"
+
+  # If relative, convert to absolute
+  [[ "$file" != /* ]] && file="$PWD/$file"
+
+  # Get the parent dir
+  local dir="${file%/*}"
+
+  if [[ "$dir" != "$file" && ! -d "$dir" ]]; then
+    mkdir -p "$dir" || { echo "Failed to create directory: $dir"; return 2; }
+  fi
+
+  nvim "$file"
+}
 
 #git 
 alias gs="git status"
@@ -503,6 +524,18 @@ alias cls="clear"
 function cpRun() {
   ~/.config/scripts/CPParse Run
 }
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
 # --------------------------------------------
 
 
@@ -532,6 +565,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
