@@ -1,3 +1,4 @@
+local lazy = require "lazy"
 return {
   {
     "stevearc/conform.nvim",
@@ -99,28 +100,6 @@ return {
     config = function()
       require "configs.competitest"
     end,
-  },
-
-  -- Compiler in Neovim
-
-  { -- This plugin
-    "Zeioth/compiler.nvim",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
-    opts = {},
-  },
-  { -- The task runner we use
-    "stevearc/overseer.nvim",
-    commit = "6271cab7ccc4ca840faa93f54440ffae3a3918bd",
-    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    opts = {
-      task_list = {
-        direction = "bottom",
-        min_height = 25,
-        max_height = 25,
-        default_detail = 1,
-      },
-    },
   },
 
   -- Github Copilot in Neovim
@@ -283,7 +262,12 @@ return {
     end,
   },
 
-  -- MultiCursors for Neovim
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+  },
+
+ -- MultiCursors for Neovim
   -- {
   --   "smoka7/multicursors.nvim",
   --   event = "VeryLazy",
@@ -335,4 +319,41 @@ return {
   --    },
   --    -- require('gen').select_model()
   --  },
+
+{
+    -- Hints keybinds
+    'folke/which-key.nvim',
+    opts = {
+      -- win = {
+      --   border = {
+      --     { '┌', 'FloatBorder' },
+      --     { '─', 'FloatBorder' },
+      --     { '┐', 'FloatBorder' },
+      --     { '│', 'FloatBorder' },
+      --     { '┘', 'FloatBorder' },
+      --     { '─', 'FloatBorder' },
+      --     { '└', 'FloatBorder' },
+      --     { '│', 'FloatBorder' },
+      --   },
+      -- },
+    },
+  },
+  {
+    -- Highlight todo, notes, etc in comments
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
+  {
+    -- high-performance color highlighter
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
+  {
+    "navarasu/onedark.nvim",
+    priority = 1000,
+  },
 }
