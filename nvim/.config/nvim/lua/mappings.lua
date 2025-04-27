@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
@@ -26,6 +27,18 @@ map({ "n" }, "<leader>csv", ":VimtexStop<CR>", { desc = "Stop vimtex" })
 -- increment/decrement numbers
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+
+-- Normal mode
+map("n", "<A-j>", ":m .+1<CR>==", opts)
+map("n", "<A-k>", ":m .-2<CR>==", opts)
+map("n", "<A-Down>", ":m .+1<CR>==", opts)
+map("n", "<A-Up>", ":m .-2<CR>==", opts)
+
+-- Visual mode
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+map("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
+map("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
 
 -- Zen Mode
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen Mode" })
@@ -211,3 +224,4 @@ end, { desc = 'Debug: set breakpoint with condition' })
 local onedark = require("configs.onedark")
 
 map("n", "<leader>tg", onedark.toggle_transparency, { desc = "Toggle Onedark transparency", noremap = true, silent = true })
+
