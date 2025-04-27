@@ -52,7 +52,7 @@ require('competitest').setup {
 			height = 0.5,
 			show_nu = true,
 			show_rnu = false,
-			close_mappings = { "q", "Q" },
+			mappings_close = { "q", "Q" },
 		},
 	},
 	popup_ui = {
@@ -64,6 +64,7 @@ require('competitest').setup {
 			{ 5, { { 1, "eo" }, { 1, "se" } } },
 		},
 	},
+
 	split_ui = {
 		position = "right",
 		relative_to_editor = true,
