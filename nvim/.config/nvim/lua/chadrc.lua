@@ -83,7 +83,7 @@ M.nvdash = {
 
   buttons = {
     { txt = "  Find File", keys = "ff", cmd = "Telescope find_files" },
-    { txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
+    { txt = "  Recent Files", keys = "fr", cmd = "Telescope oldfiles" },
     { txt = "  Favourites", keys = "fd", cmd = ":lua QuickAccessMenu()" },
     { txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep" },
     { txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()" },
