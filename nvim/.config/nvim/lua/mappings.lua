@@ -52,3 +52,28 @@ map("n", "<leader>pu", ":CompetiTest show_ui<CR>", { desc = "Competitest Show UI
 map("n", "<leader>pd", ":CompetiTest delete_testcase<CR>", { desc = "Competitest Delete Testcase" })
 map("n", "<leader>pA", ":CompetiTest add_testcase<CR>", { desc = "Competitest Add Testcase" })
 map("n", "<leader>pe", ":CompetiTest edit_testcase<CR>", { desc = "Competitest Edit Testcase" })
+
+-- delete single character without copying into register
+vim.keymap.set('n', 'x', '"_x', opts)
+
+-- Find and center
+vim.keymap.set('n', 'n', 'nzzzv', opts)
+vim.keymap.set('n', 'N', 'Nzzzv', opts)
+
+vim.keymap.set('n', '<C-Tab>', ':bnext<CR>', opts)
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
+vim.keymap.set('n', '<leader>x', ':bdelete!<CR>', opts) -- close buffer
+vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
+
+-- Navigate between splits
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
+
+-- Stay in indent mode
+vim.keymap.set('v', '<', '<gv', opts)
+vim.keymap.set('v', '>', '>gv', opts)
+
+-- Keep last yanked when pasting
+vim.keymap.set('v', 'p', '"_dP', opts)
