@@ -140,7 +140,6 @@ baobab
 gnome-disk-utility 
 gparted 
 pavucontrol 
-ranger 
 yad 
 timeshift 
 go 
@@ -205,3 +204,8 @@ xmlstarlet
 python-pipx
 lua51
 gdb
+yq
+dos2unix
+7zip
+yazi
+perl-image-exiftool
