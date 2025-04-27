@@ -204,3 +204,4 @@ kitty
 xmlstarlet
 python-pipx
 lua51
+gdb
