@@ -12,7 +12,7 @@ xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Pro
 
 ### AUTOSTART PROGRAMS ###
 # picom --daemon --config ~/.config/qtile/picom.conf &
-/usr/bin/emacs --daemon &
+# /usr/bin/emacs --daemon &
 nm-applet &
 dunst -conf ~/.config/dunst/dunstrc_xorg &
 "$HOME"/.screenlayout/monitor.sh &
