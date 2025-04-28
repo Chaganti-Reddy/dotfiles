@@ -165,11 +165,6 @@ map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical term" })
 
--- toggleable
-map({ "n", "t" }, "<A-v>", function()
-  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
-end, { desc = "terminal toggleable vertical term" })
-
 -- Helper: sanitize a path for use as an ID (no slashes, etc.)
 local function dir_to_id(dir)
   return "term_" .. dir:gsub("[/\\]", "_")
@@ -179,26 +174,55 @@ end
 local function open_term_per_directory(opts)
   local dir = vim.fn.expand("%:p:h")
   if dir == nil or dir == "" or vim.fn.isdirectory(dir) ~= 1 then
-    dir = vim.fn.getcwd() -- fallback to current working directory
+    dir = vim.fn.getcwd()
   end
 
   local term_id = dir_to_id(dir)
   opts = vim.tbl_extend("force", opts or {}, { id = term_id })
 
-  -- set the local directory (for correct working dir)
   vim.cmd("lcd " .. dir)
 
-  -- toggle the terminal for this directory
+  -- Set sensible defaults based on type
+  if opts.pos == "float" then
+    opts.float_opts = opts.float_opts or {
+      row = 0.25,
+      col = 0.2,
+      width = 0.6,
+      height = 0.4,
+    }
+    opts.size = nil -- do not use size for floats!
+  elseif opts.pos == "vsp" or opts.pos == "vertical" then
+    opts.size = opts.size or 0.4 -- 40% of editor width
+    opts.float_opts = nil
+  else -- "sp" or "horizontal"
+    opts.size = opts.size or 0.4 -- 40% of editor height
+    opts.float_opts = nil
+  end
+
   require("nvchad.term").toggle(opts)
 end
 
--- Usage:
+-- Horizontal split (40% of editor height)
 map({ "n", "t" }, "<A-h>", function()
-  open_term_per_directory { pos = "sp" }
+  open_term_per_directory { pos = "sp", size = 0.4 }
 end, { desc = "terminal: toggleable horizontal term per dir" })
 
+-- Vertical split (40% of editor width)
+map({ "n", "t" }, "<A-v>", function()
+  open_term_per_directory { pos = "vsp", size = 0.4 }
+end, { desc = "terminal: toggleable vertical term per dir" })
+
+-- Floating terminal (60% width, 40% height)
 map({ "n", "t" }, "<A-i>", function()
-  open_term_per_directory { pos = "float" }
+  open_term_per_directory {
+    pos = "float",
+    float_opts = {
+      row = 0.15,
+      col = 0.2,
+      width = 0.6,
+      height = 0.5,
+    }
+  }
 end, { desc = "terminal: toggleable float term per dir" })
 
 
