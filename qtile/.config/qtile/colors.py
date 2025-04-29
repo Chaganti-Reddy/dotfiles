@@ -132,14 +132,14 @@ TomorrowNight = [
     ]
 
 WalColors = [
-    ["#090B1E", "#090B1E"], # bg
-    ["#6EA1F1", "#6EA1F1"], # fg
-    ["#F6BABE", "#F6BABE"], # color01
-    ["#9C93F1", "#9C93F1"], # color02
-    ["#B091F1", "#B091F1"], # color03
-    ["#CE93F0", "#CE93F0"], # color04
-    ["#CFA7F6", "#CFA7F6"], # color05
-    ["#eec9e9", "#eec9e9"], # color06
-    ["#a68ca3", "#a68ca3"], # color15
-    ["#6EA1F1", "#6EA1F1"], # color09
+    ["#050505", "#050505"], # bg
+    ["#6E6E6D", "#6E6E6D"], # fg
+    ["#B5464D", "#B5464D"], # color01
+    ["#84807F", "#84807F"], # color02
+    ["#8B8B8B", "#8B8B8B"], # color03
+    ["#AEAEAE", "#AEAEAE"], # color04
+    ["#EAA0A1", "#EAA0A1"], # color05
+    ["#dfdfdf", "#dfdfdf"], # color06
+    ["#9c9c9c", "#9c9c9c"], # color15
+    ["#6E6E6D", "#6E6E6D"], # color09
 ]
