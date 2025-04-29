@@ -80,6 +80,7 @@ keys = [
     Key([mod], "F8", lazy.spawn("gromit-mpx -z"), desc="Run gromit-mpx with -z option"),
     Key([mod, "shift"], "n", lazy.spawn("thunar"), desc="Launch file manager"),
     Key([mod, "mod1"], "n", lazy.spawn("kitty -e yazi"), desc="Launch yazi in kitty terminal"),
+    Key([mod], "a", lazy.spawn("kitty -e nvim"), desc="Launch Neovim in kitty terminal"),
     Key([mod], "e", lazy.spawn(myEmacs), desc="Launch Emacs client"),
     Key([mod, "shift"], "e", lazy.spawn("/home/karna/.config/rofi/applets/bin/emoji.sh &"), desc="Launch emoji picker"),
     Key([mod, "mod1"], "p", lazy.spawn("/home/karna/.config/scripts/rofi-pass-xorg &"), desc="Launch rofi password manager"),
