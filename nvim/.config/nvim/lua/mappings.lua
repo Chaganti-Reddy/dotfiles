@@ -249,3 +249,5 @@ local onedark = require("configs.onedark")
 
 map("n", "<leader>tg", onedark.toggle_transparency, { desc = "Toggle Onedark transparency", noremap = true, silent = true })
 
+map("n", "<leader>dc", ":CodeiumDisable<CR>", { desc = "Disable Codeium" })
+map("n", "<leader>ec", ":CodeiumEnable<CR>", { desc = "Enable Codeium" })
