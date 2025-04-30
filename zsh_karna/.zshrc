@@ -209,13 +209,31 @@ function comp () {
 
 compdef '_files' comp
 
-function ctime() {
-    g++ -std=c++17 $1".c" -o $1
-    time ./$1
+ctime() {
+  file="$1"
+
+  if [[ $file == *.c ]]; then
+    out_file="${file%.c}"
+    g++ -std=c++17 "$file" -o "$out_file"
+    time ./"$out_file"
+  else 
+    g++ -std=c++17 "$file.c" -o "$file"
+    time ./"$file"
+  fi
 }
-function cptime() {
-    g++ -std=c++17 $1".cpp" -o $1
-    time ./$1
+
+
+function cpptime() {
+  file="$1"
+
+  if [[ $file == *.cpp ]]; then
+    out_file="${file%.cpp}"
+    g++ -std=c++17 "$file" -o "$out_file"
+    time ./"$out_file"
+  else 
+    g++ -std=c++17 "$file.cpp" -o "$file"
+    time ./"$file"
+  fi
 }
 
 function mosscc() {
