@@ -215,13 +215,12 @@ ctime() {
   if [[ $file == *.c ]]; then
     out_file="${file%.c}"
     g++ -std=c++17 "$file" -o "$out_file"
-    time ./"$out_file"
+    /usr/bin/time -p ./"$out_file"
   else 
     g++ -std=c++17 "$file.c" -o "$file"
-    time ./"$file"
+    /usr/bin/time -p ./"$file"
   fi
 }
-
 
 function cpptime() {
   file="$1"
@@ -229,10 +228,10 @@ function cpptime() {
   if [[ $file == *.cpp ]]; then
     out_file="${file%.cpp}"
     g++ -std=c++17 "$file" -o "$out_file"
-    time ./"$out_file"
+    /usr/bin/time -p ./"$out_file"
   else 
     g++ -std=c++17 "$file.cpp" -o "$file"
-    time ./"$file"
+    /usr/bin/time -p ./"$file"
   fi
 }
 
