@@ -47,7 +47,7 @@ check_privileges() {
   if [[ $EUID -eq 0 ]]; then
     die "This script should not be run as root. Please run as regular user."
   fi
-  
+
   if ! sudo -v; then
     die "User does not have sudo privileges or password is incorrect."
   fi
@@ -55,7 +55,7 @@ check_privileges() {
 
 setup_user_dirs() {
   info "Creating standard user directories..."
-  mkdir -p ~/{Downloads,dox,Music,Pictures,vid,Templates} || true
+  mkdir -p ~/{Downloads,Documents,Music,Pictures,vid,Templates} || true
 }
 
 configure_pacman() {
@@ -84,7 +84,7 @@ run_subscripts() {
     if [[ ! -f "$script" ]]; then
       die "Missing required sub-script: $script"
     fi
-    
+
     info "Executing $script..."
     if ! bash "$script"; then
       die "Failed during execution of $script"
