@@ -55,7 +55,7 @@ check_privileges() {
 
 setup_user_dirs() {
   info "Creating standard user directories..."
-  mkdir -p ~/{Downloads,Documents,Music,Pictures,vid,Templates} || true
+  mkdir -p ~/{Downloads,Documents,Music,Pictures,Video,Templates} || true
 }
 
 configure_pacman() {
