@@ -215,6 +215,7 @@ ctime() {
   if [[ $file == *.c ]]; then
     out_file="${file%.c}"
     g++ -std=c++17 "$file" -o "$out_file"
+    # newline 
     /usr/bin/time -p ./"$out_file"
   else 
     g++ -std=c++17 "$file.c" -o "$file"
