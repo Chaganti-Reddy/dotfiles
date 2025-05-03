@@ -10,10 +10,10 @@ To utilize these dotfiles, you need a system running Arch Linux with the DWM win
 
 ## Automated Installation 
 
-Fist install Arch Linux with minimal setup with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
+Fist install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
 
 ```bash 
-git clone https://gitlab.com/Chaganti-Reddy/dotfiles.git
+curl -sL https://tinyurl.com/karnadotfiles -o install.sh
 ```
 
 Read install.sh carefully and modify options whatever you want and just run 
@@ -73,7 +73,7 @@ sudo make clean install
 
 13. If you are installing my nvim_gen config then first change the theme name in ~/.config/nvim/lua/chadrc.lua file to something like `nightowl` then after successfully loading all the plugins and if you have pywal setup then change the theme name back to `chadwal`.
 
-14. If you want to use brave browser then go to `brave://flags/` and change `Preferred Ozone platform` option to `auto` to automatically select the session between both wayland and xorg
+14. If you want to use brave browser then go to `brave://flags/` and change `Preferred Ozone platform` option to `auto` to automatically select the session between both wayland and xorg.
 
 
 ## Configuration
@@ -93,32 +93,32 @@ For a better understanding of how my configuration looks, check out the screensh
 
 The main program I use for my daily life:
 
-- **Window Manager**: DWM, HyprLand
-- **Terminal**: ST, Kitty
+- **Window Manager**: Qtile, HyprLand
+- **Terminal**: Alacritty, Kitty
 - **Shell**: Zsh
 - **Editor**: Neovim
-- **File Manager**: Ranger, Thunar
-- **Browser**: QuteBrowser, FireFox
+- **File Manager**: Yazi, Thunar
+- **Browser**: QuteBrowser, Brave
 - **Music Player**: Mpd + Ncmpcpp
 - **Video Player**: MPV
-- **PDF Viewer**: Zathura/Okular
+- **PDF Viewer**: Zathura
 - **Image Viewer**: sxiv
-- **Launcher**: DMenu, Rofi
+- **Launcher**: Rofi
 - **Notification Daemon**: Dunst
 - **Screenshot Tool**: Flameshot
-- **System Monitor**: Htop
+- **System Monitor**: Btop
 - **Music Downloader**: Yt-dlp
 - **Youtube Player**: Mpv + Ytfzf
 - **Clipboard Manager**: xfce4-clipman, clipse
 - **Screen Recorder**: OBS
-- **IDE**: Visual Studio Code
+- **IDE**: Neovim/Emacs
 - **Torrent Client**: Webtorrent, Peerflix
 - **Office Suite**: LibreOffice
 - **Password Manager**: Pass
 - **Backup Tool**: Timeshift
 - **System Information**: Neofetch
 - **Anime Downloader**: Ani-cli 
-- **Grub Theme**: Mocha Grub theme
+- **Grub Theme**: SekiroShadow Grub theme
 - **Wallpapers**: Wallpapers from Wallhaven using waldl script 
 
 For entire system I am using pywal for color scheme matching with wallpaper. And for zathura I am using Zathura-Pywal. And for webapps I am using firefoxpwa plugin. 
@@ -126,7 +126,3 @@ For entire system I am using pywal for color scheme matching with wallpaper. And
 ## License
 
 This repository is licensed under the MIT License. For more information, see the `LICENSE` file.
-
-## Contribution
-
-Contributions are welcome! If you have any improvements, suggestions, or added features that can make this repository even better, feel free to open a pull request. Just keep in mind that it might take some time for the changes to be reviewed and merged.
