@@ -16,10 +16,14 @@ Fist install Arch Linux with minimal setup/any other DE/WM with `archinstall` sc
 curl -sL https://tinyurl.com/karnadotfiles -o install.sh
 ```
 
-Read install.sh carefully and modify options whatever you want and just run 
-
 ```bash 
 ./install.sh
+```
+
+Read install.sh carefully and modify options whatever you want and just run or if you want to directly run it then
+
+```bash 
+bash <(curl -sL https://tinyurl.com/karnadotfiles)
 ```
 
 Note:`Please dont stow any folder which ends with _karna, because those are my files which works only with my system and may break your system.`
