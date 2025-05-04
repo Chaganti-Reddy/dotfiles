@@ -42,18 +42,23 @@ is_symlink_correct() {
     [ -L "$symlink" ] && [ "$(readlink -f "$symlink")" == "$target" ]
 }
 
-# Function to stow with symlink checks
 stow_with_check() {
     local target="$1"
     local symlink="$2"
     local name="$3"
-    
+
     if is_symlink_correct "$target" "$symlink"; then
         echo -e "${GREEN}$name configuration is already correctly symlinked. Skipping stow.${RESET}"
     else
-        echo -e "${CYAN}$name symlink is incorrect. Moving to $symlink.bak${RESET}"
-        mv "$symlink" "$symlink.bak" || echo -e "${RED}Failed to move existing $name to $symlink.bak${RESET}"
-        stow "$name" || echo -e "${RED}Failed to stow $name configuration${RESET}"
+        if [ -e "$symlink" ] || [ -L "$symlink" ]; then
+            echo -e "${CYAN}$name symlink is incorrect. Moving to $symlink.bak${RESET}"
+            mv "$symlink" "$symlink.bak" || echo -e "${RED}Failed to move existing $name to $symlink.bak${RESET}"
+        fi
+        if stow "$name"; then
+            echo -e "${GREEN}Successfully stowed $name configuration (symlink created).${RESET}"
+        else
+            echo -e "${RED}Failed to stow $name configuration${RESET}"
+        fi
     fi
 }
 
@@ -1955,9 +1960,9 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_dependencies "${selected_helper:-paru}"
   # install_zsh y
   # setup_gpg_pass y
-  # # install_i3
+  install_i3
   # install_qtile y
-  install_hyprland
+  # install_hyprland
   # # install_miniconda
   # install_kvm y
   # install_browser 5 6
@@ -1965,7 +1970,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_dev_tools 3 6 7 9 10 16 
   # install_extra_tools 1 2 3 4
   # install_fonts
-  install_dwm
+  # install_dwm
   # # install_bspwm
   # install_ollama y
   # install_pip_packages y 
