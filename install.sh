@@ -1425,6 +1425,8 @@ install_dwm() {
 
     # Install compositor
     install_package "xcompmgr" "Xcompmgr (compositor)" "sudo pacman -S --noconfirm --needed"
+    install_package "libxft" "libxft (font support)" "sudo pacman -S --noconfirm --needed"
+    install_package "libxinerama" "libxinerama (Xinerama support)" "sudo pacman -S --noconfirm --needed"
 
     # Setup desktop session file
     if [ ! -f /usr/share/xsessions/dwm.desktop ]; then
@@ -1950,34 +1952,34 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  # check_privileges
-  # setup_user_dirs
-  # configure_pacman
-  # system_update
-  # clone_or_download_dotfiles
-  # install_aur_helpers 1
-  # setup_git_info y
-  # install_dependencies "${selected_helper:-paru}"
-  # install_zsh y
-  # setup_gpg_pass y
-  install_i3
+  check_privileges
+  setup_user_dirs
+  configure_pacman
+  system_update
+  clone_or_download_dotfiles
+  install_aur_helpers 1
+  setup_git_info y
+  install_dependencies "${selected_helper:-paru}"
+  install_zsh y
+  setup_gpg_pass y
+  # install_i3
   # install_qtile y
-  # install_hyprland
-  # # install_miniconda
-  # install_kvm y
-  # install_browser 5 6
-  # install_torrent 1 13
-  # install_dev_tools 3 6 7 9 10 16 
-  # install_extra_tools 1 2 3 4
-  # install_fonts
-  # install_dwm
-  # # install_bspwm
-  # install_ollama y
-  # install_pip_packages y 
-  # install_grub_theme y
-  # install_display_manager y 1
-  # download_wallpapers
-  # install_extras y y
+  install_hyprland y
+  # install_miniconda
+  install_kvm y
+  install_browser 5 6
+  install_torrent 1 13
+  install_dev_tools 3 6 7 9 10 16 
+  install_extra_tools 1 2 3 4
+  install_fonts
+  install_dwm y
+  # install_bspwm
+  install_ollama y
+  install_pip_packages y 
+  install_grub_theme y
+  install_display_manager y 1
+  download_wallpapers
+  install_extras y y
 else
   check_privileges
   setup_user_dirs
