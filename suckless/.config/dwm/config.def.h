@@ -30,7 +30,7 @@ static const int topbar = 1;  /* 0 means bottom bar */
 // "JoyPixels:pixelsize=11:antialias=true:autohint=true"};
 
 static const char *fonts[] = {
-    "JetBrainsMonoNL:weight=bold:size=11:antialias=true:hinting=true",
+    "Iosevka Nerd Font:weight=bold:size=12:antialias=true:hinting=true",
     "Ubuntu:weight=bold:size=11:antialias=true:hinting=true",
     "Hack:size=11:antialias=true:autohint=true",
     "fontawesome:size=11:antialias=true:hinting=true",
@@ -54,7 +54,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {"st",     "-n", "spmusic", "-g",
-                        "120x34", "-e", "ncmpcpp-art", NULL};
+                        "120x34", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
 const char *spcmd3[] = {
     "st", "-n",    "spcal", "-f", "JetBrainsMonoNL:weight=bold:size=14",
     "-g", "50x20", "-e",    "bc", "-lq",
@@ -98,7 +98,7 @@ static const Rule rules[] = {
     {"flameshot", NULL, NULL, 0, 1, 0, 0, -1},
     {"obs", NULL, NULL, 1<<7, 1, 0, 0, -1},
     // {"floorp", NULL, NULL, 1 << 2, 0, 0, -1, -1},
-    {"zen-browser", NULL, NULL, 1 << 1, 0, 0, -1, -1},
+    {"brave", NULL, NULL, 1 << 1, 0, 0, -1, -1},
     // {"Ferdium", NULL, NULL, 1 << 3, 0, 0, -1, -1},
     {"discord", NULL, NULL, 1 << 5, 0, 0, -1, -1},
     {"St", NULL, NULL, 0, 0, 1, 0, -1},
@@ -162,12 +162,12 @@ static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, 
 // static const char *dmenucmd[] = {"dmenu_run", "-c", "-fn", dmenufont, "-l", "15","-p", dmenuprompt, NULL};
 static const char *termcmd[] = {"st", NULL};
 static const char *emacs[] = {"emacs", NULL};
-static const char *browser[] = {"zen-browser", NULL};
+static const char *browser[] = {"brave", NULL};
 static const char *browser1[] = {"qutebrowser", NULL};
-static const char *files[] = {"st", "-e", "ranger", NULL};
+static const char *files[] = {"st", "-e", "yazi", NULL};
 static const char *music[] = {"st", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
 static const char *files1[] = {"thunar", NULL};
-static const char *editor1[] = {"code", NULL};
+static const char *editor1[] = {"st", "-e", "nvim", NULL};
 
 #include "movestack.c"
 static Key keys[] = {
@@ -224,10 +224,10 @@ static Key keys[] = {
             TAGKEYS(XK_9, 8){MODKEY | ControlMask | ShiftMask, XK_r, quit, {1}},
     {MODKEY | ControlMask | ShiftMask, XK_q, quit, {0}},
     {0, XK_F12, togglescratch, {.ui = 0}},
-    // {MODKEY | ShiftMask, XK_m, togglescratch, {.ui = 1}},
+    {MODKEY | ShiftMask, XK_m, togglescratch, {.ui = 1}},
     {MODKEY | ShiftMask, XK_c, togglescratch, {.ui = 2}},
     {MODKEY | ShiftMask, XK_g, togglescratch, {.ui = 3}},
-    {MODKEY | Mod1Mask, XK_n, togglescratch, {.ui = 4}},
+    {MODKEY | Mod1Mask,  XK_n, togglescratch, {.ui = 4}},
     // {MODKEY, XK_F9, spawn, SHCMD("~/.dwm/volume mute")},
     // {MODKEY, XK_F10, spawn, SHCMD("~/.dwm/volume down")},
     // {MODKEY, XK_F11, spawn, SHCMD("~/.dwm/volume up")},
@@ -248,7 +248,7 @@ static Key keys[] = {
     // {MODKEY | ControlMask | ShiftMask, XK_i, spawn,
      // SHCMD("networkmanager_dmenu")},
     {MODKEY, XK_w, spawn, {.v = browser}},
-    {MODKEY | ShiftMask, XK_m, spawn, {.v = music}},
+    // {MODKEY | ShiftMask, XK_m, spawn, {.v = music}},
     {MODKEY | ShiftMask, XK_w, spawn, {.v = browser1}},
     {MODKEY , XK_n, spawn, {.v = files}},
     {MODKEY | ShiftMask, XK_n, spawn, {.v = files1}},
