@@ -240,7 +240,7 @@ ttf-cascadia-code-nerd
 ttf-opensans
 ttf-hack-nerd
 ttf-ibmplex-mono-nerd
-ttf-aporetic
+# ttf-aporetic
 ttf-jetbrains-mono-nerd
 ttf-ubuntu-mono-nerd
 ttf-roboto-mono-nerd
