@@ -51,7 +51,7 @@ stow_with_check() {
     if is_symlink_correct "$target" "$symlink"; then
         echo -e "${GREEN}$name configuration is already correctly symlinked. Skipping stow.${RESET}"
     else
-        echo -e "${YELLOW}$name symlink is incorrect. Moving to $symlink.bak${RESET}"
+        echo -e "${CYAN}$name symlink is incorrect. Moving to $symlink.bak${RESET}"
         mv "$symlink" "$symlink.bak" || echo -e "${RED}Failed to move existing $name to $symlink.bak${RESET}"
         stow "$name" || echo -e "${RED}Failed to stow $name configuration${RESET}"
     fi
@@ -681,7 +681,7 @@ install_hyprland() {
   fi
 
   if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
-    stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf" "hyprland"
+    stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
     success "Hyprland configuration has been set up."
@@ -1407,7 +1407,6 @@ install_dwm() {
     info "Stowing dwm-related dotfiles..."
     cd ~/dotfiles || die "Failed to access ~/dotfiles"
     stow suckless
-    stow st
     stow DWMScripts
 
     # Build and install suckless components
@@ -1946,34 +1945,34 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  check_privileges
-  setup_user_dirs
-  configure_pacman
-  system_update
-  clone_or_download_dotfiles
-  install_aur_helpers 1
-  setup_git_info y
-  install_dependencies "${selected_helper:-paru}"
-  install_zsh y
-  setup_gpg_pass y
-  # install_i3
-  install_qtile y
-  # install_hyprland
-  # install_miniconda
-  install_kvm y
-  install_browser 5 6
-  install_torrent 1 13
-  install_dev_tools 3 6 7 9 10 16 
-  install_extra_tools 1 2 3 4
-  install_fonts
-  # install_dwm
-  # install_bspwm
-  install_ollama y
-  install_pip_packages y 
-  install_grub_theme y
-  install_display_manager y 1
-  download_wallpapers
-  install_extras y y
+  # check_privileges
+  # setup_user_dirs
+  # configure_pacman
+  # system_update
+  # clone_or_download_dotfiles
+  # install_aur_helpers 1
+  # setup_git_info y
+  # install_dependencies "${selected_helper:-paru}"
+  # install_zsh y
+  # setup_gpg_pass y
+  # # install_i3
+  # install_qtile y
+  install_hyprland
+  # # install_miniconda
+  # install_kvm y
+  # install_browser 5 6
+  # install_torrent 1 13
+  # install_dev_tools 3 6 7 9 10 16 
+  # install_extra_tools 1 2 3 4
+  # install_fonts
+  install_dwm
+  # # install_bspwm
+  # install_ollama y
+  # install_pip_packages y 
+  # install_grub_theme y
+  # install_display_manager y 1
+  # download_wallpapers
+  # install_extras y y
 else
   check_privileges
   setup_user_dirs
