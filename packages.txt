@@ -249,3 +249,4 @@ ttf-material-design-icons-webfont
 cpptools-debug-bin
 acpilight
 dialog
+ttf-iosevka-nerd
