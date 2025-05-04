@@ -4,8 +4,8 @@ plugins = [
 ]
 
 [scratchpads.music]
-# command = "alacritty --class Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
-command = "alacritty --class Music -e ncmpcpp -c ~/.ncmpcpp/config-art"
+command = "st -c Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
+# command = "alacritty --class Music -e ncmpcpp -c ~/.ncmpcpp/config-art"
 class = "Music"
 position = "431px 175px"
 size = "1100px 700px"
