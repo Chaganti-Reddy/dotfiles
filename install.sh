@@ -658,7 +658,7 @@ install_hyprland() {
     "wtype"
     "ydotool"
     "wf-recorder"
-    "wofi"
+    # "wofi"
     "qt5-wayland"
     "qt6-wayland"
     "wlroots"
