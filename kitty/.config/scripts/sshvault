@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Configurable paths
+VAULT_DIR="$HOME/.ssh"
+ARCHIVE_NAME="ssh_backup.zip"
+ENCRYPTED_FILE="ssh_backup.zip.cpt"
+
+# Function: Save (compress and encrypt)
+save_ssh() {
+    if [ ! -d "$VAULT_DIR" ]; then
+        echo "❌ SSH directory not found: $VAULT_DIR"
+        exit 1
+    fi
+
+    echo "🔐 Creating encrypted backup..."
+    zip -r -q "$ARCHIVE_NAME" "$VAULT_DIR"
+    ccrypt -e "$ARCHIVE_NAME"  # prompts for password
+    rm -f "$ARCHIVE_NAME"
+
+    echo "✅ Backup saved as $ENCRYPTED_FILE"
+}
+
+# Function: Load (decrypt and decompress)
+load_ssh() {
+    if [ ! -f "$ENCRYPTED_FILE" ]; then
+        echo "❌ Encrypted file not found: $ENCRYPTED_FILE"
+        exit 1
+    fi
+
+    echo "🔓 Decrypting and restoring SSH backup..."
+    cp "$ENCRYPTED_FILE" .
+    ccrypt -d "$ENCRYPTED_FILE"  # prompts for password
+
+    unzip -o -q "$ARCHIVE_NAME" -d ~/
+    rm -f "$ARCHIVE_NAME"
+
+    chmod 700 ~/.ssh
+    chmod 600 ~/.ssh/id_rsa
+    chmod 644 ~/.ssh/id_rsa.pub
+
+    echo "✅ SSH keys restored to ~/.ssh"
+}
+
+# Check argument
+case "$1" in
+    save)
+        save_ssh
+        ;;
+    load)
+        load_ssh
+        ;;
+    *)
+        echo "Usage: $0 {save|load}"
+        exit 1
+        ;;
+esac
