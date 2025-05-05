@@ -1,0 +1,253 @@
+@import "colors-waybar.css";
+
+/* 🔹 Global Waybar Settings */
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bolder;
+    font-size: 12px;
+    min-height: 0;
+    border: none;
+}
+
+/* 🔹 Waybar Background */
+window#waybar {
+    background: @background;
+    color: @foreground;
+    border-bottom: 1px solid @color1;
+    padding: 2px;
+}
+
+/* 🟢 Modules (Minimal Padding, Small Size) */
+#workspaces,
+#window,
+#pulseaudio,
+#cpu,
+#mpd,
+#battery,
+#custom-powermenu,
+#custom-cpuinfo,
+#bluetooth,
+#memory,
+#backlight,
+#network,
+/* #idle_inhibitor, */
+#mpris,
+#clock,
+#tray {
+    background: @color0;
+    color: @foreground;
+    padding: 2px 6px;
+    margin: 2px;
+    border-radius: 5px;
+    transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* 🔹 Hover Effect */
+#workspaces:hover,
+/* #pulseaudio:hover, */
+#cpu:hover,
+#custom-powermenu:hover,
+#custom-cpuinfo:hover,
+#memory:hover,
+#battery:hover,
+#backlight:hover,
+/* #idle_inhibitor:hover, */
+#network:hover,
+/* #mpris:hover, */
+
+/* #tray:hover, */
+/* #bluetooth:hover, */
+#clock:hover{
+    background: @color3;
+    color: @background;
+    box-shadow: 0px 0px 4px @color3;
+}
+
+/* 🎯 Workspaces (Compact, Minimalist) */
+#workspaces {
+    padding: 2px 4px;
+}
+
+#workspaces button {
+    background: @color0;
+    color: @foreground;
+    padding: 2px 5px;
+    margin: 2px;
+    border-radius: 4px;
+    transition: background 0.15s ease-in-out;
+}
+
+/* Occupied Workspaces */
+#workspaces button.occupied {
+    background: @color9;
+    color: @foreground;
+    box-shadow: inset 0px 0px 3px @color9;
+}
+
+/* Empty Workspaces */
+#workspaces button.empty {
+    background: transparent;
+    color: @color8;
+}
+
+/* Focused Workspaces */
+#workspaces button.focused {
+    background: @color10;
+    color: @background;
+    font-weight: bold;
+    border: 1px solid @color10;
+    box-shadow: 0px 0px 5px @color10;
+}
+
+/* Urgent Workspaces */
+#workspaces button.urgent {
+    background: @color12;
+    color: @background;
+    animation: urgent-pulse 1s infinite;
+}
+
+@keyframes urgent-pulse {
+    0% { background: @color12; }
+    50% { background: @color13; }
+    100% { background: @color12; }
+}
+
+/* Visible Workspaces */
+#workspaces button.visible {
+    background: @color14;
+    color: @background;
+    box-shadow: inset 0px 0px 3px @color15;
+}
+
+/* 🔹 Clock Module (Minimalist) */
+#clock {
+    background: @color0;
+    color: @foreground;
+}
+
+/* 🔹 Bluetooth Module */
+#bluetooth {
+    background: @color0;
+    color: @foreground;
+}
+
+/* 🔹 Network Module */
+#network {
+    background: @color0;
+    color: @foreground;
+}
+
+#network.disconnected {
+    /* background: @color12; */
+    color: @color12;
+}
+
+/* 🔹 Battery Module */
+#battery {
+    background: @color0;
+    color: @foreground;
+}
+
+/* 🔹 Backlight Module */
+#backlight {
+    background: @color0;
+    color: @foreground;
+}
+
+/* 🔹 CPU & Memory */
+#cpu, #memory {
+    background: @color0;
+    color: @foreground;
+}
+
+#pulseaudio:hover {
+    background: @color14;
+    color: @background;
+    box-shadow: 0px 0px 4px @color12;
+}
+
+#bluetooth:hover {
+    background: @color14;
+    color: @background;
+    box-shadow: 0px 0px 4px @color12;
+}
+
+/* 🔹 PulseAudio */
+#pulseaudio {
+    background: @color0;
+    color: @foreground;
+}
+
+/* 🔹 Tray */
+#tray {
+    background: @color0;
+    color: @foreground;
+}
+
+#custom-powermenu {
+    background: @color0;
+    color: @foreground;
+}
+
+#custom-cpuinfo {
+    background: @color0;
+    color: @foreground;
+}
+
+#mpris {
+    background: @color12;
+    color: @foreground;
+}
+
+#mpris.paused {
+    background: @color3;
+    color: @foreground;
+}
+
+#mpd.playing {
+    background: @color12;
+    color: @foreground;
+}
+
+#mpd.paused {
+    background: @color3;
+    color: @foreground;
+}
+
+#mpd.stopped {
+    /* background: @color12; */
+    color: @color10;
+}
+
+/* #mpd:hover { */
+/*     background: @color3; */
+/*     color: @background; */
+/*     box-shadow: 0px 0px 4px @color3; */
+/* } */
+
+#mpd.stopped:hover {
+    background: @color3;
+    color: @color10;
+    box-shadow: 0px 0px 0px @color3;
+}
+
+#idle_inhibitor {
+     background: @color0;
+    color: @foreground;
+    padding: 2px 6px;
+    margin: 2px;
+    border-radius: 5px;
+    transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+}
+
+#idle_inhibitor.activated {
+    /* background: @foreground; */
+    color: #cc241d;
+}
+
+/* #idle_inhibitor:hover { */
+/*     background: @color12; */
+/*     color: @background; */
+/*     box-shadow: 0px 0px 4px @color12; */
+/* } */
