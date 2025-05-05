@@ -44,7 +44,7 @@ reload_waybar() {
   # Kill Waybar if running
   pkill -x waybar
   # Start Waybar manually
-  waybar -c "$HOME/dotfiles/sway/.config/sway/waybar/config.jsonc" -s "$HOME/dotfiles/sway/.config/sway/waybar/style.css" >/dev/null 2>&1 &
+  waybar -c "$HOME/dotfiles/sway/.config/sway/waybar/config.jsonc" -s "$HOME/dotfiles/sway/.config/sway/waybar/style.css" -l off >/dev/null 2>&1 &
 }
 
 # Reload Sway configuration
