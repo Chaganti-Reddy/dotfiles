@@ -162,15 +162,15 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
-static char dmenuprompt[256] = "Search:";
-static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-p",dmenuprompt,NULL};
-// static const char *dmenucmd[] = {"dmenu_run", "-c", "-fn", dmenufont, "-l", "15","-p", dmenuprompt, NULL};
+// static char dmenuprompt[256] = "Search:";
+// static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-p",dmenuprompt,NULL};
+static const char *dmenucmd[] = {"rofi", "-show", "drun", "-show-icons", "-theme", "/home/karna/.config/rofi/dt-center.rasi", NULL};
 static const char *termcmd[] = {"kitty", NULL};
 static const char *emacs[] = {"emacs", NULL};
 static const char *browser[] = {"brave", NULL};
 static const char *browser1[] = {"qutebrowser", NULL};
 static const char *files[] = {"st", "-e", "yazi", NULL};
-static const char *music[] = {"st", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
+// static const char *music[] = {"st", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
 static const char *files1[] = {"thunar", NULL};
 static const char *editor1[] = {"st", "-e", "nvim", NULL};
 
