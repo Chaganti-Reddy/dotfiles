@@ -191,9 +191,40 @@ input "5426:152:Razer_Razer_DeathAdder_Essential" {
     bindsym $mod+d exec $menu
     # bindsym $mod+shift+a exec pkill -SIGUSR2 waybar
 
+    for_window [title="scratch-term"] \
+      move to scratchpad, \
+      floating enable, \
+      resize set 60 ppt 60 ppt, \
+      sticky enable, \
+      move position 431px 175px
 
-    # Launch or toggle a floating Kitty scratchpad
-    bindsym F12 exec bash -c 'swaymsg "[app_id=scratchpad-terminal]" scratchpad show || (kitty --class scratchpad-terminal && swaymsg "[app_id=scratchpad-terminal] move scratchpad")'
+    bindsym F12 exec ~/.config/sway/scratchpad-term.sh &
+
+    # for_window [title="scratchpad-chess"] \
+    #   move to scratchpad, \
+    #   floating enable, \
+    #   resize set 80 ppt 80 ppt, \
+    #   sticky enable
+    #
+    # bindsym F11 exec ~/.config/sway/scratchpad-chess.sh &
+
+    for_window [title="scratchpad-calc"] \
+      move to scratchpad, \
+      floating enable, \
+      resize set 1100px 700px, \
+      sticky enable, \
+      move position 431px 175px
+
+    bindsym $mod+c exec ~/.config/sway/scratchpad-calc.sh &
+
+    # for_window [title="scratchpad-music"] \
+    #   move to scratchpad, \
+    #   floating enable, \
+    #   resize set 1100px 700px, \
+    #   sticky enable, \
+    #   move position 431px 175px
+    #
+    # bindsym $mod+shift+m exec ~/.config/sway/scratchpad-music.sh &
 
     for_window [app_id="clipse"] floating enable, resize set 622 652
 
@@ -386,8 +417,6 @@ for_window [title="^Network Connections$"] floating enable
 for_window [title="^nwg-look$"] floating enable
 for_window [app_id="blueman-manager"] floating enable, move position center 
 
-bindsym $mod+p exec bash -c 'swaymsg -t get_tree | grep -q "pinned" && swaymsg "[con_mark=pinned] unmark pinned, sticky disable, floating disable" || swaymsg "[con_id=__focused__] mark pinned, floating enable, sticky enable, resize set 700 700, move position center"'
-
 ### Touchpad Gestures ###
 
 # Workspace Navigation
@@ -469,6 +498,6 @@ xwayland enable
 exec --no-startup-id ~/.config/sway/autostart.sh &
 
 include /etc/sway/config.d/
-client.focused #658E79 #0c0413 #98d2c9 #33B05A #658E79
-client.unfocused #0c0413 #0c0413 #98d2c9 #0c0413 #0c0413
-client.urgent #9E5F65 #0c0413 #98d2c9 #9E5F65 #9E5F65
+client.focused #AB768B #0a080b #cce2ec #59758C #AB768B
+client.unfocused #0a080b #0a080b #cce2ec #0a080b #0a080b
+client.urgent #3C6885 #0a080b #cce2ec #3C6885 #3C6885
