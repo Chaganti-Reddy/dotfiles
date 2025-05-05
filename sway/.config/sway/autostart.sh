@@ -17,7 +17,7 @@ mpd &
 udiskie --smart-tray &
 numlockx on &
 # ollama serve > /dev/null 2>&1 &
-autotiling &
+autotiling -l 2 &
 
 # Clipboard management
 clipse -listen &
