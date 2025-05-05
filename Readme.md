@@ -4,10 +4,6 @@ This repository contains my personal configuration files for various application
 
 `NOTE - Please don't create any Issues or Pull Requests. These dotfiles are only for my personal use.`
 
-## Prerequisites
-
-To utilize these dotfiles, you need a system running Arch Linux with the DWM window manager installed. You will also require Git to clone and manage the repository. If you don't have it already, install Git using your package manager.
-
 ## Automated Installation 
 
 Fist install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
