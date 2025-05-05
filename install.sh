@@ -2093,7 +2093,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # setup_gpg_pass y
   # install_i3
   # install_qtile y
-  # install_sway y
+  install_sway y
   # install_hyprland y
   # install_miniconda
   # install_kvm y
@@ -2104,7 +2104,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_fonts
   # install_dwm y
   # install_bspwm
-  install_ollama y
+  # install_ollama y
   # install_pip_packages y 
   # install_grub_theme y
   # install_display_manager y 1
