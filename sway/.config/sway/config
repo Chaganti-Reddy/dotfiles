@@ -47,7 +47,7 @@ exec export XDG_SESSION_TYPE=wayland
 # exec export GBM_BACKEND=nvidia-drm
 # exec export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
-font pango: JetBrainsMono Nerd Font Medium 10
+font pango: Iosevka Nerd Font Bold 10
 
 gaps inner 4
 gaps outer 4
@@ -76,7 +76,7 @@ set $menu rofi -show drun -theme ~/.config/rofi/dt-center.rasi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output eDP-1 {
-       background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+       # background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
        resolution 1920x1080
 }
 
@@ -90,11 +90,18 @@ output eDP-1 {
 #
 # Example configuration:
 #
+# exec swayidle \
+#    timeout 900 'swaylock -f -c 000000' \
+#    timeout 1800 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -f -c 000000'
+
 exec swayidle \
-   timeout 900 'swaylock -f -c 000000' \
-   timeout 1800 'swaymsg "output * dpms off"' \
-      resume 'swaymsg "output * dpms on"' \
-   before-sleep 'swaylock -f -c 000000'
+    timeout 900 'swaylock -f -e -t -i ~/.cache/wal/current_wallpaper' \
+    timeout 1800 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -e -t -i ~/.cache/wal/current_wallpaper'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -433,7 +440,7 @@ xwayland enable
 
 bar {
     position top
-    swaybar_command waybar
+    # swaybar_command waybar
     # Hide default bar when using Waybar
     mode hide
 }
