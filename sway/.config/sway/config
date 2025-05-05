@@ -509,6 +509,6 @@ xwayland enable
 exec --no-startup-id ~/.config/sway/autostart.sh &
 
 include /etc/sway/config.d/
-client.focused #AB768B #0a080b #cce2ec #59758C #AB768B
-client.unfocused #0a080b #0a080b #cce2ec #0a080b #0a080b
-client.urgent #3C6885 #0a080b #cce2ec #3C6885 #3C6885
+client.focused #9C93F1 #090B1E #c1c2c6 #F6BABE #9C93F1
+client.unfocused #090B1E #090B1E #c1c2c6 #090B1E #090B1E
+client.urgent #6EA1F1 #090B1E #c1c2c6 #6EA1F1 #6EA1F1
