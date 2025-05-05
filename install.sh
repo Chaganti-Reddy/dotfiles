@@ -623,6 +623,85 @@ install_qtile() {
   sleep 1
 }
 
+install_sway() {
+  local install="${1:-}"
+
+  if [[ ! "$install" =~ ^[Yy]$ ]]; then
+    install=$(prompt "Would you like to install Sway and its dependencies? (y/n)" "y")
+  fi
+
+  if [[ ! "$install" =~ ^[Yy]$ ]]; then
+    warning "Sway installation skipped. Proceeding with the setup..."
+    return
+  fi
+
+  info "Sway installation will begin now..."
+
+  # Packages to install
+  local packages=(
+    "brightnessctl"
+    "grim"
+    "slurp"
+    "sway"
+    "swaybg"
+    "swaylock"
+    "swayidle"
+    "waybar"
+    "xorg-xwayland"
+    "rofi-wayland"
+    "kitty"
+    "xdg-desktop-portal-wlr"
+    "xdg-desktop-portal"
+    "wlroots"
+    "wlr-randr"
+    "qt5-wayland"
+    "qt6-wayland"
+    "clipse-bin"
+    "bluetui"
+    "system-config-printer"
+    "chafa"
+    "polkit"
+    "wl-clipboard"
+    "wtype"
+    "ydotool"
+    "wf-recorder"
+    "speech-dispatcher"
+    "cmake"
+    "meson"
+    "cpio"
+    "smartmontools"
+    "xdg-utils"
+  )
+
+  for package in "${packages[@]}"; do
+    install_package "$package" "$package" "paru -S --noconfirm --needed"
+  done
+
+  # Stow relevant configs
+  stow_with_check "$HOME/dotfiles/sway/.config/sway/" "$HOME/.config/sway/" "sway"
+  stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+  stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+
+  # Define source and target using $HOME
+  SOURCE="$HOME/.cache/wal/colors-waybar.css"
+  TARGET="$HOME/dotfiles/sway/.config/sway/waybar/colors-waybar.css"
+
+  # Remove existing symlink or file if it exists
+  [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
+
+  # Create new symlink
+  ln -s "$SOURCE" "$TARGET"
+
+  echo "Symlink created: $TARGET -> $SOURCE"
+
+  # Install waldl
+  install_waldl
+
+  success "Sway setup complete. Proceeding to next modules..."
+  sleep 1
+}
+
+
 install_hyprland() {
   local install="${1:-}"
 
@@ -693,6 +772,18 @@ install_hyprland() {
   else
     warning "Hyprland configuration file already exists. Skipping stow."
   fi
+
+  # Define source and target using $HOME
+  SOURCE="$HOME/.cache/wal/colors-waybar.css"
+  TARGET="$HOME/dotfiles/$stow_folder/.config/waybar/colors-waybar.css"
+
+  # Remove existing symlink or file if it exists
+  [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
+
+  # Create new symlink
+  ln -s "$SOURCE" "$TARGET"
+
+  echo "Symlink created: $TARGET -> $SOURCE"
 
   install_waldl
 
@@ -804,7 +895,7 @@ unset __conda_setup
 install_kvm() {
   info "Setting up KVM..."
 
-  local install_choice="${1:-}"  # Optional positional parameter
+  local install_choice="${1:-}"
 
   if [[ "$install_choice" =~ ^[Yy]$ ]]; then
     install_choice="y"
@@ -817,44 +908,74 @@ install_kvm() {
     return
   fi
 
+  if systemctl is-active --quiet libvirtd && command -v virsh &>/dev/null && virsh list --all &>/dev/null; then
+    success "KVM and libvirt appear to be already set up. Skipping reinstallation."
+    return
+  fi
+
   info "KVM installation will begin now..."
 
-  # Install necessary packages for KVM and associated tools
-  info "Installing KVM and required packages..."
-  sudo pacman -S --noconfirm qemu-full qemu-img libvirt virt-install virt-manager virt-viewer spice-vdagent edk2-ovmf dnsmasq swtpm guestfs-tools libosinfo tuned
-
-  # Ensure system is ready for virtualization (nested virtualization check)
   info "Checking for hardware virtualization support..."
   if ! grep -qE '(vmx|svm)' /proc/cpuinfo; then
     die "Error: Your CPU does not support virtualization or it's disabled in BIOS. Please enable virtualization in BIOS settings."
   fi
 
-  # Enable and start the libvirt service
-  info "Starting libvirt service..."
-  sudo systemctl enable --now libvirtd.service
+  info "Installing KVM and required packages..."
+  if ! sudo pacman -S --noconfirm --needed \
+    qemu-full qemu-img libvirt virt-install virt-manager virt-viewer \
+    spice-vdagent edk2-ovmf swtpm guestfs-tools libosinfo tuned \
+    dnsmasq vde2 bridge-utils openbsd-netcat dmidecode iptables libguestfs; then
+    die "Failed to install required packages. Aborting."
+  fi
 
-  # Add user to the libvirt group to allow access to KVM
+  info "Enabling and starting libvirt service..."
+  sudo systemctl enable --now libvirtd.service || die "Failed to enable/start libvirtd.service"
+
   info "Adding user '$USER' to the libvirt group..."
-  sudo usermod -aG libvirt "$USER"
+  sudo usermod -aG libvirt "$USER" || warning "Could not add user to libvirt group"
 
-  # Autostart libvirt network (default network for virtual machines)
-  info "Configuring libvirt network to autostart..."
-  sudo virsh net-autostart default
+  CONFIG_FILE="/etc/libvirt/libvirtd.conf"
+  info "Configuring $CONFIG_FILE permissions..."
+  sudo sed -i \
+    -e 's/^#\?unix_sock_group.*/unix_sock_group = "libvirt"/' \
+    -e 's/^#\?unix_sock_ro_perms.*/unix_sock_ro_perms = "0770"/' \
+    -e 's/^#\?unix_sock_rw_perms.*/unix_sock_rw_perms = "0770"/' \
+    "$CONFIG_FILE" || warning "Failed to update $CONFIG_FILE"
 
-  # Enable KVM with nested virtualization (useful for running KVM inside a VM)
-  info "Enabling KVM with nested virtualization..."
-  sudo modprobe -r kvm_intel
-  sudo modprobe kvm_intel nested=1
+  sudo systemctl restart libvirtd.service || warning "Could not restart libvirtd.service"
 
-  # Verify KVM modules
+  info "Configuring libvirt default network to autostart..."
+  sudo virsh net-autostart default || warning "Failed to autostart default network"
+
+  info "Checking and enabling nested virtualization..."
+  cpu_vendor=$(lscpu | grep -i 'Vendor ID' | awk '{print $3}')
+  if [[ "$cpu_vendor" == "GenuineIntel" ]]; then
+    sudo modprobe -r kvm_intel 2>/dev/null
+    sudo modprobe kvm_intel nested=1
+    nested_status=$(cat /sys/module/kvm_intel/parameters/nested)
+  elif [[ "$cpu_vendor" == "AuthenticAMD" ]]; then
+    sudo modprobe -r kvm_amd 2>/dev/null
+    sudo modprobe kvm_amd nested=1
+    nested_status=$(cat /sys/module/kvm_amd/parameters/nested)
+  else
+    warning "Unknown CPU vendor. Skipping nested virtualization config."
+    nested_status="unknown"
+  fi
+  info "Nested virtualization status: $nested_status"
+
   info "Verifying KVM modules are loaded..."
-  lsmod | grep kvm
+  lsmod | grep kvm || warning "KVM modules not found in lsmod output"
 
-  success "KVM installation completed."
+  # Optional: Check for UEFI firmware presence
+  if [[ ! -f /usr/share/edk2-ovmf/x64/OVMF_CODE.fd ]]; then
+    warning "OVMF UEFI firmware not found. UEFI VMs may not work properly."
+  fi
 
-  # Provide user with additional info and documentation
-  info "For VM sharing details, visit: https://docs.getutm.app/guest-support/linux/"
-  warning "Please restart your machine to apply all changes."
+  success "KVM installation completed successfully."
+
+  info "Documentation: https://docs.getutm.app/guest-support/linux/"
+  warning "You must log out and log back in for group changes to take effect."
+  warning "Consider rebooting to apply all changes."
 }
 
 install_browser() {
@@ -1952,34 +2073,35 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  check_privileges
-  setup_user_dirs
-  configure_pacman
-  system_update
-  clone_or_download_dotfiles
-  install_aur_helpers 1
-  setup_git_info y
-  install_dependencies "${selected_helper:-paru}"
-  install_zsh y
-  setup_gpg_pass y
-  # install_i3
-  # install_qtile y
-  install_hyprland y
-  # install_miniconda
-  install_kvm y
-  install_browser 5 6
-  install_torrent 1 13
-  install_dev_tools 3 6 7 9 10 16 
-  install_extra_tools 1 2 3 4
-  install_fonts
-  install_dwm y
-  # install_bspwm
-  install_ollama y
-  install_pip_packages y 
-  install_grub_theme y
-  install_display_manager y 1
-  download_wallpapers
-  install_extras y y
+  # check_privileges
+  # setup_user_dirs
+  # configure_pacman
+  # system_update
+  # clone_or_download_dotfiles
+  # install_aur_helpers 1
+  # setup_git_info y
+  # install_dependencies "${selected_helper:-paru}"
+  # install_zsh y
+  # setup_gpg_pass y
+  # # install_i3
+  # # install_qtile y
+  install_sway y
+  # install_hyprland y
+  # # install_miniconda
+  # install_kvm y
+  # install_browser 5 6
+  # install_torrent 1 13
+  # install_dev_tools 3 6 7 9 10 16 
+  # install_extra_tools 1 2 3 4
+  # install_fonts
+  # install_dwm y
+  # # install_bspwm
+  # install_ollama y
+  # install_pip_packages y 
+  # install_grub_theme y
+  # install_display_manager y 1
+  # download_wallpapers
+  # install_extras y y
 else
   check_privileges
   setup_user_dirs
