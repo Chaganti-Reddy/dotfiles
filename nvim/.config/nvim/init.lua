@@ -65,17 +65,6 @@ vim.schedule(function()
   require "mappings"
 end)
 
-os.execute("python ~/.config/nvim/pywal/chadwal.py &> /dev/null &")
-
-local autocmd = vim.api.nvim_create_autocmd
-
-autocmd("Signal", {
-  pattern = "SIGUSR1",
-  callback = function()
-    require('nvchad.utils').reload()
-  end
-})
-
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -119,3 +108,14 @@ vim.diagnostic.config {
     vim.cmd 'highlight DiagnosticVirtualText guibg=NONE'
   end,
 }
+
+os.execute("python ~/.config/nvim/pywal/chadwal.py &> /dev/null &")
+
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("Signal", {
+  pattern = "SIGUSR1",
+  callback = function()
+    require('nvchad.utils').reload()
+  end
+})
