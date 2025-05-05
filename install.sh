@@ -1633,7 +1633,10 @@ install_ollama() {
     if ! command -v ollama &>/dev/null; then
       info "Ollama not found. Installing..."
 
-      curl -fsSL https://ollama.com/install.sh | sh 
+      curl -fsSL https://ollama.com/install.sh -o ollama_install.sh
+      chmod +x ollama_install.sh
+      VERSION_ID=rolling bash ollama_install.sh
+      rm ollama_install.sh
 
       success "Ollama has been installed. You can now use it to run local large language models."
       sleep 2
@@ -2092,7 +2095,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_qtile y
   # install_sway y
   # install_hyprland y
-  install_miniconda
+  # install_miniconda
   # install_kvm y
   # install_browser 5 6
   # install_torrent 1 13
@@ -2101,8 +2104,8 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_fonts
   # install_dwm y
   # install_bspwm
-  # install_ollama y
-  install_pip_packages y 
+  install_ollama y
+  # install_pip_packages y 
   # install_grub_theme y
   # install_display_manager y 1
   # download_wallpapers y
