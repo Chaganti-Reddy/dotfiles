@@ -68,9 +68,13 @@ static const char brightness[] = "[ $(brightnessctl g) -gt 0 ] && printf '%.0f' 
 
 static const struct arg args[] = {
 	/* function format          argument */
-        { netspeed_tx, " %s ", "wlan0" },
-        { netspeed_rx, " %sB/s | ", "wlan0" },
-        // { wifi_perc, "(%s) | ", "wlan0" },
+        // { netspeed_tx, " %s ", "wlan0" },
+        // { netspeed_rx, " %sB/s | ", "wlan0" },
+        // // { wifi_perc, "(%s) | ", "wlan0" },
+  
+        { netspeed_tx, " %s ", "wlp45s0" },
+        { netspeed_rx, " %sB/s | ", "wlp45s0" },
+        // { wifi_perc, "(%s) | ", "wlp45s0" },
         { uptime,             " %s | ",      NULL },
         // { cpu_perc,             " %s%% ",      NULL },
         { ram_used,             " %s | ",         NULL },
