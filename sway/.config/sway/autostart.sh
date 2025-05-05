@@ -6,7 +6,10 @@ export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
 # Authentication agent
-# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+if [[ ! `pidof gnome-polkit` ]]; then
+	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+fi
+/usr/bin/gnome-keyring-daemon --start &
 
 # Notifications
 dunst &
@@ -21,3 +24,9 @@ clipse -listen &
 # Tray applets
 nm-applet --indicator &
 # blueman-applet &
+
+# Set a random wallpaper when Sway starts
+~/dotfiles/sway/.config/sway/set-random-wallpaper.sh &
+
+# Run ollama serve in the background silently.
+# ollama serve > /dev/null 2>&1 &
