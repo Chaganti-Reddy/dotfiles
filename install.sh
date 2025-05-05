@@ -1905,7 +1905,7 @@ download_wallpapers() {
       cd wallpapers-main || return
 
       if pacman -Q bspwm &>/dev/null; then
-        info "Moving wallpapers to /usr/share/backgrounds/..."
+        info "Moving BSPWM wallpapers to /usr/share/backgrounds/..."
         sudo mkdir -p /usr/share/backgrounds/
         sudo mv wall/* /usr/share/backgrounds/
         success "Wallpapers moved to /usr/share/backgrounds/."
@@ -2135,6 +2135,7 @@ else
   install_grub_theme
   install_display_manager
   download_wallpapers
+  install_extras
 fi
 
 echo ""
