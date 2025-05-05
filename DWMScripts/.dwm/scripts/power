@@ -9,11 +9,11 @@ selected_option=$(echo -e "$options" | dmenu -i -l 5 -p "Power Menu:")
 # Execute the selected option
 case "$selected_option" in
     "Shutdown")
-        sh $HOME/.dwm/scripts/uptime shutdown
+        echo "$(uptime -p) from $(uptime -s) till $(date '+%Y-%m-%d %H:%M:%S')...  Shutting Down" >> ~/dotfiles/Uptime.log
         systemctl poweroff
         ;;
     "Restart")
-        sh $HOME/.dwm/scripts/uptime reboot
+        echo "$(uptime -p) from $(uptime -s) till $(date '+%Y-%m-%d %H:%M:%S')...  Rebooting" >> ~/dotfiles/Uptime.log
         systemctl reboot
         ;;
     "Suspend")
