@@ -406,7 +406,7 @@ install_dependencies() {
   sleep 2
 }
 
-install_zsh() {
+install_shell() {
   info "Setting up Zsh..."
 
   local install="${1:-}"
@@ -426,7 +426,7 @@ install_zsh() {
   chsh -s /bin/zsh || die "Failed to change the shell. Try running 'chsh -s /bin/zsh' manually."
 
   info "Installing Oh My Zsh..."
-  cd ~/dotfiles || die "Failed to navigate to ~/dotfiles"
+  cd  ~/dotfiles || die "Failed to navigate to ~/dotfiles"
   bash install_zsh.sh || die "Oh My Zsh installation failed."
 
   info "Removing existing .zshrc..."
@@ -1633,7 +1633,7 @@ install_ollama() {
     if ! command -v ollama &>/dev/null; then
       info "Ollama not found. Installing..."
 
-      curl -fsSL https://ollama.com/install.sh | sh || die "Failed to install Ollama."
+      curl -fsSL https://ollama.com/install.sh | sh 
 
       success "Ollama has been installed. You can now use it to run local large language models."
       sleep 2
@@ -1709,12 +1709,12 @@ install_pip_packages() {
     # List of packages to install
     local pip_packages=(
       "pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab"
-      "ipykernel" "ipywidgets" "tensorflow" "python-prctl" "inotify-simple" "psutil"
+      "ipykernel" "ipywidgets" "python-prctl" "inotify-simple" "psutil" "libclang"
       "opencv-python" "keras" "mov-cli-youtube" "mov-cli" "mov-cli-test" "otaku-watcher"
       "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4"
       "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
       "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
-      "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy"
+      "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow"
     )
 
     # Install each package if it's not already installed
@@ -2078,35 +2078,35 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  check_privileges
-  setup_user_dirs
-  configure_pacman
-  system_update
-  clone_or_download_dotfiles
-  install_aur_helpers 1
-  setup_git_info y
-  install_dependencies "${selected_helper:-paru}"
-  install_zsh y
-  setup_gpg_pass y
+  # check_privileges
+  # setup_user_dirs
+  # configure_pacman
+  # system_update
+  # clone_or_download_dotfiles
+  # install_aur_helpers 1
+  # setup_git_info
+  # install_dependencies "${selected_helper:-paru}"
+  # install_shell y
+  # setup_gpg_pass y
   # install_i3
   # install_qtile y
   # install_sway y
-  install_hyprland y
-  # install_miniconda
-  install_kvm y
-  install_browser 5 6
-  install_torrent 1 13
-  install_dev_tools 3 6 7 9 10 16 
-  install_extra_tools 1 2 3 4
-  install_fonts
-  install_dwm y
+  # install_hyprland y
+  install_miniconda
+  # install_kvm y
+  # install_browser 5 6
+  # install_torrent 1 13
+  # install_dev_tools 3 6 7 9 10 16 
+  # install_extra_tools 1 2 3 4
+  # install_fonts
+  # install_dwm y
   # install_bspwm
-  install_ollama y
+  # install_ollama y
   install_pip_packages y 
-  install_grub_theme y
-  install_display_manager y 1
-  download_wallpapers
-  install_extras y y
+  # install_grub_theme y
+  # install_display_manager y 1
+  # download_wallpapers y
+  # install_extras y y
 else
   check_privileges
   setup_user_dirs
@@ -2116,7 +2116,7 @@ else
   install_aur_helpers
   setup_git_info
   install_dependencies
-  install_zsh
+  install_shell
   setup_gpg_pass
   install_i3
   install_qtile
