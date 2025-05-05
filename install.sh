@@ -770,6 +770,7 @@ install_hyprland() {
   if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
     stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+    stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
     success "Hyprland configuration has been set up."
   else
@@ -1536,6 +1537,7 @@ install_dwm() {
     info "Stowing dwm-related dotfiles..."
     cd ~/dotfiles || die "Failed to access ~/dotfiles"
     stow suckless
+    stow st
     stow DWMScripts
 
     # Build and install suckless components
