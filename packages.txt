@@ -94,6 +94,7 @@ python-adblock
 dnsmasq 
 python-pip 
 nwg-look 
+nwg-displays
 python-prctl 
 vscode-css-languageserver 
 ffmpegthumbnailer 
