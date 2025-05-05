@@ -7,7 +7,7 @@
 
   "sway/window": {
     "format": "{app_id} - {title}",
-    "max-length": 35,
+    "max-length": 40,
     "icon": true,
     "icon-size": 12,
     "separate-outputs": true
