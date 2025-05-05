@@ -251,3 +251,6 @@ cpptools-debug-bin
 acpilight
 dialog
 ttf-iosevka-nerd
+xwallpaper
+xscreensaver
+python-watchdog
