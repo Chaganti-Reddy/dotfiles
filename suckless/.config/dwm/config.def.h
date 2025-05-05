@@ -13,12 +13,12 @@ static const int systraypinningfailfirst =
     1; /* 1: if pinning fails, display systray on the first monitor, False:
           display systray on the last monitor*/
 static const int showsystray = 1;      /* 0 means no systray */
-static const unsigned int gappih = 10; /* horiz inner gap between windows */
-static const unsigned int gappiv = 10; /* vert inner gap between windows */
+static const unsigned int gappih = 7; /* horiz inner gap between windows */
+static const unsigned int gappiv = 7; /* vert inner gap between windows */
 static const unsigned int gappoh =
-    10; /* horiz outer gap between windows and screen edge */
+    5; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
-    10; /* vert outer gap between windows and screen edge */
+    5; /* vert outer gap between windows and screen edge */
 static int smartgaps =
     1; /* 1 means no outer gap when there is only one window */
 
@@ -30,12 +30,12 @@ static const int topbar = 1;  /* 0 means bottom bar */
 // "JoyPixels:pixelsize=11:antialias=true:autohint=true"};
 
 static const char *fonts[] = {
-    "Iosevka Nerd Font:weight=bold:size=12:antialias=true:hinting=true",
+    "Iosevka Nerd Font:weight=bold:size=11.5:antialias=true:hinting=true",
     "Ubuntu:weight=bold:size=11:antialias=true:hinting=true",
     "Hack:size=11:antialias=true:autohint=true",
     "fontawesome:size=11:antialias=true:hinting=true",
     "JoyPixels:size=11:antialias=true:autohint=true"};
-static const char dmenufont[] = "JetBrains Mono:size=11";
+static const char dmenufont[] = "Iosevka Nerd Font:weight=bold:size=11";
 static char normbgcolor[] = "#222222";
 static char normbordercolor[] = "#444444";
 static char normfgcolor[] = "#bbbbbb";
@@ -53,24 +53,26 @@ typedef struct {
   const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
-const char *spcmd2[] = {"st",     "-n", "spmusic", "-g",
-                        "120x34", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
-const char *spcmd3[] = {
-    "st", "-n",    "spcal", "-f", "JetBrainsMonoNL:weight=bold:size=14",
-    "-g", "50x20", "-e",    "bc", "-lq",
-    NULL};
+const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "/home/karna/.ncmpcpp/scripts/ncmpcpp-art", NULL};
+// const char *spcmd3[] = {
+//    "st", "-n",    "spcal", "-f", "Iosevka Nerd Font:weight=bold:size=14",
+//    "-g", "50x20", "-e",    "bc", "-lq",
+//    NULL};
+
+const char *spcmd3[] = {"qalculate-gtk", NULL};
+
 const char *spcmd4[] = {
-    "st",     "-n",     "spgpt", "-f",   "JetBrainsMonoNL:weight=bold:size=11",
+    "st",     "-n",     "spgpt", "-f",   "Iosevka Nerd Font:weight=bold:size=12",
     // "-g",     "120x34", "-e",    "tgpt", "--model", "llama2", "-i",     NULL};
     "-g",     "120x34", "-e",    "ollama", "run", "mistral",     NULL};
 const char *spcmd5[] = {
-    "st", "-n",     "spnews", "-f",       "JetBrainsMonoNL:weight=bold:size=11",
+    "st", "-n",     "spnews", "-f",       "Iosevka Nerd Font:weight=bold:size=12",
     "-g", "120x34", "-e",     "newsboat", NULL};
 
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1}, {"spmusic", spcmd2}, {"spcal", spcmd3},
-    {"spgpt", spcmd4},  {"spgpt", spcmd5},
+    {"spgpt", spcmd4},  {"spnews", spcmd5},
 };
 
 /* tagging */
@@ -93,21 +95,24 @@ static const Rule rules[] = {
     {"baobab", NULL, NULL, 0, 1, 0, 0, -1},
     {"qBittorrent", NULL, NULL, 1 << 5, 0, 0, 0, -1},
     {"pinentry-qt", NULL, NULL, 0, 1, 0, 0, -1},
-    {"Gnome-disks", NULL, NULL, 0, 1, 0, 0, -1},
+    {"Qalculate-gtk", NULL, NULL, 0, 1, 0, 0, -1},
+    {"Gnome-disks",   NULL, NULL, 0, 1, 0, 0, -1},
     {"Nm-connection-editor", NULL, NULL, 0, 1, 0, 0, -1},
     {"flameshot", NULL, NULL, 0, 1, 0, 0, -1},
     {"obs", NULL, NULL, 1<<7, 1, 0, 0, -1},
     // {"floorp", NULL, NULL, 1 << 2, 0, 0, -1, -1},
-    {"brave", NULL, NULL, 1 << 1, 0, 0, -1, -1},
+    {"Brave-browser", NULL, NULL, 1 << 1, 0, 0, -1, -1},
     // {"Ferdium", NULL, NULL, 1 << 3, 0, 0, -1, -1},
     {"discord", NULL, NULL, 1 << 5, 0, 0, -1, -1},
     {"St", NULL, NULL, 0, 0, 1, 0, -1},
+    {"kitty", NULL, NULL, 0, 0, 1, 0, -1},
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1}, /* xev */
-    {NULL, "spterm", NULL, SPTAG(0), 1, -1},
-    {NULL, "spmusic", NULL, SPTAG(1), 1, -1},
-    {NULL, "spcal", NULL, SPTAG(2), 1, -1},
-    {NULL, "spgpt", NULL, SPTAG(3), 1, -1},
-    {NULL, "spnews", NULL, SPTAG(4), 1, -1},
+    { NULL, "spterm",  NULL, SPTAG(0), 1, 1, 0, -1 },
+    { NULL, "spmusic", NULL, SPTAG(1), 1, 1, 0, -1 },
+    // { NULL, "spcal",   NULL, SPTAG(2), 1, 0, 0, -1 }, // Not a terminal!
+    { "Qalculate-gtk", NULL, NULL, SPTAG(2), 1, 0, 0, -1 },
+    { NULL, "spgpt",   NULL, SPTAG(3), 1, 1, 0, -1 },
+    { NULL, "spnews",  NULL, SPTAG(4), 1, 1, 0, -1 },
 };
 
 /* layout(s) */
@@ -160,7 +165,7 @@ static char dmenumon[2] =
 static char dmenuprompt[256] = "Search:";
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-p",dmenuprompt,NULL};
 // static const char *dmenucmd[] = {"dmenu_run", "-c", "-fn", dmenufont, "-l", "15","-p", dmenuprompt, NULL};
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {"kitty", NULL};
 static const char *emacs[] = {"emacs", NULL};
 static const char *browser[] = {"brave", NULL};
 static const char *browser1[] = {"qutebrowser", NULL};
@@ -175,9 +180,15 @@ static Key keys[] = {
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
+    {MODKEY, XK_Left,  focusstack, {.i = -1} },
+    {MODKEY, XK_Right, focusstack, {.i = +1} },
+    {MODKEY | ShiftMask, XK_Left,  setmfact, {.f = +0.05} },
+    {MODKEY | ShiftMask, XK_Right, setmfact, {.f = +0.05} },
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY | ShiftMask, XK_j, movestack, {.i = +1}},
     {MODKEY | ShiftMask, XK_k, movestack, {.i = -1}},
+    {MODKEY | ShiftMask, XK_Left, movestack, {.i = +1}},
+    {MODKEY | ShiftMask, XK_Right, movestack, {.i = -1}},
     {MODKEY | ShiftMask, XK_h, setcfact, {.f = +0.25}},
     {MODKEY | ShiftMask, XK_l, setcfact, {.f = -0.25}},
     {MODKEY | ShiftMask, XK_o, setcfact, {.f = 0.00}},
@@ -225,8 +236,8 @@ static Key keys[] = {
     {MODKEY | ControlMask | ShiftMask, XK_q, quit, {0}},
     {0, XK_F12, togglescratch, {.ui = 0}},
     {MODKEY | ShiftMask, XK_m, togglescratch, {.ui = 1}},
-    {MODKEY | ShiftMask, XK_c, togglescratch, {.ui = 2}},
-    {MODKEY | ShiftMask, XK_g, togglescratch, {.ui = 3}},
+    {MODKEY, XK_c, togglescratch, {.ui = 2}},
+    // {MODKEY | ShiftMask, XK_g, togglescratch, {.ui = 3}},
     {MODKEY | Mod1Mask,  XK_n, togglescratch, {.ui = 4}},
     // {MODKEY, XK_F9, spawn, SHCMD("~/.dwm/volume mute")},
     // {MODKEY, XK_F10, spawn, SHCMD("~/.dwm/volume down")},
@@ -253,13 +264,21 @@ static Key keys[] = {
     {MODKEY , XK_n, spawn, {.v = files}},
     {MODKEY | ShiftMask, XK_n, spawn, {.v = files1}},
     {MODKEY, XK_v, spawn, SHCMD("subl")},
-    {MODKEY | ShiftMask, XK_v, spawn, {.v = editor1}},
+    {MODKEY, XK_a, spawn, {.v = editor1}},
     // {MODKEY, XK_F8, spawn, {.v = (const char *[]){"mpc", "next", NULL}}},
     // {MODKEY, XK_F7, spawn, {.v = (const char *[]){"mpc", "toggle", NULL}}},
     // {MODKEY, XK_F6, spawn, {.v = (const char *[]){"mpc", "prev", NULL}}},
     //{MODKEY | ShiftMask,
      // spawn,
      // {.v = (const char *[]){"mpc", "stop", NULL}}},
+
+    // Music controls with Mod + Alt
+    { MODKEY|Mod1Mask,             XK_1,      spawn, SHCMD("mpc toggle") },
+    { MODKEY|Mod1Mask,             XK_2,      spawn, SHCMD("mpc prev") },
+    { MODKEY|Mod1Mask,             XK_3,      spawn, SHCMD("mpc next") },
+
+    // Music stop with Mod + Shift + Alt
+    { MODKEY|Mod1Mask|ShiftMask,   XK_1,      spawn, SHCMD("mpc stop") },
 
     { 0, XF86XK_AudioPrev,		spawn,		{.v = (const char*[]){ "mpc", "prev", NULL } } },
 	  { 0, XF86XK_AudioNext,		spawn,		{.v = (const char*[]){ "mpc",  "next", NULL } } },
