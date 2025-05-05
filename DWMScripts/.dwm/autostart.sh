@@ -17,7 +17,7 @@ fi
 numlockx &
 nm-applet &
 dunst -conf ~/.config/dunst/dunstrc_xorg &
-# xscreensaver --no-splash &
+xscreensaver --no-splash &
 # clipmenud &
 # flameshot &
 blueman-applet &
