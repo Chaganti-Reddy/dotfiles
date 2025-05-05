@@ -16,7 +16,8 @@ dunst &
 mpd &
 udiskie --smart-tray &
 numlockx on &
-ollama serve > /dev/null 2>&1 &
+# ollama serve > /dev/null 2>&1 &
+autotiling &
 
 # Clipboard management
 clipse -listen &
@@ -27,6 +28,3 @@ nm-applet --indicator &
 
 # Set a random wallpaper when Sway starts
 ~/dotfiles/sway/.config/sway/set-random-wallpaper.sh &
-
-# Run ollama serve in the background silently.
-# ollama serve > /dev/null 2>&1 &
