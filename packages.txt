@@ -254,3 +254,4 @@ ttf-iosevka-nerd
 xwallpaper
 xscreensaver
 python-watchdog
+kvantum-theme-materia-blur
