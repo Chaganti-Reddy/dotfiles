@@ -1,4 +1,6 @@
 ### Variables
+include ~/.config/sway/outputs
+include ~/.config/sway/workspaces
 
 # Cursor size
 exec export XCURSOR_SIZE=24
@@ -47,10 +49,10 @@ font pango: Iosevka Nerd Font Bold 10
 gaps inner 4
 gaps outer 1
 default_border pixel 2
-smart_borders on
-smart_gaps on
+# smart_borders on
+# smart_gaps on
 titlebar_border_thickness 2
-titlebar_padding 4 4
+titlebar_padding 8 2
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -187,6 +189,7 @@ input "5426:152:Razer_Razer_DeathAdder_Essential" {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    # bindsym $mod+shift+a exec pkill -SIGUSR2 waybar
 
 
     # Launch or toggle a floating Kitty scratchpad
@@ -466,6 +469,6 @@ xwayland enable
 exec --no-startup-id ~/.config/sway/autostart.sh &
 
 include /etc/sway/config.d/
-client.focused #9C93F1 #090B1E #eec9e9 #F6BABE #9C93F1
-client.unfocused #090B1E #090B1E #eec9e9 #090B1E #090B1E
-client.urgent #6EA1F1 #090B1E #eec9e9 #6EA1F1 #6EA1F1
+client.focused #658E79 #0c0413 #98d2c9 #33B05A #658E79
+client.unfocused #0c0413 #0c0413 #98d2c9 #0c0413 #0c0413
+client.urgent #9E5F65 #0c0413 #98d2c9 #9E5F65 #9E5F65
