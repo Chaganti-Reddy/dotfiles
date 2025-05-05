@@ -77,7 +77,7 @@ static const struct arg args[] = {
         // { ram_perc,             "(%s%%) ",      NULL },
         { run_command, ": %s% | ", "wpctl get-volume @DEFAULT_SINK@ | awk '{print ($2 * 100) ($3 == \"[MUTED]\" ? \"M\" : \"\")}'" },
         // Microphone
-        // { run_command, ": %s% | ", "wpctl get-volume @DEFAULT_SOURCE@ | awk '{print ($2 * 100) ($3 == \"[MUTED]\" ? \"M\" : \"\")}'" },
+        { run_command, ": %s% | ", "wpctl get-volume @DEFAULT_SOURCE@ | awk '{print ($2 * 100) ($3 == \"[MUTED]\" ? \"M\" : \"\")}'" },
         { run_command,          " %s%% | ",      brightness },
         { battery_perc,         " %s%%",       "BAT0" },
         { battery_state,        "(%s) | ",        "BAT0" },
