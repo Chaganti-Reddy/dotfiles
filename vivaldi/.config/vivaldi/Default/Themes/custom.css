@@ -1,0 +1,105 @@
+/* Edit default font and add a border around window */
+#browser.linux {
+  font-family: Iosevka Nerd Font, JetBrainsMono Nerd Font, Cantarell, 'Noto Sans', Helvetica, system-ui, sans-serif;
+  border: 1px solid #BBBBBB;
+  font-weight: bold;
+}
+
+/* Move the close button down a bit to vertically center it in gnome */
+/* #browser.linux .window-buttongroup { */
+/*     top: 10px; */
+/* } */
+
+/* Increase tabs title font size */
+.linux .tab-position .tab .title {
+    font-size: 120%;
+}
+
+.tab-position .tab:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-position .tab {
+    height: 28px;
+}
+
+.tab-position .tab.active {
+    background-color: #dcdcdc;
+    font-weight: bold;
+    border-bottom: 2px solid #555;
+}
+
+.tab-position .tab {
+    border-radius: 6px 6px 0 0;
+    margin-right: 4px;
+}
+
+.tab-position .tab {
+    transition: background-color 0.2s ease-in-out;
+}
+
+#browser.linux {
+    background-color: #f8f8f8;
+}
+
+.window-buttongroup button {
+    background-color: transparent;
+    border: none;
+    padding: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.window-buttongroup button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tab-position .tab {
+    color: #333;
+}
+
+.tab-position .tab.active {
+    color: #000;
+}
+
+:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+}
+
+.tab-position .tab {
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-position {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.addressfield {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  #browser.linux {
+    background-color: #1e1e1e;
+    border-color: #444;
+    color: #eee;
+  }
+
+  .tab-position .tab {
+    color: #ccc;
+    background-color: #2a2a2a;
+  }
+
+  .tab-position .tab.active {
+    background-color: #3a3a3a;
+    color: #fff;
+    border-bottom: 2px solid #888;
+  }
+
+  .window-buttongroup button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
