@@ -5791,3 +5791,32 @@ Mar 20 16:54:54 : player: played "playlists/EdSheeran/Ed Sheeran - Life Goes On.
 2025-05-04T22:59:48 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
 2025-05-04T22:59:57 player: played "playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
 2025-05-05T13:57:52 exception: Not playing
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3": No such file or directory
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"; Failed to open "/home/karna/Music/playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/Liked/Naveen Madhav, Ranjith - I Hate Love Stories.mp3"
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/English/OneRepublic - Counting Stars.mp3"; Failed to open "/home/karna/Music/playlists/English/OneRepublic - Counting Stars.mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"; Failed to open "/home/karna/Music/playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-06T12:10:26 exception: Failed to decode "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3": No such file or directory
+2025-05-06T12:10:26 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/English/OneRepublic - Counting Stars.mp3"; Failed to open "/home/karna/Music/playlists/English/OneRepublic - Counting Stars.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/Liked/Karthik - Nuvvani Idhi Needani.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"; Failed to open "/home/karna/Music/playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3": No such file or directory
+2025-05-06T12:10:29 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
