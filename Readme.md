@@ -75,7 +75,7 @@ sudo make clean install
 
 14. If you want to use brave browser then go to `brave://flags/` and change `Preferred Ozone platform` option to `auto` to automatically select the session between both wayland and xorg.
 
-13. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `chrome://settings` and turn on gtk for dark context menus.
+15. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `chrome://settings` and turn on gtk for dark context menus. Also if you want custom fonts in titlebars which is not available by default then just go to `vivaldi:experiments` and turn on Allow CSS modifications & just stow the vivaldi folder from dotfiles. After just upload the path of Default/Themes folder to Appearance settings.
 
 
 ## Configuration
