@@ -94,7 +94,7 @@ fi
 
 export VISUAL='nvim'
 
-export BROWSER='/usr/bin/brave'
+export BROWSER='/usr/bin/vivaldi'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
