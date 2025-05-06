@@ -6,6 +6,7 @@ BOLD=$(tput bold)
 RESET=$(tput sgr0)
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
 BLUE=$(tput setaf 4)
 CYAN=$(tput setaf 6)
 
@@ -275,38 +276,47 @@ setup_git_info() {
   fi
 
   local git_username git_email editor_choice editor
+  local current_user
+  current_user=$(whoami)
 
-  while true; do
-    git_username=$(prompt "Enter your Git username" "")
-    [[ -n "$git_username" ]] && break
-    warning "Git username cannot be empty. Please try again."
-  done
+  if [[ "$current_user" == "karna" ]]; then
+    git_username="Chaganti-Reddy"
+    git_email="chagantivenkataramireddy4@gmail.com"
+    editor="nvim"
+    info "Detected user 'karna'. Using preconfigured Git settings."
+  else
+    while true; do
+      git_username=$(prompt "Enter your Git username" "")
+      [[ -n "$git_username" ]] && break
+      warning "Git username cannot be empty. Please try again."
+    done
 
-  while true; do
-    git_email=$(prompt "Enter your Git email" "")
-    if [[ "$git_email" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
-      break
-    fi
-    warning "Invalid or empty Git email. Please try again."
-  done
+    while true; do
+      git_email=$(prompt "Enter your Git email" "")
+      if [[ "$git_email" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+        break
+      fi
+      warning "Invalid or empty Git email. Please try again."
+    done
 
-  echo -e "\nSelect your preferred editor for Git:"
-  echo "1) Vim"
-  echo "2) Nano"
-  echo "3) VSCode"
-  echo "4) Neovim"
-  echo "5) None (skip editor configuration)"
+    echo -e "\nSelect your preferred editor for Git:"
+    echo "1) Vim"
+    echo "2) Nano"
+    echo "3) VSCode"
+    echo "4) Neovim"
+    echo "5) None (skip editor configuration)"
 
-  editor_choice=$(prompt "Enter your choice" "1")
+    editor_choice=$(prompt "Enter your choice" "1")
 
-  case "$editor_choice" in
-    1) editor="vim" ;;
-    2) editor="nano" ;;
-    3) editor="code" ;;
-    4) editor="nvim" ;;
-    5) editor="" ;;
-    *) warning "Invalid choice. Defaulting to Vim."; editor="vim" ;;
-  esac
+    case "$editor_choice" in
+      1) editor="vim" ;;
+      2) editor="nano" ;;
+      3) editor="code" ;;
+      4) editor="nvim" ;;
+      5) editor="" ;;
+      *) warning "Invalid choice. Defaulting to Vim."; editor="vim" ;;
+    esac
+  fi
 
   git config --global user.name "$git_username"
   git config --global user.email "$git_email"
@@ -472,8 +482,10 @@ setup_gpg_pass() {
     info "Required packages are already installed. Skipping installation."
   fi
 
-  local backup_response
-  backup_response=$(prompt "Do you already have a backup of your GPG keys and passwords and just want to import them? (y/n)" "n")
+  local backup_response="${2:-}"
+  if [[ ! "$backup_response" =~ ^[Yy]$ ]]; then 
+    backup_response=$(prompt "Do you already have a backup of your GPG keys and passwords and just want to import them? (y/n)" "n")
+  fi
 
   if [[ "$backup_response" =~ ^[Yy]$ ]]; then
     info "To import your GPG keys and password store, follow these steps:"
@@ -802,6 +814,12 @@ INSTALLER_NAME="Miniconda3.sh"
 install_miniconda() {
   info "Setting up Miniconda..."
 
+  # Check if conda is already installed
+  if command -v conda &>/dev/null; then
+    success "Conda is already installed at $(command -v conda). Skipping installation."
+    return
+  fi 
+
   local install_choice="${1:-}"  # Optional positional parameter
 
   if [[ "$install_choice" =~ ^[Yy]$ ]]; then
@@ -1005,7 +1023,7 @@ install_browser() {
       3 "Chromium" off
       4 "Vivaldi" off
       5 "qutebrowser" off
-      6 "Brave (Default)" on
+      6 "Brave (Default)" off
     )
 
     # Show dialog and get selections
@@ -1061,7 +1079,11 @@ install_browser() {
           info "Vivaldi is already installed."
         else
           info "Installing Vivaldi..."
-          paru -S --noconfirm vivaldi
+          paru -S --noconfirm vivaldi vivaldi-update-ffmpeg-hook vivaldi-widevine vivaldi-ffmpeg-codecs
+          if ! command -v nativefier &>/dev/null; then
+            info "Installing nativefier..."
+            sudo npm install -g nativefier
+          fi
         fi
         ;;
       5)
@@ -1936,6 +1958,15 @@ download_wallpapers() {
 }
 
 install_extras() {
+
+  # Install the bash language server globally using npm
+  if ! command -v bash-language-server &>/dev/null; then
+    echo -e "${YELLOW}Installing bash-language-server...${RESET}"
+    sudo npm i -g bash-language-server
+  else
+    echo -e "${GREEN}bash-language-server is already installed.${RESET}"
+  fi
+
   local install_themes_icons="${1:-}"  # Default to empty for prompt if not provided
   local install_extras_config="${2:-}"  # Default to empty for prompt if not provided
 
@@ -1965,9 +1996,9 @@ install_extras() {
   fi
 
   # Move themes (skip existing)
-  for theme_dir in "$extracted_dir/themes/"*; do
-    if [[ -d "$theme_dir" ]]; then
-      local theme_name
+  shopt -s nullglob
+  for theme_dir in "$extracted_dir/themes/"*/; do
+    if [[ -f "$theme_dir/index.theme" ]]; then
       theme_name=$(basename "$theme_dir")
       if [[ -e "$HOME/.themes/$theme_name" ]]; then
         echo "$theme_name already exists in ~/.themes. Skipping."
@@ -1978,9 +2009,8 @@ install_extras() {
   done
 
   # Move icons (skip existing)
-  for icon_dir in "$extracted_dir/icons/"*; do
-    if [[ -d "$icon_dir" ]]; then
-      local icon_name
+  for icon_dir in "$extracted_dir/icons/"*/; do
+    if [[ -f "$icon_dir/index.theme" ]]; then
       icon_name=$(basename "$icon_dir")
       if [[ -e "$HOME/.icons/$icon_name" ]]; then
         echo "$icon_name already exists in ~/.icons. Skipping."
@@ -1989,6 +2019,7 @@ install_extras() {
       fi
     fi
   done
+  shopt -u nullglob
 
   cd ~/Downloads || return
   rm -rf "$extracted_dir"
@@ -2081,35 +2112,35 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  # check_privileges
-  # setup_user_dirs
-  # configure_pacman
-  # system_update
-  # clone_or_download_dotfiles
-  # install_aur_helpers 1
-  # setup_git_info
-  # install_dependencies "${selected_helper:-paru}"
-  # install_shell y
-  # setup_gpg_pass y
-  # install_i3
+  check_privileges
+  setup_user_dirs
+  configure_pacman
+  system_update
+  clone_or_download_dotfiles
+  install_aur_helpers 1
+  setup_git_info y
+  install_dependencies "${selected_helper:-paru}"
+  install_shell y
+  setup_gpg_pass y y
+  # install_i3 y
   # install_qtile y
-  install_sway y
-  # install_hyprland y
-  # install_miniconda
-  # install_kvm y
-  # install_browser 5 6
-  # install_torrent 1 13
-  # install_dev_tools 3 6 7 9 10 16 
-  # install_extra_tools 1 2 3 4
-  # install_fonts
-  # install_dwm y
-  # install_bspwm
-  # install_ollama y
-  # install_pip_packages y 
-  # install_grub_theme y
-  # install_display_manager y 1
-  # download_wallpapers y
-  # install_extras y y
+  # install_sway y
+  install_hyprland y
+  install_miniconda y 
+  install_kvm y
+  install_browser 4 5
+  install_torrent 1 13
+  install_dev_tools 3 6 7 9 10 16 
+  install_extra_tools 1 2 3 4
+  install_fonts
+  install_dwm y
+  # install_bspwm y
+  install_ollama y
+  install_pip_packages y 
+  install_grub_theme y
+  install_display_manager y 1
+  download_wallpapers y
+  install_extras y y
 else
   check_privileges
   setup_user_dirs
