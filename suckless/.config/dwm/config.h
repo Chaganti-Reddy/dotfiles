@@ -160,6 +160,8 @@ static const Layout layouts[] = {
     .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
   }
 
+#define STATUSBAR "dwmblocks"
+
 /* commands */
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -253,6 +255,7 @@ static Key keys[] = {
     // {MODKEY, XK_v, spawn, SHCMD("clipmenu -i -fn JetBrainsMonoNL:10")},
     // {MODKEY, XK_n, spawn, SHCMD("~/.dwm/dmenu_file")},
     {MODKEY | ShiftMask, XK_p, spawn, SHCMD("~/.dwm/scripts/power")},
+    {MODKEY | Mod1Mask, XK_p, spawn, SHCMD("~/.config/scripts/rofi-pass-xorg")},
     {MODKEY | ShiftMask, XK_a, spawn, SHCMD("~/.dwm/scripts/script")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("flameshot gui")},
     // {MODKEY | Mod1Mask, XK_l, spawn, SHCMD("betterlockscreen -l -q")},
