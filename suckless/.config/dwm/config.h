@@ -102,6 +102,7 @@ static const Rule rules[] = {
     {"obs", NULL, NULL, 1<<7, 1, 0, 0, -1},
     // {"floorp", NULL, NULL, 1 << 2, 0, 0, -1, -1},
     {"Brave-browser", NULL, NULL, 1 << 1, 0, 0, -1, -1},
+    {"Vivaldi-stable", NULL, NULL, 1 << 1, 0, 0, -1, -1},
     // {"Ferdium", NULL, NULL, 1 << 3, 0, 0, -1, -1},
     {"discord", NULL, NULL, 1 << 5, 0, 0, -1, -1},
     {"St", NULL, NULL, 0, 0, 1, 0, -1},
@@ -167,7 +168,7 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {"rofi", "-show", "drun", "-show-icons", "-theme", "/home/karna/.config/rofi/dt-center.rasi", NULL};
 static const char *termcmd[] = {"kitty", NULL};
 static const char *emacs[] = {"emacs", NULL};
-static const char *browser[] = {"brave", NULL};
+static const char *browser[] = {"vivaldi", NULL};
 static const char *browser1[] = {"qutebrowser", NULL};
 static const char *files[] = {"st", "-e", "yazi", NULL};
 // static const char *music[] = {"st", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
