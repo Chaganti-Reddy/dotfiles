@@ -75,7 +75,7 @@ sudo make clean install
 
 14. If you want to use brave browser then go to `brave://flags/` and change `Preferred Ozone platform` option to `auto` to automatically select the session between both wayland and xorg.
 
-13. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `vivaldi://settings` and turn on gtk for dark context menus.
+13. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `chrome://settings` and turn on gtk for dark context menus.
 
 
 ## Configuration
