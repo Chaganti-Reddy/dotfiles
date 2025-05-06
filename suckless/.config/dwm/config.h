@@ -216,7 +216,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_s, incnmaster, {.i = +1}},
     {MODKEY, XK_q, killclient, {0}},
-    {MODKEY | ShiftMask, XK_w, setlayout, {.v = &layouts[0]}},
+    {MODKEY | Mod1Mask, XK_w, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_e, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_r, setlayout, {.v = &layouts[2]}},
     {MODKEY | ShiftMask, XK_r, togglefloating, {0}},
