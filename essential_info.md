@@ -27,6 +27,8 @@
 
 10. `Note- This is for me` - Install Brave Extension - unhook, copyfish, Leetcode Video Solutions, LeetHub V2, Simplify Copilot 
 
-11. If you are using Brave Browser then go to brave://flags/#ozone-platform-hint and make it auto
+11. If you are using Brave Browser then go to brave://flags/#ozone-platform-hint and make it auto.
 
-12. If spotdl not working and getting errors like "FFmpegError: Failed to convert" then just change the value of "bitrate":null to "bitrate":"192k" - taken from https://github.com/spotDL/spotify-downloader/issues/1938#issuecomment-2753157035
+12. If you are using Vivaldi browser then go to vivaldi://flags/#ozone-platform-hint and make it auto and also go to vivaldi://settings and turn on gtk for dark context menus.
+
+13. If spotdl not working and getting errors like "FFmpegError: Failed to convert" then just change the value of "bitrate":null to "bitrate":"192k" - taken from https://github.com/spotDL/spotify-downloader/issues/1938#issuecomment-2753157035
