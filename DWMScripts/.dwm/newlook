@@ -21,7 +21,7 @@ xdotool key super+F5
 rm -rf ~/.walcache/
 mkdir ~/.walcache
 cp $wall ~/.walcache/1
-pkill dunst 
-sleep 1
-dunst -conf $HOME/.config/dunst/dunstrc_xorg &
+# pkill dunst 
+# sleep 1
+# dunst -conf $HOME/.config/dunst/dunstrc_xorg &
 # betterlockscreen -u ~/.walcache/1
