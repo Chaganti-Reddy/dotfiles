@@ -18,7 +18,7 @@ xscreensaver --no-splash &
 blueman-applet &
 xcompmgr &
 mpd &
-slstatus &
+# slstatus &
 /usr/bin/udiskie --smart-tray &
 if [ -d ~/.cache/wallheaven ]; then
     rm -rf ~/.cache/wallheaven
