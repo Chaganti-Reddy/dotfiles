@@ -99,9 +99,9 @@ static const char brightness[] = "[ $(brightnessctl g) -gt 0 ] && printf '%.0f' 
 
 static const struct arg args[] = {
 	/* function      format           argument */
-	{ netspeed_tx,   "%s  ",         "wlp45s0" },
-	{ netspeed_rx,   "%sB/s  | ",    "wlp45s0" },
-	{ uptime,        " %s | ",       NULL },
+  { netspeed_tx,   "%s  ",         "wlp45s0" },
+	{ netspeed_rx,   "%s  | ",    "wlp45s0" },
+  { uptime,        " %s | ",       NULL },
 	{ ram_used,      " %s | ",       NULL },
 
 /* Volume (PipeWire) */
@@ -144,7 +144,7 @@ static const struct arg args[] = {
      if [ $perc -le 10 ]; then icon='󰃚'; \
      elif [ $perc -le 20 ]; then icon='󰃜'; \
      elif [ $perc -le 40 ]; then icon='󰃝'; \
-     elif [ $perc -le 60 ]; then icon='󰃞'; \
+     elif [ $perc -le 60 ]; then icon='󰃟'; \
      elif [ $perc -le 80 ]; then icon='󰃟'; \
      else icon='󰃠'; fi; \
      echo \"$icon $perc%\"; \
