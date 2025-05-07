@@ -814,6 +814,7 @@ INSTALLER_NAME="Miniconda3.sh"
 install_miniconda() {
   info "Setting up Miniconda..."
 
+  source ~/.bashrc
   # Check if conda is already installed
   if command -v conda &>/dev/null; then
     success "Conda is already installed at $(command -v conda). Skipping installation."
@@ -905,6 +906,8 @@ unset __conda_setup
   conda --version
   python --version
 
+  source ~/.bashrc
+
   success "Miniconda installation and initialization completed successfully."
   info "Python Version: $(python --version)"
   info "Conda Version: $(conda --version)"
@@ -989,7 +992,7 @@ install_kvm() {
   lsmod | grep kvm || warning "KVM modules not found in lsmod output"
 
   # Optional: Check for UEFI firmware presence
-  if [[ ! -f /usr/share/edk2-ovmf/x64/OVMF_CODE.fd ]]; then
+  if [[ ! -f /usr/share/edk2-ovmf/x64/OVMF_CODE.4m.fd ]]; then
     warning "OVMF UEFI firmware not found. UEFI VMs may not work properly."
   fi
 
@@ -1350,7 +1353,7 @@ install_dev_tools() {
       2) install_package "github-desktop-bin" "GitHub Desktop" "paru -S --noconfirm --needed" ;;
       3)
         install_multiple_packages "docker" "docker-compose"
-        sudo systemctl enable --now docker.service
+        sudo systemctl enable docker.service
         sudo usermod -aG docker "$USER"
         ;;
       4) install_package "docker-desktop" "Docker Desktop" "paru -S --noconfirm --needed" ;;
