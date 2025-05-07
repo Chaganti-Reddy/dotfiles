@@ -62,7 +62,7 @@ margin = 50
 [scratchpads.chess]
 animation = ""
 command = "$HOME/apps/chess-linux-x64/chess"
-class = "chess-nativefier-b30d50"
+class = "chess-nativefier-703820"
 size = "80% 80%"
 lazy = true
 position = "181px 97px"
