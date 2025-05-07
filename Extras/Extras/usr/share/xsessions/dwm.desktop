@@ -1,10 +1,9 @@
 [Desktop Entry]
 Name=DWM
 Comment=A Suckless WM
-Exec=/usr/local/bin/dwm
+Exec=/usr/local/bin/startdwm.sh
 Terminal=false
-TryExec=/usr/local/bin/dwm
-Type=Application
+Type=XSession
 
 [X-Window Manager]
 SessionManaged=true
