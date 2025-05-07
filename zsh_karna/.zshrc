@@ -407,7 +407,7 @@ alias ssn="sudo shutdown now"
 alias sr="reboot"
 
 # DWM 
-alias makedwm="cd ~/.config/dwm && rm config.h && sudo make clean install"
+alias makedwm="cd ~/.config/dwm/dwm && rm config.h && sudo make clean install"
 alias makeslstatus="cd ~/.config/slstatus/ && rm -rf config.h && make && sudo make install"
 alias dwmcon="nvim ~/.config/dwm/config.def.h"
 alias slstatuscon="nvim ~/.config/slstatus/config.def.h"
