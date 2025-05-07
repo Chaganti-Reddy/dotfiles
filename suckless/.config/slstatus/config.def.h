@@ -99,9 +99,9 @@ static const char brightness[] = "[ $(brightnessctl g) -gt 0 ] && printf '%.0f' 
 
 static const struct arg args[] = {
 	/* function      format           argument */
-	{ netspeed_tx,   "%s  ",         "wlp45s0" },
-	{ netspeed_rx,   "%sB/s  | ",    "wlp45s0" },
-	{ uptime,        " %s | ",       NULL },
+  { netspeed_tx,   "%s  ",         "wlp45s0" },
+	{ netspeed_rx,   "%s  | ",    "wlp45s0" },
+  { uptime,        " %s | ",       NULL },
 	{ ram_used,      " %s | ",       NULL },
 
 /* Volume (PipeWire) */
