@@ -53,7 +53,7 @@ typedef struct {
   const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
-const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "/home/karna/.ncmpcpp/scripts/ncmpcpp-art", NULL};
+const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "1200x800", "-e", "/home/karna/.ncmpcpp/scripts/ncmpcpp-art", NULL};
 const char *spcmd6[] = {"st", "-n", "spchess", "-g", "120x34", "-e", "/home/karna/apps/chess-linux-x64/chess", NULL};
 // const char *spcmd3[] = {
 //    "st", "-n",    "spcal", "-f", "Iosevka Nerd Font:weight=bold:size=14",
