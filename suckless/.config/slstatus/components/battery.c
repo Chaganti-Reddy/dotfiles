@@ -1,9 +1,31 @@
 /* See LICENSE file for copyright and license details. */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "../slstatus.h"
 #include "../util.h"
+
+const char *
+battery_icon(const char *bat)
+{
+	unsigned long ul_perc;
+	const char *perc, *state;
+  static const char *icons[][11] = {
+    /* Discharging */
+    { "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰂃", "󰁹" },
+    /* Charging */
+    { "󰢜", "󰂆", "󰂇", "󰂈", "󰂉", "󰂊", "󰢝", "󰂋", "󰢞", "󰂌", "󰂄" },
+};
+
+
+	if (!(perc = battery_perc(bat)) || !(state = battery_state(bat)))
+		return NULL;
+
+	ul_perc = strtoul(perc, NULL, 10);
+
+	return bprintf("%s %d", icons[state[0] == '+'][ul_perc / 10], ul_perc);
+}
 
 #if defined(__linux__)
 /*
