@@ -5,11 +5,6 @@ export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
-xinput --set-prop "DLL09D9:00 04F3:3147 Touchpad" "libinput Natural Scrolling Enabled" 1
-xinput --set-prop "DLL09D9:00 04F3:3147 Touchpad" "libinput Tapping Enabled" 1
-xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Speed" -0.8
-xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Profile Enabled" 1, 0
-
 if [[ ! `pidof gnome-polkit` ]]; then
 	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 fi
@@ -36,6 +31,7 @@ xsetroot -cursor_name left_ptr
 # fi
 
 ~/.dwm/newlook &
+~/.dwm/scripts/mouse &
 # /home/ram/.dwm/scripts/whatsapp_start &
 /usr/bin/gnome-keyring-daemon --start
 
