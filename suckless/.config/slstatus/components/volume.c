@@ -1,12 +1,29 @@
 /* See LICENSE file for copyright and license details. */
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 
 #include "../slstatus.h"
 #include "../util.h"
+
+const char *
+vol_icon(const char *arg)
+{
+	char *p;
+	const char *perc;
+	static const char *icons[] = { "ó°•¿", "ó°–€", "ó°•¾" };
+	unsigned long ul_perc;
+
+	if (!(perc = vol_perc(arg)))
+		return NULL;
+	p = strrchr(perc, ' ');
+	ul_perc = strtoul(p ? p + 1 : perc, NULL, 10);
+
+	return bprintf("%s %d", p ? "ó°Ÿ" : icons[ul_perc / 34], ul_perc);
+}
 
 #if defined(__OpenBSD__) | defined(__FreeBSD__)
 	#include <poll.h>
