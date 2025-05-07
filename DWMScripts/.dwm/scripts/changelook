@@ -27,9 +27,9 @@ if [ "$choice" = "Random" ]; then
     rm -rf ~/.walcache/
     mkdir ~/.walcache
     cp "$wallk" ~/.walcache/1
-    pkill dunst
-    sleep 1
-    dunst -conf $HOME/dunst/dunstrc_xorg &
+    # pkill dunst
+    # sleep 1
+    # dunst -conf $HOME/dunst/dunstrc_xorg &
     valid_paper="$(printf "Yes\nNo" | dmenu -i -l 2 -p "Do you like the new wallpaper?")"
   done
   # betterlockscreen -u ~/.walcache/1
@@ -70,9 +70,9 @@ if [ "$choice" = "Temporary Wallpaper" ]; then
     rm -rf ~/.walcache/
     mkdir ~/.walcache
     cp "$wall" ~/.walcache/1
-    pkill dunst 
-    sleep 1
-    dunst -conf $HOME/dunst/dunstrc_xorg &
+    # pkill dunst 
+    # sleep 1
+    # dunst -conf $HOME/dunst/dunstrc_xorg &
     # betterlockscreen -u ~/.walcache/1
   else
     dunstify "No wallpaper selected."
@@ -124,9 +124,9 @@ case $ACTION in
     rm -rf ~/.walcache/
     mkdir ~/.walcache
     cp "$SELECTED_WALLPAPER" ~/.walcache/1
-    pkill dunst 
-    sleep 1
-    dunst -conf $HOME/dunst/dunstrc_xorg &
+    # pkill dunst 
+    # sleep 1
+    # dunst -conf $HOME/dunst/dunstrc_xorg &
     # betterlockscreen -u ~/.walcache/1
   else
     dunstify "No wallpaper selected."
@@ -144,9 +144,9 @@ case $ACTION in
     rm -rf ~/.walcache/
     mkdir ~/.walcache
     cp "$WALLPAPER_DIR/$RANDOM_WALLPAPER" ~/.walcache/1
-    pkill dunst 
-    sleep 1
-    dunst -conf $HOME/dunst/dunstrc_xorg &
+    # pkill dunst 
+    # sleep 1
+    # dunst -conf $HOME/dunst/dunstrc_xorg &
     valid_paper="$(printf "Yes\nNo" | dmenu -i -l 2 -p "Do you like the new wallpaper?")"
   done
   # betterlockscreen -u ~/.walcache/1
