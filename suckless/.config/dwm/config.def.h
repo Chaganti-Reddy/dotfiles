@@ -54,6 +54,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "/home/karna/.ncmpcpp/scripts/ncmpcpp-art", NULL};
+const char *spcmd6[] = {"st", "-n", "spchess", "-g", "120x34", "-e", "/home/karna/apps/chess-linux-x64/chess", NULL};
 // const char *spcmd3[] = {
 //    "st", "-n",    "spcal", "-f", "Iosevka Nerd Font:weight=bold:size=14",
 //    "-g", "50x20", "-e",    "bc", "-lq",
@@ -69,10 +70,14 @@ const char *spcmd5[] = {
     "st", "-n",     "spnews", "-f",       "Iosevka Nerd Font:weight=bold:size=12",
     "-g", "120x34", "-e",     "newsboat", NULL};
 
+// const char *spcmd6[] = {
+//     "/home/karna/apps/chess-linux-x64/chess", NULL
+// };
+
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1}, {"spmusic", spcmd2}, {"spcal", spcmd3},
-    {"spgpt", spcmd4},  {"spnews", spcmd5},
+    {"spgpt", spcmd4},  {"spnews", spcmd5}, {"spchess", spcmd6},
 };
 
 /* tagging */
@@ -96,6 +101,7 @@ static const Rule rules[] = {
     {"qBittorrent", NULL, NULL, 1 << 5, 0, 0, 0, -1},
     {"pinentry-qt", NULL, NULL, 0, 1, 0, 0, -1},
     {"Qalculate-gtk", NULL, NULL, 0, 1, 0, 0, -1},
+    {"chess-nativefier-703820", NULL, NULL, 0, 1, 0, 0, -1},
     {"Gnome-disks",   NULL, NULL, 0, 1, 0, 0, -1},
     {"Nm-connection-editor", NULL, NULL, 0, 1, 0, 0, -1},
     {"flameshot", NULL, NULL, 0, 1, 0, 0, -1},
@@ -114,6 +120,8 @@ static const Rule rules[] = {
     { "Qalculate-gtk", NULL, NULL, SPTAG(2), 1, 0, 0, -1 },
     { NULL, "spgpt",   NULL, SPTAG(3), 1, 1, 0, -1 },
     { NULL, "spnews",  NULL, SPTAG(4), 1, 1, 0, -1 },
+    { NULL, "spchess",  NULL, SPTAG(5), 1, 1, 0, -1 },
+    // { "chess-nativefier-703820", NULL, NULL, SPTAG(5), 1, 0, 0, -1 },
 };
 
 /* layout(s) */
@@ -175,7 +183,7 @@ static const char *browser1[] = {"qutebrowser", NULL};
 static const char *files[] = {"st", "-e", "yazi", NULL};
 // static const char *music[] = {"st", "-e", "~/.ncmpcpp/scripts/ncmpcpp-art", NULL};
 static const char *files1[] = {"thunar", NULL};
-static const char *editor1[] = {"st", "-e", "nvim", NULL};
+static const char *editor1[] = {"kitty", "-e", "nvim", NULL};
 
 #include "movestack.c"
 static Key keys[] = {
@@ -242,6 +250,7 @@ static Key keys[] = {
     {MODKEY, XK_c, togglescratch, {.ui = 2}},
     // {MODKEY | ShiftMask, XK_g, togglescratch, {.ui = 3}},
     {MODKEY | Mod1Mask,  XK_n, togglescratch, {.ui = 4}},
+    {0, XK_F11, togglescratch, {.ui = 5}},
     // {MODKEY, XK_F9, spawn, SHCMD("~/.dwm/volume mute")},
     // {MODKEY, XK_F10, spawn, SHCMD("~/.dwm/volume down")},
     // {MODKEY, XK_F11, spawn, SHCMD("~/.dwm/volume up")},
@@ -257,6 +266,8 @@ static Key keys[] = {
     // {MODKEY, XK_v, spawn, SHCMD("clipmenu -i -fn JetBrainsMonoNL:10")},
     // {MODKEY, XK_n, spawn, SHCMD("~/.dwm/dmenu_file")},
     {MODKEY | ShiftMask, XK_p, spawn, SHCMD("~/.dwm/scripts/power")},
+    {MODKEY | ShiftMask, XK_e, spawn, SHCMD("~/.config/rofi/applets/bin/emoji.sh")},
+    {Mod1Mask , XK_Tab, spawn, SHCMD("~/.config/rofi/launchers/type-7/windows.sh")},
     {MODKEY | Mod1Mask, XK_p, spawn, SHCMD("~/.config/scripts/rofi-pass-xorg")},
     {MODKEY | ShiftMask, XK_a, spawn, SHCMD("~/.dwm/scripts/script")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("flameshot gui")},
