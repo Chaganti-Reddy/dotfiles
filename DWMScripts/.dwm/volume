@@ -3,6 +3,7 @@
 function get_volume {
 	wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2 * 100)}'
 }
+
 function get_volume_mic {
 	wpctl get-volume @DEFAULT_SOURCE@ | awk '{print int($2 * 100)}'
 }
@@ -34,17 +35,17 @@ function send_notification {
 case $1 in
 up)
 	wpctl set-volume @DEFAULT_SINK@ 4%+
-	paplay ~/.dwm/sounds/audio-volume-change.oga
+	# paplay ~/.dwm/sounds/audio-volume-change.oga
 	# send_notification
 	;;
 down)
 	wpctl set-volume @DEFAULT_SINK@ 4%-
-	paplay ~/.dwm/sounds/audio-volume-change.oga
+	# paplay ~/.dwm/sounds/audio-volume-change.oga
 	# send_notification
 	;;
 mute)
 	wpctl set-mute @DEFAULT_SINK@ toggle
-	paplay ~/.dwm/sounds/bell.oga
+	# paplay ~/.dwm/sounds/bell.oga
 	# if is_mute ; then
 	# dunstify -i audio-volume-muted -r 2593 -u normal "Mute"
 	# send_notification
@@ -61,5 +62,16 @@ micmute)
 		send_notification
 	fi
 	;;
+micup)
+	# Increase mic volume by 4%
+	wpctl set-volume @DEFAULT_SOURCE@ 4%+
+	send_notification
+	;;
+micdown)
+	# Decrease mic volume by 4%
+	wpctl set-volume @DEFAULT_SOURCE@ 4%-
+	send_notification
+	;;
 
 esac
+
