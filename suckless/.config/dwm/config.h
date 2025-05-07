@@ -249,6 +249,8 @@ static Key keys[] = {
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("~/.dwm/volume down")},
     {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("~/.dwm/volume up")},
     // {MODKEY | ShiftMask, XK_F9, spawn, SHCMD("~/.dwm/volume micmute")},
+    {MODKEY , XK_F10, spawn, SHCMD("~/.dwm/volume micdown")},
+    {MODKEY , XK_F11, spawn, SHCMD("~/.dwm/volume micup")},
     {MODKEY , XK_F9, spawn, SHCMD("~/.dwm/volume micmute")},
     {MODKEY | ShiftMask, XK_F11, spawn, SHCMD("brightnessctl s 5%+")},
     {MODKEY | ShiftMask, XK_F10, spawn, SHCMD("brightnessctl s 5%-")},
