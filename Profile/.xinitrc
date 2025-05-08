@@ -85,5 +85,5 @@ exec mpd
 exec mpc
 xsetroot -cursor_name left_ptr
 numlockx &
-xfce4-power-manager &
+# xfce4-power-manager &
 # pamixer --set-volume 40
