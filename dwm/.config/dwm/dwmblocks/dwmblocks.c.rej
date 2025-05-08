@@ -1,0 +1,28 @@
+--- dwmblocks.c
++++ dwmblocks.c
+@@ -28,14 +29,14 @@ typedef struct {
+ #ifndef __OpenBSD__
+ void dummysighandler(int num);
+ #endif
+-void sighandler(int num);
+ void getcmds(int time);
+ void getsigcmds(unsigned int signal);
+ void setupsignals();
+-void sighandler(int signum);
++void sighandler(int signum, siginfo_t *si, void *ucontext);
+ int getstatus(char *str, char *last);
+ void statusloop();
+ void termhandler();
++void chldhandler();
+ void pstdout();
+ #ifndef NO_X
+ void setroot();
+@@ -59,6 +60,8 @@ static int returnStatus = 0;
+ //opens process *cmd and stores output in *output
+ void getcmd(const Block *block, char *output)
+ {
++	if (block->signal)
++		*output++ = block->signal;
+ 	strcpy(output, block->icon);
+ 	FILE *cmdf = popen(block->command, "r");
+ 	if (!cmdf)
