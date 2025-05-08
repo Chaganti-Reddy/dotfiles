@@ -408,9 +408,9 @@ alias sr="reboot"
 
 # DWM 
 alias makedwm="cd ~/.config/dwm/dwm && rm config.h && sudo make clean install"
-alias makeslstatus="cd ~/.config/slstatus/ && rm -rf config.h && make && sudo make install"
-alias dwmcon="nvim ~/.config/dwm/config.def.h"
-alias slstatuscon="nvim ~/.config/slstatus/config.def.h"
+# alias makeslstatus="cd ~/.config/slstatus/ && rm -rf config.h && make && sudo make install"
+alias makeblocks="cd ~/.config/dwm/dwmblocks/ && rm -rf blocks.h && make && sudo make install"
+alias makest="cd ~/.config/dwm/st && cp config.def.h config.h && make && sudo make install"
 alias dotfiles="cd $HOME/dotfiles/"
 
 n() {
