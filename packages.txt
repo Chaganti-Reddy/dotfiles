@@ -257,3 +257,5 @@ python-watchdog
 kvantum-theme-materia-blur
 ttf-font-awesome
 imlib2
+xorg-xrdb
+bmon
