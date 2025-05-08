@@ -111,6 +111,7 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-trash" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/open-in-new-window" "<Primary><Shift>o")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-statusbar" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/4551c05d8a85c42ff4064d1af58c478f" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/open-location" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/duplicate" "")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/trash-delete-2" "KP_Delete")
