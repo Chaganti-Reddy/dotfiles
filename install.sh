@@ -2136,7 +2136,6 @@ if [[ "$(whoami)" == "karna" ]]; then
   install_dev_tools 3 6 7 9 10 16 
   install_extra_tools 1 2 3 4
   install_fonts
-  install_dwm y
   # install_bspwm y
   install_ollama y
   install_pip_packages y 
@@ -2165,7 +2164,6 @@ else
   install_dev_tools
   install_extra_tools
   install_fonts
-  install_dwm
   install_bspwm
   install_ollama
   install_pip_packages
