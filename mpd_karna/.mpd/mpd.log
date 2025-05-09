@@ -5820,3 +5820,5 @@ Mar 20 16:54:54 : player: played "playlists/EdSheeran/Ed Sheeran - Life Goes On.
 2025-05-06T12:10:29 player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
 2025-05-06T12:10:29 exception: Failed to decode "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"; Failed to open "/home/karna/Music/playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3": No such file or directory
 2025-05-06T12:10:29 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
+2025-05-09T14:00:02 player: played "playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"
+2025-05-09T14:02:52 exception: Not playing
