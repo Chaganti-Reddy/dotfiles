@@ -153,7 +153,7 @@ bspc rule -a Music state=floating follow=on focus=on
 ## Autostart -------------------------------------------------#
 
 # Kill if already running
-killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager bspc
+killall -9 sxhkd dunst ksuperkey xfce4-power-manager bspc
 
 # Lauch xsettingsd daemon
 xsettingsd --config="$BSPDIR"/xsettingsd &
