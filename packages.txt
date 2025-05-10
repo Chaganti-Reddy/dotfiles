@@ -175,6 +175,7 @@ sof-firmware
 alsa-ucm-conf 
 viewnior 
 qalculate-gtk 
+xdg-desktop-portal-gtk
 pyright
 python-black
 vscode-html-languageserver 
