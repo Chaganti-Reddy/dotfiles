@@ -764,6 +764,7 @@ install_hyprland() {
     "xdg-desktop-portal-wlr"
     "wlr-randr"
     "pyprland"
+    "i3-wm"
   )
 
   for package in "${packages[@]}"; do
@@ -1051,9 +1052,10 @@ install_browser() {
         else
           info "Installing Zen-Browser..."
           paru -S --noconfirm --needed zen-browser-bin
-          sudo npm install -g nativefier
-          pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
-          pywalfox install
+          if ! command -v nativefier &>/dev/null; then
+            info "Installing nativefier..."
+            sudo npm install -g nativefier
+          fi
           # Video Download Helper
           curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
         fi
@@ -1064,8 +1066,6 @@ install_browser() {
         else
           info "Installing Firefox..."
           sudo pacman -S --noconfirm firefox
-          pip install --index-url https://test.pypi.org/simple/ pywalfox==2.8.0rc1
-          pywalfox install
           curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
         fi
         ;;
@@ -1578,6 +1578,10 @@ install_dwm() {
     install_package "xcompmgr" "Xcompmgr (compositor)" "sudo pacman -S --noconfirm --needed"
     install_package "libxft" "libxft (font support)" "sudo pacman -S --noconfirm --needed"
     install_package "libxinerama" "libxinerama (Xinerama support)" "sudo pacman -S --noconfirm --needed"
+    install_package "xscreensaver" "Xscreensaver (screensaver)" "sudo pacman -S --noconfirm --needed"
+    install_package "imlib2" "imlib2 (image support)" "sudo pacman -S --noconfirm --needed"
+    install_package "xorg-xrdb" "xorg-xrdb (X resource database)" "sudo pacman -S --noconfirm --needed"
+    install_package "xwallpaper" "xwallpaper (wallpaper manager)" "sudo pacman -S --noconfirm --needed"
 
     # Setup desktop session file
     if [ ! -f /usr/share/xsessions/dwm.desktop ]; then
@@ -2131,7 +2135,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_hyprland y
   # install_miniconda y 
   # install_kvm y
-  # install_browser 4 5
+  # install_browser 1 5
   # install_torrent 1 13
   # install_dev_tools 3 6 7 9 10 16 
   # install_extra_tools 1 2 3 4
@@ -2141,7 +2145,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_pip_packages y 
   # install_grub_theme y
   # install_display_manager y 1
-  download_wallpapers y
+  # download_wallpapers y
   # install_extras y y
 else
   check_privileges
