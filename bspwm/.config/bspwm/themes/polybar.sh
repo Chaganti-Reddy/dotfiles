@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-
 ## Files and Directories
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 SFILE="$DIR/system.ini"
 RFILE="$DIR/.system"
-STYLE="hack"
+STYLE="adaptive"
 
 ## Get system variable values for various modules
 get_values() {
