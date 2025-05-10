@@ -18,7 +18,9 @@ xscreensaver --no-splash &
 blueman-applet &
 xcompmgr &
 mpd &
+
 slstatus &
+
 /usr/bin/udiskie --smart-tray &
 if [ -d ~/.cache/wallheaven ]; then
     rm -rf ~/.cache/wallheaven
@@ -32,7 +34,7 @@ xsetroot -cursor_name left_ptr
 
 ~/.dwm/newlook &
 ~/.dwm/scripts/mouse &
-# /home/ram/.dwm/scripts/whatsapp_start &
+
 /usr/bin/gnome-keyring-daemon --start
 
 if [ -z "$(pgrep xfce4-clipman)" ]; then
