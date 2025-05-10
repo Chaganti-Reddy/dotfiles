@@ -252,10 +252,5 @@ cpptools-debug-bin
 acpilight
 dialog
 ttf-iosevka-nerd
-xwallpaper
-xscreensaver
 python-watchdog
 kvantum-theme-materia-blur
-imlib2
-xorg-xrdb
-bmon
