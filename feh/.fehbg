@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/karna/.config/bspwm/themes/hack/wallpaper' 
+feh --no-fehbg --bg-fill '/home/karna/.config/bspwm/themes/adaptive/wallpaper' 
