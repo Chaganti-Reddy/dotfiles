@@ -7,7 +7,7 @@
 # Set script safety options
 set -euo pipefail
 
-DMEDITOR="st -e nvim"
+DMEDITOR="bspterm -e nvim"
 
 # Extract the STYLE from launcher.sh
 LAUNCHER_SCRIPT="$HOME/.config/bspwm/scripts/rofi_launcher"
