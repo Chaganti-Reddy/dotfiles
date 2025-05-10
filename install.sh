@@ -2115,34 +2115,34 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  check_privileges
-  setup_user_dirs
-  configure_pacman
-  system_update
-  clone_or_download_dotfiles
-  install_aur_helpers 1
-  setup_git_info y
-  install_dependencies "${selected_helper:-paru}"
-  install_shell y
-  setup_gpg_pass y y
-  # install_i3 y
-  # install_qtile y
-  # install_sway y
-  install_hyprland y
-  install_miniconda y 
-  install_kvm y
-  install_browser 4 5
-  install_torrent 1 13
-  install_dev_tools 3 6 7 9 10 16 
-  install_extra_tools 1 2 3 4
-  install_fonts
-  # install_bspwm y
-  install_ollama y
-  install_pip_packages y 
-  install_grub_theme y
-  install_display_manager y 1
+  # check_privileges
+  # setup_user_dirs
+  # configure_pacman
+  # system_update
+  # clone_or_download_dotfiles
+  # install_aur_helpers 1
+  # setup_git_info y
+  # install_dependencies "${selected_helper:-paru}"
+  # install_shell y
+  # setup_gpg_pass y y
+  # # install_i3 y
+  # # install_qtile y
+  # # install_sway y
+  # install_hyprland y
+  # install_miniconda y 
+  # install_kvm y
+  # install_browser 4 5
+  # install_torrent 1 13
+  # install_dev_tools 3 6 7 9 10 16 
+  # install_extra_tools 1 2 3 4
+  # install_fonts
+  # # install_bspwm y
+  # install_ollama y
+  # install_pip_packages y 
+  # install_grub_theme y
+  # install_display_manager y 1
   download_wallpapers y
-  install_extras y y
+  # install_extras y y
 else
   check_privileges
   setup_user_dirs
