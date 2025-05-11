@@ -1,3 +1,4 @@
+#!/bin/bash
 xset s off
 xset -dpms
 xset s noblank
@@ -7,3 +8,5 @@ xset -b # prevent beeps
 xsetroot -cursor_name left_ptr
 xinput set-prop "DLL09D9:00 04F3:3147 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "DLL09D9:00 04F3:3147 Touchpad" "libinput Natural Scrolling Enabled" 1
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+export SSH_AUTH_SOCK
