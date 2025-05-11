@@ -60,6 +60,7 @@ gstreamer
 jq 
 xdotool 
 screenkey 
+maim
 lazygit 
 lolcat 
 sxiv 
@@ -109,6 +110,7 @@ pamixer
 parallel 
 shfmt 
 tesseract 
+tesseract-data-eng
 html-xml-utils 
 tumbler 
 thunar 
