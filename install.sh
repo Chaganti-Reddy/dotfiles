@@ -562,14 +562,16 @@ install_i3() {
     "i3-wm"
     "i3blocks"
     "i3lock"
+    "xorg-xrdb"
     "feh"
     "picom"
     "i3status"
     "xss-lock"
     "autotiling"
-    "alacritty"
     "kitty"
-    "polybar"
+    "redshift"
+    "conky"
+    "betterlockscreen"
   )
 
   for package in "${packages[@]}"; do
@@ -579,7 +581,6 @@ install_i3() {
   stow_with_check "$HOME/dotfiles/i3/.config/i3" "$HOME/.config/i3" "i3"
   stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
-  stow_with_check "$HOME/dotfiles/alacritty/.config/alacritty" "$HOME/.config/alacritty" "alacritty"
 
   install_waldl
 
@@ -757,6 +758,7 @@ install_hyprland() {
     "wtype"
     "ydotool"
     "wf-recorder"
+    "redshift"
     # "wofi"
     "qt5-wayland"
     "qt6-wayland"
@@ -2010,7 +2012,7 @@ install_extras() {
 
       # Remove existing configurations for Karna
       rm -rf ~/.bashrc
-      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim
+      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile
 
       # Copy essential system files for karna user
       sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
