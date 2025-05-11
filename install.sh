@@ -780,10 +780,15 @@ install_hyprland() {
     stow_folder="hyprland_gen"
   fi
 
+  cd ~/.config/
+  git clone https://github.com/Chaganti-Reddy/st.git
+  cd st
+  sudo make clean install
+  cd ~/dotfiles/
+
   if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
     stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
-    stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
     success "Hyprland configuration has been set up."
   else
@@ -1534,71 +1539,6 @@ install_fonts() {
   fi
 }
 
-install_dwm() {
-  info "Setting up dwm..."
-
-  local install_choice="${1:-}"  # Optional positional parameter
-
-  if [[ "$install_choice" =~ ^[Yy]$ ]]; then
-    install_choice="y"
-  else
-    install_choice=$(prompt "Would you like to install dwm (Dynamic Window Manager)?" "y")
-  fi
-
-  if [[ "$install_choice" =~ ^[Yy]$ ]]; then
-    info "Starting dwm installation..."
-
-    # Check if dwm and configs already exist
-    if command -v dwm &>/dev/null && \
-       [ -d ~/.config/dwm ] && \
-       [ -d ~/.config/slstatus ] && \
-       [ -d ~/.config/st ] && \
-       [ -d ~/.config/dmenu ]; then
-      success "dwm and its configurations are already installed. Skipping installation."
-      return
-    fi
-
-    # Stow configuration folders
-    info "Stowing dwm-related dotfiles..."
-    cd ~/dotfiles || die "Failed to access ~/dotfiles"
-    stow suckless
-    stow st
-    stow DWMScripts
-
-    # Build and install suckless components
-    [[ -d ~/.config/dwm ]]     && { info "Installing dwm..."; cd ~/.config/dwm && sudo make clean install; }
-    [[ -d ~/.config/slstatus ]] && { info "Installing slstatus..."; cd ~/.config/slstatus && sudo make clean install; }
-    [[ -d ~/.config/st ]]      && { info "Installing st..."; cd ~/.config/st && sudo make install; }
-    [[ -d ~/.config/dmenu ]]   && { info "Installing dmenu..."; cd ~/.config/dmenu && sudo make install; }
-
-    # Install extra tool waldl
-    install_waldl
-
-    # Install compositor
-    install_package "xcompmgr" "Xcompmgr (compositor)" "sudo pacman -S --noconfirm --needed"
-    install_package "libxft" "libxft (font support)" "sudo pacman -S --noconfirm --needed"
-    install_package "libxinerama" "libxinerama (Xinerama support)" "sudo pacman -S --noconfirm --needed"
-    install_package "xscreensaver" "Xscreensaver (screensaver)" "sudo pacman -S --noconfirm --needed"
-    install_package "imlib2" "imlib2 (image support)" "sudo pacman -S --noconfirm --needed"
-    install_package "xorg-xrdb" "xorg-xrdb (X resource database)" "sudo pacman -S --noconfirm --needed"
-    install_package "xwallpaper" "xwallpaper (wallpaper manager)" "sudo pacman -S --noconfirm --needed"
-
-    # Setup desktop session file
-    if [ ! -f /usr/share/xsessions/dwm.desktop ]; then
-      info "Setting up dwm session desktop file..."
-      sudo mkdir -p /usr/share/xsessions/
-      sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions || die "Failed to copy dwm.desktop"
-    fi
-
-    success "dwm has been successfully installed and configured."
-    sleep 1
-  else
-    warning "dwm installation skipped."
-    sleep 1
-  fi
-}
-
-
 install_bspwm() {
   info "Setting up BSPWM..."
 
@@ -2060,7 +2000,7 @@ install_extras() {
 
       # Remove existing configurations for Karna
       rm -rf ~/.bashrc
-      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout screensaver sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim
+      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim
 
       # Copy essential system files for karna user
       sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
@@ -2088,7 +2028,7 @@ install_extras() {
 
       # Remove existing configurations for non-Karna users
       rm -rf ~/.bashrc
-      stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt screensaver sxiv Templates themes Thunar xsettingsd zathura
+      stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt sxiv Templates themes Thunar xsettingsd zathura
 
       # Ask user to confirm stowing nvim_gen
       read -p "Would you like to stow nvim_gen? (y/n): " stow_nvim_gen
@@ -2119,33 +2059,33 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-  check_privileges
-  setup_user_dirs
-  configure_pacman
-  system_update
-  clone_or_download_dotfiles
-  install_aur_helpers 1
-  setup_git_info y
-  install_dependencies "${selected_helper:-paru}"
-  install_shell y
-  setup_gpg_pass y y
+  # check_privileges
+  # setup_user_dirs
+  # configure_pacman
+  # system_update
+  # clone_or_download_dotfiles
+  # install_aur_helpers 1
+  # setup_git_info y
+  # install_dependencies "${selected_helper:-paru}"
+  # install_shell y
+  # setup_gpg_pass y y
   # install_i3 y
   # install_qtile y
   # install_sway y
   install_hyprland y
-  install_miniconda y 
-  install_kvm y
-  install_browser 1 5
-  install_torrent 1 13
-  install_dev_tools 3 6 7 9 10 16 
-  install_extra_tools 1 2 3 4
-  install_fonts
+  # install_miniconda y 
+  # install_kvm y
+  # install_browser 1 5
+  # install_torrent 1 13
+  # install_dev_tools 3 6 7 9 10 16 
+  # install_extra_tools 1 2 3 4
+  # install_fonts
   # install_bspwm y
-  install_ollama y
+  # install_ollama y
   # install_pip_packages y 
-  install_grub_theme y
-  install_display_manager y 1
-  download_wallpapers y
+  # install_grub_theme y
+  # install_display_manager y 1
+  # download_wallpapers y
   install_extras y y
 else
   check_privileges
