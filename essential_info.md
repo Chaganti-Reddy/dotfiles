@@ -13,7 +13,7 @@
 
 3. If you are installing docker then go through - https://karnablog.netlify.app/docker-cli/
 
-4. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder.
+4. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder. And also if you want to get the new empty tab instead of blank page in Zen then goto `about:config` and set `zen.urlbar.replace-newtab` to false.
 
 5. If you are installing YTERMUSIC then go through - https://github.com/ccgauche/ytermusic/blob/master/README.md
 
