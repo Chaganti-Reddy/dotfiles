@@ -77,6 +77,7 @@ sudo make clean install
 
 15. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `chrome://settings` and turn on gtk for dark context menus. Also if you want custom fonts in titlebars which is not available by default then just go to `vivaldi:experiments` and turn on Allow CSS modifications & just stow the vivaldi folder from dotfiles. After just upload the path of Default/Themes folder to Appearance settings.
 
+16. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder. And also if you want to get the new empty tab instead of blank page in Zen then goto `about:config` and set `zen.urlbar.replace-newtab` to false.
 
 ## Configuration
 
@@ -100,7 +101,7 @@ The main program I use for my daily life:
 - **Shell**: Zsh
 - **Editor**: Neovim
 - **File Manager**: Yazi, Thunar
-- **Browser**: QuteBrowser, Vivaldi 
+- **Browser**: QuteBrowser, Zen Browser 
 - **Music Player**: Mpd + Ncmpcpp
 - **Video Player**: MPV
 - **PDF Viewer**: Zathura
