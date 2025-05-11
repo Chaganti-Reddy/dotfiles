@@ -1,4 +1,4 @@
-export BROWSER=brave
+export BROWSER=zen-browser
 export TERM=
 export QT_QPA_PLATFORMTHEME="qt6ct"
 # export XDG_CURRENT_DESKTOP=Unity
