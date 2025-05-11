@@ -780,11 +780,21 @@ install_hyprland() {
     stow_folder="hyprland_gen"
   fi
 
-  cd ~/.config/
-  git clone https://github.com/Chaganti-Reddy/st.git
-  cd st
-  sudo make clean install
-  cd ~/dotfiles/
+  if [[ ! -d "$HOME/.config/st" ]]; then
+    if ! command -v st &>/dev/null && [[ ! -f /usr/local/bin/st ]]; then
+      info "Installing st (suckless terminal)..."
+      cd ~/.config/
+      git clone https://github.com/Chaganti-Reddy/st.git
+      cd st
+      sudo make clean install
+      cd ~/dotfiles/
+      success "st installed successfully."
+    else
+      warning "st appears to be already installed. Skipping build."
+    fi
+  else
+    warning "~/.config/st already exists. Skipping clone and build."
+  fi
 
   if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
     stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
@@ -2086,7 +2096,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   # install_grub_theme y
   # install_display_manager y 1
   # download_wallpapers y
-  install_extras y y
+  # install_extras y y
 else
   check_privileges
   setup_user_dirs
