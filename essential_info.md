@@ -13,7 +13,7 @@
 
 3. If you are installing docker then go through - https://karnablog.netlify.app/docker-cli/
 
-4. If you are using zen-browser, for extra theming go through ~/dotfiles/Extras/Extras/Zen Browser/ folder and use them in ~/.zen/ use folder
+4. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder.
 
 5. If you are installing YTERMUSIC then go through - https://github.com/ccgauche/ytermusic/blob/master/README.md
 
