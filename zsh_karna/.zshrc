@@ -250,12 +250,8 @@ export EDITOR='/usr/bin/nvim'
 export PAGER='bat'
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.config/dwmblocks/scripts:$PATH"
 export PATH="$HOME/.ncmpcpp/scripts/:$PATH"
 export PATH="$HOME/.config/scripts/:$PATH"
-export PATH="$HOME/.dwm/bin/:$PATH"
-export PATH="$HOME/.dwm/scripts/statusbar/:$PATH"
-export PATH="$HOME/dotfiles/bspwm/.config/bspwm/scripts/:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
@@ -564,7 +560,7 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 export STARSHIP_LOG="error"
 export MPLBACKEND=TkAgg
 export KUNST_MUSIC_DIR="/home/karna/Music/"
-eval "$(leetcode completions)"
+# eval "$(leetcode completions)"
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
