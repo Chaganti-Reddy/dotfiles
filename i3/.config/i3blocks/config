@@ -1,0 +1,60 @@
+command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
+markup=pango
+separator_block_width=15
+LOCATION=jagun
+
+# adding bottom borders
+separator=false
+border_top=0
+border_left=0
+border_right=0
+border_bottom=3
+
+##### BLOCKS #####
+[gmeet]
+signal=19
+color=#d90436
+
+# [yearc]
+# full_text=lol
+# label=YEAR:
+# align=left
+# min_width=850
+# interval=18000
+
+# [traffic]
+# signal=26
+
+# [covid]
+# interval=10800
+
+[weather]
+interval=10800
+signal=5
+border=#acdbdf
+
+[memory]
+interval=10
+border=#ffd700
+
+[audio]
+interval=once
+border=#e11d74
+signal=10
+
+[cpu]
+interval=20
+border=#e16428
+
+[battery]
+interval=10
+border=#a7d129
+
+#[internet]
+#interval=10
+#border=#219897
+
+[clock]
+label=📅
+interval=30
+border=#6b778d
