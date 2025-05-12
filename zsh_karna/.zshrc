@@ -505,8 +505,8 @@ bindkey '^X^A' rmfzf
 
 alias zlk="zellij --layout karna attach --create 'Karna'"
 alias zlc="zellij --layout compi attach --create 'DSA'"
-alias cpg="/usr/bin/advcp -g"
-alias mvg="/usr/bin/advmv -g"
+alias cp="/usr/bin/advcp -g"
+alias mv="/usr/bin/advmv -g"
 
 # -----------------CP PARSER -----------------
 # Run CPParse in server mode (parsing)
