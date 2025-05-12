@@ -4,6 +4,7 @@ udiskie --smart-tray &
 dunst -conf ~/.config/dunst/dunstrc_xorg &
 ~/.config/i3/redshift.sh &
 # nm-applet &
+xfce4-clipman &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 mpd &
 # picom &
