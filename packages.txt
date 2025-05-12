@@ -83,8 +83,8 @@ pandoc
 python-pywal 
 glow 
 xarchiver 
-xfce4-clipman-plugin 
 qemu-full
+rofi-greenclip
 libguestfs 
 bc 
 xorg-xman 
