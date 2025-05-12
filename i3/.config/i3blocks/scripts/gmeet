@@ -1,6 +1,7 @@
 #!/bin/sh
 
-searchstr="meet.google.com is sharing your screen."
+# searchstr="meet.google.com is sharing your screen."
+searchstr="Zen — Sharing Indicator"
 
 refresh() {
 	if [ ! -z $(xdotool search --name "$searchstr" getwindowpid) ]
