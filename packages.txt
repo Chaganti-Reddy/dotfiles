@@ -111,6 +111,7 @@ parallel
 shfmt 
 tesseract 
 tesseract-data-eng
+bmon
 html-xml-utils 
 tumbler 
 thunar 
