@@ -1,7 +1,7 @@
 command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
 markup=pango
 separator_block_width=15
-LOCATION=jagun
+LOCATION=hyderabad
 
 # adding bottom borders
 separator=false
@@ -11,22 +11,20 @@ border_right=0
 border_bottom=3
 
 ##### BLOCKS #####
+# [window_title]
+# min_width=1600
+# align=center
+# command=echo $(xdotool getactivewindow getwindowname)
+# interval=1
+
 [gmeet]
 signal=19
 color=#d90436
 
-# [yearc]
-# full_text=lol
-# label=YEAR:
-# align=left
-# min_width=850
-# interval=18000
-
-# [traffic]
-# signal=26
-
-# [covid]
-# interval=10800
+[nettraf]
+interval=1
+signal=16
+border=#e16428
 
 [weather]
 interval=10800
@@ -36,6 +34,11 @@ border=#acdbdf
 [memory]
 interval=10
 border=#ffd700
+
+[light]
+interval=once
+border=#6b778d
+signal=24
 
 [audio]
 interval=once
@@ -50,9 +53,10 @@ border=#e16428
 interval=10
 border=#a7d129
 
-#[internet]
-#interval=10
-#border=#219897
+[internet]
+interval=5
+signal=50
+border=#219897
 
 [clock]
 label=📅
