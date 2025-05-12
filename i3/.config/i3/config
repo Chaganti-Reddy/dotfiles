@@ -159,6 +159,10 @@ bindsym $mod+Shift+a exec --no-startup-id ~/.config/scripts/script
 
 bindsym $mod+a exec --no-startup-id kitty -e nvim
 
+# clipboard
+set $clipboard rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi
+bindsym $mod+v exec --no-startup-id $clipboard
+
 #################################
 ####### config for gaps #########
 
@@ -309,7 +313,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
