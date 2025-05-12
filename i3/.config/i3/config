@@ -47,7 +47,7 @@ bindsym $mod+F7 exec --no-startup-id $SCRIPT/drecord
 # toggle picom
 bindsym $mod+Mod1+c exec --no-startup-id $SCRIPT/toggle-picom
 # run blueman-applet
-bindsym $mod+Mod1+b exec --no-startup-id blueman-applet
+bindsym $mod+Mod1+b exec --no-startup-id blueman-manager
 # run emacs
 bindsym $mod+e exec --no-startup-id emacs
 
@@ -72,9 +72,9 @@ for_window [class="ttrm"] floating enable, move scratchpad, resize set 925 650, 
 bindsym F12 [class="ttrm"] scratchpad show, move position center
 
 # Music in NCMPCPP
-exec_always --no-startup-id sh -c 'pgrep -fx "st -c st-ncmpcpp" || st -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
-for_window [class="st-ncmpcpp"] floating enable, move scratchpad, resize set 1000 700, border pixel 6
-bindsym $mod+Shift+m [class="st-ncmpcpp"] scratchpad show, move position center
+exec_always --no-startup-id sh -c 'pgrep -fx "st -T st-ncmpcpp" || st -T st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
+for_window [title="st-ncmpcpp"] floating enable, move scratchpad, resize set 1000 700, border pixel 6
+bindsym $mod+Shift+m [title="st-ncmpcpp"] scratchpad show, move position center
 
 for_window [class="kdeconnect.app"] floating enable, move position center
 # load arandr in floating mode
@@ -168,7 +168,7 @@ gaps outer 2
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+# smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
@@ -366,7 +366,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec i3-msg exit
+bindsym $mod+Mod1+Shift+q exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -401,10 +401,17 @@ bindsym $mod+r mode "resize"
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
 set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color0 #f0f0f0
-set_from_resource $text        i3wm.color2 #f0f0f0
-set_from_resource $inactive    i3wm.color4 #f0f0f0
-set_from_resource $error       i3wm.color5 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $text i3wm.color0 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -415,25 +422,16 @@ bar {
 	height 25
 	workspace_min_width 30
 	tray_output primary
-	# colors {
-	# 	focused_workspace  #4c7899 #285577 #ffffff
-	# 	background #322f3d
-	# }
-    colors {
-        background $bg
-        statusline $fg
-        separator $fg
-    }
+	colors {
+		focused_workspace  #4c7899 #285577 #ffffff
+		background #322f3d
+	}
+    # colors {
+    #     background $text 
+    #     statusline $fg
+    #     separator $fg
+    # }
 }
-
-# Theme colors
-# class                 border  		backgr. 		text    	        indic.  		child_border
-client.focused		$error                  $error	                $bg	        $error	                $error
-client.unfocused	$bg 	        $inactive 		$text		        $bg		$bg
-client.focused_inactive	$error  	        $bg             $text                   $bg	        $bg
-client.urgent		$error	                $error	                $text		        $error        	        $error
-client.placeholder	$bg	        $bg	        $text		        $bg	        $bg
-client.background	$bg
 
 ### special settings for some programs
 # these are forced settings that I have applied for some programs
@@ -486,7 +484,7 @@ for_window [title="^Picture-in-Picture$"] move position 14 13
 
 # for qbrowser window
 for_window [class="qutebrowser" instance="qutebrowser"] floating enable
-for_window [class="qutebrowser" instance="qutebrowser"] resize set 1025 850
+for_window [class="qutebrowser" instance="qutebrowser"] resize set 1300 1000
 for_window [class="qutebrowser" instance="qutebrowser"] move position center
 
 # for floating cava
