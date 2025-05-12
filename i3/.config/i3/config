@@ -68,22 +68,22 @@ for_window [class="kitty_yazi"] floating enable, resize set 1100 700, move posit
 
 # Dropdown Terminal (Kitty)
 exec_always --no-startup-id sh -c '! xdotool search --class ttrm >/dev/null && kitty --class ttrm'
-for_window [class="ttrm"] floating enable, move scratchpad, resize set 925 650, border pixel 6
+for_window [class="ttrm"] floating enable, move scratchpad, resize set 925 650
 bindsym F12 [class="ttrm"] scratchpad show, move position center
 
 # ncmpcpp
-exec_always --no-startup-id sh -c '! xdotool search --class st-ncmpcpp >/dev/null && st -T "ncmpcpp 0.10.1" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
-for_window [class="st-ncmpcpp"] floating enable, move scratchpad, resize set 1000 700, border pixel 6
-bindsym $mod+Shift+m [class="st-ncmpcpp"] scratchpad show, move position center
+# exec_always --no-startup-id sh -c '! xdotool search --class st-ncmpcpp >/dev/null && st -T "ncmpcpp 0.10.1" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
+for_window [title="ncmpcpp-f"] floating enable, resize set 1000 700, move position center
+# bindsym $mod+Shift+m [class="st-ncmpcpp"] scratchpad show, move position center
 
 # Chess 
 exec_always --no-startup-id sh -c '! xdotool search --class chess-nativefier-703820 >/dev/null && $HOME/apps/chess-linux-x64/chess &'
-for_window [class="chess-nativefier-703820"] floating enable, move scratchpad, resize set 1540 864, border pixel 6
+for_window [class="chess-nativefier-703820"] floating enable, move scratchpad, resize set 1540 864
 bindsym F11 [class="chess-nativefier-703820"] scratchpad show, move position 181px 97px
 
 for_window [class="kdeconnect.app"] floating enable, move position center
 # load arandr in floating mode
-for_window [class="Arandr"] floating enable, resize set 925 650, border pixel 6, move position center
+for_window [class="Arandr"] floating enable, resize set 925 650, move position center
 
 # Launch calculator
 # exec_always --no-startup-id sh -c 'pgrep -fx "kitty --title math-f" || kitty --title math-f -e qalc -i'
@@ -111,19 +111,19 @@ bindsym $mod+Mod1+F9 exec --no-startup-id pactl set-source-mute @DEFAULT_AUDIO_S
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+ && $SCRIPT/notify-progress brightness && $refresh_light
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- && $SCRIPT/notify-progress brightness && $refresh_light
 
-# Bind XF86 keys for controlling music playback
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle
-bindsym XF86AudioPrev exec --no-startup-id mpc prev
-bindsym XF86AudioNext exec --no-startup-id mpc next
+# Refresh music block
+set $refresh_music pkill -RTMIN+60 i3blocks
 
-# Bind to $mod+Alt+1 for toggling mpc
-bindsym $mod+Mod1+1 exec --no-startup-id mpc toggle
-# Bind to $mod+Alt+3 for next song
-bindsym $mod+Mod1+3 exec --no-startup-id mpc next
-# Bind to $mod+Alt+2 for previous song
-bindsym $mod+Mod1+2 exec --no-startup-id mpc prev
-# Bind to $mod+Shift+Alt+1 for stopping mpc
-bindsym $mod+Shift+Mod1+1 exec --no-startup-id mpc stop
+# XF86 keys for controlling music playback
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle && $SCRIPT/mpd_notify && $refresh_music
+bindsym XF86AudioPrev exec --no-startup-id mpc prev && $SCRIPT/mpd_notify 
+bindsym XF86AudioNext exec --no-startup-id mpc next && $SCRIPT/mpd_notify
+
+# Custom keybindings for music control
+bindsym $mod+Mod1+1 exec --no-startup-id mpc toggle && $SCRIPT/mpd_notify && $refresh_music
+bindsym $mod+Mod1+3 exec --no-startup-id mpc next && $SCRIPT/mpd_notify
+bindsym $mod+Mod1+2 exec --no-startup-id mpc prev && $SCRIPT/mpd_notify
+bindsym $mod+Shift+Mod1+1 exec --no-startup-id mpc stop && $SCRIPT/mpd_notify && $refresh_music 
 
 # for weather term
 for_window [title="weather-f"] floating enable, resize set 1325 850, move position center
