@@ -561,10 +561,8 @@ install_i3() {
   local packages=(
     "i3-wm"
     "i3blocks"
-    "i3lock"
     "xorg-xrdb"
     "xwallpaper"
-    # "feh"
     "picom"
     "i3status"
     "xss-lock"
