@@ -5,6 +5,7 @@ export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
+sh ~/.config/hypr/scripts/redshift.sh &
 sh ~/.config/scripts/hyprstyle &
 
 # Run ollama serve in the background silently.
