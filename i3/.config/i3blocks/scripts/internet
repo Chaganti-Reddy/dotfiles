@@ -1,22 +1,70 @@
 #!/bin/sh
 
-# Show wifi 📶 and percent strength or 📡 if none.
-# Show 🌐 if connected to ethernet or ❎ if none.
+TERMINAL="st"
+EDITOR="${EDITOR:-nvim}"
 
+# Check Wi-Fi and Ethernet statuses
+wifi_state=$(cat /sys/class/net/w*/operstate 2>/dev/null | grep -m1 .)
+eth_state=$(cat /sys/class/net/e*/operstate 2>/dev/null | grep -m1 .)
+
+# Button actions
 case $BLOCK_BUTTON in
-	1) "$TERMINAL" -e nmtui; pkill -RTMIN+4 dwmblocks ;;
-	3) notify-send -u low "🌐 Internet module" "\- Click to connect
-: no wifi connection
-: wifi connection with quality
-: no ethernet
-: ethernet working
-" ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+    1) 
+        # Display Wi-Fi or Ethernet details
+        if [ "$wifi_state" == "up" ]; then
+            # Display Wi-Fi details
+            wifi_name=$(iw dev wlp45s0 info | grep ssid | awk '{print $2}')
+            wifi_ip=$(ip addr show wlp45s0 | grep inet | grep -v "inet6" | awk '{print $2}' | cut -d/ -f1)
+            wifi_quality=$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)
+            notify-send -i none -u low "Wi-Fi Details" "SSID: $wifi_name\nIP: $wifi_ip\nSignal Quality: ${wifi_quality}%"
+        elif [ "$eth_state" == "up" ]; then
+            # Display Ethernet details
+            eth_ip=$(ip addr show eth0 | grep inet | awk '{print $2}')
+            eth_name=$(cat /sys/class/net/eth0/device/uevent | grep ID_MODEL | cut -d= -f2)
+            notify-send -i none -u low "Ethernet Details" "Ethernet: $eth_name\nIP: $eth_ip"
+        else
+            notify-send -i none -u low "No Network Connection" "Neither Wi-Fi nor Ethernet is connected."
+        fi
+        ;;
+    2) "$TERMINAL" -e nmtui ;;  # Left click to open nmtui
+    3) notify-send -i none -u low "🌐 Internet module" "\
+Middle CLick: Open nmtui
+Right click: Show this help
+ : No Wi-Fi
+ : Wi-Fi with quality
+ : No Ethernet
+ : Ethernet connected" ;;  # Right click for help
+    6) "$TERMINAL" -e "$EDITOR" "$0" ;;  # Open script in editor on middle click
 esac
 
-case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
-	down) wifiicon=" " ;;
-	up) wifiicon="$(awk '/^\s*w/ { print "", int($3 * 100 / 70) "% " }' /proc/net/wireless)" ;;
-esac
+# Default icons
+wifiicon=""
+ethicon=""
 
-printf "%s%s\n" "$wifiicon" "$(sed "s/down//;s/up//" /sys/class/net/e*/operstate 2>/dev/null)"
+# Determine the Wi-Fi status and quality
+if [ -f /proc/net/wireless ] && [ "$wifi_state" == "up" ]; then
+    quality=$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)
+    wifiicon="  ${quality}%"
+elif [ "$wifi_state" == "down" ]; then
+    wifiicon=" "
+fi
+
+# Determine the Ethernet status
+if [ "$eth_state" == "up" ]; then
+    ethicon=" "
+elif [ "$eth_state" == "down" ]; then
+    ethicon=" "
+fi
+
+# Only display one network status (Wi-Fi or Ethernet)
+if [ -n "$wifiicon" ]; then
+    # Display Wi-Fi status if connected
+    echo "$wifiicon"
+elif [ -n "$ethicon" ]; then
+    # Display Ethernet status if connected
+    echo "$ethicon"
+else
+    # Neither Wi-Fi nor Ethernet is connected
+    echo "  "
+fi
+
