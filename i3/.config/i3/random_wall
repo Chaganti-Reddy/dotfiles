@@ -1,12 +1,14 @@
 #!/bin/bash
 
-wall_dir=$(ls $HOME/Pictures/pix/)
+wall_dir=$(ls $HOME/Pictures/pix/cele/)
 wall=""
 
 # now search recursively in all the dirs in wall_dir 
-for dir in $wall_dir; do 
-  wall+=$(find $HOME/Pictures/pix/$dir -type f -name "*.jpg" -o -name "*.png")
-done
+# for dir in $wall_dir; do 
+#   wall+=$(find $HOME/Pictures/pix/$dir -type f -name "*.jpg" -o -name "*.png")
+# done
+
+wall+=$(find $HOME/Pictures/pix/cele/ -type f -name "*.jpg" -o -name "*.png")
 
 # now select a random wallpaper from the list
 wall=$(echo $wall | tr " " "\n" | shuf -n 1)
