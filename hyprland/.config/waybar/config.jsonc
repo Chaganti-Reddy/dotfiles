@@ -3,7 +3,7 @@
     "height": 35,
     "modules-left": ["hyprland/workspaces", "pulseaudio#output", "pulseaudio#input", "bluetooth", "idle_inhibitor", "hyprland/window"],
     "modules-center": ["mpd"],
-    "modules-right": ["backlight" ,"custom/cpuinfo", "memory", "network", "clock","battery", "tray"],
+    "modules-right": ["custom/weather", "backlight" ,"custom/cpuinfo", "memory", "network", "clock","battery", "tray"],
 
   "hyprland/window": {
     "format": "{class} - {title}",
@@ -29,6 +29,14 @@
       "max-length": 50
     },
 
+"custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather",
+    "interval": 1800,  // every 30 minutes
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/weather.sh && notify-send 'Weather updated'",
+    "on-click-right": "st -T 'Forecast' less -Srf ~/.local/share/weatherreport",
+    "tooltip": true
+},
 
 "mpd": {
   "server": "localhost",  // Replace with your MPD server address if different
