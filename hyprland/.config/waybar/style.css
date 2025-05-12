@@ -26,6 +26,7 @@ window#waybar {
 #battery,
 #custom-powermenu,
 #custom-cpuinfo,
+#custom-weather,
 #bluetooth,
 #memory,
 #backlight,
@@ -48,6 +49,7 @@ window#waybar {
 #cpu:hover,
 #custom-powermenu:hover,
 #custom-cpuinfo:hover,
+#custom-weather:hover,
 #memory:hover,
 #battery:hover,
 #backlight:hover,
@@ -185,6 +187,11 @@ window#waybar {
 }
 
 #custom-powermenu {
+    background: @color0;
+    color: @foreground;
+}
+
+#custom-weather {
     background: @color0;
     color: @foreground;
 }
