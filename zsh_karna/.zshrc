@@ -252,6 +252,7 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.ncmpcpp/scripts/:$PATH"
 export PATH="$HOME/.config/scripts/:$PATH"
+export PATH="$HOME/.ncmpcpp/scripts/:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
@@ -410,8 +411,9 @@ alias makedwm="cd ~/.config/dwm/dwm && rm config.h && sudo make clean install"
 alias makeblocks="cd ~/.config/dwm/dwmblocks/ && rm -rf blocks.h && make && sudo make install"
 alias makest="cd ~/.config/dwm/st && cp config.def.h config.h && make && sudo make install"
 alias dotfiles="cd $HOME/dotfiles/"
+alias n="nvim"
 
-n() {
+nv() {
   if [[ -z "$1" ]]; then
     echo "Usage: e path/to/file"
     return 1
