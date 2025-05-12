@@ -54,11 +54,11 @@ interval=10
 border=#a7d129
 
 [internet]
-interval=5
+interval=1
 signal=50
 border=#219897
 
 [clock]
 label=📅
-interval=30
+interval=1
 border=#6b778d
