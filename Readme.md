@@ -98,10 +98,10 @@ For a better understanding of how my configuration looks, check out the screensh
 
 The main program I use for my daily life:
 
-- **Window Manager**: Qtile, HyprLand
-- **Terminal**: Alacritty, Kitty
+- **Window Manager**: I3, HyprLand
+- **Terminal**: St, Kitty
 - **Shell**: Zsh
-- **Editor**: Neovim
+- **Editor**: Neovim, Emacs
 - **File Manager**: Yazi, Thunar
 - **Browser**: QuteBrowser, Zen Browser 
 - **Music Player**: Mpd + Ncmpcpp
