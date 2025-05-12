@@ -1,9 +1,10 @@
 #!/bin/sh
 
+# Get current hour (12-hour format)
 clock=$(date '+%I')
 
+# Map hour to clock emoji
 case "$clock" in
-	"00") icon="🕛" ;;
 	"01") icon="🕐" ;;
 	"02") icon="🕑" ;;
 	"03") icon="🕒" ;;
@@ -18,12 +19,29 @@ case "$clock" in
 	"12") icon="🕛" ;;
 esac
 
+# Handle mouse clicks
 case $BLOCK_BUTTON in
-	2) notify-send -u low -i none "This Month" "$(cal --color=always | sed "s/..7m/<b><span color=\"red\">/;s/..27m/<\/span><\/b>/")" && notify-send "Appointments" "$(calcurse -d3)" ;;
-	1) setsid -f st -T clock-f -e calcurse ;;
-	3) notify-send -u low -i none "📅 Time/date module" "\- Middle click to show upcoming appointments for the next\n  three days via \`calcurse -d3\` and show the month via \`cal\`
-- Left click opens calcurse if installed" ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+	2)
+		today=$(date +%-d)  # No leading zero
+		cal_output=$(cal)
+
+		# Highlight today's date using awk and HTML bold tags
+		highlighted=$(echo "$cal_output" | awk -v today="$today" '{
+			for (i = 1; i <= NF; i++) {
+				if ($i == today) {
+					$i = "<b>" $i "</b>"
+				}
+			}
+			print
+		}')
+
+		notify-send -u low -i none -h string:markup:html "This Month" "$highlighted"
+		;;
+	6)
+		"$TERMINAL" -e "$EDITOR" "$0"
+		;;
 esac
 
+# Final date output
 date "+ %d %b %Y(%a) $icon %I:%M%p"
+
