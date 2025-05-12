@@ -13,8 +13,8 @@ client.unfocused 		#3b4252 #3b4252 #3b4252 #3b4252
 
 # multi-monitor stuff
 # moves the current workspace from one monitor to the next
-bindsym $mod+Ctrl+Right move workspace to output right
-bindsym $mod+Ctrl+Left move workspace to output left
+# bindsym $mod+Ctrl+Right move workspace to output right
+# bindsym $mod+Ctrl+Left move workspace to output left
 
 # important envars
 set $mod Mod4
@@ -94,16 +94,17 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 
 # update signal i3blocks to refresh volume
 set $refresh_volume pkill -RTMIN+10 i3blocks
+set $refresh_light pkill -RTMIN+24 i3blocks
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --allow-boost -i 5 && $SCRIPT/notify-progress audio && $refresh_volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --allow-boost -d 5 && $SCRIPT/notify-progress audio && $refresh_volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --allow-boost -i 3 && $SCRIPT/notify-progress audio && $refresh_volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --allow-boost -d 3 && $SCRIPT/notify-progress audio && $refresh_volume
 bindsym XF86AudioMute exec --no-startup-id pamixer -t && $SCRIPT/notify-progress muted && $refresh_volume
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_volume
-bindsym $mod+Mod1+F9 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_volume
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_volume
+bindsym $mod+Mod1+F9 exec --no-startup-id pactl set-source-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_volume
 
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+ && $SCRIPT/notify-progress brightness # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- && $SCRIPT/notify-progress brightness # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+ && $SCRIPT/notify-progress brightness && $refresh_light
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%- && $SCRIPT/notify-progress brightness && $refresh_light
 
 # Bind XF86 keys for controlling music playback
 bindsym XF86AudioPlay exec --no-startup-id mpc toggle
@@ -118,6 +119,15 @@ bindsym $mod+Mod1+3 exec --no-startup-id mpc next
 bindsym $mod+Mod1+2 exec --no-startup-id mpc prev
 # Bind to $mod+Shift+Alt+1 for stopping mpc
 bindsym $mod+Shift+Mod1+1 exec --no-startup-id mpc stop
+
+# for weather term
+for_window [title="weather-f"] floating enable, resize set 1325 850, move position center
+
+# for bmon term
+for_window [title="bmon-f"] floating enable, resize set 1325 850, move position center
+
+# for memory term
+for_window [title="memory-f"] floating enable, resize set 1325 850, move position center
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -146,7 +156,7 @@ bindsym $mod+Shift+a exec --no-startup-id ~/.config/scripts/script
 ####### config for gaps #########
 
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # Set inner/outer gaps
 gaps inner 5
@@ -241,7 +251,10 @@ exec --no-startup-id conky
 # exec --no-startup-id conky --config ~/.config/conky/conky-2.conf # second monitor
 
 # make use of settings specified in Xresources file
-exec --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+
+# Autotiling 
+exec_always --no-startup-id autotiling
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
@@ -263,9 +276,9 @@ bindsym $mod+d exec --no-startup-id $ROFI
 
 # change focus
 bindsym $mod+j focus left
-bindsym $mod+k focus down
+bindsym $mod+semicolon focus down
 bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+k focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -277,7 +290,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -382,8 +395,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-### COLORS
-set_from_resource $background  i3wm.color0 #f0f0f0
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color0 #f0f0f0
 set_from_resource $text        i3wm.color2 #f0f0f0
 set_from_resource $inactive    i3wm.color4 #f0f0f0
 set_from_resource $error       i3wm.color5 #f0f0f0
@@ -392,7 +410,7 @@ set_from_resource $error       i3wm.color5 #f0f0f0
 # finds out, if available)
 bar {
 	position top
-        status_command i3blocks
+  status_command i3blocks 
 	font pango:Iosevka Nerd Font 11
 	height 25
 	workspace_min_width 30
@@ -402,24 +420,20 @@ bar {
 	# 	background #322f3d
 	# }
     colors {
-	separator		$text
-	background		$background
-	    statusline		$text
-	focused_workspace	$text		$text		$background
-	    active_workspace	$inactive	$inactive	$background
-	    inactive_workspace	$background	$background	$text
-	    urgent_workspace	$error		$error		$background
+        background $bg
+        statusline $fg
+        separator $fg
     }
 }
 
 # Theme colors
 # class                 border  		backgr. 		text    	        indic.  		child_border
-client.focused		$error                  $error	                $background	        $error	                $error
-client.unfocused	$background 	        $inactive 		$text		        $background		$background
-client.focused_inactive	$error  	        $background             $text                   $background	        $background
+client.focused		$error                  $error	                $bg	        $error	                $error
+client.unfocused	$bg 	        $inactive 		$text		        $bg		$bg
+client.focused_inactive	$error  	        $bg             $text                   $bg	        $bg
 client.urgent		$error	                $error	                $text		        $error        	        $error
-client.placeholder	$background	        $background	        $text		        $background	        $background
-client.background	$background
+client.placeholder	$bg	        $bg	        $text		        $bg	        $bg
+client.background	$bg
 
 ### special settings for some programs
 # these are forced settings that I have applied for some programs
@@ -505,4 +519,5 @@ for_window [title="^floating-fman$"] floating enable, resize set 1080 728, move 
 
 # google meet widget
 # to learn more: https://www.youtube.com/watch?v=SvYOEU_yYEU
-for_window [title="meet.google.com is sharing your screen."] move scratchpad, exec --no-startup-id pkill -RTMIN+19 i3blocks, exec --no-startup-id $SCRIPT/gms
+for_window [title="Zen — Sharing Indicator"] move scratchpad, exec --no-startup-id pkill -RTMIN+19 i3blocks, exec --no-startup-id $SCRIPT/gms
+# for_window [title="meet.google.com is sharing your screen."] move scratchpad, exec --no-startup-id pkill -RTMIN+19 i3blocks, exec --no-startup-id $SCRIPT/gms
