@@ -5822,3 +5822,62 @@ Mar 20 16:54:54 : player: played "playlists/EdSheeran/Ed Sheeran - Life Goes On.
 2025-05-06T12:10:29 player: played "playlists/Liked/Ramya Behara, Deepak Blue - Kung Fu Kumaari.mp3"
 2025-05-09T14:00:02 player: played "playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"
 2025-05-09T14:02:52 exception: Not playing
+2025-05-12T16:00:05 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:00:05 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:04:13 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:04:13 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:04:49 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:04:49 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:05:09 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:06:26 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:12:19 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:12:19 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:12:24 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:12:24 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:13:29 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:13:29 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:14:14 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:14:14 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:15:54 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:15:57 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:16:00 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:17:59 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:18:01 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:18:20 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:19:15 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:19:59 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:24:54 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:28:50 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:29:41 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:29:57 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:29:57 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:30:00 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:30:00 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:31:00 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:31:00 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:31:00 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:31:02 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:34:06 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:34:10 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:34:47 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:34:56 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:41:11 player: played "playlists/English/OneRepublic - Counting Stars.mp3"
+2025-05-12T16:43:27 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T16:55:42 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:08:49 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:21:09 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:22:44 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:23:40 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:23:40 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:25:28 player: played "playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"
+2025-05-12T17:29:00 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:29:20 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:29:40 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:29:46 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:30:00 player: played "playlists/Liked/G. V. Prakash, Soorya Shyam Gopal, Swetha Ashok, Krishna Kanth - Usure Usure (From 'Amaran') (Telugu).mp3"
+2025-05-12T17:34:46 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:34:47 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:35:32 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:35:57 player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
+2025-05-12T17:39:20 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T17:47:33 pipewire_output: Decoder is too slow; playing silence to avoid xrun
