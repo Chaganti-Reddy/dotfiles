@@ -582,6 +582,7 @@ install_i3() {
   stow_with_check "$HOME/dotfiles/i3/.config/i3" "$HOME/.config/i3" "i3"
   stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+  stow_with_check "$HOME/dotfiles/greenclip/.config/greenclip.toml" "$HOME/.config/greenclip.toml" "greenclip"
 
   install_waldl
 
@@ -2013,7 +2014,7 @@ install_extras() {
 
       # Remove existing configurations for Karna
       rm -rf ~/.bashrc
-      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile
+      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip
 
       # Copy essential system files for karna user
       sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
