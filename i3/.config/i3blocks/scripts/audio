@@ -14,7 +14,7 @@ case $BLOCK_BUTTON in
 - Scroll to change." ;;
 esac
 
-[ $(pamixer --get-mute) = true ] && echo "🔇 ~%" && exit
+[ $(pamixer --get-mute) = true ] && echo "🔇 M" && exit
 
 vol="$(pamixer --get-volume)"
 
