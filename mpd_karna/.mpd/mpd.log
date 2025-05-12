@@ -5883,3 +5883,5 @@ Mar 20 16:54:54 : player: played "playlists/EdSheeran/Ed Sheeran - Life Goes On.
 2025-05-12T17:47:33 pipewire_output: Decoder is too slow; playing silence to avoid xrun
 2025-05-12T18:06:46 player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
 2025-05-12T22:12:02 pipewire_output: Decoder is too slow; playing silence to avoid xrun
+2025-05-12T22:14:02 player: played "playlists/Liked/ATLXS - PASSO BEM SOLTO - Slowed.mp3"
+2025-05-12T22:17:59 player: played "playlists/Liked/Yazin Nizar, Lipsika - Ammaye Challo Antu.mp3"
