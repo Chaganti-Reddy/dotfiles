@@ -77,7 +77,7 @@ for_window [title="ncmpcpp-f"] floating enable, resize set 1000 700, move positi
 # bindsym $mod+Shift+m [class="st-ncmpcpp"] scratchpad show, move position center
 
 # Chess 
-exec_always --no-startup-id sh -c '! xdotool search --class chess-nativefier-703820 >/dev/null && $HOME/apps/chess-linux-x64/chess &'
+# exec_always --no-startup-id sh -c '! xdotool search --class chess-nativefier-703820 >/dev/null && $HOME/apps/chess-linux-x64/chess &'
 for_window [class="chess-nativefier-703820"] floating enable, move scratchpad, resize set 1540 864
 bindsym F11 [class="chess-nativefier-703820"] scratchpad show, move position 181px 97px
 
@@ -86,13 +86,11 @@ for_window [class="kdeconnect.app"] floating enable, move position center
 for_window [class="Arandr"] floating enable, resize set 925 650, move position center
 
 # Launch calculator
-# exec_always --no-startup-id sh -c 'pgrep -fx "kitty --title math-f" || kitty --title math-f -e qalc -i'
-exec_always --no-startup-id sh -c 'pgrep -fx "qalculate-gtk --title=math-f" || qalculate-gtk --title=math-f'
 for_window [title="math-f"] floating enable
-for_window [title="math-f"] move scratchpad
 for_window [title="math-f"] resize set 800 300
-for_window [title="math-f"] border pixel 6
-bindsym $mod+c [title="math-f"] scratchpad show, move position center
+for_window [title="math-f"] move position center
+bindsym $mod+c exec --no-startup-id qalculate-gtk --title=math-f
+# bindsym $mod+c exec --no-startup-id kitty --title math-f -e qalc -i
 
 # screenshot utility
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
@@ -146,10 +144,10 @@ bindsym $mod+Shift+F8 exec --no-startup-id gromit-mpx -y
 bindsym $mod+F8 exec --no-startup-id gromit-mpx -z
 
 # Bind to Alt+F for launching rofi with a specific theme and find mode
-bindsym $mod+Alt+f exec --no-startup-id rofi -theme ~/.config/rofi/dt-center.rasi -show find -modi find:~/.config/scripts/rofifinder &
+bindsym $mod+Mod1+f exec --no-startup-id rofi -theme ~/.config/rofi/dt-center.rasi -show find -modi find:~/.config/scripts/rofifinder &
 
 # Bind to Alt+Shift+F for launching rofifm (file manager)
-bindsym $mod+Shift+Alt+f exec --no-startup-id ~/.config/scripts/rofifm
+bindsym $mod+Control+f exec --no-startup-id ~/.config/scripts/rofifm &
 
 # Bind to Alt+P for executing rofi-pass-wayland script
 bindsym $mod+Mod1+p exec --no-startup-id ~/.config/scripts/rofi-pass-xorg
@@ -157,7 +155,11 @@ bindsym $mod+Mod1+p exec --no-startup-id ~/.config/scripts/rofi-pass-xorg
 # Bind to Shift+A for executing custom script
 bindsym $mod+Shift+a exec --no-startup-id ~/.config/scripts/script
 
+# Neovim
 bindsym $mod+a exec --no-startup-id kitty -e nvim
+
+# Electron/Nativefier Apps from rofi
+bindsym $mod+Mod1+o exec --no-startup-id $SCRIPT/electron-menu
 
 # clipboard
 set $clipboard rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi
@@ -250,7 +252,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -262,7 +265,7 @@ exec --no-startup-id conky
 # exec --no-startup-id conky --config ~/.config/conky/conky-2.conf # second monitor
 
 # make use of settings specified in Xresources file
-exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id xrdb -merge ~/.Xresources
 
 # Autotiling 
 exec_always --no-startup-id autotiling
