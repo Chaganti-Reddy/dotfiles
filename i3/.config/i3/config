@@ -436,15 +436,15 @@ bar {
 	height 25
 	workspace_min_width 30
 	tray_output primary
-	colors {
-		focused_workspace  #4c7899 #285577 #ffffff
-		background #322f3d
-	}
-    # colors {
-    #     background $text 
-    #     statusline $fg
-    #     separator $fg
-    # }
+	# colors {
+	# 	focused_workspace  #4c7899 #285577 #ffffff
+	# 	background #322f3d
+	# }
+    colors {
+        background $text 
+        statusline $fg
+        separator $fg
+    }
 }
 
 ### special settings for some programs
