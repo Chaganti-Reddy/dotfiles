@@ -66,15 +66,20 @@ bindsym $mod+Shift+n exec --no-startup-id thunar
 bindsym $mod+n exec --no-startup-id $term --class kitty_yazi -e yazi
 for_window [class="kitty_yazi"] floating enable, resize set 1100 700, move position center
 
-# Dropdwon Terminal
-exec_always --no-startup-id sh -c 'pgrep -fx "kitty --class ttrm" || kitty --class ttrm'
+# Dropdown Terminal (Kitty)
+exec_always --no-startup-id sh -c '! xdotool search --class ttrm >/dev/null && kitty --class ttrm'
 for_window [class="ttrm"] floating enable, move scratchpad, resize set 925 650, border pixel 6
 bindsym F12 [class="ttrm"] scratchpad show, move position center
 
-# Music in NCMPCPP
-exec_always --no-startup-id sh -c 'pgrep -fx "st -T st-ncmpcpp" || st -T st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
-for_window [title="st-ncmpcpp"] floating enable, move scratchpad, resize set 1000 700, border pixel 6
-bindsym $mod+Shift+m [title="st-ncmpcpp"] scratchpad show, move position center
+# ncmpcpp
+exec_always --no-startup-id sh -c '! xdotool search --class st-ncmpcpp >/dev/null && st -T "ncmpcpp 0.10.1" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
+for_window [class="st-ncmpcpp"] floating enable, move scratchpad, resize set 1000 700, border pixel 6
+bindsym $mod+Shift+m [class="st-ncmpcpp"] scratchpad show, move position center
+
+# Chess 
+exec_always --no-startup-id sh -c '! xdotool search --class chess-nativefier-703820 >/dev/null && $HOME/apps/chess-linux-x64/chess &'
+for_window [class="chess-nativefier-703820"] floating enable, move scratchpad, resize set 1540 864, border pixel 6
+bindsym F11 [class="chess-nativefier-703820"] scratchpad show, move position 181px 97px
 
 for_window [class="kdeconnect.app"] floating enable, move position center
 # load arandr in floating mode
@@ -144,13 +149,15 @@ bindsym $mod+F8 exec --no-startup-id gromit-mpx -z
 bindsym $mod+Alt+f exec --no-startup-id rofi -theme ~/.config/rofi/dt-center.rasi -show find -modi find:~/.config/scripts/rofifinder &
 
 # Bind to Alt+Shift+F for launching rofifm (file manager)
-bindsym $mod+Shift+Alt+f exec --no-startup-id ~/.config/scripts/rofifm &
+bindsym $mod+Shift+Alt+f exec --no-startup-id ~/.config/scripts/rofifm
 
 # Bind to Alt+P for executing rofi-pass-wayland script
 bindsym $mod+Mod1+p exec --no-startup-id ~/.config/scripts/rofi-pass-xorg
 
 # Bind to Shift+A for executing custom script
 bindsym $mod+Shift+a exec --no-startup-id ~/.config/scripts/script
+
+bindsym $mod+a exec --no-startup-id kitty -e nvim
 
 #################################
 ####### config for gaps #########
