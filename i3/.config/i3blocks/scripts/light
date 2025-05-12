@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# Find the backlight directory (handle multiple possibilities)
+backlight_dir=$(ls /sys/class/backlight/ | head -n 1)
+
+# current brightness and max brightness
+curr_brightness=$(cat /sys/class/backlight/$backlight_dir/brightness)
+max_brightness=$(cat /sys/class/backlight/$backlight_dir/max_brightness)
+
+# Prevent division by zero
+if [ "$max_brightness" -eq 0 ]; then
+    brightness_per=0
+else
+    # brightness percentage
+    brightness_per=$((100 * curr_brightness / max_brightness))
+fi
+
+# Handle mouse clicks and events
+case $BLOCK_BUTTON in
+    1) 
+        # Handle left-click event (add functionality if needed)
+        ;;
+    3) 
+        notify-send "💡 Brightness module" "\- Shows current brightness level ☀️." 
+        ;;
+    6) 
+        TERMINAL="${TERMINAL:-kitty}"
+        EDITOR="${EDITOR:-nvim}"
+        setsid -f "$TERMINAL" -e "$EDITOR" "$0"
+        ;;
+esac
+
+# Set the icon based on brightness percentage
+if [ "$brightness_per" -lt "10" ]; then
+    icon="🌑"
+elif [ "$brightness_per" -lt "30" ]; then
+    icon="🌒"
+elif [ "$brightness_per" -lt "60" ]; then
+    icon="🌓"
+elif [ "$brightness_per" -lt "85" ]; then
+    icon="🌔"
+else
+    icon="🌕"
+fi
+
+# Output the icon and percentage
+echo "$icon ${brightness_per}%"
+
