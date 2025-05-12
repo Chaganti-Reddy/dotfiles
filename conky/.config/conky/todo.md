@@ -1,3 +1,3 @@
 # TODOS
 
-1. Complete I3 Setup
+TODO: Complete I3 Setup 
