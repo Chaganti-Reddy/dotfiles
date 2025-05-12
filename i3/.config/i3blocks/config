@@ -55,7 +55,7 @@ border=#6b778d
 signal=24
 
 [audio]
-interval=once
+interval=1
 border=#e11d74
 signal=10
 
