@@ -17,6 +17,20 @@ border_bottom=3
 # command=echo $(xdotool getactivewindow getwindowname)
 # interval=1
 
+[mpd_prev]
+interval=1
+border=#acdbdf
+
+[mpd_toggle]
+interval=1
+signal=60
+border=#acdbdf
+
+[mpd_next]
+interval=1
+border=#acdbdf
+label=
+
 [gmeet]
 signal=19
 color=#d90436
