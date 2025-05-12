@@ -4,11 +4,12 @@ cover_path="$HOME/.config/i3blocks/scripts/music.png"
 
 # Handle click to go to the previous track
 case $BLOCK_BUTTON in
-	1) mpc prev | "⏮️";
+	1) 
+    mpc prev | "";
+    # mpc prev | "⏮️";
     dunstify -u low --replace=69 -i "$cover_path" "$(mpc current)";
     ;;  
   3) notify-send -u low -i /usr/share/icons/dunst/music.png "Play the Previous Song";;
 esac
 
-# Display the Previous icon
-echo "⏮️"
+echo "" 
