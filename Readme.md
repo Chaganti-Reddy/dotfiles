@@ -132,3 +132,9 @@ For entire system I am using pywal for color scheme matching with wallpaper. And
 ## License
 
 This repository is licensed under the MIT License. For more information, see the `LICENSE` file.
+
+## Credits
+
+1. BugsWriter - https://github.com/Bugswriter
+2. DistroTube - https://gitlab.com/dwt1
+3. Rusty Electron (I3) - https://github.com/rusty-electron/dotfiles/
