@@ -444,9 +444,10 @@ bar {
 	# 	background #322f3d
 	# }
     colors {
-        background $text 
-        statusline $fg
+        background $bg 
+        statusline #ffffff
         separator $fg
+	     	# focused_workspace $fg $text #ffffff $bg
     }
 }
 
