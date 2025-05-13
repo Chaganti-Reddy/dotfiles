@@ -14,7 +14,8 @@ options=(["File Manager"]=~/.config/scripts/rofifm
          ["Open Youtube Video in MPV using URL"]=~/.config/scripts/mpv_yt 
          ["Watch YouTube Playlists"]=~/.config/scripts/yt_plst 
          ["Use Reddit Script for Images"]=~/.config/scripts/redyt
-         ["Download Some new wallpapers"]=/usr/local/bin/waldl)
+         ["Download Some new wallpapers"]=/usr/local/bin/waldl
+         ["Execute Mouse Settings for Window Managers"]=~/.config/scripts/mouse)
 
 choice=$(printf '%s\n' "${!options[@]}" | sort -g | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -i -l 15 -p 'Choose an Option: ' "${@}")
 
