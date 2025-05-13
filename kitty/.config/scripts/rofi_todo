@@ -3,6 +3,10 @@
 TODO_FILE="$HOME/todo.md"
 TODAY=$(date +"%Y-%m-%d")
 
+if [ ! -f "$TODO_FILE" ]; then
+  touch "$TODO_FILE"
+fi
+
 declare -a menu_items
 declare -a task_refs
 
@@ -59,7 +63,7 @@ ref="${task_refs[$selected_index]}"
 
 case "$ref" in
     "action:add")
-        new_task=$(rofi -dmenu -p "New Task:")
+        new_task=$(rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -p "New Task:")
         [[ -z "$new_task" ]] && exit 0
         if ! grep -q "$TODAY" "$TODO_FILE"; then
             echo -e "\n$TODAY" >> "$TODO_FILE"
@@ -83,7 +87,7 @@ case "$ref" in
         exit 0
         ;;
     "action:delete")
-        task_to_delete=$(printf '%s\n' "${menu_items[@]}" | grep '^  ' | rofi -dmenu -p "Delete Task")
+        task_to_delete=$(printf '%s\n' "${menu_items[@]}" | grep '^  ' | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -p "Delete Task")
         [[ -z "$task_to_delete" ]] && exit 0
         task_to_delete="$(echo "$task_to_delete" | sed 's/^ *//')"
         awk -v t="$task_to_delete" '$0 != t' "$TODO_FILE" > "$TODO_FILE.tmp" && mv "$TODO_FILE.tmp" "$TODO_FILE"
