@@ -137,4 +137,5 @@ This repository is licensed under the MIT License. For more information, see the
 
 1. BugsWriter - https://github.com/Bugswriter
 2. DistroTube - https://gitlab.com/dwt1
-3. Rusty Electron (I3) - https://github.com/rusty-electron/dotfiles/
+3. LukeSmith - https://github.com/LukeSmithxyz
+4. Rusty Electron (I3) - https://github.com/rusty-electron/dotfiles/
