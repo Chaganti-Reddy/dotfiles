@@ -4,6 +4,8 @@ This repository contains my personal configuration files for various application
 
 `NOTE - Please don't create any Issues or Pull Requests. These dotfiles are only for my personal use.`
 
+<font color="red">Some of these dotfiles may contain absolute paths with my username and if anything runs into a crash or a bug just check the paths correctly first.</font>
+
 ## Automated Installation 
 
 Fist install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
