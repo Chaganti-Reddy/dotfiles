@@ -42,7 +42,7 @@ signal=5
 border=#acdbdf
 
 [memory]
-interval=10
+interval=5
 border=#ffd700
 
 [light]
@@ -60,7 +60,7 @@ interval=20
 border=#e16428
 
 [battery]
-interval=10
+interval=5
 border=#a7d129
 
 [internet]
