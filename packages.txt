@@ -258,3 +258,4 @@ ttf-iosevka-nerd
 python-watchdog
 kvantum-theme-materia-blur
 advcpmv
+okular
