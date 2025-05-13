@@ -6,10 +6,9 @@ TODO_FILE="$HOME/todo.md"
 # Get today's date in YYYY-MM-DD format
 TODAY=$(date +%Y-%m-%d)
 
-# Check if the TODO file exists
+# Check if the TODO file exists else create it 
 if [ ! -f "$TODO_FILE" ]; then
-    echo "No TODO file found."
-    exit 0
+  touch "$TODO_FILE"
 fi
 
 # Print function to format tasks with colors
