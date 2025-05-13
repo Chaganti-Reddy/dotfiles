@@ -3,7 +3,6 @@
 # Define a list of choices and their corresponding commands
 declare -A apps=(
     ["Open Chess - Chess Nativefier"]="$HOME/apps/chess-linux-x64/chess"
-    ["Edit TODOS"]="kitty -e nvim $HOME/.config/conky/todo.md"
 )
 
 # Generate the menu dynamically
