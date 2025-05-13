@@ -19,7 +19,7 @@
 audioloc="/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"
 notifymuted() {
         volume="$1"
-        dunstify -h string:x-canonical-private-synchronous:audio "muted" -h int:value:"$volume" -t 1500 --icon audio-volume-muted
+        dunstify -h string:x-canonical-private-synchronous:audio "muted" -h int:value:"$volume" -t 1500 --icon /usr/share/icons/dunst/volume-mute.png
 }
 
 notifyaudio() {
@@ -36,11 +36,11 @@ notifyaudio() {
         if [ $volume -eq 0 ]; then
                 notifymuted "$volume"
         elif [ $volume -le 30 ]; then
-                dunstify -h string:x-canonical-private-synchronous:audio "volume: " -h int:value:"$volume" -t 1500 --icon audio-volume-low
+                dunstify -h string:x-canonical-private-synchronous:audio "volume: " -h int:value:"$volume" -t 1500 --icon /usr/share/icons/dunst/volume-low.png
         elif [ $volume -le 70 ]; then
-                dunstify -h string:x-canonical-private-synchronous:audio "volume: " -h int:value:"$volume" -t 1500 --icon audio-volume-medium
+                dunstify -h string:x-canonical-private-synchronous:audio "volume: " -h int:value:"$volume" -t 1500 --icon /usr/share/icons/dunst/volume-mid.png
         else
-                dunstify -h string:x-canonical-private-synchronous:audio "volume: " -h int:value:"$volume" -t 1500 --icon audio-volume-high
+                dunstify -h string:x-canonical-private-synchronous:audio "volume: " -h int:value:"$volume" -t 1500 --icon /usr/share/icons/dunst/volume-high.png
         fi
 }
 
