@@ -1,6 +1,6 @@
 # Dotfiles Repository
       
-This repository contains my personal configuration files for various applications and settings on Arch Linux with the DWM window manager. These files are essential for my system to look and function as I prefer. I recommend cloning this repository into your home directory (`~/`) for easy integration into your own setup.
+This repository contains my personal configuration files for various applications and settings on Arch Linux with the I3, BSPWM, Qtile and Hyprland window manager. These files are essential for my system to look and function as I prefer. I recommend cloning this repository into your home directory (`~/`) for easy integration into your own setup.
 
 `NOTE - Please don't create any Issues or Pull Requests. These dotfiles are only for my personal use.`
 
@@ -79,7 +79,7 @@ sudo make clean install
 
 16. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder. And also if you want to get the new empty tab instead of blank page in Zen then goto `about:config` and set `zen.urlbar.replace-newtab` to false.
 
-17. If you my DWM config then there are seperate repos in my [Github](https://github.com/Chaganti-Reddy/) account, just use them and you can find scripts here itself in `dotfiles/DWMScripts folder`. I'm a bit lazy to code the installation process in `install.sh`, so please enjoy from there.
+17. If you want my DWM config then there are seperate repos in my [Github](https://github.com/Chaganti-Reddy/) account, just use them and you can find scripts here itself in `dotfiles/DWMScripts folder`. I'm a bit lazy to code the installation process in `install.sh`, so please enjoy from there.
 
 ## Configuration
 
