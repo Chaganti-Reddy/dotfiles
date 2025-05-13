@@ -161,6 +161,9 @@ bindsym $mod+a exec --no-startup-id kitty -e nvim
 # Electron/Nativefier Apps from rofi
 bindsym $mod+Mod1+o exec --no-startup-id $SCRIPT/electron-menu
 
+# Rofi Todo
+bindsym $mod+Mod1+t exec --no-startup-id $HOME/.config/scripts/rofi_todo
+
 # clipboard
 set $clipboard rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi
 bindsym $mod+v exec --no-startup-id $clipboard
