@@ -290,7 +290,7 @@ bindsym $mod+d exec --no-startup-id $ROFI
 
 # change focus
 bindsym $mod+j focus left
-bindsym $mod+semicolon focus down
+bindsym $mod+h focus down
 bindsym $mod+l focus up
 bindsym $mod+k focus right
 
@@ -313,7 +313,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Mod1+h split h
 
 # split in vertical orientation
 bindsym $mod+Shift+v split v
