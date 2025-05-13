@@ -1,0 +1,67 @@
+#!/bin/bash
+
+CONFIG_FILE="$HOME/.config/i3/config"
+[ -f "$CONFIG_FILE" ] || CONFIG_FILE="$HOME/.i3/config"
+
+[ -f "$CONFIG_FILE" ] || {
+    yad --title="i3 Keybinds" --text="i3 config not found!" --button="OK:0"
+    exit 1
+}
+
+keybinds=$(awk '
+function trim(str) {
+    gsub(/^[ \t]+|[ \t]+$/, "", str)
+    return str
+}
+
+function format_key(keystr) {
+    gsub(/\$mod|\$\{mod\}/, "MOD", keystr)
+    gsub(/Mod1/, "ALT", keystr)
+    return toupper(keystr)
+}
+
+function pad_key(key) {
+    return sprintf("%-30s", key)  # pad key to 22 characters
+}
+
+BEGIN {
+    pending_comment = ""
+}
+
+/^#/ {
+    sub(/^# */, "", $0)
+    pending_comment = $0
+    next
+}
+
+/^bindsym/ {
+    if (pending_comment == "") {
+        next  # skip if no comment above
+    }
+
+    line = $0
+    sub(/^bindsym +/, "", line)
+
+    split(line, parts, " ")
+    i = 1
+    if (parts[1] == "--release") i++
+
+    key = format_key(parts[i])
+    printf "%s →  %s\n", pad_key(key), pending_comment
+
+    pending_comment = ""
+    next
+}
+
+{
+    pending_comment = ""
+}
+' "$CONFIG_FILE")
+
+# Show it in a fixed-width font for perfect alignment
+yad --title="YAD - i3 Keybindings" \
+    --width=750 --height=500 \
+    --center --button="Close:0" \
+    --text-info --fontname="Iosevka Nerd Font 12" \
+    <<< "$keybinds"
+
