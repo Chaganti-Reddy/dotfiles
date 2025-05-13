@@ -62,6 +62,6 @@ BEGIN {
 yad --title="YAD - i3 Keybindings" \
     --width=750 --height=500 \
     --center --button="Close:0" \
-    --text-info --fontname="Iosevka Nerd Font 12" \
+    --text-info --fontname="Iosevka Nerd Font Bold 12" \
     <<< "$keybinds"
 
