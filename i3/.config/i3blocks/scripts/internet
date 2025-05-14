@@ -43,7 +43,7 @@ ethicon=""
 
 # Determine the Wi-Fi status and quality
 if [ -f /proc/net/wireless ] && [ "$wifi_state" == "up" ]; then
-    quality=$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)
+    quality=$(awk '/^\s*w/ { printf "%3d", int($3 * 100 / 70) }' /proc/net/wireless)
     wifiicon="  ${quality}%"
 elif [ "$wifi_state" == "down" ]; then
     wifiicon=" "
