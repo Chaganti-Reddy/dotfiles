@@ -3,7 +3,7 @@ audio_device_state:1:PipeWire Sound Server
 audio_device_state:1:toggle_visualizer
 state: play
 current: 3
-time: 1.655
+time: 162.532
 random: 1
 repeat: 1
 single: 0
