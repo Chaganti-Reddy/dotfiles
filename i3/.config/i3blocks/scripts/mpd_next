@@ -5,11 +5,20 @@ cover_path="$HOME/.config/i3blocks/scripts/music.png"
 # Handle click to go to the next track
 case $BLOCK_BUTTON in
   1) 
-     mpc next | "";
+     mpc next | " ";
      # mpc next | "⏭️";
      dunstify -u low --replace=69 -i "$cover_path" "$(mpc current)";
     ;;  
-  3) notify-send -u low -i /usr/share/icons/dunst/music.png "Play the Next Song";;
+  2) dunstify -u low --replace=69 -i /usr/share/icons/dunst/music.png "\
+Next Song => $(mpc queued | cut -c1-30) 
+MPD Stats => 
+$(mpc stats) 
+  ";;
+  3) 
+    mpc random | " "; 
+    rand=$(mpc | sed -n '3p' | awk '{print $5}');
+    dunstify -u low --replace=69 -i /usr/share/icons/dunst/music.png "Toggle Random" "Random Mode => $rand";
+    ;;
 esac
 
-echo ""
+echo " "
