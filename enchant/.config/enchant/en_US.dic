@@ -322,3 +322,6 @@ asm
 PCIe
 SoC
 Instr's
+Chatbot
+Streamlit
+LangChain
