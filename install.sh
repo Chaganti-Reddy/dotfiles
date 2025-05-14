@@ -571,6 +571,7 @@ install_i3() {
     "redshift"
     "conky"
     "betterlockscreen"
+    "sxhkd"
   )
 
   for package in "${packages[@]}"; do
