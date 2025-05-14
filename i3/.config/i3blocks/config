@@ -38,11 +38,11 @@ border=#e16428
 
 [weather]
 interval=10800
-signal=5
+signal=10
 border=#acdbdf
 
 [memory]
-interval=5
+interval=1
 border=#ffd700
 
 [light]
