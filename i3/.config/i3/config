@@ -267,7 +267,7 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id autotiling 
 
 # SXHKD for Keychords & Other Hotkeys
-exec_always --no-startup-id sxhkd -c ~/.config/i3/sxhkdrc
+exec --no-startup-id sxhkd -c ~/.config/i3/sxhkdrc
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
