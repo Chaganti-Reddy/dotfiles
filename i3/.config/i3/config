@@ -127,6 +127,11 @@ bindsym $mod+Mod1+3 exec --no-startup-id mpc next && $SCRIPT/mpd_notify
 bindsym $mod+Mod1+2 exec --no-startup-id mpc prev && $SCRIPT/mpd_notify 
 bindsym $mod+Shift+Mod1+1 exec --no-startup-id mpc stop && $SCRIPT/mpd_notify && $refresh_music 
 
+# Seek 10sec Back
+bindsym $mod+bracketleft exec --no-startup-id mpc seek -10
+# Seek 10sec Forward
+bindsym $mod+bracketright exec --no-startup-id mpc seek +10
+
 # for weather term
 for_window [title="weather-f"] floating enable, resize set 1325 850, move position center
 
