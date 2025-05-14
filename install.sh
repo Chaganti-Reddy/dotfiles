@@ -118,7 +118,7 @@ check_privileges() {
 # -------------------------- Setup --------------------------
 setup_user_dirs() {
   info "Creating standard user directories..."
-  mkdir -p ~/Downloads ~/Documents ~/Music ~/Pictures ~/Video ~/Templates ~/Pictures/Screenshots
+  mkdir -p ~/Downloads ~/Documents ~/Music ~/Pictures ~/Video ~/Templates ~/Pictures/Screenshots ~/.mpd
 }
 
 configure_pacman() {
