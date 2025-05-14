@@ -80,10 +80,7 @@ get_session(){
 exec $(get_session)
 
 
-$HOME/.screenlayout/monitor.sh
-exec mpd
-exec mpc
+$HOME/.screenlayout/monitor.sh &
+exec mpd &
 xsetroot -cursor_name left_ptr
 numlockx &
-# xfce4-power-manager &
-# pamixer --set-volume 40
