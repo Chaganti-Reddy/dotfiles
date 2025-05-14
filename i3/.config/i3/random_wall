@@ -26,3 +26,4 @@ pkill dunst
 sleep 0.1
 dunst -conf $HOME/.config/dunst/dunstrc_xorg &
 betterlockscreen -u ~/.walcache/1
+dunstify -u low -i /usr/share/icons/dunst/themes.png "Wallpaper and Theme changed"
