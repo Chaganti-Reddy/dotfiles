@@ -1699,7 +1699,7 @@ install_pip_packages() {
       "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4"
       "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
       "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
-      "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow"
+      "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow" "sentence-transformers" "langchain-ollama"
     )
 
     # Install each package if it's not already installed
@@ -2013,7 +2013,7 @@ install_extras() {
 
       # Remove existing configurations for Karna
       rm -rf ~/.bashrc
-      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit
+      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit Okular
 
       # Copy essential system files for karna user
       sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
