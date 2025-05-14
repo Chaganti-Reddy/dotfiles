@@ -10,17 +10,17 @@ song=$(mpc current)
 case $BLOCK_BUTTON in
     1)if [ "$status" == "[playing]" ]; then
         # mpc pause | "⏸️";
-        mpc pause | "";
+        mpc pause | "  ";
         dunstify -u low --replace=69 -i "$cover_path" "Paused" "$(mpc current)";
       else
-        mpc play | ""; 
+        mpc play | "  "; 
         # mpc play | "▶️"; 
         dunstify -u low --replace=69 -i "$cover_path" "$(mpc current)";
       fi
       ;;
     2) setsid -f "st" -T ncmpcpp-f -e "$HOME/.ncmpcpp/scripts/ncmpcpp-art" ;; 
     3) 
-      mpc stop | ""; 
+      mpc stop | "  "; 
       # mpc stop | "⏹️"; 
       dunstify -u low --replace=69 -i "$cover_path" "Stopped" "No song playing";;
 esac
@@ -31,10 +31,10 @@ stop_icon_nerd_font=
 
 # Display Play or Pause icon based on status
 if [ "$status" == "[playing]" ]; then
-    echo ""  
+    echo "  "  
 elif [ "$status" == "[paused]" ]; then
-    echo ""  # Play icon when paused
+    echo "  "  # Play icon when paused
 else
-    echo ""  # Stop icon when stopped
+    echo "  "  # Stop icon when stopped
 fi
 
