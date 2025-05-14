@@ -5,3 +5,4 @@
 ./leetcode/.leetcode/leetcode_secrets.toml
 ./mpd_karna/.mpd/mpdstate
 ./mpd_karna/.mpd/mpd.log
+./mpd_karna/.mpd/mpd.pid
