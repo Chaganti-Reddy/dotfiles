@@ -140,7 +140,7 @@ map('v', '<C-/>', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.v
 -- map("v", "<C-/>", "gc", { desc = "toggle comment", remap = true })
 
 -- nvimtree
--- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 
 map("n", "<leader>th", function()
   require("nvchad.themes").open()
