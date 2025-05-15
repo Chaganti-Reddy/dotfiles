@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# === CONFIGURATION ===
+SEARCH_DIRS=( "$HOME/Documents" "$HOME/Downloads" "/mnt/Karna/" )
+CACHE_FILE="$HOME/.cache/multi_pdf_list"
+PDF_VIEWER="okular"
+SCAN_INTERVAL=300
+ROFI_CMD="rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p PDF"
+
+# === BUILD FIND COMMAND ===
+build_find_command() {
+    local find_cmd=""
+    for dir in "${SEARCH_DIRS[@]}"; do
+        [ -d "$dir" ] && find_cmd+="find \"$dir\" -type f -iname '*.pdf'; "
+    done
+    echo "$find_cmd"
+}
+
+# === REFRESH CACHE ===
+refresh_cache() {
+    echo "🔍 Refreshing PDF list..." >&2
+    > "$CACHE_FILE"
+    eval "$(build_find_command)" | while read -r file; do
+        filename=$(basename "$file")
+        dirpath=$(dirname "$file")
+        display_path="${dirpath/#$HOME/~}"
+        echo "$filename - $display_path|$file" >> "$CACHE_FILE"
+    done
+    touch "$CACHE_FILE"
+}
+
+# === MANUAL ARGUMENT MODE ===
+if [[ "$1" == "--refresh" ]]; then
+    refresh_cache
+    echo "✅ PDF list manually refreshed."
+    exit 0
+fi
+
+# === INIT CACHE ===
+[ ! -f "$CACHE_FILE" ] && { mkdir -p "$(dirname "$CACHE_FILE")"; refresh_cache; }
+
+# === CHECK IF STALE ===
+now=$(date +%s)
+last_update=$(date -r "$CACHE_FILE" +%s)
+(( now - last_update > SCAN_INTERVAL )) && refresh_cache &
+
+# === LOAD LIST & ADD REFRESH OPTION ===
+mapfile -t options < <(cut -d'|' -f1 "$CACHE_FILE")
+options+=("🔁 --refresh-script")
+
+# === SHOW ROFI MENU ===
+selection=$(printf "%s\n" "${options[@]}" | $ROFI_CMD)
+[ -z "$selection" ] && exit
+
+# === IF REFRESH OPTION SELECTED ===
+if [[ "$selection" == *"--refresh-script" ]]; then
+    refresh_cache
+    notify-send "PDF Cache Refreshed" "The list has been updated ✅"
+    exit 0
+fi
+
+# === OTHERWISE OPEN SELECTED PDF ===
+full_path=$(grep -F "$selection" "$CACHE_FILE" | cut -d'|' -f2-)
+xdg-open "$full_path" &>/dev/null &
+
