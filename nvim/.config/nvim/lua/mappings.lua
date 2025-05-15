@@ -104,6 +104,7 @@ map("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
 map("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
 map("n", "<leader>sx", ":close<CR>", { desc = "Close current split" })
 map("n", "<leader>se", ":wincmd =<CR>", { desc = "Equalize split sizes" })
+map("n", "<leader>nf", ":e %:h/", { desc = "New file in current directory" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
