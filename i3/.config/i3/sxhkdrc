@@ -2,5 +2,5 @@
 super + Escape
 	pkill -USR1 -x sxhkd
 
-super + o; {p}
-  {~/.config/scripts/rofi_pdf}
+super + o; {t, p}
+  {~/.config/scripts/rofi_todo, ~/.config/scripts/rofi_pdf}
