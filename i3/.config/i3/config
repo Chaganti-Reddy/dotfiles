@@ -70,7 +70,7 @@ bindsym F12 exec --no-startup-id kitty --class ttrm
 # ncmpcpp
 # exec_always --no-startup-id sh -c '! xdotool search --class st-ncmpcpp >/dev/null && st -T "ncmpcpp 0.10.1" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
 for_window [title="ncmpcpp-f"] floating enable, resize set 1000 700, move position center
-# bindsym $mod+Shift+m [class="st-ncmpcpp"] scratchpad show, move position center
+bindsym $mod+Shift+m exec --no-startup-id st -T "ncmpcpp-f" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art
 
 # Chess 
 # exec_always --no-startup-id sh -c '! xdotool search --class chess-nativefier-703820 >/dev/null && $HOME/apps/chess-linux-x64/chess &'
@@ -425,7 +425,7 @@ mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys 
 
