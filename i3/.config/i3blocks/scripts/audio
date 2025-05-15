@@ -7,8 +7,8 @@ case $BLOCK_BUTTON in
 
 	1) pamixer -t ;;
 	2) pavucontrol ;;
-	4) pamixer --allow-boost -i 5 ;;
-	5) pamixer --allow-boost -d 5 ;;
+	4) pamixer --allow-boost -i 3 ;;
+	5) pamixer --allow-boost -d 3 ;;
 	3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted.
 - Middle click to open PavuControl.
 - Scroll to change." ;;
