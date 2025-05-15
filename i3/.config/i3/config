@@ -153,8 +153,6 @@ bindsym $mod+Mod1+p exec --no-startup-id ~/.config/scripts/rofi-pass-xorg &
 bindsym $mod+Shift+a exec --no-startup-id ~/.config/scripts/script & 
 # Electron/Nativefier Apps Menu
 bindsym $mod+Mod1+o exec --no-startup-id $SCRIPT/electron-menu &
-# Open Todo List
-bindsym $mod+Mod1+t exec --no-startup-id $HOME/.config/scripts/rofi_todo & 
 set $clipboard rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi
 # Open Rofi Clipboard
 bindsym $mod+v exec --no-startup-id $clipboard 
