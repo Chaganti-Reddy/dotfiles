@@ -2026,7 +2026,7 @@ install_extras() {
       # Install custom tools for karna
       sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst > kunst && chmod +x kunst && sudo mv kunst /usr/bin/
 
-      cargo install leetcode-cli
+      # cargo install leetcode-cli
 
       sudo npm install -g @mermaid-js/mermaid-cli
       go install github.com/maaslalani/typer@latest
