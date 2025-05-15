@@ -63,10 +63,9 @@ bindsym $mod+n exec --no-startup-id $term --class kitty_yazi -e yazi
 for_window [class="kitty_yazi"] floating enable, resize set 1100 700, move position center
 
 # Dropdown Terminal (Kitty)
-exec_always --no-startup-id sh -c '! xdotool search --class ttrm >/dev/null && kitty --class ttrm'
-for_window [class="ttrm"] floating enable, move scratchpad, resize set 925 650
+for_window [class="ttrm"] floating enable, resize set 925 650, move position center
 # Launch Dropdown Terminal
-bindsym F12 [class="ttrm"] scratchpad show, move position center 
+bindsym F12 exec --no-startup-id kitty --class ttrm
 
 # ncmpcpp
 # exec_always --no-startup-id sh -c '! xdotool search --class st-ncmpcpp >/dev/null && st -T "ncmpcpp 0.10.1" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
