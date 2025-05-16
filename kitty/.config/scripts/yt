@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Invidious instance for ytfzf
-invidious_instance="https://vid.puffyan.us"
+# invidious_instance="https://vid.puffyan.us"
+invidious_instance=""
 
 # Define the options
 options=("Watch Videos" "Open Subscriptions" "Open History" "Download Videos" "Download Subscriptions")
@@ -15,16 +16,16 @@ case $chosen_option in
     choice=$(printf "Relevent\nDate\nRating\nViews" | rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p "Sort by:")
     case $choice in
     "Relevent")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=relevance --pages=2
+        invidious_instance=$invidious_instance ytfzf -fD --sort-by=relevance --pages=2
         ;;
     "Date")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=upload_date --pages=2
+        invidious_instance=$invidious_instance ytfzf -fD --sort-by=upload_date --pages=2
         ;;
     "Rating")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=rating --pages=2
+        invidious_instance=$invidious_instance ytfzf -fD --sort-by=rating --pages=2
         ;;
     "Views")
-        invidious_instance=$invidious_instance ytfzf --rii -fD --sort-by=view_count --pages=2
+        invidious_instance=$invidious_instance ytfzf -fD --sort-by=view_count --pages=2
         ;;
     *)
         # If an invalid option is chosen
@@ -35,26 +36,26 @@ case $chosen_option in
     ;;
 "Open Subscriptions")
     # Command for Open Subscriptions
-    invidious_instance=$invidious_instance ytfzf --rii -fcS --fancy-subs -D
+    invidious_instance=$invidious_instance ytfzf -fcS --fancy-subs -D
     ;;
 "Open History")
     # Command for Open History
-    invidious_instance=$invidious_instance ytfzf --rii -H -D
+    invidious_instance=$invidious_instance ytfzf -H -D
     ;;
 "Download Videos")
     choice=$(printf "Relevent\nDate\nRating\nViews" | rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p "Sort by:")
     case $choice in
     "Relevent")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=relevance --pages=2
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf -fd -D --sort-by=relevance --pages=2
         ;;
     "Date")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=upload_date --pages=2
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf -fd -D --sort-by=upload_date --pages=2
         ;;
     "Rating")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=rating --pages=2
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf -fd -D --sort-by=rating --pages=2
         ;;
     "Views")
-        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fd -D --sort-by=view_count --pages=2
+        cd ~/Downloads && invidious_instance=$invidious_instance ytfzf -fd -D --sort-by=view_count --pages=2
         ;;
     *)
         echo "Invalid option. Exiting..."
@@ -76,7 +77,7 @@ case $chosen_option in
     fi
     ;;
 "Download Subscriptions")
-    cd ~/Downloads && invidious_instance=$invidious_instance ytfzf --rii -fcS --fancy-subs -d -D
+    cd ~/Downloads && invidious_instance=$invidious_instance ytfzf -fcS --fancy-subs -d -D
     choice=$(printf "Open Folder\nPlay Video\nExit" | rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p "Choose an option:")
     if [ "$choice" = "Open Folder" ]; then
         kitty -e ranger ~/Downloads
