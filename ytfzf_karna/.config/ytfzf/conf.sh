@@ -25,7 +25,8 @@ external_menu () {
         rofi -dmenu -theme "~/.config/rofi/dt-center.rasi" -i -p "$1" -width 1500
     else
         # Use dmenu on X11
-        dmenu -i -l 30 -p "Enter Search Query"
+        rofi -dmenu -theme "~/.config/rofi/dt-center.rasi" -i -p "$1" -width 1500
+        # dmenu -i -l 30 -p "Enter Search Query"
     fi
 }
 
