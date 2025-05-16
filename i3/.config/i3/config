@@ -70,7 +70,13 @@ bindsym F12 exec --no-startup-id kitty --class ttrm
 # ncmpcpp
 # exec_always --no-startup-id sh -c '! xdotool search --class st-ncmpcpp >/dev/null && st -T "ncmpcpp 0.10.1" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art'
 for_window [title="ncmpcpp-f"] floating enable, resize set 1000 700, move position center
+# Open NCMPCPP Music Player
 bindsym $mod+Shift+m exec --no-startup-id st -T "ncmpcpp-f" -c st-ncmpcpp -e $HOME/.ncmpcpp/scripts/ncmpcpp-art
+
+# Newsboat
+for_window [title="newboat-f"] floating enable, resize set 1100 800, move position center
+# Open Newsboat
+bindsym $mod+Mod1+n exec --no-startup-id st -T "newboat-f" -c st-newsboat -e newsboat
 
 # Chess 
 # exec_always --no-startup-id sh -c '! xdotool search --class chess-nativefier-703820 >/dev/null && $HOME/apps/chess-linux-x64/chess &'
