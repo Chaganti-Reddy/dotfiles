@@ -1,11 +1,15 @@
 #!/bin/bash
 
+# Rofi PDF Script to search, open, and bookmark PDF files from rofi menu itself.
+
 # === CONFIGURATION ===
 SEARCH_DIRS=( "$HOME/Documents" "$HOME/Downloads" "/mnt/Karna/" )
 CACHE_FILE="$HOME/.cache/multi_pdf_list"
+BOOKMARK_FILE="$HOME/.cache/pdf_bookmarks"
 PDF_VIEWER="okular"  # fallback: will default to xdg-open if empty
 SCAN_INTERVAL=300
 ROFI_CMD="rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p PDF"
+DUNSTIFY="dunstify -u low -i /usr/share/icons/dunst/dropper.png --replace=1337"
 
 # === BUILD FIND COMMAND ===
 build_find_command() {
@@ -27,37 +31,108 @@ refresh_cache() {
     touch "$CACHE_FILE"
 }
 
-# === MANUAL REFRESH MODE ===
-if [[ "$1" == "--refresh" ]]; then
-    refresh_cache
-    echo "✅ PDF list manually refreshed."
-    exit 0
-fi
-
-# === INIT CACHE ===
+# === INIT CACHE & BOOKMARK FILE ===
 [ ! -f "$CACHE_FILE" ] && { mkdir -p "$(dirname "$CACHE_FILE")"; refresh_cache; }
+[ ! -f "$BOOKMARK_FILE" ] && touch "$BOOKMARK_FILE"
 
-# === CHECK IF STALE ===
+# === AUTO REFRESH IF STALE ===
 now=$(date +%s)
 last_update=$(date -r "$CACHE_FILE" +%s)
 (( now - last_update > SCAN_INTERVAL )) && refresh_cache &
 
-# === LOAD LIST & ADD REFRESH OPTION ===
-mapfile -t options < <(cut -d'|' -f1 "$CACHE_FILE")
-options+=("🔁 Refresh PDF List")
+# === MAIN LOOP ===
+while true; do
+    mapfile -t options < <(cut -d'|' -f1 "$CACHE_FILE")
+    options+=("🔖 View Bookmarks" "🔁 Refresh PDF List")
 
-# === SHOW ROFI MENU ===
-selection=$(printf "%s\n" "${options[@]}" | $ROFI_CMD)
-[[ -z "$selection" ]] && exit 0
+    selection=$(printf "%s\n" "${options[@]}" | $ROFI_CMD -p "PDF Launcher")
+    [[ -z "$selection" ]] && exit 0
 
-# === HANDLE REFRESH OPTION ===
-if [[ "$selection" == "🔁 Refresh PDF List" ]]; then
-    refresh_cache
-    notify-send "PDF Cache Refreshed" "List updated at $(date +'%H:%M:%S') ✅"
-    exit 0
-fi
+    # === REFRESH PDF LIST ===
+    if [[ "$selection" == "🔁 Refresh PDF List" ]]; then
+        refresh_cache
+        $DUNSTIFY "PDF Cache Refreshed" "List updated at $(date +'%H:%M:%S') ✅"
+        continue
+    fi
 
-# === OPEN SELECTED FILE ===
-full_path=$(awk -F'|' -v sel="$selection" '$1 == sel {print $2}' "$CACHE_FILE")
-[[ -n "$full_path" ]] && "${PDF_VIEWER:-xdg-open}" "$full_path" &>/dev/null &
+    # === BOOKMARKS MENU ===
+    if [[ "$selection" == "🔖 View Bookmarks" ]]; then
+        mapfile -t bookmarks < <(cut -d'|' -f1 "$BOOKMARK_FILE")
+        if [[ ${#bookmarks[@]} -eq 0 ]]; then
+            $DUNSTIFY "📭 No Bookmarks Yet"
+            continue
+        fi
+
+        while true; do
+            bm_sel=$(printf "%s\n" "${bookmarks[@]}" | $ROFI_CMD -p "Bookmarks")
+            [[ -z "$bm_sel" ]] && break
+
+            full_path=$(awk -F'|' -v sel="$bm_sel" '$1 == sel {print $2}' "$BOOKMARK_FILE")
+            [[ -z "$full_path" ]] && break
+
+            bm_action=$(printf "✅ Open\n❌ Remove\n🚫 Cancel" | $ROFI_CMD -p "$bm_sel")
+            case "$bm_action" in
+                "✅ Open")
+                    "${PDF_VIEWER:-xdg-open}" "$full_path" &>/dev/null &
+                    exit 0
+                    ;;
+                "❌ Remove")
+                    grep -Fvx "$bm_sel|$full_path" "$BOOKMARK_FILE" > "${BOOKMARK_FILE}.tmp"
+                    mv "${BOOKMARK_FILE}.tmp" "$BOOKMARK_FILE"
+                    $DUNSTIFY "❌ Bookmark Removed" "$bm_sel"
+                    mapfile -t bookmarks < <(cut -d'|' -f1 "$BOOKMARK_FILE")
+                    if [[ ${#bookmarks[@]} -eq 0 ]]; then
+                        # $DUNSTIFY "📭 No Bookmarks Left"
+                        break
+                    fi
+                    ;;
+                *)
+                    break
+                    ;;
+            esac
+        done
+        continue
+    fi
+
+    # === OPEN/BOOKMARK FROM MAIN LIST ===
+    full_path=$(awk -F'|' -v sel="$selection" '$1 == sel {print $2}' "$CACHE_FILE")
+    [[ -z "$full_path" ]] && continue
+
+    is_bookmarked=$(grep -Fqx "$selection|$full_path" "$BOOKMARK_FILE" && echo yes || echo no)
+
+    if [[ "$is_bookmarked" == "yes" ]]; then
+        action=$(printf "✅ Open\n❌ Remove Bookmark\n🚫 Cancel" | $ROFI_CMD -p "$selection")
+        case "$action" in
+            "✅ Open")
+                "${PDF_VIEWER:-xdg-open}" "$full_path" &>/dev/null &
+                exit 0
+                ;;
+            "❌ Remove Bookmark")
+                grep -Fvx "$selection|$full_path" "$BOOKMARK_FILE" > "${BOOKMARK_FILE}.tmp"
+                mv "${BOOKMARK_FILE}.tmp" "$BOOKMARK_FILE"
+                $DUNSTIFY "❌ Bookmark Removed" "$selection"
+                continue
+                ;;
+            *)
+                continue
+                ;;
+        esac
+    else
+        action=$(printf "✅ Open\n🔖 Add Bookmark\n🚫 Cancel" | $ROFI_CMD -p "$selection")
+        case "$action" in
+            "✅ Open")
+                "${PDF_VIEWER:-xdg-open}" "$full_path" &>/dev/null &
+                exit 0
+                ;;
+            "🔖 Add Bookmark")
+                echo "$selection|$full_path" >> "$BOOKMARK_FILE"
+                $DUNSTIFY "🔖 Bookmark Added" "$selection"
+                continue
+                ;;
+            *)
+                continue
+                ;;
+        esac
+    fi
+done
 
