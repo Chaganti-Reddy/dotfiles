@@ -2,7 +2,8 @@
 
 udiskie --smart-tray &
 dunst -conf ~/.config/dunst/dunstrc_xorg &
-~/.config/i3/redshift.sh &
+~/.config/scripts/redshift.sh &
+~/.config/scripts/check-battery.sh &
 # nm-applet &
 # xfce4-clipman &
 greenclip daemon &
