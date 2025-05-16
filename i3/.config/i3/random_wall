@@ -25,5 +25,6 @@ cp $wall ~/.walcache/1
 pkill dunst 
 sleep 0.1
 dunst -conf $HOME/.config/dunst/dunstrc_xorg &
-betterlockscreen -u ~/.walcache/1
+sleep 0.5
 dunstify -u low -i /usr/share/icons/dunst/themes.png "Wallpaper and Theme changed"
+betterlockscreen -u ~/.walcache/1
