@@ -245,6 +245,11 @@ function mosspy() {
 }
 
 ##Exports
+#
+# echo some artwork 
+if [ -f "$HOME/.config/scripts/unix" ]; then
+  ~/.config/scripts/unix
+fi
 
 export EDITOR='/usr/bin/nvim'
 export PAGER='bat'
@@ -377,7 +382,7 @@ alias yta-best="yt-dlp --extract-audio --audio-format best --embed-thumbnail"
 alias yta-flac="yt-dlp --extract-audio --audio-format flac --embed-thumbnail"
 alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 --embed-thumbnail"
 alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --embed-thumbnail --merge-output-format mp4 "
-alias ytfzf="invidious_instance='https://vid.puffyan.us' ytfzf --rii"
+# alias ytfzf="invidious_instance='https://vid.puffyan.us' ytfzf --rii"
 alias ytfzfsub="ytfzf -fcS"
 
 #Recent Installed Packages
