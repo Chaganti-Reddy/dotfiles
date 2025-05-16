@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Find the backlight directory (handle multiple possibilities)
+# find the backlight directory (handle multiple possibilities)
 backlight_dir=$(ls /sys/class/backlight/ | head -n 1)
 
 # current brightness and max brightness
