@@ -29,6 +29,13 @@ refresh_cache() {
         echo "$filename [${display_path}]|$file"
     done | sort > "$CACHE_FILE"
     touch "$CACHE_FILE"
+
+    # 🧹 Clean stale bookmarks (those pointing to deleted files)
+    grep -F '|' "$BOOKMARK_FILE" | while IFS='|' read -r name path; do
+        [[ ! -f "$path" ]] && continue
+        echo "$name|$path"
+    done > "${BOOKMARK_FILE}.tmp"
+    mv "${BOOKMARK_FILE}.tmp" "$BOOKMARK_FILE"
 }
 
 # === INIT CACHE & BOOKMARK FILE ===
