@@ -3,8 +3,19 @@
 # Prints all batteries, their percentage remaining and an emoji corresponding
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
+# find the backlight directory (handle multiple possibilities)
+backlight_dir=$(ls /sys/class/backlight/ | head -n 1)
+
+# current brightness and max brightness
+curr_brightness=$(cat /sys/class/backlight/$backlight_dir/brightness)
+max_brightness=$(cat /sys/class/backlight/$backlight_dir/max_brightness)
+
+brightness_per=$((100 * curr_brightness / max_brightness))
+
 case $BLOCK_BUTTON in
-	3) notify-send -u low "🔋 Battery module" "🔋: discharging
+	3) dunstify -u low -i /usr/share/icons/dunst/leaf.png "🔋 Battery Moldule" "
+💡: Brightness: $((brightness_per))% 
+🔋: discharging
 🛑: not charging
 ♻: stagnant charge
 🔌: charging
