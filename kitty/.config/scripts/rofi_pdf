@@ -3,33 +3,31 @@
 # === CONFIGURATION ===
 SEARCH_DIRS=( "$HOME/Documents" "$HOME/Downloads" "/mnt/Karna/" )
 CACHE_FILE="$HOME/.cache/multi_pdf_list"
-PDF_VIEWER="okular"
+PDF_VIEWER="okular"  # fallback: will default to xdg-open if empty
 SCAN_INTERVAL=300
 ROFI_CMD="rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p PDF"
 
 # === BUILD FIND COMMAND ===
 build_find_command() {
-    local find_cmd=""
     for dir in "${SEARCH_DIRS[@]}"; do
-        [ -d "$dir" ] && find_cmd+="find \"$dir\" -type f -iname '*.pdf'; "
+        [ -d "$dir" ] && find "$dir" -type f -iname '*.pdf'
     done
-    echo "$find_cmd"
 }
 
 # === REFRESH CACHE ===
 refresh_cache() {
     echo "🔍 Refreshing PDF list..." >&2
     > "$CACHE_FILE"
-    eval "$(build_find_command)" | while read -r file; do
+    build_find_command | while IFS= read -r file; do
         filename=$(basename "$file")
         dirpath=$(dirname "$file")
         display_path="${dirpath/#$HOME/~}"
-        echo "$filename - $display_path|$file" >> "$CACHE_FILE"
-    done
+        echo "$filename [${display_path}]|$file"
+    done | sort > "$CACHE_FILE"
     touch "$CACHE_FILE"
 }
 
-# === MANUAL ARGUMENT MODE ===
+# === MANUAL REFRESH MODE ===
 if [[ "$1" == "--refresh" ]]; then
     refresh_cache
     echo "✅ PDF list manually refreshed."
@@ -46,20 +44,20 @@ last_update=$(date -r "$CACHE_FILE" +%s)
 
 # === LOAD LIST & ADD REFRESH OPTION ===
 mapfile -t options < <(cut -d'|' -f1 "$CACHE_FILE")
-options+=("🔁 --refresh-script")
+options+=("🔁 Refresh PDF List")
 
 # === SHOW ROFI MENU ===
 selection=$(printf "%s\n" "${options[@]}" | $ROFI_CMD)
-[ -z "$selection" ] && exit
+[[ -z "$selection" ]] && exit 0
 
-# === IF REFRESH OPTION SELECTED ===
-if [[ "$selection" == *"--refresh-script" ]]; then
+# === HANDLE REFRESH OPTION ===
+if [[ "$selection" == "🔁 Refresh PDF List" ]]; then
     refresh_cache
-    notify-send "PDF Cache Refreshed" "The list has been updated ✅"
+    notify-send "PDF Cache Refreshed" "List updated at $(date +'%H:%M:%S') ✅"
     exit 0
 fi
 
-# === OTHERWISE OPEN SELECTED PDF ===
-full_path=$(grep -F "$selection" "$CACHE_FILE" | cut -d'|' -f2-)
-xdg-open "$full_path" &>/dev/null &
+# === OPEN SELECTED FILE ===
+full_path=$(awk -F'|' -v sel="$selection" '$1 == sel {print $2}' "$CACHE_FILE")
+[[ -n "$full_path" ]] && "${PDF_VIEWER:-xdg-open}" "$full_path" &>/dev/null &
 
