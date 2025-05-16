@@ -126,6 +126,9 @@ bindsym $mod+Mod1+3 exec --no-startup-id mpc next && $SCRIPT/mpd_notify
 bindsym $mod+Mod1+2 exec --no-startup-id mpc prev && $SCRIPT/mpd_notify 
 bindsym $mod+Shift+Mod1+1 exec --no-startup-id mpc stop && $SCRIPT/mpd_notify && $refresh_music 
 
+# launch cava
+bindsym $mod+Shift+F11 exec --no-startup-id $termalt -T cava-f -e cava
+
 # Seek 10sec Back
 bindsym $mod+bracketleft exec --no-startup-id mpc seek -10
 # Seek 10sec Forward
@@ -228,7 +231,7 @@ mode "$mode_gaps_outer" {
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Iosevka Nerd Font 8
+font pango:Iosevka Nerd Font Bold 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -478,20 +481,20 @@ client.background       $bg
 bar {
 	position top
   status_command i3blocks 
-	font pango:Iosevka Nerd Font 11.5
+	font pango:Iosevka Nerd Font Bold 11.5
 	height 25
 	workspace_min_width 30
 	tray_output primary
-	# colors {
-	# 	focused_workspace  #4c7899 #285577 #ffffff
-	# 	background #322f3d
-	# }
-    colors {
-        background $bg 
-        statusline #ffffff
-        separator $fg
-	     	# focused_workspace $fg $text #ffffff $bg
-    }
+	colors {
+		focused_workspace  #4c7899 #285577 #ffffff
+		background #322f3d
+	}
+    # colors {
+    #     background $bg 
+    #     statusline #ffffff
+    #     separator $fg
+	   #   	# focused_workspace $fg $text #ffffff $bg
+    # }
 }
 
 ### special settings for some programs
