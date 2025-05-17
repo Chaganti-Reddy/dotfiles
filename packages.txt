@@ -259,3 +259,5 @@ python-watchdog
 kvantum-theme-materia-blur
 advcpmv
 okular
+tree-sitter-cli
+tree-sitter-bash
