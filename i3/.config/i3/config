@@ -143,6 +143,9 @@ bindsym $mod+bracketright exec --no-startup-id mpc seek +10
 # for weather term
 for_window [title="weather-f"] floating enable, resize set 1325 850, move position center
 
+# Network Connection
+for_window [title="internet-f"] floating enable, resize set 1325 850, move position center
+
 # for bmon term
 for_window [title="bmon-f"] floating enable, resize set 1325 850, move position center
 
