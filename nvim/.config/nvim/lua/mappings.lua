@@ -252,3 +252,11 @@ map("n", "<leader>tg", onedark.toggle_transparency, { desc = "Toggle Onedark tra
 
 map("n", "<leader>dc", ":CodeiumDisable<CR>", { desc = "Disable Codeium" })
 map("n", "<leader>ec", ":CodeiumEnable<CR>", { desc = "Enable Codeium" })
+
+-- Open corresponding .pdf/.html or preview
+map("n", "<leader>0", ":!opout <C-r>%<CR><CR>", { desc = "Open Output Preview" })
+
+-- Compile, make, create, do shit!
+map("n", "<leader>m", ":w! | !compiler '<C-r>%'<CR><CR>", { desc = "Compile Current File" })
+
+
