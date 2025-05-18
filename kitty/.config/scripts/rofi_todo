@@ -62,30 +62,23 @@ selected_index=$(printf '%s\n' "${menu_items[@]}" | awk -v sel="$selection" '{if
 ref="${task_refs[$selected_index]}"
 
 case "$ref" in
-    "action:add")
-        new_task=$(rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -p "New Task:")
-        [[ -z "$new_task" ]] && exit 0
-        if ! grep -q "$TODAY" "$TODO_FILE"; then
-            echo -e "\n$TODAY" >> "$TODO_FILE"
-        fi
-        awk -v d="$TODAY" -v t="- [ ] $new_task" '
-            BEGIN { added=0 }
-            {
-                print
-                if ($0 == d && !added) {
-                    added=1
-                    print t
-                }
-            }
-            END {
-                if (!added) {
-                    print d
-                    print t
-                }
-            }
+"action:add")
+    new_task=$(rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -p "New Task:")
+    [[ -z "$new_task" ]] && exit 0
+    new_entry="$TODAY"$'\n'"- [ ] $new_task"
+
+    if grep -q "^$TODAY\$" "$TODO_FILE"; then
+        awk -v date="$TODAY" -v task="- [ ] $new_task" '
+            $0 == date { print; print task; next }
+            { print }
         ' "$TODO_FILE" > "$TODO_FILE.tmp" && mv "$TODO_FILE.tmp" "$TODO_FILE"
-        exit 0
-        ;;
+    else
+        # Prepend today's date and task at the top
+        printf "%s\n\n%s" "$new_entry" "$(cat "$TODO_FILE")" > "$TODO_FILE.tmp" && mv "$TODO_FILE.tmp" "$TODO_FILE"
+    fi
+    exit 0
+    ;;
+
     "action:delete")
         task_to_delete=$(printf '%s\n' "${menu_items[@]}" | grep '^  ' | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -p "Delete Task")
         [[ -z "$task_to_delete" ]] && exit 0
