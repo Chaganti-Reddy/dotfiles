@@ -47,7 +47,7 @@ bindsym $mod+Mod1+c exec --no-startup-id $SCRIPT/toggle-picom
 # Open Bluetooth Manager
 bindsym $mod+Mod1+b exec --no-startup-id blueman-manager 
 # Open Emacs Editor
-bindsym $mod+e exec --no-startup-id emacs 
+bindsym $mod+e exec --no-startup-id emacsclient -c -a 'emacs' 
 # Lock Screen
 bindsym $mod+Mod1+l exec --no-startup-id betterlockscreen -l 
 # Open Powermenu
@@ -584,7 +584,9 @@ for_window [class="^GeoGebra$"] floating enable
 
 for_window [instance="^kbmap-float$"] floating enable, resize set 1200 728, move position center
 
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 925 750, move position center
+for_window [class="pavucontrol" instance="pavucontrol"] floating enable, resize set 925 750, move position center
+
+for_window [class="Nwg-look" instance="nwg-look"] floating enable, resize set 925 750, move position center
 
 for_window [class="realvnc-vncviewer"] floating enable, resize set 1024 768, move position center
 for_window [class="GtkFileChooserDialog"] floating enable, resize set 1180 768, move position center
