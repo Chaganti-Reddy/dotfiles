@@ -2066,6 +2066,78 @@ install_extras() {
   fi
 }
 
+setup_ssh_and_upload() {
+    echo "📧 Enter the email you want to attach to your SSH key (GitHub/GitLab account email):"
+    read -p "Email: " ssh_email
+
+    KEY_PATH="$HOME/.ssh/id_ed25519"
+    KEY_NAME="Karna-Key-$(date +%Y%m%d%H%M%S)"
+
+    echo "🔐 Starting SSH key setup..."
+
+    # Step 1: Generate SSH key if not exists
+    if [[ -f "$KEY_PATH" ]]; then
+        echo "✅ SSH key already exists at $KEY_PATH"
+    else
+        echo "🔑 No SSH key found. Generating new SSH key with email: $ssh_email"
+        ssh-keygen -t ed25519 -C "$ssh_email" -f "$KEY_PATH" -N ""
+    fi
+
+    echo
+    echo "📋 Your SSH Public Key (id_ed25519.pub):"
+    echo "------------------------------------------------------"
+    cat "$KEY_PATH.pub"
+    echo "------------------------------------------------------"
+    echo
+
+    # Step 2: Upload to GitHub?
+    read -p "🌐 Do you want to upload this key to GitHub? (y/N): " add_github
+    if [[ "$add_github" =~ ^[Yy]$ ]]; then
+        read -p "🔐 Enter your GitHub token (with write:public_key scope): " github_token
+        echo "☁️ Uploading SSH key to GitHub..."
+
+        response=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token $github_token" \
+            --data "{\"title\":\"$KEY_NAME\",\"key\":\"$(cat $KEY_PATH.pub)\"}" \
+            https://api.github.com/user/keys)
+
+        if [[ "$response" == "201" ]]; then
+            echo "✅ GitHub SSH key added successfully."
+        else
+            echo "❌ GitHub upload failed with response code: $response"
+        fi
+    fi
+
+    # Step 3: Upload to GitLab?
+    read -p "🦊 Do you want to upload this key to GitLab? (y/N): " add_gitlab
+    if [[ "$add_gitlab" =~ ^[Yy]$ ]]; then
+        read -p "🔐 Enter your GitLab token (with api scope): " gitlab_token
+        echo "☁️ Uploading SSH key to GitLab..."
+
+        response=$(curl -s -o /dev/null -w "%{http_code}" -H "PRIVATE-TOKEN: $gitlab_token" \
+            --data-urlencode "title=$KEY_NAME" \
+            --data-urlencode "key=$(cat $KEY_PATH.pub)" \
+            https://gitlab.com/api/v4/user/keys)
+
+        if [[ "$response" == "201" ]]; then
+            echo "✅ GitLab SSH key added successfully."
+        elif [[ "$response" == "403" ]]; then
+            echo "❌ GitLab upload failed: Permission denied (403)."
+            echo "💡 Make sure your token has the 'api' scope."
+        else
+            echo "❌ GitLab upload failed. HTTP code: $response"
+        fi
+    fi
+
+    # Step 4: Add SSH key to ssh-agent
+    echo
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add "$KEY_PATH"
+    echo "🗝️ SSH key added to ssh-agent."
+
+    echo
+    echo "🎉 SSH setup complete!"
+}
+
 # -------------------------- Main Program --------------------------
 clear
 echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
@@ -2082,7 +2154,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   install_dependencies "${selected_helper:-paru}"
   install_shell y
   setup_gpg_pass y y
-  # install_i3 y
+  install_i3 y
   install_hyprland y
   install_miniconda y 
   install_kvm y
@@ -2091,12 +2163,13 @@ if [[ "$(whoami)" == "karna" ]]; then
   install_dev_tools 3 6 7 9 10 16 
   install_extra_tools 1 2 3 4
   install_fonts
-  # install_ollama y
+  install_ollama y
   # install_pip_packages y 
   install_grub_theme y
   install_display_manager y 1
   download_wallpapers y
   install_extras y y
+  setup_ssh_and_upload
 else
   check_privileges
   setup_user_dirs
