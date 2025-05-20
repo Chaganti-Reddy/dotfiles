@@ -1699,7 +1699,7 @@ install_pip_packages() {
       "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4"
       "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
       "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
-      "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow" "sentence-transformers" "langchain-ollama"
+      "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow" "sentence-transformers" "langchain-ollama" "pymupdf"
     )
 
     # Install each package if it's not already installed
