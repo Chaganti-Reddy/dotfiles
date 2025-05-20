@@ -127,5 +127,5 @@ with open(CACHE_FILE, 'w') as f:
 
             f.write("\n")
     else:
-        f.write(color(f"\n\nAll goals completed for {current_year}!", "green") + "\n")
+        f.write(color(f"\nNo goals for {current_year} yet!", "green") + "\n")
 
