@@ -110,7 +110,7 @@ for section, data in current_sections.items():
 with open(CACHE_FILE, 'w') as f:
     if pending_priorities:
         top = min(pending_priorities.keys())
-        f.write(f"\n{current_year} Learning Goals:\n\n")
+        f.write(f"\n{current_year} Learning Goals:\n")
 
         for section in pending_priorities[top]:
             prio_stars = current_sections[section]["priority"]
