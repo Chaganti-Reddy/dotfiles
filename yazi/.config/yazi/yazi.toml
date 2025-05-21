@@ -42,7 +42,8 @@ open = [
 	{ run = 'termux-open "$1"',             desc = "Open", for = "android" },
 ]
 zathura = [
-    { run = 'zathura "$1"', desc = "Zathura", for = "unix" },
+    { run = 'nohup okular "$1" >/dev/null 2>&1 &', desc = "Okular", for = "unix" },
+    # { run = 'nohup $HOME/.local/bin/zathura "$1" >/dev/null 2>&1 &', desc = "Zathura", for = "unix" },
 ]
 reveal = [
 	{ run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
