@@ -261,3 +261,4 @@ advcpmv
 okular
 tree-sitter-cli
 tree-sitter-bash
+libinput-gestures
