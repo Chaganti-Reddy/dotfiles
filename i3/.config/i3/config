@@ -86,7 +86,7 @@ bindsym F11 [class="chess-nativefier-703820"] scratchpad show, move position 181
 
 for_window [class="kdeconnect.app"] floating enable, move position center
 # load arandr in floating mode
-for_window [class="Arandr"] floating enable, resize set 925 650, move position center
+for_window [class="Arandr"] floating enable, resize set 925 65, move position center
 
 # Launch calculator
 for_window [title="math-f"] floating enable
@@ -264,6 +264,8 @@ exec_always --no-startup-id xset s 600 600
 exec_always --no-startup-id xset +dpms dpms 600 600 600  
 # Run xss-lock with betterlockscreen
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l
+
+exec_always libinput-gestures-setup start
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
