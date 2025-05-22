@@ -26,6 +26,7 @@ window#waybar {
 #battery,
 #custom-powermenu,
 #custom-cpuinfo,
+#custom-weather,
 #bluetooth,
 #memory,
 #backlight,
@@ -48,6 +49,7 @@ window#waybar {
 #cpu:hover,
 #custom-powermenu:hover,
 #custom-cpuinfo:hover,
+#custom-weather:hover,
 #memory:hover,
 #battery:hover,
 #backlight:hover,
@@ -189,6 +191,11 @@ window#waybar {
     color: @foreground;
 }
 
+#custom-weather {
+    background: @color0;
+    color: @foreground;
+}
+
 #custom-cpuinfo {
     background: @color0;
     color: @foreground;
@@ -251,3 +258,4 @@ window#waybar {
 /*     color: @background; */
 /*     box-shadow: 0px 0px 4px @color12; */
 /* } */
+
