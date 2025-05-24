@@ -79,8 +79,6 @@ sudo make clean install
 
 16. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder. And also if you want to get the new empty tab instead of blank page in Zen then goto `about:config` and set `zen.urlbar.replace-newtab` to false.
 
-17. If you want my DWM config then there are seperate repos in my [Github](https://github.com/Chaganti-Reddy/) account, just use them and you can find scripts here itself in `dotfiles/DWMScripts folder`. I'm a bit lazy to code the installation process in `install.sh`, so please enjoy from there.
-
 ## Configuration
 
 You can customize the settings and configurations in the various files within this repository to fit your preferences. Many of these files include comments explaining their purpose.
