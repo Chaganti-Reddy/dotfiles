@@ -628,6 +628,9 @@ install_dwm() {
 
   install_waldl
 
+  sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions/dwm.desktop
+  sudo cp ~/dotfiles/dwm/.dwm/startdwm.sh /usr/local/bin/startdwm.sh
+
   success "DWM setup complete. Proceeding to next modules..."
   sleep 1
 }
@@ -2200,7 +2203,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   install_display_manager y 1
   download_wallpapers y
   install_extras y y
-  setup_ssh_and_upload
+  #setup_ssh_and_upload
 else
   check_privileges
   setup_user_dirs
