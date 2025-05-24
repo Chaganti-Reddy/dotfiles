@@ -5,14 +5,11 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-# NOTE: I am adding an I3Binds scripts which reads comments from keybinds and display in yad so please place readable comments before line of each binding.
+# NOTE: I am adding an I3Binds script which reads comments from keybinds and display in yad so please place readable comments before line of each binding.
 
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-client.focused 			#526f9e #526f9e #526f9e #526f9e
-client.unfocused 		#3b4252 #3b4252 #3b4252 #3b4252
-
 # multi-monitor stuff
 # moves the current workspace from one monitor to the next
 # bindsym $mod+Ctrl+Right move workspace to output right
@@ -27,7 +24,7 @@ set $SCRIPT ~/.config/i3/scripts/
 set $ROFI rofi -show drun -modi drun -show-icons -theme ~/.config/rofi/dt-center.rasi
 set $screenshot-folder ~/Pictures/Screenshots
 
-#### Assign workspaces
+#### KeyBinds
 # Switch to urgent window
 bindsym $mod+g [urgent=latest] focus 
 # Toggle between recent two workspaces
