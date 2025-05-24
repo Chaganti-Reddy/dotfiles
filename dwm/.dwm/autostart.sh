@@ -58,10 +58,6 @@ xsetroot -cursor_name left_ptr
 ~/.dwm/scripts/mouse &
 ~/.config/scripts/check-battery.sh &
 
-if [ -z "$(pgrep xfce4-clipman)" ]; then
-    xfce4-clipman &
-fi
-
 # Run ollama serve in the background silently.
 ollama serve > /dev/null 2>&1 &
 
