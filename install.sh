@@ -579,7 +579,9 @@ install_i3() {
   done
 
   stow_with_check "$HOME/dotfiles/i3/.config/i3" "$HOME/.config/i3" "i3"
+  stow_with_check "$HOME/dotfiles/i3blocks/.config/i3blocks/" "$HOME/.config/i3blocks" "i3blocks"
   stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+  stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st/" "st"
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
   stow_with_check "$HOME/dotfiles/greenclip/.config/greenclip.toml" "$HOME/.config/greenclip.toml" "greenclip"
 
@@ -589,6 +591,46 @@ install_i3() {
   sleep 1
 }
 
+install_dwm() {
+  local install="${1:-}"
+  if [[ ! "$install" =~ ^[Yy]$ ]]; then
+    install=$(prompt "Would you like to install DWM and its dependencies? (y/n)" "y")
+  fi
+
+  if [[ ! "$install" =~ ^[Yy]$ ]]; then
+    warning "DWM installation skipped. Proceeding with the setup..."
+    return
+  fi
+
+  info "DWM installation will begin now..."
+
+  local packages=(
+    "xcompmgr"
+    "xorg-xrdb"
+    "xwallpaper"
+    "picom"
+    "kitty"
+    "redshift"
+    "conky"
+    "betterlockscreen"
+  )
+
+  for package in "${packages[@]}"; do
+    install_package "$package" "$package" "paru -S --noconfirm --needed"
+  done
+
+  stow_with_check "$HOME/dotfiles/dwm/.config/dwm" "$HOME/.config/dwm" "dwm"
+  stow_with_check "$HOME/dotfiles/dwm/.dwm" "$HOME/.dwm" "DWM scripts"
+  stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+  stow_with_check "$HOME/dotfiles/st/.config/st" "$HOME/.config/st" "st"
+  stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+  stow_with_check "$HOME/dotfiles/greenclip/.config/greenclip.toml" "$HOME/.config/greenclip.toml" "greenclip"
+
+  install_waldl
+
+  success "DWM setup complete. Proceeding to next modules..."
+  sleep 1
+}
 
 install_qtile() {
   local install="${1:-}"
@@ -662,6 +704,7 @@ install_sway() {
     "swaylock"
     "swayidle"
     "waybar"
+    # "i3blocks"
     "xorg-xwayland"
     "rofi-wayland"
     "kitty"
@@ -697,6 +740,7 @@ install_sway() {
 
   # Stow relevant configs
   stow_with_check "$HOME/dotfiles/sway/.config/sway/" "$HOME/.config/sway/" "sway"
+  # stow_with_check "$HOME/dotfiles/i3blocks/.config/i3blocks/" "$HOME/.config/i3blocks" "i3blocks"
   stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
 
@@ -718,7 +762,6 @@ install_sway() {
   success "Sway setup complete. Proceeding to next modules..."
   sleep 1
 }
-
 
 install_hyprland() {
   local install="${1:-}"
@@ -785,25 +828,10 @@ install_hyprland() {
     stow_folder="hyprland_gen"
   fi
 
-  if [[ ! -d "$HOME/.config/st" ]]; then
-    if ! command -v st &>/dev/null && [[ ! -f /usr/local/bin/st ]]; then
-      info "Installing st (suckless terminal)..."
-      cd ~/.config/
-      git clone https://github.com/Chaganti-Reddy/st.git
-      cd st
-      sudo make clean install
-      cd ~/dotfiles/
-      success "st installed successfully."
-    else
-      warning "st appears to be already installed. Skipping build."
-    fi
-  else
-    warning "~/.config/st already exists. Skipping clone and build."
-  fi
-
   if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
     stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+    stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
     success "Hyprland configuration has been set up."
   else
@@ -2015,7 +2043,7 @@ install_extras() {
 
       # Remove existing configurations for Karna
       rm -rf ~/.bashrc
-      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis ncmpcpp_karna newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit Okular
+      stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit Okular
 
       # Copy essential system files for karna user
       sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
@@ -2043,7 +2071,7 @@ install_extras() {
 
       # Remove existing configurations for non-Karna users
       rm -rf ~/.bashrc
-      stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv ncmpcpp newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt sxiv Templates themes Thunar xsettingsd zathura
+      stow bashrc BTOP dunst neofetch flameshot gtk-2 gtk-3 Kvantum mpd mpv rmpc newsboat NWG pandoc pavucontrol qt6ct qutebrowser ranger redyt sxiv Templates themes Thunar xsettingsd zathura
 
       # Ask user to confirm stowing nvim_gen
       read -p "Would you like to stow nvim_gen? (y/n): " stow_nvim_gen
@@ -2156,8 +2184,9 @@ if [[ "$(whoami)" == "karna" ]]; then
   install_dependencies "${selected_helper:-paru}"
   install_shell y
   setup_gpg_pass y y
-  install_i3 y
-  install_hyprland y
+  # install_i3 y
+  install_dwm y
+  # install_hyprland y
   install_miniconda y 
   install_kvm y
   install_browser 1 5
@@ -2166,7 +2195,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   install_extra_tools 1 2 3 4
   install_fonts
   install_ollama y
-  # install_pip_packages y 
+  install_pip_packages y 
   install_grub_theme y
   install_display_manager y 1
   download_wallpapers y
