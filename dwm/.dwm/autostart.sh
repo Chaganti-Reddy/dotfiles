@@ -15,6 +15,7 @@ numlockx &
 
 # Network manager applet
 nm-applet &
+blueman-applet &
 
 # Dunst notification daemon
 if [[ `pidof dunst` ]]; then
