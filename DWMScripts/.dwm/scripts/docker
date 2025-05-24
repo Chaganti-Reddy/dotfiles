@@ -1,5 +1,0 @@
-#!/bin/bash 
-
-# this script is to open docker desktop from opt folder
-
-/opt/docker-desktop/bin/docker-desktop &
