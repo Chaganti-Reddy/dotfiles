@@ -585,6 +585,8 @@ install_i3() {
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
   stow_with_check "$HOME/dotfiles/greenclip/.config/greenclip.toml" "$HOME/.config/greenclip.toml" "greenclip"
 
+  cd ~/.config/st && sudo make clean install
+
   install_waldl
 
   success "i3 setup complete. Proceeding to next modules..."
@@ -630,6 +632,11 @@ install_dwm() {
 
   sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions/dwm.desktop
   sudo cp ~/dotfiles/dwm/.dwm/startdwm.sh /usr/local/bin/startdwm.sh
+
+  cd ~/.config/dwm/dwm/ && rm config.h && sudo make clean install 
+  cd ~/.config/dwm/dmenu/ && sudo make clean install
+  cd ~/.config/dwm/slstatus/ && rm config.h && sudo make clean install 
+  cd ~/.config/st && sudo make clean install
 
   success "DWM setup complete. Proceeding to next modules..."
   sleep 1
@@ -840,6 +847,8 @@ install_hyprland() {
   else
     warning "Hyprland configuration file already exists. Skipping stow."
   fi
+
+  cd ~/.config/st && sudo make clean install
 
   # Define source and target using $HOME
   SOURCE="$HOME/.cache/wal/colors-waybar.css"
