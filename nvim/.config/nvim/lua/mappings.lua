@@ -136,7 +136,9 @@ end, { desc = "buffer close" })
 -- Comment
 -- map("n", "<C-/>", "gcc", { desc = "toggle comment", remap = true })
 map('n', '<C-/>', require('Comment.api').toggle.linewise.current, opts)
+map('n', '<C-_>', require('Comment.api').toggle.linewise.current, opts)
 map('v', '<C-/>', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
+map('v', '<C-_>', "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
 -- map("v", "<C-/>", "gc", { desc = "toggle comment", remap = true })
 
 -- nvimtree
