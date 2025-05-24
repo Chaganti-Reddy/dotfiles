@@ -121,7 +121,8 @@ thunar-volman
 thunar-vcs-plugin 
 flameshot 
 playerctl 
-ncmpcpp 
+# ncmpcpp 
+rmpc
 mpd 
 mpv 
 mpc 
@@ -150,7 +151,7 @@ hugo
 hunspell 
 hunspell-en_us 
 imagemagick 
-ueberzug 
+ueberzugpp
 luacheck 
 yt-dlp 
 mlocate 
