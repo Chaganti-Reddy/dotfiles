@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# Script name: dm-colpick
+# Description: Copy a color to your clipboard using dmenu, change the colors if needed
+# Dependencies: dmenu, xclip
+
+# Set with the flags "-e", "-o pipefail" cause the script to fail
+# if certain things happen, which is a good thing.  Otherwise, we can
+# get hidden bugs that are hard to discover.
+set -euo pipefail
+
+declare -A colpick_list
+colpick_list[black]="#282a36"
+colpick_list[red]="#ff5555"
+colpick_list[green]="#5af78e"
+colpick_list[yellow]="#f1fa8c"
+colpick_list[blue]="#57c7ff"
+colpick_list[magenta]="#ff6ac1"
+colpick_list[cyan]="#8be9fd"
+colpick_list[white]="#f1f1f0"
+colpick_list[orange]="#ffb86c"
+colpick_list[purple]="#bd9cf9"
+
+cp2cb() {
+  case "$XDG_SESSION_TYPE" in
+    'x11') xclip -r -selection clipboard;;
+    'wayland') wl-copy -n;; 
+    *) err "Unknown display server";; 
+  esac
+}
+
+main() {
+  # As this is loaded from other file it is technically not defined
+  # shellcheck disable=SC2154
+  selected="$(printf '%s\n' "${!colpick_list[@]}" | dmenu -i -p "color:" "$@")"
+  [ -z "${selected}" ] && exit 1
+  # echo "${colpick_list["${selected}"]}" | cp2cb
+  echo "${colpick_list["${selected}"]}" | xclip
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

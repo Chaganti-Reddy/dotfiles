@@ -1,0 +1,22 @@
+--- dwm.c
++++ dwm.c
+@@ -956,13 +958,18 @@ grabkeys(void)
+ 		unsigned int i, j;
+ 		unsigned int modifiers[] = { 0, LockMask, numlockmask, numlockmask|LockMask };
+ 		KeyCode code;
++		KeyCode chain;
+ 
+ 		XUngrabKey(dpy, AnyKey, AnyModifier, root);
+ 		for (i = 0; i < LENGTH(keys); i++)
+-			if ((code = XKeysymToKeycode(dpy, keys[i].keysym)))
++			if ((code = XKeysymToKeycode(dpy, keys[i].keysym))) {
++				if (keys[i].chain != -1 &&
++					((chain = XKeysymToKeycode(dpy, keys[i].chain))))
++						code = chain;
+ 				for (j = 0; j < LENGTH(modifiers); j++)
+ 					XGrabKey(dpy, code, keys[i].mod | modifiers[j], root,
+ 						True, GrabModeAsync, GrabModeAsync);
++			}
+ 	}
+ }
+ 

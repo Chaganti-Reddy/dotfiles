@@ -1,0 +1,3 @@
+#!/bin/bash
+
+paplay $HOME/.dwm/sounds/lol-not.ogg

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Define options for the power menu
+options="Lock\nLogout\nSuspend\nRestart\nShutdown"
+
+# Prompt the user with dmenu
+selected_option=$(echo -e "$options" | dmenu -i -l 5 -p "Power Menu:")
+
+# Execute the selected option
+case "$selected_option" in
+    "Shutdown")
+        echo "$(uptime -p) from $(uptime -s) till $(date '+%Y-%m-%d %H:%M:%S')...  Shutting Down" >> ~/dotfiles/Uptime.log
+        systemctl poweroff
+        ;;
+    "Restart")
+        echo "$(uptime -p) from $(uptime -s) till $(date '+%Y-%m-%d %H:%M:%S')...  Rebooting" >> ~/dotfiles/Uptime.log
+        systemctl reboot
+        ;;
+    "Suspend")
+        systemctl suspend
+        ;;
+
+    "Lock")
+        betterlockscreen -l -q
+        ;;
+    "Logout")
+        pkill -KILL -u "$USER"
+        ;;
+    *)
+        echo "Invalid option selected."
+        ;;
+esac
+
