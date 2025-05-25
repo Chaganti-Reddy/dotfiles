@@ -44,6 +44,8 @@ fi
 # slstatus (or dwmblocks)
 slstatus &
 
+greenclip daemon &
+
 /usr/bin/udiskie --smart-tray &
 # /usr/bin/gnome-keyring-daemon --start &
 
