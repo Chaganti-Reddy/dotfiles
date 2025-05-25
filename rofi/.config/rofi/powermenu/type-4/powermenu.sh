@@ -98,7 +98,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-	  hyprlock &	
+      betterlockscreen -l
         ;;
     $suspend)
 		run_cmd --suspend
