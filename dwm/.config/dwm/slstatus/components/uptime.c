@@ -18,7 +18,7 @@ const char *
 uptime(const char *unused)
 {
 	char warn_buf[256];
-	uintmax_t h, m;
+	uintmax_t h, m, s;
 	struct timespec uptime;
 
 	if (clock_gettime(UPTIME_FLAG, &uptime) < 0) {
@@ -29,6 +29,8 @@ uptime(const char *unused)
 
 	h = uptime.tv_sec / 3600;
 	m = uptime.tv_sec % 3600 / 60;
+  // secons
+  s = uptime.tv_sec % 60;
 
-	return bprintf("%juh %jum", h, m);
+	return bprintf("%juh %jum %jus", h, m, s);
 }
