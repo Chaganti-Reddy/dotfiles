@@ -11,7 +11,7 @@ done
 # now select a random wallpaper from the list
 wall=$(echo $wall | tr " " "\n" | shuf -n 1)
 
-echo "$wall"
+echo "$wall" > /tmp/wall.log
 
 xwallpaper --zoom $wall
 
