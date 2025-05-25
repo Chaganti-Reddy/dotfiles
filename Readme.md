@@ -97,13 +97,13 @@ For a better understanding of how my configuration looks, check out the screensh
 
 The main program I use for my daily life:
 
-- **Window Manager**: I3, HyprLand
+- **Window Manager**: DWM
 - **Terminal**: St, Kitty
 - **Shell**: Zsh
 - **Editor**: Neovim, Emacs
 - **File Manager**: Yazi, Thunar
 - **Browser**: QuteBrowser, Zen Browser 
-- **Music Player**: Mpd + Ncmpcpp
+- **Music Player**: Mpd + RMPC
 - **Video Player**: MPV
 - **PDF Viewer**: Zathura
 - **Image Viewer**: sxiv
@@ -113,8 +113,8 @@ The main program I use for my daily life:
 - **System Monitor**: Btop
 - **Music Downloader**: Yt-dlp
 - **Youtube Player**: Mpv + Ytfzf
-- **Clipboard Manager**: xfce4-clipman, clipse
-- **Screen Recorder**: OBS
+- **Clipboard Manager**: GreenClip
+- **Screen Recorder**: Rofi Script (FFMPEG)
 - **IDE**: Neovim/Emacs
 - **Torrent Client**: Webtorrent, Peerflix
 - **Office Suite**: LibreOffice
