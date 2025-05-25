@@ -1,0 +1,11 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<channel name="xfce4-terminal" version="1.0">
+  <property name="misc-copy-on-select" type="bool" value="true"/>
+  <property name="misc-cursor-blinks" type="bool" value="true"/>
+  <property name="scrolling-unlimited" type="bool" value="true"/>
+  <property name="font-use-system" type="bool" value="false"/>
+  <property name="font-name" type="string" value="Iosevka Nerd Font Bold 13"/>
+  <property name="color-use-theme" type="bool" value="false"/>
+  <property name="misc-confirm-close" type="bool" value="false"/>
+</channel>
