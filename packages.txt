@@ -81,6 +81,7 @@ xclip
 xsel 
 pandoc 
 python-pywal 
+python-flake8
 glow 
 xarchiver 
 qemu-full
