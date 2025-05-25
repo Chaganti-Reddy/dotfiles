@@ -65,6 +65,7 @@ static const Rule rules[] = {
 	{ "TelegramDesktop",      NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "Pavucontrol",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "Blueman-manager",      NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     600,    600,    -1 },
+	{ "Viewnior",             NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     850,    700,    -1 },
 	{ "baobab",               NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "qBittorrent",          NULL,           NULL,           1 << 5,       0,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "pinentry-qt",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
@@ -147,6 +148,7 @@ static const char *emacs[] = { "emacsclient", "-c", "-a", "emacs", NULL };
 static const Key keys[] = {
 	/* modifier                   chain    key        function        argument */
 	{ MODKEY,                        -1,   XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,              -1,   XK_d,      spawn,          SHCMD("rofi -theme ~/.config/rofi/dt-center.rasi -show drun") },
 	{ MODKEY,                        -1,   XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                        -1,   XK_b,      togglebar,      {0} },
 	{ MODKEY,                        -1,   XK_j,      focusstack,     {.i = +1 } },
@@ -270,8 +272,8 @@ static const Key keys[] = {
   { MODKEY,                         -1, XK_F8,                  spawn,  SHCMD("gromit-mpx -z") },
 
   // Example keychain binds
-	{ MODKEY,                       XK_a,       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_a,       XK_t,      spawn,          {.v = termcmd } },
+	// { MODKEY,                       XK_a,       XK_d,      spawn,          {.v = dmenucmd } },
+	// { MODKEY,                       XK_a,       XK_t,      spawn,          {.v = termcmd } },
 };
 
 /* button definitions */
