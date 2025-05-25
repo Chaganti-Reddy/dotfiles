@@ -582,6 +582,7 @@ install_i3() {
   stow_with_check "$HOME/dotfiles/i3blocks/.config/i3blocks/" "$HOME/.config/i3blocks" "i3blocks"
   stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
   stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st/" "st"
+  stow_with_check "$HOME/dotfiles/conky/.config/conky/" "$HOME/.config/conky/" "conky"
   stow_with_check "$HOME/dotfiles/betterlockscreen/.config/betterlockscreen/" "$HOME/.config/betterlockscreen/" "lockscreen"
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
   stow_with_check "$HOME/dotfiles/greenclip/.config/greenclip.toml" "$HOME/.config/greenclip.toml" "greenclip"
@@ -626,6 +627,7 @@ install_dwm() {
   stow_with_check "$HOME/dotfiles/dwm/.dwm" "$HOME/.dwm" "DWM scripts"
   stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
   stow_with_check "$HOME/dotfiles/st/.config/st" "$HOME/.config/st" "st"
+  stow_with_check "$HOME/dotfiles/conky/.config/conky/" "$HOME/.config/conky/" "conky"
   stow_with_check "$HOME/dotfiles/betterlockscreen/.config/betterlockscreen/" "$HOME/.config/betterlockscreen/" "lockscreen"
   stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
   stow_with_check "$HOME/dotfiles/greenclip/.config/greenclip.toml" "$HOME/.config/greenclip.toml" "greenclip"
@@ -2068,7 +2070,7 @@ install_extras() {
       sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
 
       # Install custom tools for karna
-      sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst > kunst && chmod +x kunst && sudo mv kunst /usr/bin/
+      # sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst > kunst && chmod +x kunst && sudo mv kunst /usr/bin/
 
       # cargo install leetcode-cli
 
@@ -2227,6 +2229,7 @@ else
   install_shell
   setup_gpg_pass
   install_i3
+  install_dwm
   install_qtile
   install_hyprland
   install_miniconda
