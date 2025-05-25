@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+
+device=$(ls /dev/video* 2>/dev/null | head -n 1)
+
+if [ -n "$device" ]; then
+    mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency \
+        --input-conf=/dev/null --no-config --title=webcam --aid=no --sid=no \
+        "$device" >/dev/null 2>&1
+else
+    notify-send "Cannot open webcam."
+fi
