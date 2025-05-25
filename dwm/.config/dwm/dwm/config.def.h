@@ -225,23 +225,23 @@ static const Key keys[] = {
   { MODKEY|Mod1Mask ,              -1,   XK_l,      spawn,          SHCMD("betterlockscreen -l") },
 
   // Volume Keys 
-	{ 0,                             -1,   XF86XK_AudioRaiseVolume,  spawn,  SHCMD("pamixer --allow-boost -i 3 && ~/.dwm/scripts/notify-progress audio") },
-	{ 0,                             -1,   XF86XK_AudioLowerVolume,  spawn,  SHCMD("pamixer --allow-boost -d 3 && ~/.dwm/scripts/notify-progress audio") },
-	{ 0,                             -1,   XF86XK_AudioMute,         spawn,  SHCMD("pamixer -t && ~/.dwm/scripts/notify-progress muted") },
+	{ 0,                             -1,   XF86XK_AudioRaiseVolume,  spawn,  SHCMD("pamixer --allow-boost -i 3 && ~/.dwm/notify-progress audio") },
+	{ 0,                             -1,   XF86XK_AudioLowerVolume,  spawn,  SHCMD("pamixer --allow-boost -d 3 && ~/.dwm/notify-progress audio") },
+	{ 0,                             -1,   XF86XK_AudioMute,         spawn,  SHCMD("pamixer -t && ~/.dwm/notify-progress muted") },
   { MODKEY|Mod1Mask,               -1,   XK_F9,                    spawn,  SHCMD("pactl set-source-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 
   // Brighntess Keys
-  { 0,                             -1,   XF86XK_MonBrightnessUp,   spawn,  SHCMD("brightnessctl s 5%+ && ~/.dwm/scripts/notify-progress brightness") },
-  { 0,                             -1,   XF86XK_MonBrightnessDown, spawn,  SHCMD("brightnessctl s 5%- && ~/.dwm/scripts/notify-progress brightness") },
+  { 0,                             -1,   XF86XK_MonBrightnessUp,   spawn,  SHCMD("brightnessctl s 5%+ && ~/.dwm/notify-progress brightness") },
+  { 0,                             -1,   XF86XK_MonBrightnessDown, spawn,  SHCMD("brightnessctl s 5%- && ~/.dwm/notify-progress brightness") },
 
   // Music Keys 
-  { 0,                             -1,   XF86XK_AudioPlay,         spawn,  SHCMD("mpc toggle && ~/.dwm/scripts/mpd_notify") },
-  { 0,                             -1,   XF86XK_AudioNext,         spawn,  SHCMD("mpc next && ~/.dwm/scripts/mpd_notify") },
-  { 0,                             -1,   XF86XK_AudioPrev,         spawn,  SHCMD("mpc prev && ~/.dwm/scripts/mpd_notify") },
-  { MODKEY|Mod1Mask,               XK_m, XK_t,                     spawn,  SHCMD("mpc toggle && ~/.dwm/scripts/mpd_notify") },
-  { MODKEY|Mod1Mask,               XK_m, XK_n,                     spawn,  SHCMD("mpc next && ~/.dwm/scripts/mpd_notify") },
-  { MODKEY|Mod1Mask,               XK_m, XK_p,                     spawn,  SHCMD("mpc prev && ~/.dwm/scripts/mpd_notify") },
-  { MODKEY|Mod1Mask,               XK_m, XK_s,                     spawn,  SHCMD("mpc stop && ~/.dwm/scripts/mpd_notify") },
+  { 0,                             -1,   XF86XK_AudioPlay,         spawn,  SHCMD("mpc toggle && ~/.dwm/mpd_notify") },
+  { 0,                             -1,   XF86XK_AudioNext,         spawn,  SHCMD("mpc next && ~/.dwm/mpd_notify") },
+  { 0,                             -1,   XF86XK_AudioPrev,         spawn,  SHCMD("mpc prev && ~/.dwm/mpd_notify") },
+  { MODKEY|Mod1Mask,               XK_m, XK_t,                     spawn,  SHCMD("mpc toggle && ~/.dwm/mpd_notify") },
+  { MODKEY|Mod1Mask,               XK_m, XK_n,                     spawn,  SHCMD("mpc next && ~/.dwm/mpd_notify") },
+  { MODKEY|Mod1Mask,               XK_m, XK_p,                     spawn,  SHCMD("mpc prev && ~/.dwm/mpd_notify") },
+  { MODKEY|Mod1Mask,               XK_m, XK_s,                     spawn,  SHCMD("mpc stop && ~/.dwm/mpd_notify") },
   { MODKEY,                        -1,   XK_bracketleft,           spawn,  SHCMD("mpc seek -10") },
   { MODKEY,                        -1,   XK_bracketright,          spawn,  SHCMD("mpc seek +10") },
   
@@ -255,9 +255,9 @@ static const Key keys[] = {
   { MODKEY,                        XK_o, XK_p,                  spawn,  SHCMD("~/.config/scripts/rofi_pdf &") },
   { MODKEY,                        XK_o, XK_m,                  spawn,  SHCMD("~/.config/scripts/rofi_beats &") },
   { MODKEY,                        XK_o, XK_l,                  spawn,  SHCMD("~/.config/scripts/rofi_learn &") },
-  { MODKEY|ShiftMask,               -1,  XK_o,                  spawn,  SHCMD("~/.dwm/scripts/ocr-script &> /tmp/ocr-file.log #&& notify-send 'OCR script' 'select text to be copied'") },
+  { MODKEY|ShiftMask,               -1,  XK_o,                  spawn,  SHCMD("~/.dwm/ocr-script &> /tmp/ocr-file.log #&& notify-send 'OCR script' 'select text to be copied'") },
   { MODKEY|ShiftMask,               -1,  XK_e,                  spawn,  SHCMD("~/.config/rofi/applets/bin/emoji.sh &") },
-  { MODKEY,                         -1,  XK_F7,                 spawn,  SHCMD("~/.dwm/scripts/drecord &") },
+  { MODKEY,                         -1,  XK_F7,                 spawn,  SHCMD("~/.dwm/drecord &") },
   { MODKEY|ShiftMask,               -1,  XK_p,                  spawn,  SHCMD("~/.config/rofi/powermenu/type-4/powermenu.sh &") },
 
   // Gromit Keys 
