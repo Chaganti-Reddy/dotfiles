@@ -1895,7 +1895,7 @@ install_display_manager() {
 
       3)
         info "Installing LightDM..."
-        paru -S --noconfirm --needed lightdm lightdm-gtk-greeter
+        paru -S --noconfirm --needed lightdm web-greeter
 
         info "Enabling LightDM to start at boot..."
         sudo systemctl enable lightdm.service
