@@ -2068,6 +2068,7 @@ install_extras() {
       sudo cp ~/dotfiles/Extras/Extras/etc/environment /etc/environment
       sudo cp ~/dotfiles/Extras/Extras/etc/mpd.conf /etc/mpd.conf
       sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
+      sudo cp ~/dotfiles/Extras/Extras/etc/systemd/system/ollama.service /etc/systemd/system/ollama.service
 
       # Install custom tools for karna
       # sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst > kunst && chmod +x kunst && sudo mv kunst /usr/bin/
