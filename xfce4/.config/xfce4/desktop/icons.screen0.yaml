@@ -29,11 +29,11 @@ configs:
     "/home/karna":
       row: 0
       col: 0
-    "e109dc2c-a22a-46ff-82ef-7262e12c134e":
-      row: 4
-      col: 0
-      last_seen: 1748109961354187
     "36515bbf-fb8f-42b7-bed2-72ca9e5ba1ed":
       row: 3
       col: 0
       last_seen: 1748109961347324
+    "e109dc2c-a22a-46ff-82ef-7262e12c134e":
+      row: 4
+      col: 0
+      last_seen: 1748109961354187
