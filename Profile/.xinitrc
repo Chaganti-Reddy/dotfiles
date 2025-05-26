@@ -5,7 +5,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-SESSION=${1:-xmonad}
+SESSION=${1:-dwm}
 
 # merge in defaults and keymaps
 
@@ -55,7 +55,7 @@ get_session(){
 	local dbus_args=(--sh-syntax --exit-with-session)
 	case "$SESSION" in
 		awesome) dbus_args+=(awesome) ;;
-                qtile) dbus_args+=(qtile) ;;
+    qtile) dbus_args+=(qtile) ;;
 		bspwm) dbus_args+=(bspwm-session) ;;
 		budgie) dbus_args+=(budgie-desktop) ;;
 		cinnamon) dbus_args+=(cinnamon-session) ;;
@@ -64,6 +64,7 @@ get_session(){
 		fluxbox) dbus_args+=(startfluxbox) ;;
 		gnome) dbus_args+=(gnome-session) ;;
 		i3|i3wm) dbus_args+=(i3 --shmlog-size 0) ;;
+    dwm) dbus_args+=(dwm) ;;
 		jwm) dbus_args+=(jwm) ;;
 		kde) dbus_args+=(startkde) ;;
 		lxde) dbus_args+=(startlxde) ;;
