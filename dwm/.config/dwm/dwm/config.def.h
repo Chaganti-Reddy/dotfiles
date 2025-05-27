@@ -42,14 +42,16 @@ const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "rmpc", NUL
 const char *spcmd3[] = {"qalculate-gtk", NULL};
 const char *spcmd4[] = {"st", "-n",     "spnews", "-f",       "Iosevka Nerd Font:weight=bold:size=12", "-g", "120x34", "-e",     "newsboat", NULL};
 const char *spcmd5[] = {"st", "-n", "spchess", "-g", "135x35", "-e", "/home/karna/apps/chess-linux-x64/chess", NULL};
+const char *spcmd6[] = {"st", "-n", "sp-lichess", "-g", "135x35", "-e", "/home/karna/apps/Lichess-linux-x64/Lichess", NULL};
 
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm"   ,    spcmd1}, 
     {"spmusic"  ,    spcmd2}, 
     {"spcal"    ,    spcmd3},
-    {"spgpt"    ,    spcmd4},  
-    {"spnews"   ,    spcmd5},
+    {"spnews"    ,    spcmd4},  
+    {"spchess"   ,    spcmd5},
+    {"sp-lichess"   ,    spcmd6},
 };
 
 /* tagging */
@@ -71,6 +73,7 @@ static const Rule rules[] = {
 	{ "pinentry-qt",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "Qalculate-gtk",        NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "chess-nativefier-703820", NULL,        NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
+	{ "lichess-nativefier-c6e60e", NULL,        NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "Gnome-disks",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 //	{ "Nm-connection-editor", NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "flameshot",            NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
@@ -91,6 +94,7 @@ static const Rule rules[] = {
 	{ "Qalculate-gtk",        NULL,           NULL,           SPTAG(2),     1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ NULL,                   "spnews",       NULL,           SPTAG(3),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ NULL,                   "spchess",      NULL,           SPTAG(4),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
+	{ NULL,                   "sp-lichess",      NULL,           SPTAG(5),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 };
 
 /* layout(s) */
@@ -221,6 +225,7 @@ static const Key keys[] = {
   { 0,                             -1,   XF86XK_Calculator, togglescratch,  {.ui = 2} },
   { MODKEY|Mod1Mask,               -1,   XK_n,      togglescratch,  {.ui = 3} },
   { 0,                             -1,   XK_F11,    togglescratch,  {.ui = 4} },
+  { MODKEY,                        -1,   XK_F11,    togglescratch,  {.ui = 5} },
 
   // Main Keybinds
   { MODKEY|ShiftMask,              -1,   XK_n,      spawn,          {.v = filemanager } },
