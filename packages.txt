@@ -188,6 +188,7 @@ typescript-language-server
 mdformat
 ydotool
 ccls
+speech-dispatcher
 jedi-language-server
 wakatime
 flatpak
