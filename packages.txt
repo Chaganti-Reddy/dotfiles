@@ -189,6 +189,7 @@ mdformat
 ydotool
 ccls
 speech-dispatcher
+valgrind
 jedi-language-server
 wakatime
 flatpak
