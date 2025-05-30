@@ -271,6 +271,7 @@ static const Key keys[] = {
   { MODKEY,                         -1,  XK_period,             spawn,  SHCMD("~/.config/rofi/applets/bin/emoji.sh &") },
   { MODKEY,                         -1,  XK_F7,                 spawn,  SHCMD("~/.dwm/drecord &") },
   { MODKEY|ShiftMask,               -1,  XK_p,                  spawn,  SHCMD("~/.config/rofi/powermenu/type-4/powermenu.sh &") },
+  { Mod1Mask,                       -1,  XK_Tab,                spawn,  SHCMD("rofi -show window -modi window -show-icons -theme ~/.config/rofi/dt-center.rasi") },
 
   // Gromit Keys 
   { MODKEY|ControlMask,             -1, XK_p,                   spawn,  SHCMD("bash -c 'pidof gromit-mpx && gromit-mpx -q || gromit-mpx -k none -u none -a -o 1'") },
