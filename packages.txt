@@ -190,6 +190,7 @@ ydotool
 ccls
 speech-dispatcher
 valgrind
+meld
 jedi-language-server
 wakatime
 flatpak
