@@ -340,6 +340,8 @@ setup_git_info() {
   git config --global log.decorate true
   git config --global push.default simple
   git config --global push.autoSetupRemote true
+  git config --global diff.tool meld
+  git config --global merge.tool meld
 
   info "Git configuration summary:"
   git config --list | grep -E "user.name|user.email|core.editor|init.defaultBranch|alias|push.default"
