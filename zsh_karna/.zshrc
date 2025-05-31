@@ -465,7 +465,7 @@ alias fontc="fc-cache -fv"
 alias autocommit="sh ~/dotfiles/gitAutoCommitter.sh"
 alias debugwaybar="waybar -l trace"
 alias rm="trash-put"
-alias lazyg="lazygit"
+alias lg="lazygit"
 alias lazyd="lazydocker"
 alias llama3="ollama run llama3:8b"
 alias llama3k="ollama run llama3:8b-instruct-q6_K"
@@ -477,6 +477,7 @@ alias olldeep="ollama run deepseek-r1:8b"
 alias dsa="cd /mnt/Karna/Git/Project-K/Map/DSA/"
 alias lampp="sudo /opt/lampp/lampp"
 alias vi="vim"
+alias aiderms="aider --model mistral/mistral-small"
 
 function cheat() {
     curl cht.sh/$1
