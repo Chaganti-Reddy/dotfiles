@@ -2081,6 +2081,7 @@ install_extras() {
       # cargo install leetcode-cli
 
       sudo npm install -g @mermaid-js/mermaid-cli
+      cargo install --git https://github.com/rschmukler/caffeinate
       go install github.com/maaslalani/typer@latest
       cp ~/dotfiles/Extras/Extras/.wakatime.cfg.cpt ~/
       warning "decrypting your wakatime API key ..."
