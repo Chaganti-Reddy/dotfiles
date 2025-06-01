@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+#include "components/caffeinate.h"
 /* interval between updates (in ms) */
 const unsigned int interval = 500;
 
@@ -79,6 +80,7 @@ static const struct arg args[] = {
   { kernel_release, " %s | ",              NULL,                                  1,    -1 },
   // { keymap,        " (%s) | ",           NULL,                                 1,    -1 },
   { uptime,        "󰄉 %s | ",           NULL,                                  1,    -1 },
+  { caffeinate,    "%s| ",               NULL,                               1,    -1 },
   { cpu_perc,      "󰍛  %s%% | ",         NULL,                                  1,    -1 },
   { ram_used,      "  %s | ",            NULL,                                  1,    -1 },
   { vol_icon,      "%s | ",              "",                                    1,    -1 },
