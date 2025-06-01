@@ -621,6 +621,7 @@ install_dwm() {
     "redshift"
     "conky"
     "betterlockscreen"
+    "xidlehook"
   )
 
   for package in "${packages[@]}"; do
