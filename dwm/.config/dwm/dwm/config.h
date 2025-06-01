@@ -280,6 +280,9 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,               -1, XK_F9,                  spawn,  SHCMD("gromit-mpx -c") },
   { MODKEY|ShiftMask,               -1, XK_F8,                  spawn,  SHCMD("gromit-mpx -y") },
   { MODKEY,                         -1, XK_F8,                  spawn,  SHCMD("gromit-mpx -z") },
+	{ MODKEY,                        XK_t,   XK_c,                spawn,  SHCMD("dunstify -u low --replace=10034 \"Caffeinate\" \"Presentation Mode ON...\" &&  ~/.cargo/bin/caffeinate &") },
+	{ MODKEY,                        XK_t,   XK_x,                spawn,  SHCMD("dunstify -u low --replace=10034 \"Caffeinate\" \"Presentation Mode OFF...\" && pkill caffeinate && sh ~/.dwm/xidlehook.sh &") },
+
 
   // Example keychain binds
 	// { MODKEY,                       XK_a,       XK_d,      spawn,          {.v = dmenucmd } },
