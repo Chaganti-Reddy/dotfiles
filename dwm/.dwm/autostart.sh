@@ -59,6 +59,7 @@ xsetroot -cursor_name left_ptr
 ~/.dwm/newlook &
 ~/.config/scripts/mouse &
 ~/.config/scripts/check-battery.sh &
+~/.dwm/xidlehook.sh &
 
 # Run ollama serve in the background silently.
 ollama serve > /dev/null 2>&1 &
