@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TODO_FILE="$HOME/todo.md"
+TODO_FILE="/mnt/Karna/Git/Project-K/todo.md"
 TODAY=$(date +"%Y-%m-%d")
 
 if [ ! -f "$TODO_FILE" ]; then
