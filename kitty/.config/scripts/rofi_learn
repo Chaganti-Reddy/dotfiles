@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LEARN_FILE="$HOME/learn.md"
+LEARN_FILE="/mnt/Karna/Git/Project-K/learn.md"
 THEME="$HOME/.config/rofi/dt-center.rasi"
 
 declare -a menu_items
