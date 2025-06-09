@@ -785,6 +785,7 @@ install_hyprland() {
     "hyprlang"
     # "clipse-bin"
     "cliphist"
+    "conky"
     "hyprland-qtutils"
     "bluetui"
     "hyprpicker"
