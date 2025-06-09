@@ -834,10 +834,13 @@ install_hyprland() {
     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
     stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+    stow_with_check "$HOME/dotfiles/kitty/.config/conky" "$HOME/.config/conky" "conky"
     success "Hyprland configuration has been set up."
   else
     warning "Hyprland configuration file already exists. Skipping stow."
   fi
+
+  cd ~/.config/st && sudo make clean install && cd ~/dotfiles/
 
   # Define source and target using $HOME
   SOURCE="$HOME/.cache/wal/colors-waybar.css"
