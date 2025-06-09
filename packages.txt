@@ -159,6 +159,7 @@ nodejs
 npm 
 translate-shell 
 jdk-openjdk 
+meld
 blueman 
 newsboat 
 acpi 
