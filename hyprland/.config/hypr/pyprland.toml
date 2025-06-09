@@ -4,7 +4,7 @@ plugins = [
 ]
 
 [scratchpads.music]
-command = "st -c Music -e ~/.ncmpcpp/scripts/ncmpcpp-art"
+command = "kitty --class Music -e rmpc"
 # command = "alacritty --class Music -e ncmpcpp -c ~/.ncmpcpp/config-art"
 class = "Music"
 position = "431px 175px"
@@ -61,8 +61,8 @@ margin = 50
 
 [scratchpads.chess]
 animation = ""
-command = "$HOME/apps/chess-linux-x64/chess"
-class = "chess-nativefier-703820"
+command = "$HOME/apps/Chess-linux-x64/Chess"
+class = "chess-nativefier-b30d50"
 size = "80% 80%"
 lazy = true
 position = "181px 97px"
