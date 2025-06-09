@@ -45,7 +45,11 @@ refresh_cache() {
 # === AUTO REFRESH IF STALE ===
 now=$(date +%s)
 last_update=$(date -r "$CACHE_FILE" +%s)
-(( now - last_update > SCAN_INTERVAL )) && refresh_cache &
+# (( now - last_update > SCAN_INTERVAL )) && refresh_cache &
+
+if (( now - last_update > SCAN_INTERVAL )); then
+    refresh_cache
+fi
 
 # === MAIN LOOP ===
 while true; do
