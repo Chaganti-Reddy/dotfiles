@@ -41,7 +41,7 @@ const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "rmpc", NULL};
 const char *spcmd3[] = {"qalculate-gtk", NULL};
 const char *spcmd4[] = {"st", "-n",     "spnews", "-f",       "Iosevka Nerd Font:weight=bold:size=12", "-g", "120x34", "-e",     "newsboat", NULL};
-const char *spcmd5[] = {"st", "-n", "spchess", "-g", "135x35", "-e", "/home/karna/apps/chess-linux-x64/chess", NULL};
+const char *spcmd5[] = {"st", "-n", "spchess", "-g", "135x35", "-e", "/home/karna/apps/Chess-linux-x64/Chess", NULL};
 
 static Sp scratchpads[] = {
     /* name          cmd  */
@@ -69,7 +69,7 @@ static const Rule rules[] = {
 	{ "qBittorrent",          NULL,           NULL,           1 << 5,       0,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "pinentry-qt",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "Qalculate-gtk",        NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
-	{ "chess-nativefier-703820", NULL,        NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
+	{ "chess-nativefier-b30d50", NULL,        NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "Gnome-disks",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 //	{ "Nm-connection-editor", NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "flameshot",            NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
