@@ -608,7 +608,6 @@ install_dwm() {
     "xcompmgr"
     "xorg-xrdb"
     "xwallpaper"
-    "picom"
     "kitty"
     "redshift"
     "conky"
@@ -2189,7 +2188,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   #install_shell y
   #setup_gpg_pass y y
   # install_i3 y
-  # install_dwm y
+  install_dwm y
   #install_hyprland y
   #install_miniconda y 
   #install_kvm y
@@ -2203,7 +2202,7 @@ if [[ "$(whoami)" == "karna" ]]; then
   #install_grub_theme y
   #install_display_manager y 1
   #download_wallpapers y
-  install_extras y y
+  # install_extras y y
   # setup_ssh_and_upload
 else
   check_privileges
