@@ -74,8 +74,8 @@ static const char unknown_str[] = "n/a";
 
 static const struct arg args[] = {
 	/* function      format               argument                              turn  signal */
-  { netspeed_tx,   " %s ",              "wlp45s0",                             1,    -1 },
-  { netspeed_rx,   " %s | ",            "wlp45s0",                             1,    -1 },
+  { netspeed_tx,   " %s ",              "wlan0",                             1,    -1 },
+  { netspeed_rx,   " %s | ",            "wlan0",                             1,    -1 },
   { kernel_release, " %s",              NULL,                                  1,    -1 },
   { keymap,        " (%s) | ",           NULL,                                 1,    -1 },
   { uptime,        "  %s | ",           NULL,                                  1,    -1 },
