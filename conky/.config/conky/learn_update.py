@@ -1,7 +1,7 @@
 import os
 import re
 
-LEARN_FILE = os.path.expanduser("~/learn.md")
+LEARN_FILE = os.path.expanduser("/mnt/Karna/Git/Project-K/learn.md")
 CACHE_FILE = os.path.expanduser("~/.cache/learn_current.txt")
 
 PRIORITY_ORDER = {
