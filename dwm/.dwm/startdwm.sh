@@ -7,9 +7,9 @@
 # Start dwmblocks in background
 # dwmblocks &
 
-while true; do
+# while true; do
     # Log stderr to a file
-    dwm 2>~/.dwm.log
+exec dwm 2>~/.dwm.log
 
-done
+# done
 
