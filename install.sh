@@ -1401,7 +1401,7 @@ install_dev_tools() {
   # Process the selected tools
   for app in "${tools[@]}"; do
     case $app in
-      1) install_package "vscodium-bin" "Visual Studio Code" "paru -S --noconfirm --needed" ;;
+      1) install_package "visual-studio-code-bin" "Visual Studio Code" "paru -S --noconfirm --needed" ;;
       2) install_package "github-desktop-bin" "GitHub Desktop" "paru -S --noconfirm --needed" ;;
       3)
         install_multiple_packages "docker" "docker-compose"
