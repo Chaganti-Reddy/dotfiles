@@ -631,6 +631,10 @@ install_dwm() {
   cd ~/.config/dwm/dwm && rm config.h && sudo make clean install 
   cd ~/.config/dwm/dmenu/ && sudo make clean install
   cd ~/.config/dwm/slstatus/ && rm config.h && sudo make clean install
+  
+  sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
+  sudo cp ~/dotfiles/dwm/.dwm/startdwm.sh /usr/local/bin/startdwm.sh
+  cd ~/dotfiles/ 
 
   success "DWM setup complete. Proceeding to next modules..."
   sleep 1
