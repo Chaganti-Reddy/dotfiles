@@ -627,6 +627,11 @@ install_dwm() {
 
   install_waldl
 
+  # Install those dwm scripts
+  cd ~/.config/dwm/dwm && rm config.h && sudo make clean install 
+  cd ~/.config/dwm/dmenu/ && sudo make clean install
+  cd ~/.config/dwm/slstatus/ && rm config.h && sudo make clean install
+
   success "DWM setup complete. Proceeding to next modules..."
   sleep 1
 }
