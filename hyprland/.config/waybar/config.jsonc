@@ -177,7 +177,8 @@
     "format-linked": "󰣺  {essid} (No IP)",
     "format-disconnected": "󰣺  Disconnected",
     "interval": 2,
-    "on-click-right": "kitty -e nm-applet"
+    "on-click-right": "kitty -e nmtui"
+    // "on-click-right": "kitty -e nm-applet"
   },
   "backlight": {
     "device": "intel_backlight",
