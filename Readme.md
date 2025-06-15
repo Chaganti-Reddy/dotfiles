@@ -14,7 +14,7 @@ curl -sL https://tinyurl.com/karnadotfiles -o install.sh
 
 ```bash 
 ./install.sh
-```
+``` 
 
 Read install.sh carefully and modify options whatever you want and just run or if you want to directly run it then
 
