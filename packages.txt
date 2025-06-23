@@ -1,4 +1,4 @@
-base-devel 
+base-devel
 intel-ucode 
 vim 
 bash-language-server
@@ -263,3 +263,5 @@ tree-sitter-cli
 tree-sitter-bash
 #libinput-gestures
 tree-sitter-rust
+maven
+speech-dispatcher
