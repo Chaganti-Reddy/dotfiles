@@ -265,3 +265,4 @@ tree-sitter-bash
 tree-sitter-rust
 maven
 speech-dispatcher
+python-lsp-server
