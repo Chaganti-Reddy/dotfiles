@@ -32,3 +32,4 @@
 12. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `chrome://settings` and turn on gtk for dark context menus. Also if you want custom fonts in titlebars which is not available by default then just go to `vivaldi:experiments` and turn on Allow CSS modifications & just stow the vivaldi folder from dotfiles. After just upload the path of Default/Themes folder to Appearance settings.
 
 13. If spotdl not working and getting errors like "FFmpegError: Failed to convert" then just change the value of "bitrate":null to "bitrate":"192k" - taken from https://github.com/spotDL/spotify-downloader/issues/1938#issuecomment-2753157035
+ 
