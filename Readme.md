@@ -127,6 +127,8 @@ The main program I use for my daily life:
 
 For entire system I am using pywal for color scheme matching with wallpaper. And for zathura I am using Zathura-Pywal. And for webapps I am using firefoxpwa plugin. 
 
+Now I am using KDE so some of these might not work...
+
 ## License
 
 This repository is licensed under the MIT License. For more information, see the `LICENSE` file.
