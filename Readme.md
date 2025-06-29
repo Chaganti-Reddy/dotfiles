@@ -3,7 +3,7 @@
 This repository contains my personal configuration files for various applications and settings on Arch Linux with the I3, BSPWM, Qtile and Hyprland window manager. These files are essential for my system to look and function as I prefer. I recommend cloning this repository into your home directory (`~/`) for easy integration into your own setup.
 
 `NOTE - Please don't create any Issues or Pull Requests. These dotfiles are only for my personal use. Some of these dotfiles may contain absolute paths with my username and if anything runs into a crash or a bug just check the paths correctly first.`
-
+  
 ## Automated Installation 
 
 Fist install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
