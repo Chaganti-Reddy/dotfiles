@@ -14,13 +14,13 @@ lazy = true
 unfocus = "hide"
 margin = 50
 
-[scratchpads.clipse]
-command = "kitty --class clipse -e clipse"
-class = "clipse"
-position = "621px 167px"
-size = "700px 700px"
-animate = ""
-margin = 50
+# [scratchpads.clipse]
+# command = "kitty --class clipse -e clipse"
+# class = "clipse"
+# position = "621px 167px"
+# size = "700px 700px"
+# animate = ""
+# margin = 50
 
 [scratchpads.typetest]
 command = "kitty --class typetest -e typetest -m -c -p -l 50"
@@ -69,12 +69,12 @@ position = "181px 97px"
 max_size = "1920px 100%"
 margin = 50
 
-[scratchpads.whatsapp]
-animation = ""
-command = "$HOME/apps/whatsapp-linux-x64/whatsapp"
-class = "whatsapp-nativefier-d40211"
-size = "80% 80%"
-lazy = true
-position = "181px 97px"
-max_size = "1920px 100%"
-margin = 50
+# [scratchpads.whatsapp]
+# animation = ""
+# command = "$HOME/apps/whatsapp-linux-x64/whatsapp"
+# class = "whatsapp-nativefier-d40211"
+# size = "80% 80%"
+# lazy = true
+# position = "181px 97px"
+# max_size = "1920px 100%"
+# margin = 50
