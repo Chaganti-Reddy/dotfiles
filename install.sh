@@ -2208,9 +2208,10 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_dependencies "${selected_helper:-paru}"
     # install_shell y
     # setup_gpg_pass y y
-    # install_i3 y
+    install_i3 y
+    install_qtile y
     # install_dwm y
-    install_hyprland y
+    # install_hyprland y
     # install_miniconda y
     # install_kvm y
     # install_browser 1 5
