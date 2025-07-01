@@ -33,7 +33,7 @@ import colors
 
 mod = "mod4"              # Sets mod key to SUPER/WINDOWS
 myTerm = "kitty"      # My terminal of choice
-myBrowser = "brave"       # My browser of choice
+myBrowser = "zen-browser"       # My browser of choice
 myAltBrowser = "qutebrowser"      
 myEmacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
 myMenu = "rofi -show drun -show-icons -theme ~/.config/rofi/dt-center.rasi"
