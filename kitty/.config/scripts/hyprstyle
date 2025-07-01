@@ -2,7 +2,7 @@
 
 # Configuration
 PICTURES_DIR=~/Pictures/pix
-MONITOR="eDP-1" # Commented out the monitor setting
+MONITOR="eDP-1" 
 
 # Function to start Hyprpaper if not running
 start_hyprpaper() {
