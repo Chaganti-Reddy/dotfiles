@@ -150,18 +150,19 @@
       "critical": 25
     },
     // "format-icons": [" "," "," "," "," "],
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    // "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "format-icons": ["󰁺","󰁻","󰁼","󰁿","󰁿","󰂀","󰂁","󰂂","󰁹"],
     "format": "{icon} {capacity}%",
-    "format-critical": "<span color='#cc241d' > {icon} </span>{capacity}%",
-    "format-warning": "<span color='#d8a657' > {icon} </span>{capacity}%",
-    "format-full": " {icon} {capacity}%",
-    "format-charging": "<span color='#8ec07c' >  </span>{capacity}%",
+    "format-critical": "<span color='#cc241d' >{icon} </span>{capacity}%",
+    "format-warning": "<span color='#d8a657' >{icon} </span>{capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "<span color='#8ec07c' > 󰂄 </span>{capacity}%",
     "format-charging-warning": "<span color='#d8a657' > 󰢝 </span>{capacity}%",
     "format-charging-critical": "<span color='#cc241d' > 󰢜  </span>{capacity}%",
-    "format-plugged": "<span color='#8ec07c' >  </span>{capacity}%",
+    "format-plugged": "<span color='#8ec07c' > 󰂄 </span>{capacity}%",
     "format-alt": "󱧥 {time}",
-        "tooltip-format": "Capacity - {capacity}%\nPower draw - {power}W\nCycles - {cycles}\nHealth - {health}%\n{timeTo}",
-        "on-click-middle": "~/.config/rofi/applets/bin/battery.sh"
+    "tooltip-format": "Capacity - {capacity}%\nPower draw - {power}W\nCycles - {cycles}\nHealth - {health}%\n{timeTo}",
+    "on-click-middle": "~/.config/rofi/applets/bin/battery.sh"
   },
   "network": {
     "interval": 1,
@@ -185,8 +186,8 @@
     "on-scroll-up": "brightnessctl s 5%+",
     "on-scroll-down": "brightnessctl s 5%-",
     "format": "{icon} {percent}%",
-    "format-icons": ["","","",""],
-        "tooltip-format": "{icon} {percent}% Brightness",
+    "format-icons": ["󰃚","󰃛","󰃜","󰃝","󰃞","󰃟","󰃠"],
+    "tooltip-format": "{icon} {percent}% Brightness",
     "on-click-right": "~/.config/rofi/applets/bin/brightness.sh"
   },
     "pulseaudio#output": {
