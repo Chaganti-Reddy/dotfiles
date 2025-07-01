@@ -798,7 +798,7 @@ install_hyprland() {
         "cliphist"
         "conky"
         "hyprland-qtutils"
-        "bluetui"
+        # "bluetui"
         "hyprpicker"
         "hyprpaper"
         "kitty"
@@ -824,7 +824,7 @@ install_hyprland() {
         "xdg-desktop-portal-wlr"
         "wlr-randr"
         "pyprland"
-        "i3-wm"
+        # "i3-wm"
     )
 
     for package in "${packages[@]}"; do
@@ -833,37 +833,37 @@ install_hyprland() {
 
     info "Configuring Hyprland..."
 
-    local stow_folder
-    if [[ "$(whoami)" == "karna" ]]; then
-        stow_folder="hyprland"
-    else
-        stow_folder="hyprland_gen"
-    fi
-
-    if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
-        stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
-        stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
-        stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
-        stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
-        stow_with_check "$HOME/dotfiles/kitty/.config/conky" "$HOME/.config/conky" "conky"
-        success "Hyprland configuration has been set up."
-    else
-        warning "Hyprland configuration file already exists. Skipping stow."
-    fi
-
-    cd ~/.config/st && sudo make clean install && cd ~/dotfiles/
-
-    # Define source and target using $HOME
-    SOURCE="$HOME/.cache/wal/colors-waybar.css"
-    TARGET="$HOME/dotfiles/$stow_folder/.config/waybar/colors-waybar.css"
-
-    # Remove existing symlink or file if it exists
-    [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
-
-    # Create new symlink
-    ln -s "$SOURCE" "$TARGET"
-
-    echo "Symlink created: $TARGET -> $SOURCE"
+    # local stow_folder
+    # if [[ "$(whoami)" == "karna" ]]; then
+    #     stow_folder="hyprland"
+    # else
+    #     stow_folder="hyprland_gen"
+    # fi
+    #
+    # if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
+    #     stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
+    #     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+    #     stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
+    #     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+    #     stow_with_check "$HOME/dotfiles/kitty/.config/conky" "$HOME/.config/conky" "conky"
+    #     success "Hyprland configuration has been set up."
+    # else
+    #     warning "Hyprland configuration file already exists. Skipping stow."
+    # fi
+    #
+    # cd ~/.config/st && sudo make clean install && cd ~/dotfiles/
+    #
+    # # Define source and target using $HOME
+    # SOURCE="$HOME/.cache/wal/colors-waybar.css"
+    # TARGET="$HOME/dotfiles/$stow_folder/.config/waybar/colors-waybar.css"
+    #
+    # # Remove existing symlink or file if it exists
+    # [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
+    #
+    # # Create new symlink
+    # ln -s "$SOURCE" "$TARGET"
+    #
+    # echo "Symlink created: $TARGET -> $SOURCE"
 
     install_waldl
 
@@ -2067,7 +2067,7 @@ install_extras() {
 
             # Remove existing configurations for Karna
             rm -rf ~/.bashrc
-            stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit Okular
+            stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit Okular redshift
 
             # Copy essential system files for karna user
             sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
@@ -2198,28 +2198,28 @@ echo -e "\n${BOLD}${CYAN}==> Arch Linux Dotfiles Setup${RESET}\n"
 sleep 1
 
 if [[ "$(whoami)" == "karna" ]]; then
-    #check_privileges
-    #setup_user_dirs
-    #configure_pacman
-    #system_update
+    # check_privileges
+    # setup_user_dirs
+    # configure_pacman
+    # system_update
     # clone_or_download_dotfiles
     # install_aur_helpers 1
-    #setup_git_info y
-    #install_dependencies "${selected_helper:-paru}"
-    #install_shell y
+    # setup_git_info y
+    # install_dependencies "${selected_helper:-paru}"
+    # install_shell y
     # setup_gpg_pass y y
     # install_i3 y
     # install_dwm y
-    # install_hyprland y
+    install_hyprland y
     # install_miniconda y
     # install_kvm y
     # install_browser 1 5
     # install_torrent 1 13
-    # install_dev_tools 1 3 6 7 9 10 16
-    # install_extra_tools 1 2 3
+    # install_dev_tools 3 6 7 9 10 16
+    # install_extra_tools 1 2 3 4 6
     # install_fonts
     # install_ollama y
-    #install_pip_packages y
+    # install_pip_packages y
     # install_grub_theme y
     # install_display_manager y 1
     # download_wallpapers y
