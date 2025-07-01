@@ -14,7 +14,7 @@ if [ -n "$1" ] && [ "$1" = "-d" ]; then
   walldir="$1"
   shift
 else
-  walldir="$HOME/Pictures/pix/Wallheaven/"
+  walldir="$HOME/Pictures/pix/"
 fi
 cachedir="$HOME/.cache/wallhaven"
 sxiv_otps=" -tfpo -z 200" 
