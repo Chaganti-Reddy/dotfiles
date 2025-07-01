@@ -115,7 +115,7 @@ main() {
 
   set_wallpaper "$random_wallpaper" # Set the random wallpaper
   apply_theme "$random_wallpaper"   # Apply the theme based on the wallpaper
-  reload_waybar                     # Reload Waybar to apply the new theme
+  # reload_waybar                     # Reload Waybar to apply the new theme
   reload_hypr
 
 }
