@@ -101,9 +101,9 @@
     "timeout": 600
   },
     "clock": {
-    	"format": " {:%a %d %b   %I:%M %p}",
-    
-"tooltip-format": "<tt><small>{tz_list}New_York, Los_Angeles\n\n{calendar}</small></tt>",
+    	"format": " {:%a %d %b   %I:%M:%S %p}",
+      "interval": 1,
+      "tooltip-format": "<tt><small>{tz_list}New_York, Los_Angeles\n\n{calendar}</small></tt>",
         "calendar": {
                     "mode"          : "year",
                     "mode-mon-col"  : 3,
