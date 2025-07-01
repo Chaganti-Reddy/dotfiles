@@ -2,7 +2,7 @@
 
 /* 🔹 Global Waybar Settings */
 * {
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "JetBrains Mono Nerd Font";
     font-weight: bolder;
     font-size: 12px;
     min-height: 0;
@@ -213,12 +213,12 @@ window#waybar {
 
 #mpd.playing {
     background: @color12;
-    color: @foreground;
+    color: #ffffff;
 }
 
 #mpd.paused {
     background: @color3;
-    color: @foreground;
+    color: #ffffff;
 }
 
 #mpd.stopped {
