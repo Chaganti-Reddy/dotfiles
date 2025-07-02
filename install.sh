@@ -671,6 +671,7 @@ install_qtile() {
         "python-pulsectl-asyncio"
         "python-mpd2"
         "xdg-desktop-portal-gtk"
+        "redshift"
     )
 
     for package in "${packages[@]}"; do
@@ -682,6 +683,7 @@ install_qtile() {
     stow_with_check "$HOME/dotfiles/alacritty/.config/alacritty" "$HOME/.config/alacritty" "alacritty"
     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+    stow_with_check "$HOME/dotfiles/redshift/.config/redshift" "$HOME/.config/redshift" "redshift"
 
     # Install waldl
     install_waldl
