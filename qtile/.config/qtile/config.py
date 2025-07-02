@@ -668,10 +668,10 @@ def set_floating_geometry(window):
         window.cmd_set_position_floating(600, 250)
 
     # Example 2: Telegram by wm_class
-    if wm_class and "org.telegram.desktop" in wm_class:
+    if wm_class and "telegram-desktop" in wm_class:
         window.floating = True
         window.cmd_set_size_floating(900, 700)
-        window.cmd_set_position_floating(100, 100)
+        window.cmd_set_position_floating(600, 200)
 
     # Example 3: yad boxes (any Yad dialog)
     if wm_class and "Yad" in wm_class:
