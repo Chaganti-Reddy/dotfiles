@@ -477,9 +477,9 @@ setup_gpg_pass() {
 
     info "Setting up GPG and Pass..."
 
-    if ! pacman -Q gnupg pass rofi-wayland qrencode pass-import &>/dev/null; then
+    if ! pacman -Q gnupg pass rofi qrencode pass-import &>/dev/null; then
         info "Installing GPG and Pass..."
-        sudo pacman -S --noconfirm gnupg pass qrencode rofi-wayland || die "Failed to install required packages."
+        sudo pacman -S --noconfirm gnupg pass qrencode rofi || die "Failed to install required packages."
         paru -S --noconfirm pass-import || die "Failed to install pass-import from AUR."
     else
         info "Required packages are already installed. Skipping installation."
@@ -2208,7 +2208,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_dependencies "${selected_helper:-paru}"
     # install_shell y
     # setup_gpg_pass y y
-    install_i3 y
+    # install_i3 y
     install_qtile y
     # install_dwm y
     # install_hyprland y
@@ -2222,7 +2222,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_ollama y
     # install_pip_packages y
     # install_grub_theme y
-    # install_display_manager y 1
+    # install_display_manager y 2
     # download_wallpapers y
     # install_extras y y
     # setup_ssh_and_upload
