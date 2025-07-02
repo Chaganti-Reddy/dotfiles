@@ -75,6 +75,7 @@ keys = [
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "shift"], "p", lazy.spawn("/home/karna/.config/rofi/powermenu/type-4/powermenu.sh &"), desc="Power menu"),
+    Key([mod, "shift"], "o", lazy.spawn("/home/karna/.config/qtile/ocr-script &> /tmp/ocr-file.log #&& notify-send 'OCR script' 'select text to be copied'"), desc="OCR Script"),
     Key([mod, "control"], "p", lazy.spawn("sh -c 'pidof gromit-mpx && gromit-mpx -q || gromit-mpx -k none -u none -a -o 1'"), desc="Gromit Mpx"),
     Key([mod, "control"], "F9", lazy.spawn("gromit-mpx -t"), desc="Run gromit-mpx with -t option"),
     Key([mod], "F9", lazy.spawn("gromit-mpx -v"), desc="Run gromit-mpx with -v option"),
@@ -85,10 +86,12 @@ keys = [
     Key([mod, "mod1"], "n", lazy.group["scratchpad"].dropdown_toggle("yazi"), desc="Launch yazi in kitty terminal"),
     Key([mod], "a", lazy.spawn("kitty -e nvim"), desc="Launch Neovim in kitty terminal"),
     Key([mod], "e", lazy.spawn(myEmacs), desc="Launch Emacs client"),
-    Key([mod, "shift"], "e", lazy.spawn("/home/karna/.config/rofi/applets/bin/emoji.sh &"), desc="Launch emoji picker"),
+    Key([mod, "shift"], "e", lazy.spawn("code"), desc="Launch VSCode"),
+    Key([mod], "period", lazy.spawn("/home/karna/.config/rofi/applets/bin/emoji.sh &"), desc="Launch emoji picker"),
+    Key([mod], "F7", lazy.spawn("/home/karna/.config/qtile/drecord &"), desc="Launch Record Script"),
     Key([mod, "mod1"], "p", lazy.spawn("/home/karna/.config/scripts/rofi-pass-xorg &"), desc="Launch rofi password manager"),
     Key(["mod1"], "Tab", lazy.spawn("/home/karna/.config/rofi/launchers/type-7/windows.sh &"), desc="Launch rofi window switcher"),
-    Key([mod, "mod1"], "a", lazy.spawn("/home/karna/.config/scripts/script &"), desc="Run custom script"),
+    Key([mod, "shift"], "a", lazy.spawn("/home/karna/.config/scripts/script &"), desc="Run custom script"),
 
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Flameshot"),
 
@@ -154,7 +157,7 @@ keys = [
     Key([mod, "shift"], "space", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
 
     # Treetab prompt
-    Key([mod, "shift"], "a", add_treetab_section, desc='Prompt to add new section in treetab'),
+    Key([mod, "mod1"], "a", add_treetab_section, desc='Prompt to add new section in treetab'),
 
     # Grow/shrink windows left/right. 
     # This is mainly for the 'monadtall' and 'monadwide' layouts
@@ -200,6 +203,14 @@ keys = [
     #                   lazy.spawn("/usr/bin/emacs --daemon"),
     #                   desc='Kill/restart the Emacs daemon')
     # ]),
+
+    KeyChord([mod],"o", [
+        Key([], "p", lazy.spawn("/home/karna/.config/scripts/rofi_pdf"), desc='Rofi PDF'),
+        Key([], "t", lazy.spawn("/home/karna/.config/scripts/rofi_todo"), desc='Rofi TODO'),
+        Key([], "l", lazy.spawn("/home/karna/.config/scripts/rofi_learn"), desc='Rofi Learn'),
+        Key([], "f", lazy.spawn("rofi -theme /home/karna/.config/rofi/dt-center.rasi -show find -modi find:/home/karna/.config/scripts/rofifinder &"), desc="Run Rofi Finder"),
+        Key(["shift"], "f", lazy.spawn("/home/karna/.config/scripts/rofifm &"), desc="Run Rofi Files"),
+    ]),
 ]
 
 groups = [
@@ -302,38 +313,38 @@ layout_theme = {"border_width": 3,
 
 layouts = [
     layout.MonadTall(**layout_theme),
-    layout.MonadWide(**layout_theme),
-    layout.Tile(**layout_theme),
-    layout.Max(**layout_theme),
-    #layout.Bsp(**layout_theme),
+    # layout.MonadWide(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.Max(**layout_theme),
+    # layout.Bsp(**layout_theme),
     #layout.Floating(**layout_theme)
     #layout.RatioTile(**layout_theme),
     #layout.VerticalTile(**layout_theme),
-    #layout.Matrix(**layout_theme),
+    # layout.Matrix(**layout_theme),
     #layout.Stack(**layout_theme, num_stacks=2),
     #layout.Columns(**layout_theme),
-    #layout.TreeTab(
-    #     font = "JetBrains Mono Nerd Font Bold",
-    #     fontsize = 11,
-    #     border_width = 0,
-    #     bg_color = colors[0],
-    #     active_bg = colors[8],
-    #     active_fg = colors[2],
-    #     inactive_bg = colors[1],
-    #     inactive_fg = colors[0],
-    #     padding_left = 8,
-    #     padding_x = 8,
-    #     padding_y = 6,
-    #     sections = ["ONE", "TWO", "THREE"],
-    #     section_fontsize = 10,
-    #     section_fg = colors[7],
-    #     section_top = 15,
-    #     section_bottom = 15,
-    #     level_shift = 8,
-    #     vspace = 3,
-    #     panel_width = 240
-    #     ),
-    #layout.Zoomy(**layout_theme),
+    layout.TreeTab(
+        font = "JetBrains Mono Nerd Font Bold",
+        fontsize = 11,
+        border_width = 0,
+        bg_color = colors[0],
+        active_bg = colors[8],
+        active_fg = colors[2],
+        inactive_bg = colors[1],
+        inactive_fg = colors[0],
+        padding_left = 8,
+        padding_x = 8,
+        padding_y = 6,
+        sections = ["KARNA", "WORK", "ENT"],
+        section_fontsize = 10,
+        section_fg = colors[7],
+        section_top = 15,
+        section_bottom = 15,
+        level_shift = 8,
+        vspace = 3,
+        panel_width = 240
+        ),
+    # layout.Zoomy(**layout_theme),
 ]
 
 widget_defaults = dict(
@@ -539,7 +550,7 @@ def init_widgets_list():
         #     padding=6,
         #     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("/home/karna/.config/rofi/powermenu/type-4/powermenu.sh &")},
         # ),
-        widget.Systray(padding=3, icon_size=15),
+        widget.Systray(padding=3, icon_size=16),
         widget.Spacer(length=8),
     ]
     return widgets_list
@@ -630,6 +641,8 @@ floating_layout = layout.Floating(
         Match(wm_class="Yad"),            # yad boxes
         Match(wm_class="xdg-desktop-portal-gtk"),
         Match(wm_class="org.telegram.desktop"),
+        Match(wm_class="blueman-manager"),
+        Match(wm_class="baobab"),
         Match(title="branchdialog"),      # gitk
         Match(title='Confirmation'),      # tastyworks exit box
         # Match(title='Qalculate!'),        # qalculate-gtk
@@ -656,6 +669,18 @@ def set_floating_geometry(window):
         window.cmd_set_position_floating(600, 250)
 
     if wm_class and "org.gnome.DiskUtility" in wm_class:
+        window.floating = True
+        window.togroup()
+        window.cmd_set_size_floating(800, 600)
+        window.cmd_set_position_floating(600, 250)
+
+    if wm_class and "blueman-manager" in wm_class:
+        window.floating = True
+        window.togroup()
+        window.cmd_set_size_floating(800, 600)
+        window.cmd_set_position_floating(600, 250)
+
+    if wm_class and "baobab" in wm_class:
         window.floating = True
         window.togroup()
         window.cmd_set_size_floating(800, 600)
