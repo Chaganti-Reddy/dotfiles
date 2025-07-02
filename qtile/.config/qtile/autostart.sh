@@ -15,6 +15,7 @@ xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Pro
 # /usr/bin/emacs --daemon &
 nm-applet &
 # blueman-applet &
+redshift &
 dunst -conf ~/.config/dunst/dunstrc_xorg &
 conky -c ~/.config/conky/conky.conf &
 "$HOME"/.screenlayout/monitor.sh &
