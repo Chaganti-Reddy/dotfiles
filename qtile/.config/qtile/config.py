@@ -28,6 +28,7 @@ import os
 import subprocess
 from libqtile import bar, extension, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen, ScratchPad, DropDown
+from libqtile.backend.x11.window import Window
 from libqtile.lazy import lazy
 import colors
 
@@ -37,6 +38,7 @@ myBrowser = "zen-browser"       # My browser of choice
 myAltBrowser = "qutebrowser"      
 myEmacs = "emacsclient -c -a 'emacs' " # The space at the end is IMPORTANT!
 myMenu = "rofi -show drun -show-icons -theme ~/.config/rofi/dt-center.rasi"
+myClipboard = "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi"
 
 # Allows you to input a name when adding treetab section.
 @lazy.layout.function
@@ -64,6 +66,7 @@ keys = [
     # The essentials
     Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
     Key([mod], "w", lazy.spawn(myBrowser), desc='Web browser'),
+    Key([mod], "v", lazy.spawn(myClipboard), desc='Clipboard'),
     Key([mod, "shift"], "w", lazy.spawn(myAltBrowser), desc='Web browser'),
     Key([mod], "b", lazy.hide_show_bar(position='all'), desc="Toggles the bar to show/hide"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -79,7 +82,7 @@ keys = [
     Key([mod, "shift"], "F8", lazy.spawn("gromit-mpx -y"), desc="Run gromit-mpx with -y option"),
     Key([mod], "F8", lazy.spawn("gromit-mpx -z"), desc="Run gromit-mpx with -z option"),
     Key([mod, "shift"], "n", lazy.spawn("thunar"), desc="Launch file manager"),
-    Key([mod, "mod1"], "n", lazy.spawn("kitty -e yazi"), desc="Launch yazi in kitty terminal"),
+    Key([mod, "mod1"], "n", lazy.group["scratchpad"].dropdown_toggle("yazi"), desc="Launch yazi in kitty terminal"),
     Key([mod], "a", lazy.spawn("kitty -e nvim"), desc="Launch Neovim in kitty terminal"),
     Key([mod], "e", lazy.spawn(myEmacs), desc="Launch Emacs client"),
     Key([mod, "shift"], "e", lazy.spawn("/home/karna/.config/rofi/applets/bin/emoji.sh &"), desc="Launch emoji picker"),
@@ -202,12 +205,12 @@ keys = [
 groups = [
     ScratchPad("scratchpad", [
         DropDown("term", "kitty", opacity=0.8),
-        DropDown("ncmpcpp", "alacritty -e /home/karna/.ncmpcpp/scripts/ncmpcpp-art",
+        DropDown("rmpc", "kitty -e rmpc",
                  x=0.22, y=0.17, width=0.55, height=0.65, opacity=0.9,
                  on_focus_lost_hide=True),
         DropDown(
             "chess",
-            "/home/karna/apps/chess-linux-x64/chess",
+            "/home/karna/apps/Chess-linux-x64/Chess",
             x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
             warp_pointer=True,
             on_focus_lost_hide=False
@@ -222,9 +225,23 @@ groups = [
         DropDown(
             "typetest",
             "kitty --class typetest -e typetest -m -c -p -l 50",
-            x=0.32, y=0.09, width=0.35, height=0.25, opacity=0.9,
+            x=0.32, y=0.09, width=0.35, height=0.35, opacity=0.9,
             warp_pointer=True,
-            on_focus_lost_hide=True
+            on_focus_lost_hide=False
+        ),
+        DropDown(
+            "yazi",
+            "kitty -e yazi",
+            x=0.17, y=0.09, width=0.65, height=0.75, opacity=0.9,
+            warp_pointer=True,
+            on_focus_lost_hide=False
+        ),
+        DropDown(
+            "qalculate",
+            "qalculate-gtk",
+            x=0.30, y=0.22, width=0.45, height=0.55, opacity=0.9,
+            warp_pointer=True,
+            on_focus_lost_hide=False
         ),
     ]),
 
@@ -267,8 +284,9 @@ keys.extend([
 
     # ScratchPad Keybindings
     Key([], "F12", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle ScratchPad terminal"),
-    Key(["mod4", "shift"], "m", lazy.group["scratchpad"].dropdown_toggle("ncmpcpp"), desc="Toggle Ncmpcpp"),
+    Key(["mod4", "shift"], "m", lazy.group["scratchpad"].dropdown_toggle("rmpc"), desc="Toggle RMPC"),
     Key([], "F11", lazy.group["scratchpad"].dropdown_toggle("chess"), desc="Toggle Chess"),
+    Key([], "XF86Calculator", lazy.group["scratchpad"].dropdown_toggle("qalculate"), desc="Calculater"),
     # Key([], "F10", lazy.group["scratchpad"].dropdown_toggle("whatsapp"), desc="Toggle Whatsapp"),
     Key(["mod4", "mod1"], "F12", lazy.group["scratchpad"].dropdown_toggle("typetest"), desc="Toggle Typing Test"),
 ])
@@ -598,6 +616,8 @@ floating_layout = layout.Floating(
         Match(wm_class="confirmreset"),   # gitk
         Match(wm_class="dialog"),         # dialog boxes
         Match(wm_class="download"),       # downloads
+        Match(wm_class="qt6ct"),          # qt6ct
+        Match(wm_class="kvantummanager"),       
         Match(wm_class="error"),          # error msgs
         Match(wm_class="file_progress"),  # file progress boxes
         Match(wm_class='kdenlive'),       # kdenlive
@@ -612,7 +632,7 @@ floating_layout = layout.Floating(
         Match(wm_class="org.telegram.desktop"),
         Match(title="branchdialog"),      # gitk
         Match(title='Confirmation'),      # tastyworks exit box
-        Match(title='Qalculate!'),        # qalculate-gtk
+        # Match(title='Qalculate!'),        # qalculate-gtk
         Match(title="pinentry"),          # GPG key password entry
         Match(title="tastycharts"),       # tastytrade pop-out charts
         Match(title="tastytrade"),        # tastytrade pop-out side gutter
@@ -623,6 +643,36 @@ floating_layout = layout.Floating(
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
+
+@hook.subscribe.client_new
+def set_floating_geometry(window):
+    wm_class = window.window.get_wm_class()
+    title = window.window.get_name()
+
+    if wm_class and "qt6ct" in wm_class:
+        window.floating = True
+        window.togroup()
+        window.cmd_set_size_floating(800, 600)
+        window.cmd_set_position_floating(600, 250)
+
+    if wm_class and "kvantummanager" in wm_class:
+        window.floating = True
+        window.togroup()
+        window.cmd_set_size_floating(800, 600)
+        window.cmd_set_position_floating(600, 250)
+
+    # Example 2: Telegram by wm_class
+    if wm_class and "org.telegram.desktop" in wm_class:
+        window.floating = True
+        window.cmd_set_size_floating(900, 700)
+        window.cmd_set_position_floating(100, 100)
+
+    # Example 3: yad boxes (any Yad dialog)
+    if wm_class and "Yad" in wm_class:
+        window.floating = True
+        window.cmd_set_size_floating(500, 300)
+        window.cmd_set_position_floating(300, 200)
+
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
