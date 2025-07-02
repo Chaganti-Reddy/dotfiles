@@ -2209,7 +2209,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_shell y
     # setup_gpg_pass y y
     # install_i3 y
-    install_qtile y
+    # install_qtile y
     # install_dwm y
     # install_hyprland y
     # install_miniconda y
@@ -2222,7 +2222,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_ollama y
     # install_pip_packages y
     # install_grub_theme y
-    # install_display_manager y 2
+    # install_display_manager y 1
     # download_wallpapers y
     # install_extras y y
     # setup_ssh_and_upload
