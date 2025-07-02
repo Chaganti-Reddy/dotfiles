@@ -55,7 +55,7 @@ get_session(){
 	local dbus_args=(--sh-syntax --exit-with-session)
 	case "$SESSION" in
 		awesome) dbus_args+=(awesome) ;;
-                qtile) dbus_args+=(qtile) ;;
+    qtile) dbus_args+=(qtile) ;;
 		bspwm) dbus_args+=(bspwm-session) ;;
 		budgie) dbus_args+=(budgie-desktop) ;;
 		cinnamon) dbus_args+=(cinnamon-session) ;;
