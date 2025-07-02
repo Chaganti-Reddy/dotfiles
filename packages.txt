@@ -33,7 +33,7 @@ ntfs-3g
 clang 
 gcc 
 clipnotify
-rofi
+rofi-wayland
 rofi-emoji
 rofi-calc
 inotify-tools
