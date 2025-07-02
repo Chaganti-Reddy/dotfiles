@@ -477,9 +477,9 @@ setup_gpg_pass() {
 
     info "Setting up GPG and Pass..."
 
-    if ! pacman -Q gnupg pass rofi qrencode pass-import &>/dev/null; then
+    if ! pacman -Q gnupg pass rofi-wayland qrencode pass-import &>/dev/null; then
         info "Installing GPG and Pass..."
-        sudo pacman -S --noconfirm gnupg pass qrencode rofi || die "Failed to install required packages."
+        sudo pacman -S --noconfirm gnupg pass qrencode rofi-wayland || die "Failed to install required packages."
         paru -S --noconfirm pass-import || die "Failed to install pass-import from AUR."
     else
         info "Required packages are already installed. Skipping installation."
