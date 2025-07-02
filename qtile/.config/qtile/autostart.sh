@@ -14,9 +14,11 @@ xinput --set-prop "pointer:Razer Razer DeathAdder Essential" "libinput Accel Pro
 # picom --daemon --config ~/.config/qtile/picom.conf &
 # /usr/bin/emacs --daemon &
 nm-applet &
+blueman-applet &
 dunst -conf ~/.config/dunst/dunstrc_xorg &
 "$HOME"/.screenlayout/monitor.sh &
 mpd &
+xscreensaver --no-splash &
 udiskie --smart-tray &
 # /usr/lib/polkit-kde-authentication-agent-1 &
 if [[ ! `pidof gnome-polkit` ]]; then
@@ -29,9 +31,10 @@ xsetroot -cursor_name left_ptr
 ~/.config/qtile/qtile-wall.sh &
 # ~/.config/qtile/wall.sh &
 
-if [ -z "$(pgrep xfce4-clipman)" ]; then
-    xfce4-clipman &
-fi
+# if [ -z "$(pgrep xfce4-clipman)" ]; then
+#     xfce4-clipman &
+# fi
+greenclip daemon &
 
 # Run ollama serve in the background silently.
 ollama serve > /dev/null 2>&1 &
