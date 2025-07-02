@@ -529,7 +529,7 @@ def init_widgets_list():
         widget.Clock(
             foreground=colors[8],
             padding=6,
-            format="⏱ %a, %b %d - %H:%M",
+            format="⏱ %a, %b %d - %H:%M:%S",
         ),
         # widget.TextBox(
         #     text="⏻",
@@ -650,6 +650,12 @@ def set_floating_geometry(window):
     title = window.window.get_name()
 
     if wm_class and "qt6ct" in wm_class:
+        window.floating = True
+        window.togroup()
+        window.cmd_set_size_floating(800, 600)
+        window.cmd_set_position_floating(600, 250)
+
+    if wm_class and "org.gnome.DiskUtility" in wm_class:
         window.floating = True
         window.togroup()
         window.cmd_set_size_floating(800, 600)
