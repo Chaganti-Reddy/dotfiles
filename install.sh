@@ -835,37 +835,37 @@ install_hyprland() {
 
     info "Configuring Hyprland..."
 
-    # local stow_folder
-    # if [[ "$(whoami)" == "karna" ]]; then
-    #     stow_folder="hyprland"
-    # else
-    #     stow_folder="hyprland_gen"
-    # fi
-    #
-    # if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
-    #     stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
-    #     stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
-    #     stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
-    #     stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
-    #     stow_with_check "$HOME/dotfiles/kitty/.config/conky" "$HOME/.config/conky" "conky"
-    #     success "Hyprland configuration has been set up."
-    # else
-    #     warning "Hyprland configuration file already exists. Skipping stow."
-    # fi
-    #
-    # cd ~/.config/st && sudo make clean install && cd ~/dotfiles/
-    #
-    # # Define source and target using $HOME
-    # SOURCE="$HOME/.cache/wal/colors-waybar.css"
-    # TARGET="$HOME/dotfiles/$stow_folder/.config/waybar/colors-waybar.css"
-    #
-    # # Remove existing symlink or file if it exists
-    # [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
-    #
-    # # Create new symlink
-    # ln -s "$SOURCE" "$TARGET"
-    #
-    # echo "Symlink created: $TARGET -> $SOURCE"
+    local stow_folder
+    if [[ "$(whoami)" == "karna" ]]; then
+        stow_folder="hyprland"
+    else
+        stow_folder="hyprland_gen"
+    fi
+
+    if [[ ! -f "$HOME/.config/hypr/hyprland.conf" ]]; then
+        stow_with_check "$HOME/dotfiles/$stow_folder/.config/hypr" "$HOME/.config/hypr" "$stow_folder"
+        stow_with_check "$HOME/dotfiles/rofi/.config/rofi" "$HOME/.config/rofi" "rofi"
+        stow_with_check "$HOME/dotfiles/st/.config/st/" "$HOME/.config/st" "st"
+        stow_with_check "$HOME/dotfiles/kitty/.config/kitty" "$HOME/.config/kitty" "kitty"
+        stow_with_check "$HOME/dotfiles/kitty/.config/conky" "$HOME/.config/conky" "conky"
+        success "Hyprland configuration has been set up."
+    else
+        warning "Hyprland configuration file already exists. Skipping stow."
+    fi
+
+    cd ~/.config/st && sudo make clean install && cd ~/dotfiles/
+
+    # Define source and target using $HOME
+    SOURCE="$HOME/.cache/wal/colors-waybar.css"
+    TARGET="$HOME/dotfiles/$stow_folder/.config/waybar/colors-waybar.css"
+
+    # Remove existing symlink or file if it exists
+    [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
+
+    # Create new symlink
+    ln -s "$SOURCE" "$TARGET"
+
+    echo "Symlink created: $TARGET -> $SOURCE"
 
     install_waldl
 
@@ -2213,7 +2213,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_i3 y
     # install_qtile y
     # install_dwm y
-    # install_hyprland y
+    install_hyprland y
     # install_miniconda y
     # install_kvm y
     # install_browser 1 5
