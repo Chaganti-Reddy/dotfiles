@@ -34,7 +34,7 @@
     "interval": 1800,  // every 30 minutes
     "return-type": "json",
     "on-click": "~/.config/waybar/scripts/weather.sh && notify-send 'Weather updated'",
-    "on-click-right": "st -T 'Forecast' less -Srf ~/.local/share/weatherreport",
+    "on-click-right": "st -T 'Weather-Forecast' less -Srf ~/.local/share/weatherreport",
     "tooltip": true
 },
 
