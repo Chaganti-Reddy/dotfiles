@@ -97,15 +97,15 @@ For a better understanding of how my configuration looks, check out the screensh
 
 The main program I use for my daily life:
 
-- **Window Manager**: I3, HyprLand
-- **Terminal**: St, Kitty
+- **Window Manager**: Qtile, HyprLand
+- **Terminal**: St, Kitty, ALacritty
 - **Shell**: Zsh
 - **Editor**: Neovim, Emacs
 - **File Manager**: Yazi, Thunar
 - **Browser**: QuteBrowser, Zen Browser 
-- **Music Player**: Mpd + Ncmpcpp
+- **Music Player**: Mpd + RMPC
 - **Video Player**: MPV
-- **PDF Viewer**: Zathura
+- **PDF Viewer**: Zathura, Okular
 - **Image Viewer**: sxiv
 - **Launcher**: Rofi
 - **Notification Daemon**: Dunst
@@ -113,8 +113,8 @@ The main program I use for my daily life:
 - **System Monitor**: Btop
 - **Music Downloader**: Yt-dlp
 - **Youtube Player**: Mpv + Ytfzf
-- **Clipboard Manager**: xfce4-clipman, clipse
-- **Screen Recorder**: OBS
+- **Clipboard Manager**: greenclip, cliphist
+- **Screen Recorder**: Scripts
 - **IDE**: Neovim/Emacs
 - **Torrent Client**: Webtorrent, Peerflix
 - **Office Suite**: LibreOffice
@@ -125,9 +125,7 @@ The main program I use for my daily life:
 - **Grub Theme**: SekiroShadow Grub theme
 - **Wallpapers**: Wallpapers from Wallhaven using waldl script 
 
-For entire system I am using pywal for color scheme matching with wallpaper. And for zathura I am using Zathura-Pywal. And for webapps I am using firefoxpwa plugin. 
-
-Now I am using KDE so some of these might not work...
+For entire system I am using pywal for color scheme matching with wallpaper. And for zathura I am using Zathura-Pywal. And for webapps I am using nativefier.
 
 ## License
 
