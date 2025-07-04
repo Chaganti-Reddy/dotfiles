@@ -40,21 +40,21 @@ inotify-tools
 psutils
 dunst
 e2fsprogs 
-gvfs
-gvfs-afc 
-gvfs-google 
-gvfs-goa 
-gvfs-gphoto2 
-gvfs-mtp 
-gvfs-nfs 
-gvfs-onedrive 
-gvfs-smb 
+# gvfs
+# gvfs-afc
+# gvfs-google
+# gvfs-goa
+# gvfs-gphoto2
+# gvfs-mtp
+# gvfs-nfs
+# gvfs-onedrive
+# gvfs-smb
 efibootmgr 
 zoxide 
 gc 
 git-lfs 
 # gnome-keyring
-polkit-gnome
+# polkit-gnome
 pass 
 udiskie
 gstreamer 
@@ -94,7 +94,7 @@ ncdu
 python-adblock 
 dnsmasq 
 python-pip 
-nwg-look
+# nwg-look
 # nwg-displays
 python-prctl
 vscode-css-languageserver 
@@ -103,7 +103,7 @@ lua-language-server
 gnupg 
 zbar 
 os-prober 
-qt6ct
+# qt6ct
 pamixer  
 parallel 
 shfmt 
@@ -111,12 +111,12 @@ tesseract
 tesseract-data-eng
 bmon
 html-xml-utils 
-tumbler 
-thunar
-thunar-archive-plugin
-thunar-media-tags-plugin
-thunar-volman
-thunar-vcs-plugin
+# tumbler
+# thunar
+# thunar-archive-plugin
+# thunar-media-tags-plugin
+# thunar-volman
+# thunar-vcs-plugin
 flameshot
 playerctl 
 rmpc
@@ -199,7 +199,7 @@ hspell
 nuspell
 libvoikko
 aspell
-emacs
+# emacs
 dictd
 cargo
 xmlstarlet
@@ -264,3 +264,4 @@ maven
 speech-dispatcher
 python-lsp-server
 nvim-treesitter-parsers-git
+system-config-printer
