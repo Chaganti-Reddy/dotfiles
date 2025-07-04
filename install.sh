@@ -2069,7 +2069,7 @@ install_extras() {
 
             # Remove existing configurations for Karna
             rm -rf ~/.bashrc
-            stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot gtk-2 gtk-3_karna Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver xsettingsd zathura kitty enchant vim Profile greenclip Gromit Okular redshift
+            stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver zathura kitty enchant vim Profile greenclip Gromit Okular redshift
 
             # Copy essential system files for karna user
             sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
@@ -2211,14 +2211,14 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_shell y
     # setup_gpg_pass y y
     # install_i3 y
-    # install_qtile y
+    install_qtile y
     # install_dwm y
-    install_hyprland y
+    # install_hyprland y
     # install_miniconda y
     # install_kvm y
-    # install_browser 1 5
+    # install_browser 1 5 6
     # install_torrent 1 13
-    # install_dev_tools 3 6 7 9 10 16
+    # install_dev_tools 1 3 6 7 9 10 16
     # install_extra_tools 1 2 3 4 6
     # install_fonts
     # install_ollama y
@@ -2226,7 +2226,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_grub_theme y
     # install_display_manager y 1
     # download_wallpapers y
-    # install_extras y y
+    # install_extras 
     # setup_ssh_and_upload
 else
     check_privileges
