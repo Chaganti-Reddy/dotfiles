@@ -82,7 +82,7 @@ keys = [
     Key([mod, "shift"], "F9", lazy.spawn("gromit-mpx -c"), desc="Run gromit-mpx with -c option"),
     Key([mod, "shift"], "F8", lazy.spawn("gromit-mpx -y"), desc="Run gromit-mpx with -y option"),
     Key([mod], "F8", lazy.spawn("gromit-mpx -z"), desc="Run gromit-mpx with -z option"),
-    Key([mod, "shift"], "n", lazy.spawn("thunar"), desc="Launch file manager"),
+    Key([mod, "shift"], "n", lazy.spawn("dolphin"), desc="Launch file manager"),
     Key([mod, "mod1"], "n", lazy.group["scratchpad"].dropdown_toggle("yazi"), desc="Launch yazi in kitty terminal"),
     Key([mod], "a", lazy.spawn("kitty -e nvim"), desc="Launch Neovim in kitty terminal"),
     Key([mod], "e", lazy.spawn(myEmacs), desc="Launch Emacs client"),
@@ -665,44 +665,44 @@ def set_floating_geometry(window):
     if wm_class and "qt6ct" in wm_class:
         window.floating = True
         window.togroup()
-        window.cmd_set_size_floating(800, 600)
-        window.cmd_set_position_floating(600, 250)
+        window.set_size_floating(800, 600)
+        window.set_position_floating(600, 250)
 
     if wm_class and "org.gnome.DiskUtility" in wm_class:
         window.floating = True
         window.togroup()
-        window.cmd_set_size_floating(800, 600)
-        window.cmd_set_position_floating(600, 250)
+        window.set_size_floating(800, 600)
+        window.set_position_floating(600, 250)
 
     if wm_class and "blueman-manager" in wm_class:
         window.floating = True
         window.togroup()
-        window.cmd_set_size_floating(800, 600)
-        window.cmd_set_position_floating(600, 250)
+        window.set_size_floating(800, 600)
+        window.set_position_floating(600, 250)
 
     if wm_class and "baobab" in wm_class:
         window.floating = True
         window.togroup()
-        window.cmd_set_size_floating(800, 600)
-        window.cmd_set_position_floating(600, 250)
+        window.set_size_floating(800, 600)
+        window.set_position_floating(600, 250)
 
     if wm_class and "kvantummanager" in wm_class:
         window.floating = True
         window.togroup()
-        window.cmd_set_size_floating(800, 600)
-        window.cmd_set_position_floating(600, 250)
+        window.set_size_floating(800, 600)
+        window.set_position_floating(600, 250)
 
     # Example 2: Telegram by wm_class
     if wm_class and "telegram-desktop" in wm_class:
         window.floating = True
-        window.cmd_set_size_floating(900, 700)
-        window.cmd_set_position_floating(600, 200)
+        window.set_size_floating(900, 700)
+        window.set_position_floating(600, 200)
 
     # Example 3: yad boxes (any Yad dialog)
     if wm_class and "Yad" in wm_class:
         window.floating = True
-        window.cmd_set_size_floating(500, 300)
-        window.cmd_set_position_floating(300, 200)
+        window.set_size_floating(500, 300)
+        window.set_position_floating(300, 200)
 
 
 # If things like steam games want to auto-minimize themselves when losing
