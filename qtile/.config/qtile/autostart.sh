@@ -22,10 +22,10 @@ conky -c ~/.config/conky/conky.conf &
 mpd &
 xscreensaver --no-splash &
 udiskie --smart-tray &
-# /usr/lib/polkit-kde-authentication-agent-1 &
-if [[ ! `pidof gnome-polkit` ]]; then
-	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-fi
+/usr/lib/polkit-kde-authentication-agent-1 &
+# if [[ ! `pidof gnome-polkit` ]]; then
+# 	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# fi
 /usr/bin/gnome-keyring-daemon --start &
 numlockx on &
 xsetroot -cursor_name left_ptr
@@ -39,4 +39,4 @@ xsetroot -cursor_name left_ptr
 greenclip daemon &
 
 # Run ollama serve in the background silently.
-ollama serve > /dev/null 2>&1 &
+# ollama serve > /dev/null 2>&1 &
