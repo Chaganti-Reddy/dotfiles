@@ -2,7 +2,7 @@
 
 # === CONFIGURATION ===
 SEARCH_DIRS=( "$HOME/Documents" "$HOME/Downloads" "/mnt/Karna/" )
-FILE_TYPES=( pdf docx )  # ← set extensions you care about
+FILE_TYPES=( pdf docx pptx )  # ← set extensions you care about
 
 CACHE_FILE="$HOME/.cache/rofi_file_list"
 BOOKMARK_FILE="$HOME/.cache/rofi_file_bookmarks"
