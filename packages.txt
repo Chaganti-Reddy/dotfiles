@@ -265,3 +265,4 @@ speech-dispatcher
 python-lsp-server
 nvim-treesitter-parsers-git
 system-config-printer
+# archlinux-xdg-menu
