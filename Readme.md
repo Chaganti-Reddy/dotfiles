@@ -97,12 +97,12 @@ For a better understanding of how my configuration looks, check out the screensh
 
 The main program I use for my daily life:
 
-- **Window Manager**: Qtile, HyprLand
-- **Terminal**: St, Kitty, ALacritty
+- **Window Manager**: Qtile, KDE Plasma
+- **Terminal**: Kitty, Alacritty
 - **Shell**: Zsh
 - **Editor**: Neovim, Emacs
 - **File Manager**: Yazi, Thunar
-- **Browser**: QuteBrowser, Zen Browser 
+- **Browser**: QuteBrowser, Zen Browser, Brave
 - **Music Player**: Mpd + RMPC
 - **Video Player**: MPV
 - **PDF Viewer**: Zathura, Okular
