@@ -129,7 +129,7 @@ For entire system I am using pywal for color scheme matching with wallpaper. And
 
 ## License
 
-This repository is licensed under the MIT License. For more information, see the `LICENSE` file.
+This repository is licensed under the MIT License. For more information, see the `LICENSE` file. 
 
 ## Credits
 
