@@ -1526,10 +1526,12 @@ install_extra_tools() {
         case $app in
         1)
             install_package "ani-cli-git" "Ani-Cli" "paru -S --noconfirm --needed"
+            install_package "ani-skip-git" "Ani-Skip" "paru -S --noconfirm --needed"
             ;;
         2)
             install_package "ani-cli-git" "Ani-Cli Python" "paru -S --noconfirm --needed"
             pipx install anipy-cli
+            install_package "ani-skip-git" "Ani-Skip" "paru -S --noconfirm --needed"
             cd ~/dotfiles/ || return
             stow anipy-cli
             ;;
@@ -2073,7 +2075,7 @@ install_extras() {
 
             # Remove existing configurations for Karna
             rm -rf ~/.bashrc
-            stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver zathura kitty enchant vim Profile greenclip Gromit Okular redshift
+            stow bash_karna BTOP_karna cava dunst face_karna neofetch flameshot Kvantum latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qt6ct qutebrowser yazi redyt screenlayout sxiv Templates Thunar xarchiver zathura kitty enchant vim Profile greenclip Gromit Okular redshift fastanime
 
             # Copy essential system files for karna user
             sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
