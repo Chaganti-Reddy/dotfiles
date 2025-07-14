@@ -209,6 +209,7 @@ input * {
     bindsym $mod+n exec kitty --class kitty-yazi -e yazi
     bindsym $mod+Shift+a exec ~/.config/scripts/script &
     bindsym $mod+Alt+p exec ~/.config/scripts/rofi-pass-wayland &
+    bindsym $mod+period exec rofi -modi emoji -show emoji
     bindsym $mod+Shift+p exec ~/.config/rofi/powermenu/type-4/powermenu.sh &
     bindsym $mod+Shift+m exec kitty --class kitty-rmpc -e rmpc
     # bindsym Alt+tab exec ~/.config/rofi/launchers/type-7/windows.sh &
@@ -383,7 +384,7 @@ bindsym $mod+r mode "resize"
 
 mode "special" {
   bindsym c exec wl-color-picker clipboard; mode "default" 
-  bindsym s exec --no-startup-id ~/.config/rofi/screenshot.sh &
+  bindsym s exec --no-startup-id ~/.config/rofi/screenshot.sh &; mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
