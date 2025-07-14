@@ -721,6 +721,7 @@ install_sway() {
         "xorg-xwayland"
         "rofi-wayland"
         "kitty"
+      	"wezterm"
         "xdg-desktop-portal-wlr"
         "xdg-desktop-portal"
         "xdg-desktop-portal-gtk"
@@ -731,7 +732,7 @@ install_sway() {
         "qt6-wayland"
         "clipse-bin"
         # "cliphist"
-        "bluetui"
+        # "bluetui"
         "system-config-printer"
         "chafa"
         "polkit"
@@ -745,6 +746,7 @@ install_sway() {
         "cpio"
         "smartmontools"
         "xdg-utils"
+	      "wl-color-picker"
     )
 
     for package in "${packages[@]}"; do
@@ -762,12 +764,12 @@ install_sway() {
     TARGET="$HOME/dotfiles/sway/.config/sway/waybar/colors-waybar.css"
 
     # Remove existing symlink or file if it exists
-    [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
+    # [ -L "$TARGET" ] || [ -e "$TARGET" ] && rm -f "$TARGET"
 
     # Create new symlink
-    ln -s "$SOURCE" "$TARGET"
+    # ln -s "$SOURCE" "$TARGET"
 
-    echo "Symlink created: $TARGET -> $SOURCE"
+    # echo "Symlink created: $TARGET -> $SOURCE"
 
     # Install waldl
     install_waldl
@@ -2086,7 +2088,7 @@ install_extras() {
             sudo cp ~/dotfiles/Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop
 
             # Install custom tools for karna
-            sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst >kunst && chmod +x kunst && sudo mv kunst /usr/bin/
+            # sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst >kunst && chmod +x kunst && sudo mv kunst /usr/bin/
 
             # to work proper context menu for kde  applications apart from kde
             mkdir $HOME/.config/menus/
@@ -2223,13 +2225,14 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_i3 y
     # install_qtile y
     # install_dwm y
+    install_sway y
     # install_hyprland y
     # install_miniconda y
     # install_kvm y
     # install_browser 1 5 6
     # install_torrent 1 13
-    # install_dev_tools 1 3 6 7 9 10 16
-    install_extra_tools 1 2 3 4 6 10
+    # install_dev_tools 3 6 7 9 10 16
+    # install_extra_tools 1 2 3 4 6 10
     # install_fonts
     # install_ollama y
     # install_pip_packages y
