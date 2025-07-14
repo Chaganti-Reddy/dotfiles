@@ -1,11 +1,8 @@
 const links = {
   a: "https://github.com",
+  c: "https://chatgpt.com",
   s: "https://youtube.com",
-  d: "https://reddit.com",
-  f: {
-    href: "https://calendar.google.com",
-    alias: "calendar",
-  },
+  d: "https://reddit.com", 
   g: "https://tldraw.com",
 };
 
