@@ -6,7 +6,7 @@ declare -A apps=(
 )
 
 # Generate the menu dynamically
-choice=$(printf "%s\n" "${!apps[@]}" | rofi -dmenu -p "Select Application:" -theme $HOME/.config/rofi/dt-center.rasi)
+choice=$(printf "%s\n" "${!apps[@]}" | rofi -dmenu -p "Select Application:")
 
 # Run the chosen application if it exists
 if [[ -n "$choice" && -n "${apps[$choice]}" ]]; then
