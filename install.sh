@@ -566,7 +566,7 @@ install_i3() {
         "i3blocks"
         "xorg-xrdb"
         "xwallpaper"
-        "picom"
+        "xcompmgr"
         "i3status"
         "xss-lock"
         "autotiling"
@@ -2225,7 +2225,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_i3 y
     # install_qtile y
     # install_dwm y
-    install_sway y
+    # install_sway y
     # install_hyprland y
     # install_miniconda y
     # install_kvm y
