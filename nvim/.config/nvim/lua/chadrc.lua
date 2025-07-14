@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "nightowl",
+  theme = "gruvbox",
   transparency = true,
   hl_add = {
     NvimTreeOpenedFolderName = { fg = "green", bold = true },
@@ -18,7 +18,7 @@ M.base46 = {
   },
   integrations = {},
   -- changed_themes = {},
-  theme_toggle = { "chadwal", "nightowl" },
+  theme_toggle = { "gruvbox", "gruvbox_light" },
 }
 
 -- M.nvdash = {
