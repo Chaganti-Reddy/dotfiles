@@ -1,0 +1,38 @@
+* {
+  font-family: "Iosevka Nerd Font Mono" sans-serif;
+}
+
+:root {
+  --bg-primary: #3f3f3f;
+  --fg-primary: #dcdccc;
+  --fg-secondary: #9f9f9f;
+  --fg-warning: #cc9393;
+}
+
+body {
+  background-color: var(--bg-primary);
+  background-image: url("img.png");
+  /* background-image: url("nicola-samori.jpg"); */
+  background-size: cover;
+  color: var(--fg-primary);
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--fg-primary);
+}
+
+.list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5em;
+}
+
+ul {
+  background-color: var(--bg-primary);
+  list-style: none;
+  padding: 2rem;
+}
