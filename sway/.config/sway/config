@@ -390,10 +390,10 @@ mode "special" {
 bindsym $mod+z mode "special"
 
 mode "open" {
-  bindsym p exec --no-startup-id ~/.config/scripts/rofi_pdf & 
-  bindsym b exec --no-startup-id ~/.config/scripts/rofi_beats & 
-  bindsym l exec --no-startup-id ~/.config/scripts/rofi_learn & 
-  bindsym t exec --no-startup-id ~/.config/scripts/rofi_todo & 
+  bindsym p exec --no-startup-id ~/.config/scripts/rofi_pdf &; mode "default"
+  bindsym b exec --no-startup-id ~/.config/scripts/rofi_beats &; mode "default"
+  bindsym l exec --no-startup-id ~/.config/scripts/rofi_learn &; mode "default"
+  bindsym t exec --no-startup-id ~/.config/scripts/rofi_todo &; mode "default"
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
