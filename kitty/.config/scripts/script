@@ -17,7 +17,7 @@ options=(["File Manager"]=~/.config/scripts/rofifm
          ["Download Some new wallpapers"]=/usr/local/bin/waldl
          ["Execute Mouse Settings for Window Managers"]=~/.config/scripts/mouse)
 
-choice=$(printf '%s\n' "${!options[@]}" | sort -g | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi -i -l 15 -p 'Choose an Option: ' "${@}")
+choice=$(printf '%s\n' "${!options[@]}" | sort -g | rofi -dmenu -i -l 15 -p 'Choose an Option: ' "${@}")
 
 if [ "$choice" ]; then
     sh "${options[$choice]}"
