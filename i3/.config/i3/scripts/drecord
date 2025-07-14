@@ -7,7 +7,7 @@ LIST_FILE="$XDG_RUNTIME_DIR/ffmpeg_recordings.list"
 
 # Prompt for a recording name
 get_name() {
-	name=$(rofi -dmenu -p "Recording name (no spaces):" -theme ~/.config/rofi/dt-center.rasi -theme-str 'window { width: 30em; }')
+	name=$(rofi -dmenu -p "Recording name (no spaces):" heme-str 'window { width: 30em; }')
 	[ -z "$name" ] && exit
 	echo "$name" | tr ' ' '-' | tr -cd '[:alnum:]-_'
 }
@@ -34,7 +34,7 @@ videomic() {
 # Record video + desktop audio
 videodesktop() {
 	AUD=$(pacmd list-sources | grep -B1 "Name: " | grep "index:" | awk '{print $2}' | \
-		rofi -dmenu -p "Audio Source Index:" -theme ~/.config/rofi/dt-center.rasi -theme-str 'window { width: 20em; } listview { lines: 5; }')
+		rofi -dmenu -p "Audio Source Index:" heme-str 'window { width: 20em; } listview { lines: 5; }')
 
 	[ -z "$AUD" ] && exit
 
@@ -94,7 +94,7 @@ stoprecording() {
 	[ -z "$choices" ] && notify-send "No active recordings to stop" && return
 
 	selection=$(printf "%s" "$choices" | rofi -dmenu -p "Stop which recording?" \
-		-theme ~/.config/rofi/dt-center.rasi -theme-str 'window { width: 40em; } listview { lines: 8; }')
+		heme-str 'window { width: 40em; } listview { lines: 8; }')
 
 	[ -z "$selection" ] && return
 
@@ -129,7 +129,7 @@ stoprecording() {
 # Main Rofi menu
 selection=$(printf "videomic\nvideodesktop\nvideoonly\nstoprecording" | \
 	rofi -dmenu -i -p "Record mode:" \
-	-theme ~/.config/rofi/dt-center.rasi \
+
 	-theme-str 'window { width: 20em; } listview { lines: 4; }')
 
 case "$selection" in
