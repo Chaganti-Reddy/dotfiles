@@ -7,7 +7,7 @@ FILE_TYPES=( pdf docx pptx )  # ← set extensions you care about
 CACHE_FILE="$HOME/.cache/rofi_file_list"
 BOOKMARK_FILE="$HOME/.cache/rofi_file_bookmarks"
 SCAN_INTERVAL=300  # ← cache lifespan in seconds
-ROFI_CMD="rofi -dmenu -i -theme ~/.config/rofi/dt-center.rasi -p File"
+ROFI_CMD="rofi -dmenu -i -p File"
 DUNSTIFY="dunstify -u low --replace=1337"
 FALLBACK_OPEN="xdg-open"
 
