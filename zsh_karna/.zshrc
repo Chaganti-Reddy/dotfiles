@@ -574,7 +574,7 @@ export KUNST_MUSIC_DIR="/home/karna/Music/"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-#(cat ~/.cache/wal/sequences &)
+# (cat ~/.cache/wal/sequences &)
 
 compdef fastanime
 
