@@ -177,8 +177,6 @@ bindgesture swipe:3:up workspace back_and_forth
 # Complex window management
 # bindgesture pinch:inward+clockwise:4 exec swaymsg "move window to scratchpad; scratchpad show"
 
-
-
 #
 #   input type:keyboard {
 #       xkb_layout "eu"
