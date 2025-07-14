@@ -12,7 +12,7 @@ fi
 /usr/bin/gnome-keyring-daemon --start &
 
 # Notifications
-dunst &
+dunst -conf ~/.config/dunst/dunstrc_wayland &
 mpd &
 udiskie --smart-tray &
 numlockx on &
@@ -26,5 +26,3 @@ clipse -listen &
 nm-applet --indicator &
 # blueman-applet &
 
-# Set a random wallpaper when Sway starts
-~/dotfiles/sway/.config/sway/set-random-wallpaper.sh &
