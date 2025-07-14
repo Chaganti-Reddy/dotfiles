@@ -18,10 +18,11 @@
 # important envars
 set $mod Mod4
 set $term kitty
-set $termalt st
+set $termalt wezterm
 set $MYBROWSER zen-browser
 set $SCRIPT ~/.config/i3/scripts/
-set $ROFI rofi -show drun -modi drun -show-icons -theme ~/.config/rofi/dt-center.rasi
+# set $ROFI rofi -modes "window,drun,combi" -show combi --window-title "run"
+set $ROFI rofi -show drun -modi drun
 set $screenshot-folder ~/Pictures/Screenshots
 
 #### KeyBinds
@@ -34,7 +35,7 @@ bindsym --release $mod+Shift+o exec --no-startup-id $SCRIPT/ocr-script &> /tmp/o
 # Move window to scratchpad
 bindsym $mod+Shift+minus move scratchpad 
 # Rofi to list windows
-bindsym Mod1+Tab exec --no-startup-id rofi -show window -modi window -show-icons -theme ~/.config/rofi/dt-center.rasi 
+bindsym Mod1+Tab exec --no-startup-id rofi -show window -modi window -show-icons  
 # Launch Emoji picker
 bindsym $mod+period exec --no-startup-id ~/.config/rofi/applets/bin/emoji.sh
 # Launch Screen Record Tool
@@ -163,7 +164,7 @@ bindsym $mod+Mod1+p exec --no-startup-id ~/.config/scripts/rofi-pass-xorg &
 bindsym $mod+Shift+a exec --no-startup-id ~/.config/scripts/script & 
 # Electron/Nativefier Apps Menu
 bindsym $mod+Mod1+o exec --no-startup-id $SCRIPT/electron-menu &
-set $clipboard rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi
+set $clipboard rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' 
 # Open Rofi Clipboard
 bindsym $mod+v exec --no-startup-id $clipboard 
 
@@ -238,7 +239,7 @@ mode "$mode_gaps_outer" {
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Iosevka Nerd Font Bold 8
+font pango:Iosevka Term Nerd Font 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -467,43 +468,36 @@ bindsym $mod+Shift+F8 exec --no-startup-id gromit-mpx -y
 # Gromit MPX Clear Screen  
 bindsym $mod+F8 exec --no-startup-id gromit-mpx -z 
 
-# Set colors from Xresources
-# Change 'color7' and 'color2' to whatever colors you want i3 to use 
-# from the generated scheme.
-# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
-# it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
-set_from_resource $text i3wm.color0 #f0f0f0
+mode "special" {
+        bindsym s exec flameshot gui mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+bindsym $mod+z mode "special"
 
-client.background       $bg
+# window colors
+client.focused #9b8d7f #9b8d7f #000000 #9b8d7f #9b8d7f
+client.focused_inactive #222222 #222222 #9b8d7f #222222 #222222
+client.unfocused #222222 #222222 #9b8d7f #222222 #222222
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-	position top
-  status_command i3blocks 
-	font pango:Iosevka Nerd Font Bold 11.5
-	height 25
-	workspace_min_width 30
-	tray_output primary
-	colors {
-		focused_workspace  #4c7899 #285577 #ffffff
-		background #322f3d
-	}
-    # colors {
-    #     background $bg 
-    #     statusline #ffffff
-    #     separator $fg
-	   #   	# focused_workspace $fg $text #ffffff $bg
-    # }
+  status_command i3blocks
+  position top
+  separator_symbol "::"
+  colors {
+    background #222222
+    statusline #9b8d7f
+    separator #9b8d7f
+
+    focused_workspace #9b8d7f #9b8d7f #222222
+    inactive_workspace #222222 #222222 #9b8d7f
+    active_workspace #222222 #222222 #9b8d7f
+    urgent_workspace #222222 #222222 #9b8d7f
+    binding_mode #222222 #222222 #9b8d7f
+  }
+  font pango:Iosevka Term Nerd Font 10
+  tray_output eDP-1
 }
 
 ### special settings for some programs
