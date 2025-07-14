@@ -1,74 +1,43 @@
-command=$HOME/.config/i3blocks/scripts/$BLOCK_NAME
-markup=pango
-separator_block_width=15
-LOCATION=hyderabad
+# i3blocks config example
 
-# adding bottom borders
-separator=false
-border_top=0
-border_left=0
-border_right=0
-border_bottom=3
 
-##### BLOCKS #####
-# [window_title]
-# min_width=1600
-# align=center
-# command=echo $(xdotool getactivewindow getwindowname)
-# interval=1
-
-[mpd_prev]
-interval=1
-
-[mpd_toggle]
-interval=1
-signal=60
-
-[mpd_next]
-interval=1
-
-[gmeet]
-signal=19
-color=#d90436
-
-[nettraf]
-interval=1
-signal=16
-border=#e16428
-
-[weather]
-interval=10800
-signal=10
-border=#acdbdf
-
-[memory]
-interval=1
-border=#ffd700
-
-[light]
-interval=once
-border=#6b778d
-signal=24
-
-[audio]
-interval=1
-border=#e11d74
-signal=10
-
+# CPU usage Block
 [cpu]
-interval=20
-border=#e16428
-
-[battery]
+command=top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
 interval=5
-border=#a7d129
+label=cpu 
+color=#9b8d7f
 
-[internet]
+# Brightness Block using brightnessctl and making into percentage of 96000
+[brightness]
+command=brightnessctl g | awk '{printf "%d %%", ($1 * 100 / 96000)}'
 interval=1
-signal=50
-border=#219897
+label=brightness
+color=#9b8d7f
 
-[clock]
-label=📅
+# Battery Block
+[battery]
+command=acpi -b | grep -o '[0-9]*%' | tr -d '%'
+interval=30
+label=battery 
+color=#9b8d7f
+
+# Memory Usage Block
+[memory]
+command=free -h | awk '/^Mem/ {print $3 "/" $2}'
+interval=10
+label=mem 
+color=#9b8d7f
+
+[brightness]
+command=brightnessctl g | awk '{printf "%d %%\n", ($1 * 100 / 96000)}'
 interval=1
-border=#acdbdf
+label=brightness 
+color=#9b8d7f
+
+# Date/Time Block
+[time]
+command=date "+%Y-%m-%d %H:%M:%S "
+interval=1
+label=time 
+color=#9b8d7f
