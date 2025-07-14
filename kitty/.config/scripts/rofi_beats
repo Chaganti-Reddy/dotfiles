@@ -18,7 +18,7 @@ menu() {
 }
 
 main() {
-	choice=$(menu | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi | cut -d. -f1)
+	choice=$(menu | rofi -dmenu | cut -d. -f1)
 
 	case $choice in
 		1)
@@ -51,7 +51,7 @@ main() {
 	esac
 
 	# Launch cava in new st terminal
-	st -T cava-f -e cava &
+	kitty -T cava-f -e cava &
 
 	# Launch mpv radio stream
 	mpv $ARGS --title="radio-mpv" "$URL"
