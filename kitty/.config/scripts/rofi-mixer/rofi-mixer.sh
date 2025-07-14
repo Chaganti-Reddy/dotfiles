@@ -2,7 +2,7 @@
 
 BASEDIR=$(dirname "$0")
 
-rofi -theme ~/.config/rofi/dt-center.rasi -theme-str 'window { width: 840; }' \
+rofi -theme-str 'window { width: 840; }' \
 -kb-custom-16 "Ctrl+equal" \
 -kb-custom-17 "Alt+m" \
 -kb-custom-18 "minus,underscore" \
