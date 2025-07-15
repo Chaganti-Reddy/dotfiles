@@ -21,7 +21,7 @@ blueman-applet &
 if [[ `pidof dunst` ]]; then
 	pkill dunst
 fi
-dunst -conf ~/.config/dunst/dunstrc_xorg &
+dunst &
 
 # X compositor
 xcompmgr &
@@ -58,10 +58,10 @@ xsetroot -cursor_name left_ptr
 ~/.dwm/scripts/mouse &
 ~/.config/scripts/check-battery.sh &
 
-if [ -z "$(pgrep xfce4-clipman)" ]; then
-    xfce4-clipman &
-fi
+#if [ -z "$(pgrep xfce4-clipman)" ]; then
+#    xfce4-clipman &
+#fi
 
 # Run ollama serve in the background silently.
-ollama serve > /dev/null 2>&1 &
+# ollama serve > /dev/null 2>&1 &
 
