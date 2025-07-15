@@ -134,7 +134,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static char dmenuprompt[] = "Search: ";
+static char rofimodes[]="window,drun,combi";
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-p", dmenuprompt, NULL };
+static const char *roficmd[] = { "rofi", "-modes", rofimodes, "-show", "combi", "--window-title", "'run'", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browser[]  = { "brave", NULL };
 static const char *browserAlt[]  = { "qutebrowser", NULL };
@@ -148,6 +150,7 @@ static const Key keys[] = {
 	/* modifier                   chain    key        function        argument */
 	{ MODKEY,                        -1,   XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                        -1,   XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,              -1,   XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY,                        -1,   XK_b,      togglebar,      {0} },
 	{ MODKEY,                        -1,   XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                        -1,   XK_k,      focusstack,     {.i = -1 } },
@@ -247,11 +250,11 @@ static const Key keys[] = {
   { MODKEY,                        -1,   XK_bracketright,          spawn,  SHCMD("mpc seek +10") },
   
   // Rofi Scripts 
-  { MODKEY|Mod1Mask,               -1,   XK_f,                  spawn,  SHCMD("rofi -theme ~/.config/rofi/dt-center.rasi -show find -modi find:~/.config/scripts/rofifinder &") },
+  { MODKEY|Mod1Mask,               -1,   XK_f,                  spawn,  SHCMD("rofi -show find -modi find:~/.config/scripts/rofifinder &") },
   { MODKEY|ControlMask,             -1, XK_f,                   spawn,  SHCMD("~/.config/scripts/rofifm &") },
   { MODKEY|Mod1Mask,               -1,   XK_p,                  spawn,  SHCMD("~/.config/scripts/rofi-pass-xorg &") },
   { MODKEY|ShiftMask,              -1,   XK_a,                  spawn,  SHCMD("~/.config/scripts/script &") },
-  { MODKEY,                        -1,   XK_v,                  spawn,  SHCMD("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}' -theme ~/.config/rofi/dt-center.rasi") },
+  { MODKEY,                        -1,   XK_v,                  spawn,  SHCMD("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'") },
   { MODKEY,                        XK_o, XK_t,                  spawn,  SHCMD("~/.config/scripts/rofi_todo &") },
   { MODKEY,                        XK_o, XK_p,                  spawn,  SHCMD("~/.config/scripts/rofi_pdf &") },
   { MODKEY,                        XK_o, XK_m,                  spawn,  SHCMD("~/.config/scripts/rofi_beats &") },
