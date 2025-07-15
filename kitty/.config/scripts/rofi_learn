@@ -51,7 +51,7 @@ while IFS= read -r line; do
 done < "$LEARN_FILE"
 
 # Show Rofi menu
-selection=$(printf '%s\n' "${menu_items[@]}" | rofi -dmenu -theme "$THEME" -p "Learn Tracker")
+selection=$(printf '%s\n' "${menu_items[@]}" | rofi -dmenu -p "Learn Tracker")
 [[ -z "$selection" ]] && exit 0
 
 selected_index=$(printf '%s\n' "${menu_items[@]}" | awk -v sel="$selection" '{if ($0 == sel) print NR-1}')
@@ -59,17 +59,17 @@ ref="${task_refs[$selected_index]}"
 
 case "$ref" in
 "action:add")
-    add_type=$(printf "➕ New section\n📁 Existing section" | rofi -dmenu -theme "$THEME" -p "Where to add?")
+    add_type=$(printf "➕ New section\n📁 Existing section" | rofi -dmenu -p "Where to add?")
     [[ -z "$add_type" ]] && exit 0
 
     if [[ "$add_type" == "➕ New section" ]]; then
-        new_section=$(rofi -dmenu -theme "$THEME" -p "New section name:")
+        new_section=$(rofi -dmenu -p "New section name:")
         [[ -z "$new_section" ]] && exit 0
 
-        priority=$(printf "* CodeRed\n** CodeOrange\n*** CodeBlue\n**** CodeYellow\n***** CodeGreen" | rofi -dmenu -theme "$THEME" -p "Select priority for $new_section")
+        priority=$(printf "* CodeRed\n** CodeOrange\n*** CodeBlue\n**** CodeYellow\n***** CodeGreen" | rofi -dmenu -p "Select priority for $new_section")
         [[ -z "$priority" ]] && exit 0
 
-        new_task=$(rofi -dmenu -theme "$THEME" -p "First task for $new_section:")
+        new_task=$(rofi -dmenu -p "First task for $new_section:")
         [[ -z "$new_task" ]] && exit 0
 
         {
@@ -80,7 +80,7 @@ case "$ref" in
         } >> "$LEARN_FILE"
 
     elif [[ "$add_type" == "📁 Existing section" ]]; then
-        section_title=$(printf '%s\n' "${menu_items[@]}" | grep -E "📘|📂" | rofi -dmenu -theme "$THEME" -p "Choose section/subsection:")
+        section_title=$(printf '%s\n' "${menu_items[@]}" | grep -E "📘|📂" | rofi -dmenu -p "Choose section/subsection:")
         [[ -z "$section_title" ]] && exit 0
 
         if [[ "$section_title" == 📘* ]]; then
@@ -90,7 +90,7 @@ case "$ref" in
             target_header="### ${target_section#*→ }"
         fi
 
-        new_task=$(rofi -dmenu -theme "$THEME" -p "New task for $section_title:")
+        new_task=$(rofi -dmenu -p "New task for $section_title:")
         [[ -z "$new_task" ]] && exit 0
 
         awk -v header="$target_header" -v content="- [ ] $new_task" '
@@ -124,7 +124,7 @@ case "$ref" in
     exit 0
     ;;
 "action:delete")
-    task_to_delete=$(printf '%s\n' "${menu_items[@]}" | grep '\[.\]' | rofi -dmenu -theme "$THEME" -p "Delete task")
+    task_to_delete=$(printf '%s\n' "${menu_items[@]}" | grep '\[.\]' | rofi -dmenu -p "Delete task")
     [[ -z "$task_to_delete" ]] && exit 0
 
     # Trim leading spaces
