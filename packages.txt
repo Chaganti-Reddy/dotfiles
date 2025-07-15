@@ -152,7 +152,7 @@ ueberzugpp
 luacheck 
 yt-dlp-git
 mlocate 
-nodejs 
+nodejs-lts-jod
 npm 
 translate-shell 
 jdk-openjdk 
