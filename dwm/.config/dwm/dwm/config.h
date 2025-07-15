@@ -18,8 +18,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:weight=bold:size=11:antialias=true:hinting=true", "NotoColorEmoji:pixelsize=11:antialias=true:autohint=true", };
-static const char dmenufont[]       = "Iosevka Nerd Font:size=12:weight=bold";
+static const char *fonts[]          = { "Iosevka Term Nerd Font:weight=bold:size=11:antialias=true:hinting=true", "NotoColorEmoji:pixelsize=11:antialias=true:autohint=true", };
+static const char dmenufont[]       = "Iosevka Term Nerd Font:size=12:weight=bold";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -40,7 +40,7 @@ typedef struct {
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "rmpc", NULL};
 const char *spcmd3[] = {"qalculate-gtk", NULL};
-const char *spcmd4[] = {"st", "-n",     "spnews", "-f",       "Iosevka Nerd Font:weight=bold:size=12", "-g", "120x34", "-e",     "newsboat", NULL};
+const char *spcmd4[] = {"st", "-n",     "spnews", "-f",       "Iosevka Term Nerd Font:weight=bold:size=12", "-g", "120x34", "-e",     "newsboat", NULL};
 const char *spcmd5[] = {"st", "-n", "spchess", "-g", "135x35", "-e", "/home/karna/apps/Chess-linux-x64/Chess", NULL};
 
 static Sp scratchpads[] = {
@@ -135,7 +135,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static char dmenuprompt[] = "Search: ";
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-p", dmenuprompt, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *browser[]  = { "zen-browser", NULL };
+static const char *browser[]  = { "brave", NULL };
 static const char *browserAlt[]  = { "qutebrowser", NULL };
 static const char *filemanager[] = { "thunar", NULL };
 static const char *filemanagerAlt[] = { "kitty", "--class", "kitty-yazi", "-e", "yazi", NULL };
