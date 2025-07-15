@@ -7,7 +7,7 @@
   "custom/separator": {
     "format": "::",
     "interval": "once",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/space": {
     "format": " || ",
