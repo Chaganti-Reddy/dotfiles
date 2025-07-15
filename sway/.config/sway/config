@@ -437,7 +437,7 @@ bar {
 }
 
 # Startup Applications
-exec --no-startup-id ~/.config/sway/autostart.sh &
+exec --no-startup-id /home/karna/.config/sway/autostart.sh &
 exec --no-startup-id redshift &
 
 # rules
