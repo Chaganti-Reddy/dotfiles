@@ -75,7 +75,7 @@ static const Rule rules[] = {
 //	{ "Nm-connection-editor", NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "flameshot",            NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "obs",                  NULL,           NULL,           1 << 7,       1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
-	{ "Brave-browser",        NULL,           NULL,           1 << 1,       0,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
+	{ "Brave-browser",        NULL,           NULL,           0,       0,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "qutebrowser",          NULL,           NULL,           0,            1,          0,          0,         -1,      -1,     -1,     1100,   900,     -1 },
 	{ "Vivaldi-stable",       NULL,           NULL,           1 << 1,       0,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ "discord",              NULL,           NULL,           1 << 5,       0,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
