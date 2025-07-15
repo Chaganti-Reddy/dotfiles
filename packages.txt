@@ -33,7 +33,7 @@ ntfs-3g
 clang 
 gcc 
 clipnotify
-rofi-wayland
+rofi
 rofi-emoji
 rofi-calc
 inotify-tools
@@ -53,7 +53,7 @@ efibootmgr
 zoxide 
 gc 
 git-lfs 
-# gnome-keyring
+gnome-keyring
 polkit-gnome
 pass 
 udiskie
