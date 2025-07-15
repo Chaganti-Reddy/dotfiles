@@ -1127,8 +1127,6 @@ install_browser() {
                     info "Installing nativefier..."
                     sudo npm install -g nativefier
                 fi
-                # Video Download Helper
-                curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
             fi
             ;;
         2)
@@ -1137,7 +1135,6 @@ install_browser() {
             else
                 info "Installing Firefox..."
                 sudo pacman -S --noconfirm firefox
-                curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
             fi
             ;;
         3)
@@ -2230,7 +2227,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_hyprland y
     # install_miniconda y
     # install_kvm y
-    # install_browser 1 5 6
+    # install_browser 5 6
     # install_torrent 1 13
     # install_dev_tools 3 6 7 9 10 16
     # install_extra_tools 1 2 3 4 6 10
@@ -2240,7 +2237,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_grub_theme y
     # install_display_manager y 2
     # download_wallpapers y
-    install_extras 
+    # install_extras 
     # setup_ssh_and_upload
 else
     check_privileges
