@@ -15,7 +15,7 @@ fi
 dunst -conf ~/.config/dunst/dunstrc_wayland &
 mpd &
 udiskie --smart-tray &
-numlockx on &
+numlockx &
 # ollama serve > /dev/null 2>&1 &
 autotiling -l 2 &
 
@@ -23,6 +23,6 @@ autotiling -l 2 &
 clipse -listen &
 
 # Tray applets
-nm-applet --indicator &
+# nm-applet --indicator &
 # blueman-applet &
 
