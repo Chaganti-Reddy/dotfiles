@@ -38,7 +38,8 @@ typedef struct {
 } Sp;
 
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL};
-const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "rmpc", NULL};
+const char *spcmd2[] = {"kitty", "--class", "spmusic", "-e", "rmpc", NULL};
+// const char *spcmd2[] = {"st", "-n", "spmusic", "-g", "120x34", "-e", "rmpc", NULL};
 const char *spcmd3[] = {"qalculate-gtk", NULL};
 const char *spcmd4[] = {"st", "-n",     "spnews", "-f",       "Iosevka Term Nerd Font:weight=bold:size=12", "-g", "120x34", "-e",     "newsboat", NULL};
 const char *spcmd5[] = {"st", "-n", "spchess", "-g", "135x35", "-e", "/home/karna/apps/Chess-linux-x64/Chess", NULL};
@@ -85,7 +86,7 @@ static const Rule rules[] = {
 	{ NULL,                   NULL,           "Event Tester", 0,            0,          0,          1,         -1,      -1,     -1,     -1,     -1,     -1 },
 
 	{ NULL,                   "spterm",       NULL,           SPTAG(0),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
-	{ NULL,                   "spmusic",      NULL,           SPTAG(1),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
+	{ NULL,                   "spmusic",      NULL,           SPTAG(1),     1,          1,          0,         -1,      -1,     -1,     1000,   800,     -1 },
 	{ "Qalculate-gtk",        NULL,           NULL,           SPTAG(2),     1,          0,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ NULL,                   "spnews",       NULL,           SPTAG(3),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
 	{ NULL,                   "spchess",      NULL,           SPTAG(4),     1,          1,          0,         -1,      -1,     -1,     -1,     -1,     -1 },
