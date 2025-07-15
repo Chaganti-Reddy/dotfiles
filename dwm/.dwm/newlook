@@ -5,7 +5,7 @@ wall=""
 
 # now search recursively in all the dirs in wall_dir 
 for dir in $wall_dir; do 
-  wall+=$(find $HOME/Pictures/pix/$dir -type f -name "*.jpg" -o -name "*.png")
+  wall+=$(find $HOME/Pictures/pix/ -type f -name "*.jpg" -o -name "*.png")
 done
 
 # now select a random wallpaper from the list
@@ -23,7 +23,7 @@ mkdir ~/.walcache
 cp $wall ~/.walcache/1
 pkill dunst 
 sleep 0.1
-dunst -conf $HOME/.config/dunst/dunstrc_xorg &
+dunst &
 sleep 0.3
 dunstify -u low -i /usr/share/icons/dunst/themes.png "Wallpaper and Theme changed"
 betterlockscreen -u ~/.walcache/1
