@@ -477,9 +477,9 @@ setup_gpg_pass() {
 
     info "Setting up GPG and Pass..."
 
-    if ! pacman -Q gnupg pass rofi-wayland qrencode pass-import &>/dev/null; then
+    if ! pacman -Q gnupg pass rofi qrencode pass-import &>/dev/null; then
         info "Installing GPG and Pass..."
-        sudo pacman -S --noconfirm gnupg pass qrencode rofi-wayland || die "Failed to install required packages."
+        sudo pacman -S --noconfirm gnupg pass qrencode rofi || die "Failed to install required packages."
         paru -S --noconfirm pass-import || die "Failed to install pass-import from AUR."
     else
         info "Required packages are already installed. Skipping installation."
@@ -635,6 +635,7 @@ install_dwm() {
     cd ~/.config/dwm/dmenu/ && sudo make clean install
     cd ~/.config/dwm/slstatus/ && rm config.h && sudo make clean install
 
+    sudo mkdir /usr/share/xsessions/
     sudo cp ~/dotfiles/Extras/Extras/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
     sudo cp ~/dotfiles/dwm/.dwm/startdwm.sh /usr/local/bin/startdwm.sh
     cd ~/dotfiles/
@@ -2091,8 +2092,8 @@ install_extras() {
             # sudo rm -rf /usr/bin/kunst && curl -L git.io/raw-kunst >kunst && chmod +x kunst && sudo mv kunst /usr/bin/
 
             # to work proper context menu for kde  applications apart from kde
-            mkdir $HOME/.config/menus/
-            curl -L https://raw.githubusercontent.com/KDE/plasma-workspace/master/menu/desktop/plasma-applications.menu -o $HOME/.config/menus/applications.menu
+            # mkdir $HOME/.config/menus/
+            # curl -L https://raw.githubusercontent.com/KDE/plasma-workspace/master/menu/desktop/plasma-applications.menu -o $HOME/.config/menus/applications.menu
 
             # cargo install leetcode-cli
 
@@ -2237,9 +2238,9 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_ollama y
     # install_pip_packages y
     # install_grub_theme y
-    # install_display_manager y 1
+    # install_display_manager y 2
     # download_wallpapers y
-    # install_extras
+    install_extras 
     # setup_ssh_and_upload
 else
     check_privileges
