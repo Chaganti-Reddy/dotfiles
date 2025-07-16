@@ -65,6 +65,7 @@
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/a06a18424c50bc8f31b8e984d0e37a4a" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-as-detailed-list" "<Primary>2")
 ; (gtk_accel_path "<Actions>/ThunarActionManager/restore-show" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/48a510067fdc6d6ddbcf79ec666aad0b" "")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/c462837d8f7148c4dfce435b536ba260" "")
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-display-name" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/zoom-out" "<Primary>minus")
