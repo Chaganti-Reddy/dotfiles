@@ -30,7 +30,7 @@ detect_environment() {
 detect_environment
 
 # Use rofi to select an entry
-selected_entry=$(printf '%s\n' "${password_files[@]}" | rofi -i -dmenu -theme "$HOME/.config/rofi/dt-center.rasi" -p "pass:")
+selected_entry=$(printf '%s\n' "${password_files[@]}" | rofi -i -dmenu -p "pass:")
 [[ -z "$selected_entry" ]] && exit 0
 
 # Retrieve the full content of the selected pass entry
@@ -44,7 +44,7 @@ if [[ -z "$login" ]]; then
 fi
 
 # Present the list of actions via rofi
-action=$(printf '%s\n' "autotype" "type login" "type pass" "copy login" "copy pass" | rofi -dmenu -theme "$HOME/.config/rofi/dt-center.rasi" -p "action:")
+action=$(printf '%s\n' "autotype" "type login" "type pass" "copy login" "copy pass" | rofi -dmenu -p "action:")
 [[ -z "$action" ]] && exit 0
 
 # Optional notification function (requires notify-send)
