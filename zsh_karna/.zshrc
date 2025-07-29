@@ -248,7 +248,7 @@ function mosspy() {
 #
 # echo some artwork 
 if [ -f "$HOME/.config/scripts/unix" ]; then
-  ~/.config/scripts/unix
+  # ~/.config/scripts/unix
 fi
 
 export EDITOR='/usr/bin/nvim'
@@ -515,6 +515,7 @@ alias cp="/usr/bin/advcp -g"
 alias mv="/usr/bin/advmv -g"
 alias exmod="chmod +x"
 alias lg="lazygit"
+alias neofetch="fastfetch"
 
 # -----------------CP PARSER -----------------
 # Run CPParse in server mode (parsing)
