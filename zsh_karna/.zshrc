@@ -94,7 +94,7 @@ fi
 
 export VISUAL='nvim'
 
-export BROWSER='/usr/bin/vivaldi'
+export BROWSER='/usr/bin/firefox'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -566,7 +566,6 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 export STARSHIP_LOG="error"
 export MPLBACKEND=TkAgg
-export KUNST_MUSIC_DIR="/home/karna/Music/"
 # eval "$(leetcode completions)"
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)

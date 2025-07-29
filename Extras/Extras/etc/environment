@@ -4,4 +4,5 @@
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
 # XDG_CURRENT_DESKTOP=Unity
-QT_QPA_PLATFORMTHEME=qt6ct
+# QT_QPA_PLATFORMTHEME=qt6ct
+QT_QPA_PLATFORMTHEME=kde
