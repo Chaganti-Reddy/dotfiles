@@ -1,68 +1,74 @@
-@import "../waybar/colors-waybar.css";
+@import "colors-waybar.css";
 
 /* 🔹 Window */
 #window {
-    border: 2px solid rgba(--wofi-rgb-color1, 0.9);
-    background-color: rgba(--wofi-rgb-color0, 0.95);
-    font-size: 15px;
-    font-weight: bold;
-    font-family: "Jetbrains Mono Nerd Font";
-    padding: 5px;
+  border: 2px solid rgba(--wofi-rgb-color1, 0.9);
+  background-color: rgba(--wofi-rgb-color0, 0.95);
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Iosevka Term Nerd Font";
+  padding: 5px;
 }
 
 /* 🔹 Outer Box (Margins & Spacing) */
 #outer-box {
-    margin: 4px;
+  margin: 4px;
+}
+
+#scroll {
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* 🔹 Input Box */
 #input {
-    border: none;
-    background-color: transparent;
-    color: --wofi-color7;
-    margin: 4px;
-    font-size: 14px;
-    padding: 4px;
+  border: none;
+  background-color: transparent;
+  color: --wofi-color7;
+  margin: 4px;
+  font-size: 14px;
+  padding: 4px;
 }
 
 /* 🔹 Input Icon Adjustments */
 #input image:first-child {
-    margin-left: -80px;
+  margin-left: -80px;
 }
 #input image:last-child {
-    margin-right: -80px;
+  margin-right: -80px;
 }
 
 /* 🔹 Entry (Normal State) */
 #entry {
-    background: transparent;
-    color: --wofi-color7;
-    padding: 5px;
-    border-radius: 4px;
+  background: transparent;
+  color: --wofi-color7;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 /* 🔹 Entry (Hover & Selected State) */
 #entry:selected {
-    background-color: rgba(--wofi-rgb-color1, 0.85);
-    color: --wofi-color0;
-    box-shadow: 0px 0px 5px rgba(--wofi-rgb-color1, 0.5);
+  background-color: rgba(--wofi-rgb-color1, 0.85);
+  color: --wofi-color0;
+  box-shadow: 0px 0px 5px rgba(--wofi-rgb-color1, 0.5);
 }
 
 /* 🔹 Text */
 #text {
-    margin-left: 6px;
-    color: --wofi-color7;
+  margin-left: 6px;
+  color: --wofi-color7;
 }
 
 /* 🔹 Selected Text */
 #text:selected {
-    color: --wofi-color0;
+  color: --wofi-color0;
 }
 
 /* 🔹 Entry Icons */
 #img {
-    min-width: 20px;
-    min-height: 20px;
-    margin-right: 5px;
-    margin-left: 5px;
+  min-width: 20px;
+  min-height: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
