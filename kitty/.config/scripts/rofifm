@@ -42,7 +42,7 @@ while true; do
     fi
 
     # Show menu in Rofi
-    CHOICE=$(echo -e "$MENU" | rofi -dmenu -theme ~/.config/rofi/dt-center.rasi \
+    CHOICE=$(echo -e "$MENU" | rofi -dmenu \
       -p "Browsing: ${CUR_DIR}" \
       -kb-custom-1 "Alt+h" \
       -i -matching fuzzy)
