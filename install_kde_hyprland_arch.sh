@@ -244,12 +244,13 @@ check_line="ILoveCandy"
 # sudo pacman -S okular --noconfirm
 
 ## INSTALL HYPRLAND && SETUP
-# paru -S rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland --noconfirm
+# paru -S rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi wlogout youtube-music-bin --noconfirm
 
 # cd ~/dotfiles || return
 # sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
 # sudo flatpak override --filesystem=$HOME/.themes
 # sudo flatpak override --filesystem=$HOME/.icons
+# stow hyprland waybar rofi
 
 ## MINICONDA INSTALLATION STUFF
 
@@ -557,6 +558,8 @@ install_grub_theme() {
 # else
 #     warning "SDDM theme files not found. Skipping theme setup."
 # fi
+#
+# sudo cp ~/dotfiles/Extras/Extras/etc/sddm.conf /etc/sddm.conf
 
 #####################################################################
 
