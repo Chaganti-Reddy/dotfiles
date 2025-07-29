@@ -94,8 +94,8 @@ reload_hypr() {
   inactive_border_rgba=$(echo $inactive_border | sed 's/#\(..\)\(..\)\(..\)/rgba(\1\2\3ff)/')
 
   # Apply these colors to the Hyprland config
-  sed -i "s|col.active_border = .*|col.active_border = $active_border_start_rgba $active_border_end_rgba 45deg|" ~/.config/hypr/custom/general.conf
-  sed -i "s|col.inactive_border = .*|col.inactive_border = $inactive_border_rgba|" ~/.config/hypr/custom/general.conf
+  sed -i "s|col.active_border = .*|col.active_border = $active_border_start_rgba $active_border_end_rgba 45deg|" ~/.config/hypr/hyprland.conf
+  sed -i "s|col.inactive_border = .*|col.inactive_border = $inactive_border_rgba|" ~/.config/hypr/hyprland.conf
 
   # Reload Hyprland to apply the changes
   hyprctl reload
