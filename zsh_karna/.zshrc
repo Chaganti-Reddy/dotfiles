@@ -71,7 +71,7 @@ ZSH_THEME="archcraft-dwm"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -615,6 +615,9 @@ else
     # eval/source/. command, register function for later
     compdef _fastanime_completion fastanime
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by "conda init" !!
