@@ -22,15 +22,6 @@ margin = 50
 # animate = ""
 # margin = 50
 
-[scratchpads.typetest]
-command = "kitty --class typetest -e typetest -m -c -p -l 50"
-class = "typetest"
-lazy = true
-position = "444px 50px"
-size = "1019px 527px"
-animate = ""
-margin = 50
-
 [scratchpads.calc]
 command = "qalculate-gtk"
 class = "qalculate-gtk"
@@ -68,13 +59,3 @@ lazy = true
 position = "181px 97px"
 max_size = "1920px 100%"
 margin = 50
-
-# [scratchpads.whatsapp]
-# animation = ""
-# command = "$HOME/apps/whatsapp-linux-x64/whatsapp"
-# class = "whatsapp-nativefier-d40211"
-# size = "80% 80%"
-# lazy = true
-# position = "181px 97px"
-# max_size = "1920px 100%"
-# margin = 50
