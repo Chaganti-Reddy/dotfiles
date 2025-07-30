@@ -7,7 +7,7 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="archcraft-dwm"
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 plugins=(git nvm)
 source $ZSH/oh-my-zsh.sh
 # On-demand rehash
