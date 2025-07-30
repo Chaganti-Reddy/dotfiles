@@ -36,3 +36,4 @@ export NVM_DIR="$HOME/.nvm"
   # ~/.config/scripts/unix
 # fi
 
+(cat ~/.cache/wal/sequences &)
