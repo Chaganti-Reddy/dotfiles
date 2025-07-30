@@ -190,12 +190,7 @@ check_line="ILoveCandy"
 # paru -S whitesur-cursor-theme-git --noconfirm
 
 ## ANIME && YT STUFF
-# paru -S fastanime-git yt-dlp-git ani-cli-git ani-skip-git ytfzf-git
-
-# stow_folder="ytfzf"
-# [ "$(whoami)" == "karna" ] && stow_folder="ytfzf_karna"
-# cd ~/dotfiles || return
-# stow "$stow_folder"
+# paru -S fastanime-git yt-dlp-git ani-cli-git ani-skip-git
 
 ## FONTS STUFF
 # paru -S adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk  noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans ttf-dejavu-nerd ttf-firacode-nerd otf-droid-nerd ttf-cascadia-code-nerd ttf-opensans ttf-hack-nerd ttf-ibmplex-mono-nerd ttf-jetbrains-mono-nerd ttf-ubuntu-mono-nerd ttf-roboto-mono-nerd otf-apple-fonts  ttf-material-design-icons-webfont ttf-iosevka-nerd ttf-iosevkaterm-nerd --noconfirm
