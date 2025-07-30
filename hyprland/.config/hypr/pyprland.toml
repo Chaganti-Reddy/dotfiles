@@ -14,6 +14,16 @@ lazy = true
 unfocus = "hide"
 margin = 50
 
+[scratchpads.manager]
+command = "kitty --class kitty-yazi -e yazi"
+class = "kitty-yazi"
+position = "431px 175px"
+size = "1100px 700px"
+animate = ""
+lazy = true
+unfocus = ""
+margin = 50
+
 # [scratchpads.clipse]
 # command = "kitty --class clipse -e clipse"
 # class = "clipse"
