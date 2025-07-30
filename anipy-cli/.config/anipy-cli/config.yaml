@@ -15,13 +15,13 @@ seasonals_dl_path: /home/karna/miniconda/lib/python3.10/site-packages/anipy_cli/
 
 # A list of pairs defining which providers will search for anime
 # in different parts of the program. Configurable areas are as follows:
-# default (and history), download (-D), seasonal (-S), binge (-B) and mal
-# (-M) The example will show you how it is done! Please note that for seasonal
+# default (and history), download (-D), seasonal (-S), binge (-B), anilist (-A)
+# and mal (-M) The example will show you how it is done! Please note that for seasonal
 # search always the first provider that supports it is used.
 # 
 # For an updated list of providers look here: https://sdaqo.github.io/anipy-cli/availabilty
 # 
-# Supported providers (as of 3.5.6): allanime, animekai
+# Supported providers (as of 3.7.0): allanime, animekai (animekai is not functional for now)
 # 
 # Examples:
 #     providers:
@@ -30,7 +30,10 @@ seasonals_dl_path: /home/karna/miniconda/lib/python3.10/site-packages/anipy_cli/
 #         seasonal: ["provider3"]
 #         binge: ["provider4"]
 #         mal: ["provider2", "provider3"]
+#         anilist: ["provider1"]
 providers:
+    anilist:
+    - allanime
     binge:
     - gogoanime
     default:
@@ -55,7 +58,7 @@ provider_urls: {}
 # Path to your video player.
 # For a list of supported players look here: https://sdaqo.github.io/anipy-cli/availabilty
 # 
-# Supported players (as of 3.5.6): mpv, vlc, syncplay, mpvnet, mpv-controlled
+# Supported players (as of 3.7.0): mpv, vlc, syncplay, mpvnet, mpv-controlled
 # 
 # Info for mpv-controlled:
 # Reuse the mpv window instead of closing and reopening.
@@ -137,9 +140,9 @@ download_name_format: '{show_name}_{episode_number}'
 # With this option you can define scripts that run after a file
 # has been downloaded. As with the 'providers' option, you can configure
 # different behaviour, depending on which part of anipy-cli the download occurs.
-# Configurable areas are as follows: default (and history), download (-D), seasonal (-S)
-# and mal (-M). The example will show you how it is done! Please note that if you define
-# several scripts for one area, they will run in the order you put them in the list.
+# Configurable areas are as follows: default (and history), download (-D), seasonal (-S),
+# anilist (-A) and mal (-M). The example will show you how it is done! Please note that 
+# if you define several scripts for one area, they will run in the order you put them in the list.
 # You can also define a timeout (in seconds), after which a script will be terminated,
 # if set to null there will be no timeout and any script will run forever.
 # 
@@ -159,6 +162,7 @@ download_name_format: '{show_name}_{episode_number}'
 #         mal: ["hard_link_to_shoko"]
 #         timeout: 60 # terminate any script after running for 60 seconds
 post_download_scripts:
+    anilist: []
     default: []
     download: []
     mal: []
@@ -175,6 +179,9 @@ auto_open_dl_defaultcli: false
 # Your MyAnimeList username for MAL mode.
 mal_user: ''
 
+# Your AniList access token for AniList mode.
+anilist_token: ''
+
 # Your MyAnimeList password for MAL mode.
 # 
 # The password may also be passed via the `--mal-password <pwd>`
@@ -185,38 +192,38 @@ mal_password: ''
 # anipy-cli.
 # 
 # Examples:
-#     mal_ignore_tag: ignore # all anime with ignore tag will be ignored
-#     mal_ignore_tag: "" # no anime will be ignored
-mal_ignore_tag: ignore
+#     tracker_ignore_tag: ignore # all anime with ignore tag will be ignored
+#     tracker_ignore_tag: "" # no anime will be ignored
+tracker_ignore_tag: ignore
 
-# All anime in your MyAnimeList with this tag will be switched over to
-# dub in MAL mode, if the dub is available. If you do not specify a tag,
-# anipy-cli will use `preferred_type` to choose dub or sub in MAL mode.
+# All anime in your Anime Tracker with this tag will be switched over to
+# dub in tracker mode, if the dub is available. If you do not specify a tag,
+# anipy-cli will use `preferred_type` to choose dub or sub in tracker mode.
 # 
 # Examples:
-#     mal_dub_tag: dub # all anime with this tag will be switched to dub
-#     mal_dub_tag: "" # no anime will be switched to dub, except you have preferred_type on dub
-mal_dub_tag: dub
+#     tracker_dub_tag: dub # all anime with this tag will be switched to dub
+#     tracker_dub_tag: "" # no anime will be switched to dub, except you have preferred_type on dub
+tracker_dub_tag: dub
 
-# Custom tags to tag all anime in your MyAnimeList that are
+# Custom tags to tag all anime in your Anime Tracker that are
 # altered/added by anipy-cli.
 # 
 # Examples:
-#     mal_tags: ["anipy-cli"] # tag all anime with anipy-cli
-#     mal_tags: ["anipy-cli", "important"] # tag all anime with anipy-cli and important
-#     mal_tags: null or mal_tags: [] # Do not tag the anime
-mal_tags: []
+#     tracker_tags: ["anipy-cli"] # tag all anime with anipy-cli
+#     tracker_tags: ["anipy-cli", "important"] # tag all anime with anipy-cli and important
+#     tracker_tags: null or tracker_tags: [] # Do not tag the anime
+tracker_tags: []
 
-# Status categories of your MyAnimeList that anipy-cli uses for
+# Status categories of your Anime Tracker that anipy-cli uses for
 # downloading/watching new episodes listing anime in your list and stuff
 # like that. Normally the watching catagory should be enough as you would
 # normally put anime you currently watch in the watching catagory.
 # 
 # Valid values are: watching, completed, on_hold, dropped, plan_to_watch
-mal_status_categories:
+tracker_status_categories:
 - watching
 
-# The minumum similarity between titles when mapping anime in MAL mode.
+# The minumum similarity between titles when mapping anime in tracker mode.
 # This is a decimal number from 0 - 1, 1 meaning 100% match and 0 meaning all characters are different.
 # If the similarity of a map is below the threshold you will be prompted for a manual map.
 # 
@@ -225,19 +232,19 @@ mal_status_categories:
 #     lower number: less exact matching, but less manual mapping
 # 
 # If you are interested, the algorithm being used here is this: https://en.wikipedia.org/wiki/Levenshtein_distance
-mal_mapping_min_similarity: 0.8
+tracker_mapping_min_similarity: 0.8
 
 # Check alternative names when mapping anime.
 # 
 # If turned on this will slow down mapping but provide better
 # chances of finding a match.
-mal_mapping_use_alternatives: true
+tracker_mapping_use_alternatives: true
 
 # Use filters (e.g. year, season etc.) of providers to narrow down the
 # results, this will lead to more accurate mapping, but provide wrong
 # results if the filters of the provider do not work properly or if anime
 # are not correctly marked with the correct data.
-mal_mapping_use_filters: true
+tracker_mapping_use_filters: true
 
 # DEPRECATED This option was deprecated in 3.0.0, please consider
 # using the `--mal-sync-seasonals` cli option in compination with `-M`
