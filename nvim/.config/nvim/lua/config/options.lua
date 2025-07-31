@@ -60,7 +60,7 @@ set.iskeyword:append("-")
 set.scrolloff = 8
 
 -- undo dir settings
-set.swapfile = false
+set.swapfile = true
 set.backup = false
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
