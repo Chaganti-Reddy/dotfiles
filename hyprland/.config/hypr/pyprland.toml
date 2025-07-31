@@ -1,7 +1,5 @@
 [pyprland]
-plugins = [
-    "scratchpads",
-]
+plugins = ["scratchpads"]
 
 [scratchpads.music]
 command = "kitty --class Music -e rmpc"
@@ -67,5 +65,15 @@ class = "chess-nativefier-b30d50"
 size = "80% 80%"
 lazy = true
 position = "181px 97px"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.whatsapp]
+animation = ""
+command = "chromium --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"
+class = "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default"
+# size = "90% 85%"
+lazy = false
+# position = "181px 97px"
 max_size = "1920px 100%"
 margin = 50
