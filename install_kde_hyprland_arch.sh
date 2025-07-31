@@ -172,7 +172,7 @@ check_line="ILoveCandy"
 # sudo usermod -aG docker "$USER"
 
 ## BROWSER && TORRENT STUFF
-# paru -S --noconfirm firefox aria2 python-adblock qutebrowser dnsmasq webtorrent-cli webtorrent-mpv-hook peerflix
+# paru -S --noconfirm firefox aria2 python-adblock qutebrowser dnsmasq webtorrent-cli webtorrent-mpv-hook peerflix chromium
 # sudo npm install -g nativefier bash-language-server
 # curl -sSLf https://github.com/aclap-dev/vdhcoapp/releases/latest/download/install.sh | bash
 
