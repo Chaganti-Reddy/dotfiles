@@ -84,23 +84,4 @@ return {
 		"mg979/vim-visual-multi",
 		lazy = false,
 	},
-
-	{
-		-- Hints keybinds
-		"folke/which-key.nvim",
-		opts = {
-			-- win = {
-			--   border = {
-			--     { '┌', 'FloatBorder' },
-			--     { '─', 'FloatBorder' },
-			--     { '┐', 'FloatBorder' },
-			--     { '│', 'FloatBorder' },
-			--     { '┘', 'FloatBorder' },
-			--     { '─', 'FloatBorder' },
-			--     { '└', 'FloatBorder' },
-			--     { '│', 'FloatBorder' },
-			--   },
-			-- },
-		},
-	},
 }
