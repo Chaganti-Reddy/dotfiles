@@ -239,7 +239,7 @@ check_line="ILoveCandy"
 # sudo pacman -S okular --noconfirm
 
 ## INSTALL HYPRLAND && SETUP
-# paru -S rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi wlogout youtube-music-bin hyprsunset sunsetr-bin --noconfirm
+# paru -S rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi youtube-music-bin hyprsunset sunsetr-bin --noconfirm
 
 # cd ~/dotfiles || return
 # sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
