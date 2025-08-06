@@ -35,6 +35,7 @@ source /home/karna/.config/zsh/aliases.zsh
 source /home/karna/.config/zsh/functions.zsh
 
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+eval "$(thefuck --alias)"
 # eval "$(leetcode completions)"
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
