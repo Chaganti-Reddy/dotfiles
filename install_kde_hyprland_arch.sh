@@ -239,7 +239,7 @@ check_line="ILoveCandy"
 # sudo pacman -S okular --noconfirm
 
 ## INSTALL HYPRLAND && SETUP
-# paru -S rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi youtube-music-bin hyprsunset sunsetr-bin --noconfirm
+# paru -S rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi youtube-music-bin hyprsunset sunsetr-bin thefuck bongocat --noconfirm
 
 # cd ~/dotfiles || return
 # sudo cp -r ~/dotfiles/Extras/Extras/dunst/ /usr/share/icons/
@@ -564,7 +564,7 @@ install_grub_theme() {
 #
 #     # Remove existing configurations for Karna
 #     rm -rf ~/.bashrc
-#     stow bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastanime
+#     stow bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastanime fastfetch hyprland
 #
 #     # Copy essential system files for karna user
 #     sudo cp ~/dotfiles/Extras/Extras/etc/nanorc /etc/nanorc
