@@ -28,6 +28,7 @@ export STARSHIP_LOG="error"
 export MPLBACKEND=TkAgg
 export EDITOR='/usr/bin/nvim'
 export PAGER='bat'
+export NVM_COLORS='cmgRY'
 # Lazy-load NVM only when needed
 export NVM_DIR="$HOME/.nvm"
 
