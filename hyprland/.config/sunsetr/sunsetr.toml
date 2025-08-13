@@ -11,10 +11,10 @@ update_interval = 60            # Update frequency during transitions in seconds
 transition_mode = "geo"         # Select: "geo", "finish_by", "start_at", "center"
 
 #[Manual transitions]
-sunset = "19:00:00"             # Time to transition to night mode (HH:MM:SS) - ignored in geo mode
-sunrise = "06:00:00"            # Time to transition to day mode (HH:MM:SS) - ignored in geo mode
-transition_duration = 45        # Transition duration in minutes (5-120)
+sunset = "19:00:00"      # Time to transition to night mode (HH:MM:SS) - ignored in geo mode
+sunrise = "06:00:00"     # Time to transition to day mode (HH:MM:SS) - ignored in geo mode
+transition_duration = 30 # Transition duration in minutes (5-120)
 
 #[Geolocation-based transitions]
-latitude = 17.375278            # Geographic latitude (auto-detected on first run)
-longitude = 78.474441           # Geographic longitude (use 'sunsetr --geo' to change)
+latitude = 17.375278  # Geographic latitude (auto-detected on first run)
+longitude = 78.474441 # Geographic longitude (use 'sunsetr --geo' to change)
