@@ -268,4 +268,5 @@ nvim-treesitter-parsers-git
 system-config-printer
 # archlinux-xdg-menu
 python-plyer
+packages
 # fastanime-git
