@@ -722,7 +722,7 @@ install_sway() {
         "xorg-xwayland"
         "rofi-wayland"
         "kitty"
-      	"wezterm"
+        "wezterm"
         "xdg-desktop-portal-wlr"
         "xdg-desktop-portal"
         "xdg-desktop-portal-gtk"
@@ -747,7 +747,7 @@ install_sway() {
         "cpio"
         "smartmontools"
         "xdg-utils"
-	      "wl-color-picker"
+          "wl-color-picker"
     )
 
     for package in "${packages[@]}"; do
@@ -2237,7 +2237,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     # install_grub_theme y
     # install_display_manager y 2
     # download_wallpapers y
-    # install_extras 
+    # install_extras
     # setup_ssh_and_upload
 else
     check_privileges
