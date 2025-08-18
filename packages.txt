@@ -199,6 +199,7 @@ hspell
 nuspell
 libvoikko
 aspell
+aspell-en
 # emacs
 dictd
 cargo
