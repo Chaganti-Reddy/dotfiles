@@ -360,11 +360,24 @@ step_system_base() {
 
 step_git_zsh_setup() {
     # Git Config
-    git config --global user.name "Chaganti-Reddy"
-    git config --global user.email "chagantivenkataramireddy4@gmail.com"
-    git config --global core.editor "nvim"
+    git_username="Chaganti-Reddy"
+    git_email="chagantivenkataramireddy4@gmail.com"
+    editor="nvim"
+    git config --global user.name "$git_username"
+    git config --global user.email "$git_email"
+    git config --global core.editor "$editor"
     git config --global core.autocrlf input
+    git config --global init.defaultBranch main
+    git config --global pull.rebase true
     git config --global credential.helper "cache --timeout=3601"
+    git config --global color.ui auto
+    git config --global alias.st status
+    git config --global alias.co checkout
+    git config --global alias.br branch
+    git config --global alias.ci commit
+    git config --global alias.unstage 'reset HEAD --'
+    git config --global log.decorate tru
+    git config --global push.default simple
     git config --global push.autoSetupRemote true
 
     # ZSH Packages
@@ -375,6 +388,10 @@ step_git_zsh_setup() {
 
     # Install ZSH Scripts (if exists)
     if [ -f "$DOTFILES_DIR/install_zsh.sh" ]; then bash "$DOTFILES_DIR/install_zsh.sh"; fi
+
+    rm -f ~/.zshrc
+    cd ~/dotfiles
+    stow zsh
 
     # Custom Theme Copy
     local theme_src="$DOTFILES_DIR/Extras/Extras/archcraft-dwm.zsh-theme"
