@@ -457,7 +457,7 @@ step_kvm_qemu() {
     info "Setting up KVM/QEMU..."
     if ! grep -qE '(vmx|svm)' /proc/cpuinfo; then warning "Virtualization not supported by CPU."; return 0; fi
     
-    paru -S --needed --noconfirm qemu-full qemu-img libvirt virt-install virt-manager virt-viewer spice-vdagent edk2-ovmf swtpm guestfs-tools libosinfo tuned dnsmasq vde2 bridge-utils openbsd-netcat dmidecode iptables libguestfs
+    paru -S --needed --noconfirm qemu-full qemu-img libvirt virt-install virt-manager virt-viewer spice-vdagent edk2-ovmf swtpm guestfs-tools libosinfo dnsmasq vde2 bridge-utils openbsd-netcat dmidecode iptables libguestfs
     
     sudo systemctl enable --now libvirtd.service
     sudo usermod -aG libvirt "$USER"
