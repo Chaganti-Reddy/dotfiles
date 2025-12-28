@@ -661,7 +661,7 @@ if [[ "$(whoami)" == "karna" ]]; then
     run_task "Install Hyprland" install_hyprland y
     run_task "Miniconda" install_miniconda y
     run_task "KVM" install_kvm y
-    run_task "Browsers" install_browser 5 6
+    run_task "Browsers" install_browser
     run_task "Torrents" install_torrent 1 13
     run_task "Dev Tools" install_dev_tools 3 6 7 9 10 16
     run_task "Extra Tools" install_extra_tools 1 2 3 4 6 10
