@@ -452,7 +452,7 @@ step_encryption() {
 }
 
 step_theming_anime() {
-    paru -S --needed --noconfirm whitesur-cursor-theme-git fastanime yt-dlp-git ani-cli-git ani-skip-git
+    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git
 }
 
 step_repo_fonts() {
