@@ -342,9 +342,9 @@ step_install_paru() {
     if command -v paru &>/dev/null; then return 0; fi
     cd ~/Downloads || return 1
     sudo pacman -Syyu --noconfirm git base-devel
-    rm -rf paru-bin
-    git clone https://aur.archlinux.org/paru-bin.git
-    cd paru-bin
+    rm -rf paru
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
     makepkg -si --noconfirm
     cd "$DOTFILES_DIR"
 }
