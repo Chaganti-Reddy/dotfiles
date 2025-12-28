@@ -459,7 +459,7 @@ step_pdf_zathura() {
 }
 
 step_hyprland_stack() {
-    paru -S --needed --noconfirm rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-qtutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi youtube-music-bin hyprsunset sunsetr-bin thefuck
+    paru -S --needed --noconfirm rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-guiutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi pear-desktop-bin hyprsunset sunsetr-bin thefuck
     
     sudo usermod -aG video "$USER"
     sudo usermod -aG input "$USER"
