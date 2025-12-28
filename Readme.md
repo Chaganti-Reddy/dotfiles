@@ -6,7 +6,9 @@ This repository contains my personal configuration files for various application
   
 ## Automated Installation 
 
-Fist install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
+Personally I use KDE Plasma with Hyprland as alternative which can installed using my `install_kde_hyprland_arch.sh` after installing arch with kde and hyprland from archinstall.
+
+First install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
 
 ```bash 
 curl -sL https://tinyurl.com/karnadotfiles -o install.sh
