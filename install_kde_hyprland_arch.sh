@@ -317,6 +317,19 @@ install_fonts() {
     fi
 }
 
+install_themes() {
+    sudo npm i -g bash-language-server
+    # Themes
+    cd ~/Downloads
+    curl -L -o archcraft.zip https://gitlab.com/chaganti-reddy1/archcraft-themes/-/archive/main/archcraft-themes-main.zip
+    unzip -q archcraft.zip
+    mkdir -p ~/.icons ~/.themes
+    mv archcraft-themes-main/themes/* ~/.themes/
+    mv archcraft-themes-main/icons/* ~/.icons/
+    rm -rf archcraft.zip archcraft-themes-main
+    cd ~/dotfiles
+}
+
 install_waldl() {
     if command -v waldl &>/dev/null; then
         echo -e "${GREEN}waldl is already installed. Skipping installation.${RESET}"
@@ -550,6 +563,7 @@ run_task "Encryption/GPG" step_encryption
 run_task "Theming & Anime" step_theming_anime
 run_task "Repo Fonts" step_repo_fonts
 run_task "Custom Fonts" install_fonts
+run_task "Custom Themes" install_themes
 run_task "PDF & Zathura" step_pdf_zathura
 run_task "Hyprland Stack" step_hyprland_stack
 run_task "Download Wallpapers" step_wallpapers
