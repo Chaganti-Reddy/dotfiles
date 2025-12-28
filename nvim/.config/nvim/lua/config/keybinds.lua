@@ -1,180 +1,130 @@
--- =============================================================================
---  1. SYSTEM, BASICS & VS CODE DEFAULTS
--- =============================================================================
+-- KEYBINDS
 vim.g.mapleader = " "
 
--- Helper to map keys across multiple modes (Normal, Insert, Visual)
--- This ensures Ctrl+S or Ctrl+B works even if you are typing
-local function map(modes, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(modes, lhs, rhs, opts)
-end
+vim.keymap.set("n", "<leader>cd", vim.cmd.Ex, { desc = "Open netrw (Ex)" })
 
--- SAVE FILE (Ctrl+S) - Works everywhere
-map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+-- Move selected lines up/down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
 
--- SELECT ALL (Ctrl+A)
-map({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all text" })
+-- Join lines with cursor stay
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor" })
 
--- UNDO (Ctrl+Z) - VS Code Style
-map("i", "<C-z>", "<C-o>u", { desc = "Undo" })
-map("n", "<C-z>", "u", { desc = "Undo" })
+-- Scroll and center
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 
--- ESCAPE INSERT MODE (Ctrl+C)
-map("i", "<C-c>", "<Esc>", { desc = "Escape insert mode" })
+-- Paste without replacing clipboard
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without yanking" })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
 
--- COPY/PASTE (System Clipboard)
--- Your old config used OSCYank. Standard Neovim "+y is usually better now.
-map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
-map("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
-map("x", "<leader>p", [["_dP]], { desc = "Paste without replacing clipboard" })
-map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
+-- Insert mode escape
+vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Escape insert mode" })
 
--- =============================================================================
---  2. SMART TOGGLING (Ctrl+B, Ctrl+`, etc.)
--- =============================================================================
+-- Quickfix list navigation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Quickfix next" })
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Quickfix previous" })
 
--- SMART EXPLORER (Ctrl+B)
--- Logic: If FileTree is focused -> Close it. Otherwise -> Focus it.
-map({ "n", "i", "v" }, "<C-b>", function()
-    -- Check if we are currently IN the Neo-tree window
-    if vim.bo.filetype == "neo-tree" then
-        vim.cmd("Neotree close")
-    else
-        vim.cmd("Neotree focus")
-    end
-end, { desc = "Toggle Explorer" })
+-- Disable Ex mode
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
--- TERMINAL (Ctrl+` or Ctrl+\)
-map({ "n", "i", "v", "t" }, "<C-\\>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle Terminal" })
-map({ "n", "i", "v", "t" }, "<C-`>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle Terminal" })
-map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
+-- Location list navigation
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Location next" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Location previous" })
 
--- COMMENTS (Ctrl+/)
--- Note: Ctrl+/ often sends Ctrl+_ in terminals
-map({ "n", "i", "v" }, "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { desc = "Toggle Comment" })
-map({ "n", "i", "v" }, "<C-/>", function() require('Comment.api').toggle.linewise.current() end, { desc = "Toggle Comment" })
+-- Doge doc generator
+vim.keymap.set("n", "<leader>dg", "<cmd>DogeGenerate<cr>", { desc = "Generate docs (Doge)" })
 
--- =============================================================================
---  3. SEARCH (Ctrl+P, Ctrl+F) - CRASH PROOF
--- =============================================================================
--- This wrapper prevents "module not found" errors if Telescope loads late
-local function safe_telescope(command)
-    local status, builtin = pcall(require, "telescope.builtin")
-    if not status then
-        vim.notify("Telescope not loaded yet", vim.log.levels.WARN)
-        return
-    end
-    builtin[command]()
-end
+-- Format PHP file
+vim.keymap.set("n", "<leader>cc", "<cmd>!php-cs-fixer fix % --using-cache=no<cr>", { desc = "Format PHP file" })
 
-map({ "n", "i", "v" }, "<C-p>", function() safe_telescope("find_files") end, { desc = "Find Files" })
-map({ "n", "i", "v" }, "<C-S-f>", function() safe_telescope("live_grep") end, { desc = "Global Search" })
-map("n", "<leader><space>", function() safe_telescope("buffers") end, { desc = "Find Buffers" })
+-- Replace under-cursor word on line
+vim.keymap.set("n", "<leader>s", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Substitute word under cursor" })
 
--- =============================================================================
---  4. NAVIGATION (Tabs, Splits, Windows)
--- =============================================================================
+-- Make current file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
--- TABS (Bufferline)
-map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Tab" })
-map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Tab" })
-map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close Tab" })
-map("n", "<C-q>", "<cmd>bdelete<CR>", { desc = "Close Tab (Alt)" }) -- From your old config
+-- Yank to clipboard (SSH-friendly)
+vim.keymap.set("n", "<leader>y", "<Plug>OSCYankOperator", { desc = "Yank to clipboard (op)" })
+vim.keymap.set("v", "<leader>y", "<Plug>OSCYankVisual", { desc = "Yank to clipboard (visual)" })
 
--- SPLITS
-map("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
-map("n", "<leader>sh", "<cmd>split<CR>", { desc = "Horizontal Split" })
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close Split" })
-map("n", "<leader>se", "<C-w>=", { desc = "Equalize Splits" })
+-- Reload config
+vim.keymap.set("n", "<leader>rl", "<cmd>source ~/.config/nvim/init.lua<cr>", { desc = "Reload config" })
 
--- WINDOW NAVIGATION (Ctrl + h/j/k/l)
-map({ "n", "i" }, "<C-h>", "<C-w>h", { desc = "Focus Left" })
-map({ "n", "i" }, "<C-l>", "<C-w>l", { desc = "Focus Right" })
-map({ "n", "i" }, "<C-j>", "<C-w>j", { desc = "Focus Down" })
-map({ "n", "i" }, "<C-k>", "<C-w>k", { desc = "Focus Up" })
+-- Toggle Undotree
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 
--- WINDOW RESIZING (Ctrl + Arrows)
-map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Height +" })
-map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Height -" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Width -" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Width +" })
+-- Move lines in normal mode
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", opts)
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", opts)
+vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", opts)
+vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", opts)
 
--- =============================================================================
---  5. EDITING (Moving lines, Indent)
--- =============================================================================
--- Move lines (Alt + j/k)
-map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
-map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up" })
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+-- Move lines in visual mode
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
 
--- Indenting (Tab/Shift+Tab in Visual)
-map("v", "<Tab>", ">gv", { desc = "Indent Right" })
-map("v", "<S-Tab>", "<gv", { desc = "Indent Left" })
-map("v", "<", "<gv", { desc = "Indent Left" })
-map("v", ">", ">gv", { desc = "Indent Right" })
+-- Save file
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 
--- Join lines (J)
-map("n", "J", "mzJ`z", { desc = "Join lines keep cursor" })
+-- Select all text
+vim.keymap.set({ "n", "i" }, "<C-a>", "<ESC>ggVG", { desc = "Select all text" })
 
--- Scroll and Center
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down Center" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up Center" })
-map("n", "n", "nzzzv", { desc = "Next Match Center" })
-map("n", "N", "Nzzzv", { desc = "Prev Match Center" })
+-- Close buffer
+vim.keymap.set("n", "<C-q>", ":bdelete<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>to", "<cmd>enew<CR>", { desc = "New buffer" })
 
--- =============================================================================
---  6. YOUR CUSTOM TOOLS (Restored from old config)
--- =============================================================================
+-- Navigate between splits
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { desc = "Focus split up" })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { desc = "Focus split down" })
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { desc = "Focus split left" })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { desc = "Focus split right" })
 
--- Doge (Docs)
-map("n", "<leader>dg", "<cmd>DogeGenerate<CR>", { desc = "Generate Docs" })
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left (stay selected)" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right (stay selected)" })
 
--- PHP Formatter
-map("n", "<leader>cc", "<cmd>!php-cs-fixer fix % --using-cache=no<CR>", { desc = "Format PHP" })
+-- Keep last yank when pasting
+vim.keymap.set("v", "p", '"_dP', { desc = "Paste without overwrite yank" })
 
--- Make Executable
-map("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make Executable" })
+-- Window navigation with Ctrl + h/j/k/l
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Switch window left" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Switch window right" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Switch window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Switch window up" })
 
--- Search & Replace Word under cursor
-map("n", "<leader>s", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Replace word" })
+-- Window navigation with Ctrl+ Shift + arrows
+vim.keymap.set("n", "<C-S-Left>", "<C-w>h", { desc = "Switch window left" })
+vim.keymap.set("n", "<C-S-Right>", "<C-w>l", { desc = "Switch window right" })
+vim.keymap.set("n", "<C-S-Down>", "<C-w>j", { desc = "Switch window down" })
+vim.keymap.set("n", "<C-S-Up>", "<C-w>k", { desc = "Switch window up" })
 
--- VimTeX
-map("n", "<leader>tc", "<cmd>VimtexCompile<CR>", { desc = "Compile Latex" })
-map("n", "<leader>tv", "<cmd>VimtexView<CR>", { desc = "View Latex" })
-map("n", "<leader>tx", "<cmd>VimtexStop<CR>", { desc = "Stop Latex" })
+-- Split windows
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>sx", ":close<CR>", { desc = "Close current split" })
+vim.keymap.set("n", "<leader>se", ":wincmd =<CR>", { desc = "Equalize split sizes" })
 
--- Zen Mode
-map("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Zen Mode" })
+-- New file
+vim.keymap.set("n", "<leader>nf", ":e %:h/", { desc = "New file in current directory" })
 
--- Undotree
-map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
+-- VimTeX keybindings
+vim.keymap.set("n", "<leader>cc", "<cmd>VimtexCompile<CR>", { desc = "VimTeX: Compile" })
+vim.keymap.set("n", "<leader>cx", "<cmd>VimtexClean<CR>", { desc = "VimTeX: Clean build files" })
+vim.keymap.set("n", "<leader>co", "<cmd>VimtexView<CR>", { desc = "VimTeX: View PDF" })
+vim.keymap.set("n", "<leader>csv", "<cmd>VimtexStop<CR>", { desc = "VimTeX: Stop compilation" })
 
--- =============================================================================
---  7. HARPOON & LSP (Wrapped for Safety)
--- =============================================================================
-map("n", "<leader>a", function() require("harpoon"):list():add() end, { desc = "Harpoon Add" })
-map("n", "<C-e>", function() local h = require("harpoon"); h.ui:toggle_quick_menu(h:list()) end, { desc = "Harpoon Menu" })
-map("n", "<C-1>", function() require("harpoon"):list():select(1) end, { desc = "Harpoon 1" })
-map("n", "<C-2>", function() require("harpoon"):list():select(2) end, { desc = "Harpoon 2" })
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
 
--- Format File
-map("n", "<leader>fm", function()
-    local status, conform = pcall(require, "conform")
-    if status then conform.format({ lsp_fallback = true }) else vim.lsp.buf.format() end
-end, { desc = "Format File" })
+vim.keymap.set("n", "<leader>fm", function()
+	require("conform").format({ lsp_fallback = true })
+end, { desc = "General format file" })
 
--- LSP
-map("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
-map("n", "gr", function() safe_telescope("lsp_references") end, { desc = "Find References" })
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover Info" })
-map("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-
--- Reload Config
-map("n", "<leader><leader>", function() vim.cmd("so") end, { desc = "Reload Config" })
+-- Source current file
+vim.keymap.set("n", "<leader><leader>", function()
+	vim.cmd("so")
+end, { desc = "Source current file" })
