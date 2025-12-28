@@ -1,137 +1,197 @@
-# Dotfiles Repository 
-      
-This repository contains my personal configuration files for various applications and settings on Arch Linux with the I3, BSPWM, Qtile and Hyprland window manager. These files are essential for my system to look and function as I prefer. I recommend cloning this repository into your home directory (`~/`) for easy integration into your own setup.
+# Karna's Arch Linux Dotfiles
 
-`NOTE - Please don't create any Issues or Pull Requests. These dotfiles are only for my personal use. Some of these dotfiles may contain absolute paths with my username and if anything runs into a crash or a bug just check the paths correctly first.`
-  
-## Automated Installation 
+This repository contains my personal configuration files (dotfiles) for **Arch Linux**. It includes setups for **I3, BSPWM, Qtile, and Hyprland** window managers, as well as **KDE Plasma**.
 
-Personally I use KDE Plasma with Hyprland as alternative which can installed using my `install_kde_hyprland_arch.sh` after installing arch with kde and hyprland from archinstall.
+These files are tailored to my specific workflow, utilizing `pywal` for system-wide color scheme integration.
 
-First install Arch Linux with minimal setup/any other DE/WM with `archinstall` script and reboot your system. use `sudo nmtui-connect` command for wireless internet connection. Then clone this repo using 
+> [!WARNING]
+> **Personal Use Only:** Please do not create Issues or Pull Requests. These dotfiles are tuned for my hardware and username. Some configs may contain **absolute paths**. If something crashes, please check the file paths first.
 
-```bash 
-curl -sL https://tinyurl.com/karnadotfiles -o install.sh
+## 📋 Table of Contents
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+    - [Automated](#automated-installation)
+    - [Manual (Stow)](#manual-installation)
+- [Post-Install & Specific Fixes](#-post-install--specific-fixes)
+- [Software Stack](#-software-stack)
+- [Screenshots](#-screenshots)
+- [Extras (ChatGPT Prompt)](#-extras)
+- [Credits & License](#-credits--license)
+
+---
+
+## 🛠 Prerequisites
+
+Before installing, ensure you have a minimal Arch Linux installation. I personally recommend using `archinstall` to set up the base system with KDE and Hyprland.
+
+**Network Setup:**
+If you are on a fresh install, use `nmtui` to connect to the internet:
+```bash
+sudo nmtui-connect
 ```
 
-```bash 
+**Required Tools:**
+- `git`
+- `stow`
+- `make` (for suckless tools)
+
+---
+
+## 🚀 Installation
+
+### Automated Installation
+
+I have created an installation script to automate the process. Read the script carefully before running it.
+
+**1. Standard Install:**
+Clones the repo and runs the script.
+```bash
+curl -sL https://tinyurl.com/karnadotfiles -o install.sh
+chmod +x install.sh
 ./install.sh
-``` 
+```
 
-Read install.sh carefully and modify options whatever you want and just run or if you want to directly run it then
-
-```bash 
+**2. One-Liner (Run directly):**
+```bash
 bash <(curl -sL https://tinyurl.com/karnadotfiles)
 ```
 
-Note:`Please dont stow any folder which ends with _karna, because those are my files which works only with my system and may break your system.`
+> **Note:** Included in the scripts is `install_kde_hyprland_arch.sh` for my specific KDE+Hyprland setup. Check the `install.sh` file to comment/uncomment packages as per your needs.
 
-## Manual Installation
+### Manual Installation
 
-1. I have used stow to manage the dotfiles, so you need to install stow:
+If you prefer to cherry-pick configurations, use GNU Stow.
+
+**1. Install Stow:**
 ```bash
 sudo pacman -S stow
 ```
 
-2. Clone this repository into your home directory:
+**2. Clone Repository:**
 ```bash
 git clone https://gitlab.com/Chaganti-Reddy/dotfiles.git ~/dotfiles
-```
-
-3. Change into the `dotfiles` directory:
-```bash
 cd ~/dotfiles
 ```
 
-4. Use stow to symlink the configuration files you want to use. For example, to install the DWM configuration files:
-```bash 
-stow suckless
-```
-Don't forget to use the dwm.desktop file to show dem in sddm from Extras/Extras/usr/share/xsessions
-
-5. Repeat the stow command for any other configuration files you want to use.
-
-6. Now all the configuration files are symlinked to your home directory, and .config directory. You can now use these configurations in your system.
-
-7. To install the dwm, dmenu, st and slstatus, go to .config directory and make install in those respective folders:
+**3. Symlink Configurations:**
+Use stow to link specific folders. For example, to install `suckless` tools or `dunst`:
 ```bash
-cd .config/{}
+stow suckless
+stow dunst
+# Repeat for other folders you want to use
+```
+
+> [!CAUTION]
+> **Do not stow** any folder ending in `_karna`. These contain files hardcoded strictly for my system and may break yours.
+> Ensure there are no `.stow-local-ignore` files in the directories you are stowing.
+
+**4. Install Suckless Tools (DWM, st, dmenu):**
+After stowing the `suckless` folder, compile them:
+```bash
+cd ~/.config/{dwm,st,dmenu,slstatus} # Enter folder one by one
 sudo make clean install
 ```
+*Tip: Ensure you copy the `dwm.desktop` file from `Extras/Extras/usr/share/xsessions` to `/usr/share/xsessions/` to see it in your display manager (SDDM).*
 
-8. There are still a lot application configurations and scripts which may be useful for you like ani-cli, grub theme etc., just go through every folder and fell free to use them in your system
+---
 
-9. Make sure there is no .stow-local-ignore files in the config directory you want to use, else it will ignore the files in that directory.
+## 🔧 Post-Install & Specific Fixes
 
-10. If you have any doubt feel free to comment it and make sure you watch the youtube videos regarding that particular application before commenting in gitlab.
+Since I use a variety of specific tools, here are the fixes and tweaks for them.
 
-11. Also there is an install.sh script which contains my packages list to install, check it and uncomment or comment lines as per your need
+<details>
+<summary><b>🪟 Windows Dual-Boot Time Fix</b></summary>
 
-12. If you are dual-booting with windows then there might be problems with time in windows. To resolve that open cmd as admin in windows
-    - For 32 Bit System rum
-          `Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1`
-    - For 64 Bit System run
-          `Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_QWORD /d 1`
+If Windows displays the wrong time after booting Linux:
 
-13. If you are installing my nvim_gen config then first change the theme name in ~/.config/nvim/lua/chadrc.lua file to something like `nightowl` then after successfully loading all the plugins and if you have pywal setup then change the theme name back to `chadwal`.
+**Run CMD as Administrator in Windows:**
 
-14. If you want to use brave browser then go to `brave://flags/` and change `Preferred Ozone platform` option to `auto` to automatically select the session between both wayland and xorg.
+*For 32-bit Systems:*
+```cmd
+Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
+```
+*For 64-bit Systems:*
+```cmd
+Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_QWORD /d 1
+```
+</details>
 
-15. If you are using Vivaldi browser then go to `vivaldi://flags/#ozone-platform-hint` and make it auto and also go to `chrome://settings` and turn on gtk for dark context menus. Also if you want custom fonts in titlebars which is not available by default then just go to `vivaldi:experiments` and turn on Allow CSS modifications & just stow the vivaldi folder from dotfiles. After just upload the path of Default/Themes folder to Appearance settings.
+<details>
+<summary><b>🦁 Brave & Vivaldi Browser Tweaks (If you use)</b></summary>
 
-16. If you are using zen-browser, to import mods cp ~/dotfiles/Extras/Extras/zen-mods/zen-themes.json to ~/.zen/Default(Release) folder. And also if you want to get the new empty tab instead of blank page in Zen then goto `about:config` and set `zen.urlbar.replace-newtab` to false.
+**Brave:**
+1. Go to `brave://flags/`
+2. Set `Preferred Ozone platform` to `Auto` (Selects Wayland/Xorg automatically).
 
-## Configuration
+**Vivaldi:**
+1. Go to `vivaldi://flags/#ozone-platform-hint` -> Set to `Auto`.
+2. Go to `chrome://settings` -> Turn on GTK for dark context menus.
+3. **Custom CSS:** Go to `vivaldi:experiments` -> Enable "Allow CSS modifications".
+4. Stow the `vivaldi` folder from this repo.
+5. In Vivaldi Settings -> Appearance, upload the path to the `Default/Themes` folder.
+</details>
 
-You can customize the settings and configurations in the various files within this repository to fit your preferences. Many of these files include comments explaining their purpose.
+<details>
+<summary><b>🧘 Zen Browser Mods</b></summary>
 
-## Screenshots
+1. **Import Mods:** Copy `~/dotfiles/Extras/Extras/zen-mods/zen-themes.json` to `~/.zen/Default(Release)/`.
+2. **New Tab Fix:** To get an empty new tab instead of a blank page, go to `about:config` and set `zen.urlbar.replace-newtab` to `false`.
+</details>
 
-![Screenshot of I3 setup](assets/assets/i31.png)
-![Screenshot of Hyprland setup](assets/assets/hypr.png)
-![Screenshot of Hyprland setup](assets/assets/hypr1.png)
-![Screenshot of DWM setup](assets/assets/1.png)
-![Screenshot of DWM setup](assets/assets/2.png)
+<details>
+<summary><b>📝 Neovim (Chadrc & Pywal)</b></summary>
 
-For a better understanding of how my configuration looks, check out the screenshot above. Feel free to create and add more screenshots as needed.
+If using my `nvim_gen` config:
+1. Open `~/.config/nvim/lua/chadrc.lua`.
+2. Change the theme to something standard like `nightowl`.
+3. Let plugins install.
+4. Once `pywal` is set up, change the theme back to `chadwal`.
+</details>
 
-## Programs
+---
 
-The main program I use for my daily life:
+## 💻 Software Stack
 
-- **Window Manager**: Qtile, KDE Plasma
-- **Terminal**: Kitty, Alacritty
-- **Shell**: Zsh
-- **Editor**: Neovim, Emacs
-- **File Manager**: Yazi, Thunar
-- **Browser**: QuteBrowser, Zen Browser, Brave
-- **Music Player**: Mpd + RMPC
-- **Video Player**: MPV
-- **PDF Viewer**: Zathura, Okular
-- **Image Viewer**: sxiv
-- **Launcher**: Rofi
-- **Notification Daemon**: Dunst
-- **Screenshot Tool**: Flameshot
-- **System Monitor**: Btop
-- **Music Downloader**: Yt-dlp
-- **Youtube Player**: Mpv + Ytfzf
-- **Clipboard Manager**: greenclip, cliphist
-- **Screen Recorder**: Scripts
-- **IDE**: Neovim/Emacs
-- **Torrent Client**: Webtorrent, Peerflix
-- **Office Suite**: LibreOffice
-- **Password Manager**: Pass
-- **Backup Tool**: Timeshift
-- **System Information**: Neofetch
-- **Anime Downloader**: Ani-cli 
-- **Grub Theme**: SekiroShadow Grub theme
-- **Wallpapers**: Wallpapers from Wallhaven using waldl script 
+My system is unified using **Pywal** for color generation (matches wallpaper) and **Nativefier** for web apps.
 
-For entire system I am using pywal for color scheme matching with wallpaper. And for zathura I am using Zathura-Pywal. And for webapps I am using nativefier.
+| Category | Application(s) |
+| :--- | :--- |
+| **Window Managers** | Qtile, KDE Plasma, Hyprland, DWM, I3, BSPWM |
+| **Terminal** | Kitty, Alacritty, st |
+| **Shell** | Zsh |
+| **Editors** | Neovim, Emacs |
+| **Browsers** | QuteBrowser, Zen Browser, Brave |
+| **File Managers** | Yazi, Thunar |
+| **Launchers** | Rofi, Dmenu |
+| **Media (Video)** | MPV, Ytfzf (YouTube) |
+| **Media (Audio)** | MPD + RMPC, Yt-dlp |
+| **Documents** | Zathura (Pywal integrated), Okular, LibreOffice |
+| **System Tools** | Timeshift (Backup), Btop, Dunst, Flameshot |
+| **Clipboard** | Greenclip, Cliphist |
+| **Grub Theme** | SekiroShadow |
+| **Wallpaper** | `waldl` script (Wallhaven) |
 
-## ChatGPT Prompt
+---
 
-My personal chatGPT instruction that I use daily: 
+## 📸 Screenshots
+
+| Setup | Preview |
+| :--- | :--- |
+| **I3** | ![I3 Setup](assets/assets/i31.png) |
+| **Hyprland** | ![Hyprland 1](assets/assets/hypr.png) |
+| **Hyprland** | ![Hyprland 2](assets/assets/hypr1.png) |
+| **DWM** | ![DWM 1](assets/assets/1.png) |
+| **DWM** | ![DWM 2](assets/assets/2.png) |
+
+---
+
+## 🤖 Extras
+
+### My "Strict Mentor" ChatGPT Prompt
+This is the custom instruction I use with ChatGPT for learning and productivity.
+
+<details>
+<summary>Click to view Prompt</summary>
 
 ```text
 STRICT BUT CONTEXT-AWARE MENTOR MODE
@@ -189,14 +249,16 @@ Always prioritize truth + usefulness.
 After loading this behavior, do NOT ask me what I want to improve.
 Just follow the instructions forever until I say “Clear my previous behavioral instructions and reset”.
 ```
+</details>
 
-## License
+---
 
-This repository is licensed under the MIT License. For more information, see the `LICENSE` file. 
+## 📜 Credits & License
 
-## Credits
+This repository is licensed under the **MIT License**.
 
-1. BugsWriter - https://github.com/Bugswriter
-2. DistroTube - https://gitlab.com/dwt1
-3. LukeSmith - https://github.com/LukeSmithxyz
-4. Rusty Electron (I3) - https://github.com/rusty-electron/dotfiles/
+**Credits:**
+*   [BugsWriter](https://github.com/Bugswriter)
+*   [DistroTube](https://gitlab.com/dwt1)
+*   [LukeSmith](https://github.com/LukeSmithxyz)
+*   [Rusty Electron (I3)](https://github.com/rusty-electron/dotfiles/)
