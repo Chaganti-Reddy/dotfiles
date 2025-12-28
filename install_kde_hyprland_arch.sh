@@ -426,7 +426,7 @@ step_theming_anime() {
 }
 
 step_repo_fonts() {
-    paru -S --needed --noconfirm adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans ttf-dejavu-nerd ttf-firacode-nerd otf-droid-nerd ttf-cascadia-code-nerd ttf-hack-nerd ttf-ibmplex-mono-nerd ttf-jetbrains-mono-nerd ttf-roboto-mono-nerd otf-apple-fonts ttf-material-design-icons-webfont ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-ms-fonts
+    paru -S --needed --noconfirm adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-hack ttf-jetbrains-mono ttf-ubuntu-font-family ttf-ubuntu-mono-nerd ttf-ubuntu-nerd ttf-opensans ttf-dejavu-nerd ttf-firacode-nerd otf-droid-nerd ttf-cascadia-code-nerd ttf-hack-nerd ttf-ibmplex-mono-nerd ttf-jetbrains-mono-nerd ttf-roboto-mono-nerd ttf-material-design-icons-webfont ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-ms-fonts
 }
 
 step_pdf_zathura() {
@@ -476,7 +476,7 @@ step_stow_karna() {
     cd "$DOTFILES_DIR" || return 1
     rm -rf ~/.bashrc
 
-    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastanime fastfetch hyprland rofi)
+    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland rofi)
 
     for folder in "${folders[@]}"; do
         info "Stowing $folder"
