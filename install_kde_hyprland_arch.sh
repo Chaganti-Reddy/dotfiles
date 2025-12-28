@@ -470,6 +470,17 @@ step_hyprland_stack() {
     echo "org.freedesktop.impl.portal.FileChooser=gtk" >> "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
 }
 
+step_wallpapers() {
+    if [ -d "$HOME/Pictures/pix" ]; then return; fi
+    
+    cd ~/Downloads
+    curl -L -o wall.zip https://gitlab.com/chaganti-reddy1/wallpapers/-/archive/main/wallpapers-main.zip
+    unzip -q wall.zip
+    mv wallpapers-main/pix ~/Pictures/
+    rm -rf wallpapers-main wall.zip
+    cd ~/dotfiles
+}
+
 step_kvm_qemu() {
     info "Setting up KVM/QEMU..."
     if ! grep -qE '(vmx|svm)' /proc/cpuinfo; then warning "Virtualization not supported by CPU."; return 0; fi
@@ -541,6 +552,7 @@ run_task "Repo Fonts" step_repo_fonts
 run_task "Custom Fonts" install_fonts
 run_task "PDF & Zathura" step_pdf_zathura
 run_task "Hyprland Stack" step_hyprland_stack
+run_task "Download Wallpapers" step_wallpapers
 run_task "KVM/QEMU" step_kvm_qemu
 run_task "Miniconda" install_miniconda "y"
 run_task "Pip Packages" install_pip_packages "y"
