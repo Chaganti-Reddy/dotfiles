@@ -1,38 +1,44 @@
 -- =============================================================================
---  1. SYSTEM & GENERAL
+--  1. SYSTEM, BASICS & VS CODE DEFAULTS
 -- =============================================================================
 vim.g.mapleader = " "
 
--- Helper to map multiple modes
+-- Helper to map keys across multiple modes (Normal, Insert, Visual)
+-- This ensures Ctrl+S or Ctrl+B works even if you are typing
 local function map(modes, lhs, rhs, opts)
     opts = opts or {}
     opts.silent = opts.silent ~= false
     vim.keymap.set(modes, lhs, rhs, opts)
 end
 
--- SAVE & SELECT ALL (Works in Insert Mode too)
+-- SAVE FILE (Ctrl+S) - Works everywhere
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
-map({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all" })
 
--- UNDO (Ctrl+Z) - VS Code style
+-- SELECT ALL (Ctrl+A)
+map({ "n", "i", "v" }, "<C-a>", "<Esc>ggVG", { desc = "Select all text" })
+
+-- UNDO (Ctrl+Z) - VS Code Style
 map("i", "<C-z>", "<C-o>u", { desc = "Undo" })
 map("n", "<C-z>", "u", { desc = "Undo" })
 
--- ESCAPE INSERT MODE (Ctrl+C) - Your original bind
+-- ESCAPE INSERT MODE (Ctrl+C)
 map("i", "<C-c>", "<Esc>", { desc = "Escape insert mode" })
 
--- DISABLE EX MODE (Q)
-map("n", "Q", "<nop>", { desc = "Disable Ex mode" })
+-- COPY/PASTE (System Clipboard)
+-- Your old config used OSCYank. Standard Neovim "+y is usually better now.
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+map("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
+map("x", "<leader>p", [["_dP]], { desc = "Paste without replacing clipboard" })
+map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
 
 -- =============================================================================
---  2. VS CODE STYLE TOGGLES (Smart Logic)
+--  2. SMART TOGGLING (Ctrl+B, Ctrl+`, etc.)
 -- =============================================================================
 
--- SMART EXPLORER TOGGLE (Ctrl + B)
--- 1. If Closed -> Open & Focus
--- 2. If Open (but you are in code) -> Focus Tree
--- 3. If Focused (you are in tree) -> Close
+-- SMART EXPLORER (Ctrl+B)
+-- Logic: If FileTree is focused -> Close it. Otherwise -> Focus it.
 map({ "n", "i", "v" }, "<C-b>", function()
+    -- Check if we are currently IN the Neo-tree window
     if vim.bo.filetype == "neo-tree" then
         vim.cmd("Neotree close")
     else
@@ -40,133 +46,135 @@ map({ "n", "i", "v" }, "<C-b>", function()
     end
 end, { desc = "Toggle Explorer" })
 
--- TERMINAL TOGGLE (Ctrl + ` or Ctrl + \)
+-- TERMINAL (Ctrl+` or Ctrl+\)
 map({ "n", "i", "v", "t" }, "<C-\\>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle Terminal" })
 map({ "n", "i", "v", "t" }, "<C-`>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle Terminal" })
--- Exit Terminal Mode with Esc
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 
--- COMMENT (Ctrl + /)
+-- COMMENTS (Ctrl+/)
+-- Note: Ctrl+/ often sends Ctrl+_ in terminals
 map({ "n", "i", "v" }, "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { desc = "Toggle Comment" })
 map({ "n", "i", "v" }, "<C-/>", function() require('Comment.api').toggle.linewise.current() end, { desc = "Toggle Comment" })
 
 -- =============================================================================
---  3. SEARCH (Safe Plugin Loading)
+--  3. SEARCH (Ctrl+P, Ctrl+F) - CRASH PROOF
 -- =============================================================================
-local function run_telescope(builtin_name)
+-- This wrapper prevents "module not found" errors if Telescope loads late
+local function safe_telescope(command)
     local status, builtin = pcall(require, "telescope.builtin")
-    if not status then return end
-    builtin[builtin_name]()
+    if not status then
+        vim.notify("Telescope not loaded yet", vim.log.levels.WARN)
+        return
+    end
+    builtin[command]()
 end
 
--- FIND FILES (Ctrl + P)
-map({ "n", "i", "v" }, "<C-p>", function() run_telescope("find_files") end, { desc = "Find Files" })
-
--- GLOBAL SEARCH (Ctrl + Shift + F)
-map({ "n", "i", "v" }, "<C-S-f>", function() run_telescope("live_grep") end, { desc = "Global Search" })
-
--- FIND OPEN BUFFERS
-map("n", "<leader><space>", function() run_telescope("buffers") end, { desc = "Find Buffers" })
+map({ "n", "i", "v" }, "<C-p>", function() safe_telescope("find_files") end, { desc = "Find Files" })
+map({ "n", "i", "v" }, "<C-S-f>", function() safe_telescope("live_grep") end, { desc = "Global Search" })
+map("n", "<leader><space>", function() safe_telescope("buffers") end, { desc = "Find Buffers" })
 
 -- =============================================================================
---  4. NAVIGATION & EDITING
+--  4. NAVIGATION (Tabs, Splits, Windows)
 -- =============================================================================
--- Move Lines (Alt + j/k)
-map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move down" })
-map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move up" })
-map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move up" })
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
--- Indenting (Tab / Shift+Tab)
-map("v", "<Tab>", ">gv", { desc = "Indent Right" })
-map("v", "<S-Tab>", "<gv", { desc = "Indent Left" })
-map("v", "<", "<gv", { desc = "Indent Left" })
-map("v", ">", ">gv", { desc = "Indent Right" })
+-- TABS (Bufferline)
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Tab" })
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Tab" })
+map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close Tab" })
+map("n", "<C-q>", "<cmd>bdelete<CR>", { desc = "Close Tab (Alt)" }) -- From your old config
 
--- Tab Navigation (Tab / Shift+Tab)
-map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
-map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close Buffer" })
-
--- Window Splits
+-- SPLITS
 map("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
 map("n", "<leader>sh", "<cmd>split<CR>", { desc = "Horizontal Split" })
 map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close Split" })
 map("n", "<leader>se", "<C-w>=", { desc = "Equalize Splits" })
 
--- Window Navigation (Ctrl + H/J/K/L)
-map({ "n", "i" }, "<C-h>", "<C-w>h", { desc = "Go Left" })
-map({ "n", "i" }, "<C-l>", "<C-w>l", { desc = "Go Right" })
-map({ "n", "i" }, "<C-j>", "<C-w>j", { desc = "Go Down" })
-map({ "n", "i" }, "<C-k>", "<C-w>k", { desc = "Go Up" })
+-- WINDOW NAVIGATION (Ctrl + h/j/k/l)
+map({ "n", "i" }, "<C-h>", "<C-w>h", { desc = "Focus Left" })
+map({ "n", "i" }, "<C-l>", "<C-w>l", { desc = "Focus Right" })
+map({ "n", "i" }, "<C-j>", "<C-w>j", { desc = "Focus Down" })
+map({ "n", "i" }, "<C-k>", "<C-w>k", { desc = "Focus Up" })
 
--- Window Navigation (Ctrl + Shift + Arrows)
-map("n", "<C-S-Left>", "<C-w>h", { desc = "Go Left" })
-map("n", "<C-S-Right>", "<C-w>l", { desc = "Go Right" })
-map("n", "<C-S-Down>", "<C-w>j", { desc = "Go Down" })
-map("n", "<C-S-Up>", "<C-w>k", { desc = "Go Up" })
+-- WINDOW RESIZING (Ctrl + Arrows)
+map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Height +" })
+map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Height -" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Width -" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Width +" })
 
--- Resize Splits (Ctrl + Arrows)
-map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Inc Height" })
-map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Dec Height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Dec Width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Inc Width" })
+-- =============================================================================
+--  5. EDITING (Moving lines, Indent)
+-- =============================================================================
+-- Move lines (Alt + j/k)
+map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
+map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up" })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+
+-- Indenting (Tab/Shift+Tab in Visual)
+map("v", "<Tab>", ">gv", { desc = "Indent Right" })
+map("v", "<S-Tab>", "<gv", { desc = "Indent Left" })
+map("v", "<", "<gv", { desc = "Indent Left" })
+map("v", ">", ">gv", { desc = "Indent Right" })
 
 -- Join lines (J)
-map("n", "J", "mzJ`z", { desc = "Join lines" })
+map("n", "J", "mzJ`z", { desc = "Join lines keep cursor" })
+
+-- Scroll and Center
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down Center" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up Center" })
+map("n", "n", "nzzzv", { desc = "Next Match Center" })
+map("n", "N", "Nzzzv", { desc = "Prev Match Center" })
 
 -- =============================================================================
---  5. HARPOON & LSP (Coding Tools)
+--  6. YOUR CUSTOM TOOLS (Restored from old config)
 -- =============================================================================
-map("n", "<leader>a", function() require("harpoon"):list():add() end, { desc = "Harpoon Add" })
-map("n", "<C-e>", function() local h = require("harpoon"); h.ui:toggle_quick_menu(h:list()) end, { desc = "Harpoon Menu" })
-map("n", "<C-1>", function() require("harpoon"):list():select(1) end, { desc = "File 1" })
-map("n", "<C-2>", function() require("harpoon"):list():select(2) end, { desc = "File 2" })
-map("n", "<C-3>", function() require("harpoon"):list():select(3) end, { desc = "File 3" })
-map("n", "<C-4>", function() require("harpoon"):list():select(4) end, { desc = "File 4" })
 
--- Format Code
-map("n", "<leader>fm", function()
-    local status, conform = pcall(require, "conform")
-    if status then conform.format({ lsp_fallback = true }) else vim.lsp.buf.format() end
-end, { desc = "Format" })
+-- Doge (Docs)
+map("n", "<leader>dg", "<cmd>DogeGenerate<CR>", { desc = "Generate Docs" })
 
--- LSP
-map("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
-map("n", "gr", function() run_telescope("lsp_references") end, { desc = "Find References" })
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover Doc" })
-map("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-
--- =============================================================================
---  6. SPECIFIC PLUGINS & CUSTOM SCRIPTS (Restored)
--- =============================================================================
--- Doge (Doc Generator)
-map("n", "<leader>dg", "<cmd>DogeGenerate<CR>", { desc = "Generate Docs (Doge)" })
-
--- PHP Formatter (Your custom script)
+-- PHP Formatter
 map("n", "<leader>cc", "<cmd>!php-cs-fixer fix % --using-cache=no<CR>", { desc = "Format PHP" })
 
 -- Make Executable
 map("n", "<leader>ex", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make Executable" })
 
--- Undotree
-map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
+-- Search & Replace Word under cursor
+map("n", "<leader>s", [[:s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Replace word" })
 
--- Search & Replace Word
-map("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word" })
-
--- VimTeX (Latex)
-map("n", "<leader>tx", "<cmd>VimtexCompile<CR>", { desc = "VimTeX Compile" })
-map("n", "<leader>tv", "<cmd>VimtexView<CR>", { desc = "VimTeX View" })
-map("n", "<leader>tc", "<cmd>VimtexClean<CR>", { desc = "VimTeX Clean" })
-map("n", "<leader>ts", "<cmd>VimtexStop<CR>", { desc = "VimTeX Stop" })
+-- VimTeX
+map("n", "<leader>tc", "<cmd>VimtexCompile<CR>", { desc = "Compile Latex" })
+map("n", "<leader>tv", "<cmd>VimtexView<CR>", { desc = "View Latex" })
+map("n", "<leader>tx", "<cmd>VimtexStop<CR>", { desc = "Stop Latex" })
 
 -- Zen Mode
-map("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle Zen Mode" })
+map("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Zen Mode" })
+
+-- Undotree
+map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
+
+-- =============================================================================
+--  7. HARPOON & LSP (Wrapped for Safety)
+-- =============================================================================
+map("n", "<leader>a", function() require("harpoon"):list():add() end, { desc = "Harpoon Add" })
+map("n", "<C-e>", function() local h = require("harpoon"); h.ui:toggle_quick_menu(h:list()) end, { desc = "Harpoon Menu" })
+map("n", "<C-1>", function() require("harpoon"):list():select(1) end, { desc = "Harpoon 1" })
+map("n", "<C-2>", function() require("harpoon"):list():select(2) end, { desc = "Harpoon 2" })
+
+-- Format File
+map("n", "<leader>fm", function()
+    local status, conform = pcall(require, "conform")
+    if status then conform.format({ lsp_fallback = true }) else vim.lsp.buf.format() end
+end, { desc = "Format File" })
+
+-- LSP
+map("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+map("n", "gr", function() safe_telescope("lsp_references") end, { desc = "Find References" })
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover Info" })
+map("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 -- Reload Config
 map("n", "<leader><leader>", function() vim.cmd("so") end, { desc = "Reload Config" })
