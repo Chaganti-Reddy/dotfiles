@@ -504,7 +504,7 @@ step_stow_karna() {
     cd "$DOTFILES_DIR" || return 1
     rm -rf ~/.bashrc
 
-    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi)
+    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps)
 
     for folder in "${folders[@]}"; do
         info "Stowing $folder"
