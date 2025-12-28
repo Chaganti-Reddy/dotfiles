@@ -394,7 +394,8 @@ step_editors() {
 }
 
 step_professional() {
-    paru -S --needed --noconfirm visual-studio-code-bin discord telegram-desktop-bin libreoffice-fresh texlive-bin texlive-meta texlive-latex tex-fmt-bin perl-yaml-tiny perl-file-homedir perl-unicode-linebreak docker obs-studio wlrobs-hg
+    paru -S --needed --noconfirm visual-studio-code-bin discord telegram-desktop-bin libreoffice-fresh texlive-bin texlive-meta texlive-latex tex-fmt-bin perl-yaml-tiny perl-file-homedir perl-unicode-linebreak docker 
+    # paru -S --needed --noconfirm obs-studio wlrobs-hg
     
     sudo systemctl enable docker.service
     sudo usermod -aG docker "$USER"
@@ -516,7 +517,7 @@ run_task "Node/NVM" step_nodejs
 run_task "Editors" step_editors
 run_task "Professional Tools" step_professional
 run_task "Browsers" step_browsers
-run_task "File Managers" step_file_managers
+# run_task "File Managers" step_file_managers
 run_task "Encryption/GPG" step_encryption
 run_task "Theming & Anime" step_theming_anime
 run_task "Repo Fonts" step_repo_fonts
