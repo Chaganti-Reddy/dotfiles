@@ -451,7 +451,7 @@ step_encryption() {
 }
 
 step_theming_anime() {
-    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git
+    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git viu-media # viu-media is nothing but fast anime
 }
 
 step_repo_fonts() {
