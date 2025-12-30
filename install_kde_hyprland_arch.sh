@@ -199,7 +199,7 @@ install_pip_packages() {
             "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
             "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
             "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow" "sentence-transformers" "langchain-ollama" "pymupdf"
-            "viu-media[standard]" "mopidy" "mopidy-mpd" "mopidy-local" "mopidy-ytmusic" "mopidy-webm3u"
+            "viu-media[standard]"
         )
 
         # Install each package if it's not already installed
