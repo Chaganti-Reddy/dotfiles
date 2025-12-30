@@ -199,6 +199,7 @@ install_pip_packages() {
             "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
             "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
             "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow" "sentence-transformers" "langchain-ollama" "pymupdf"
+            "viu-media[standard]" "mopidy" "mopidy-mpd" "mopidy-local" "mopidy-ytmusic"
         )
 
         # Install each package if it's not already installed
@@ -451,7 +452,7 @@ step_encryption() {
 }
 
 step_theming_anime() {
-    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git viu-media # viu-media is nothing but fast anime
+    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git 
 }
 
 step_repo_fonts() {
