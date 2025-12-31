@@ -3,7 +3,7 @@ set -u
 set -o pipefail
 
 # -------------------------- CONFIGURATION --------------------------
-LOG_FILE="$HOME/dotfiles-install.log"
+LOG_FILE="$HOME/.cache/dotfiles-install.log"
 CHECKPOINT_DIR="$HOME/.cache/setup_checkpoints"
 DOTFILES_DIR="$HOME/dotfiles"
 
