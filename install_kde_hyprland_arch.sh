@@ -60,7 +60,7 @@ run_task() {
     fi
 }
 
-MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-py310_24.3.0-0-Linux-x86_64.sh"
+MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-py311_24.11.1-0-Linux-x86_64.sh"
 INSTALLER_NAME="Miniconda3.sh"
 
 install_miniconda() {
@@ -93,7 +93,7 @@ install_miniconda() {
     wget -q --show-progress -O "$INSTALLER_NAME" "$MINICONDA_URL"
 
     info "Running the Miniconda installer..."
-    bash "$INSTALLER_NAME" -b -p "$HOME/miniconda"
+    bash "$INSTALLER_NAME" -b -u -p "$HOME/miniconda"
 
     info "Cleaning up installer files..."
     rm "$INSTALLER_NAME"
