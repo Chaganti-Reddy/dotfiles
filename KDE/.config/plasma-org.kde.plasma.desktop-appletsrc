@@ -21,7 +21,7 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][26][Wallpaper][org.kde.slideshow][General]
-SlideInterval=600
+Image=file:///home/karna/Pictures/pix/0016.png
 SlidePaths=/home/karna/Pictures/pix/
 
 [Containments][27]
@@ -50,6 +50,9 @@ DialogWidth=810
 favoritesPortedToKAstats=true
 switchCategoryOnHover=true
 systemFavorites=suspend\\,hibernate\\,reboot\\,shutdown
+
+[Containments][27][Applets][28][Shortcuts]
+global=Meta+D
 
 [Containments][27][Applets][30]
 immutability=1
