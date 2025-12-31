@@ -178,19 +178,31 @@ install_pip_packages() {
         install_choice=$(prompt "Would you like to install my PIP packages?" "y")
     fi
 
-    if [[ "$install_choice" =~ ^[Yy]$ ]]; then
-        info "Installing PIP packages..."
-
-        local pip_cmd
-        if command -v conda &>/dev/null; then
-            pip_cmd="pip install"
-            info "Conda detected. Using regular pip install."
+    if [[ "$install_choice" =~ ^[Yy]$ ]]; then        
+        if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+            info "Conda is active (Env: $CONDA_DEFAULT_ENV)."
+        elif [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
+            info "Activating Conda base..."
+            source "$HOME/miniconda/etc/profile.d/conda.sh"
+            conda activate base || { warning "Failed to activate Conda. Skipping."; return 0; }
         else
-            pip_cmd="pip install --break-system-packages"
-            warning "Conda not found. Using pip with --break-system-packages (Arch-safe)."
+            warning "Conda not found. Skipping to protect system Python."
+            return 0 
         fi
 
-        # List of packages to install
+        local has_gpu=false
+        # Check for nvidia-smi or lspci looking for nvidia
+        if command -v nvidia-smi &>/dev/null; then
+            has_gpu=true
+            info "NVIDIA GPU detected via nvidia-smi."
+        elif lspci 2>/dev/null | grep -i "nvidia" &>/dev/null; then
+            has_gpu=true
+            info "NVIDIA GPU detected via lspci."
+        else
+            info "No NVIDIA GPU detected. defaulting to CPU-optimized modes."
+        fi
+
+        info "Installing standard PIP packages..."
         local pip_packages=(
             "pynvim" "numpy" "pandas" "matplotlib" "seaborn" "scikit-learn" "jupyterlab"
             "ipykernel" "ipywidgets" "python-prctl" "inotify-simple" "psutil" "libclang"
@@ -198,40 +210,58 @@ install_pip_packages() {
             "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4"
             "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
             "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
-            "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" "fuzzywuzzy" "tensorflow" "sentence-transformers" "langchain-ollama" "pymupdf"
-            "viu-media[standard]"
+            "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" 
+            "fuzzywuzzy" "sentence-transformers" "langchain-ollama" "viu-media[standard]"
         )
 
-        # Install each package if it's not already installed
+        # Smart Tensorflow Selection
+        if [ "$has_gpu" = true ]; then
+            # 'tensorflow[and-cuda]' ensures GPU libraries are downloaded
+            pip_packages+=("tensorflow[and-cuda]")
+        else
+            # Standard tensorflow works fine for CPU too
+            pip_packages+=("tensorflow")
+        fi
+
+        # Batch Install Logic
+        local packages_to_install=()
         for package in "${pip_packages[@]}"; do
-            if ! pip show "$package" &>/dev/null; then
-                info "Installing $package..."
-                $pip_cmd "$package" || warning "Failed to install $package"
-            else
-                success "$package is already installed."
+            local clean_name="${package%%[*}" # Remove brackets for checking
+            if ! pip show "$clean_name" &>/dev/null; then
+                packages_to_install+=("$package")
             fi
         done
 
-        # Install PyTorch (CPU version)
+        if [ ${#packages_to_install[@]} -gt 0 ]; then
+            info "Installing ${#packages_to_install[@]} packages..."
+            pip install "${packages_to_install[@]}" || warning "Some packages failed."
+        fi
+        
         if ! pip show "torch" &>/dev/null; then
-            info "Installing PyTorch (CPU version)..."
-            $pip_cmd torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu || warning "Failed to install PyTorch"
+            if [ "$has_gpu" = true ]; then
+                info "Installing PyTorch (GPU/CUDA version)..."
+                # This installs the standard version (Support for CPU + GPU) ~2.5GB
+                pip install torch torchvision torchaudio
+            else
+                info "Installing PyTorch (CPU-Only version)..."
+                # This explicitly forces the small CPU-only binaries ~200MB
+                pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+            fi
         else
             success "PyTorch is already installed."
         fi
 
         success "PIP packages installation completed."
-        sleep 1
     else
-        warning "PIP packages installation skipped. Proceeding with the setup."
-        sleep 1
+        warning "PIP installation skipped."
     fi
+    return 0
 }
 
 install_grub_theme() {
     info "Setting up GRUB theme..."
 
-    local install_choice="${1:-}" # Optional positional parameter, default to empty if not passed
+    local install_choice="${1:-}"
 
     if [[ "$install_choice" =~ ^[Yy]$ ]]; then
         install_choice="y"
