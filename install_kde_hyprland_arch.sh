@@ -20,7 +20,10 @@ CYAN=$(tput setaf 6)
 
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-die() { echo -e "${BOLD}${RED}ERROR:${RESET} $*" >&2; exit 1; }
+die() {
+    echo -e "${BOLD}${RED}ERROR:${RESET} $*" >&2
+    exit 1
+}
 info() { echo -e "${BOLD}${BLUE}INFO:${RESET} $*"; }
 success() { echo -e "${BOLD}${GREEN}SUCCESS:${RESET} $*"; }
 warning() { echo -e "${BOLD}${CYAN}WARNING:${RESET} $*"; }
@@ -38,7 +41,7 @@ prompt() {
 run_task() {
     local task_name="$1"
     local task_id
-    task_id=$(echo "$task_name" | tr -c '[:alnum:]' '_') 
+    task_id=$(echo "$task_name" | tr -c '[:alnum:]' '_')
     shift
 
     if [ -f "$CHECKPOINT_DIR/$task_id" ]; then
@@ -47,7 +50,7 @@ run_task() {
     fi
 
     echo -e "\n${BOLD}${CYAN}>>> RUNNING: $task_name${RESET}"
-    
+
     # Run the command passed as argument
     "$@"
     local status=$?
@@ -178,16 +181,19 @@ install_pip_packages() {
         install_choice=$(prompt "Would you like to install my PIP packages?" "y")
     fi
 
-    if [[ "$install_choice" =~ ^[Yy]$ ]]; then        
+    if [[ "$install_choice" =~ ^[Yy]$ ]]; then
         if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
             info "Conda is active (Env: $CONDA_DEFAULT_ENV)."
         elif [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
             info "Activating Conda base..."
             source "$HOME/miniconda/etc/profile.d/conda.sh"
-            conda activate base || { warning "Failed to activate Conda. Skipping."; return 0; }
+            conda activate base || {
+                warning "Failed to activate Conda. Skipping."
+                return 0
+            }
         else
             warning "Conda not found. Skipping to protect system Python."
-            return 0 
+            return 0
         fi
 
         local has_gpu=false
@@ -210,7 +216,7 @@ install_pip_packages() {
             "film-central" "daemon" "jupyterlab_wakatime" "pygobject" "spotdl" "beautifulsoup4"
             "requests" "flask" "streamlit" "pywal16" "zxcvbn" "pyaml" "my_cookies" "codeium-jupyter"
             "pymupdf" "tk-tools" "ruff-lsp" "python-lsp-server" "semgrep" "transformers" "spacy"
-            "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2" 
+            "nltk" "sentencepiece" "ultralytics" "roboflow" "pipreqs" "feedparser" "pypdf2"
             "fuzzywuzzy" "sentence-transformers" "langchain-ollama" "viu-media[standard]"
         )
 
@@ -236,7 +242,7 @@ install_pip_packages() {
             info "Installing ${#packages_to_install[@]} packages..."
             pip install "${packages_to_install[@]}" || warning "Some packages failed."
         fi
-        
+
         if ! pip show "torch" &>/dev/null; then
             if [ "$has_gpu" = true ]; then
                 info "Installing PyTorch (GPU/CUDA version)..."
@@ -389,13 +395,14 @@ step_install_paru() {
     git clone https://aur.archlinux.org/paru.git
     cd paru
     makepkg -si --noconfirm
+    rm -rf paru
     cd "$DOTFILES_DIR"
 }
 
 step_system_base() {
     local pkgs=(bash-completion tlp tlp-rdw git openssh curl wget system-config-printer base-devel intel-ucode bash-language-server btop fastfetch bat exa fd ripgrep fzf stow stylua tar tree time unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipnotify inotify-tools psutils yakuake e2fsprogs efibootmgr gc git-lfs gstreamer jq screenkey maim lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli pandoc python-pywal glow xarchiver man-db man-pages ncdu python-pip nwg-look zbar os-prober pamixer parallel shfmt tesseract tesseract-data-eng python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server bmon playerctl rmpc mpd mpv mpc poppler poppler-glib gnome-disk-utility gparted pavucontrol yad timeshift gnu-free-fonts go hugo hunspell hunspell-en_us imagemagick ueberzugpp luacheck mlocate translate-shell jdk-openjdk meld blueman newsboat dart-sass speedtest-cli lynx atool figlet luarocks network-manager-applet glfw alsa-firmware pipewire pipewire-audio pipewire-alsa pipewire-pulse wireplumber sof-firmware alsa-ucm-conf viewnior qalculate-gtk pyright python-black vscode-html-languageserver typescript-language-server mdformat ydotool ccls jedi-language-server wakatime flatpak ghostscript qpdf mupdf-tools openssl dbus sqlite hspell nuspell dictd cargo xmlstarlet lua51 gdb yq dos2unix 7zip perl-image-exiftool python-psutil preload sysstat lazydocker-bin gopls gomodifytags gotests gore graphviz python-pyflakes python-isort python-pipenv python-nose python-pytest tidy stylelint js-beautify cpptools-debug-bin dialog python-watchdog advcpmv maven speech-dispatcher python-lsp-server python-plyer taplo-cli reflector yakuake)
     paru -S --needed --noconfirm "${pkgs[@]}"
-    
+
     sudo systemctl enable --now tlp.service
     sudo systemctl enable --now bluetooth.service
     sudo updatedb
@@ -419,7 +426,7 @@ step_git_zsh_setup() {
     git config --global alias.br branch
     git config --global alias.ci commit
     git config --global alias.unstage 'reset HEAD --'
-    git config --global log.decorate tru
+    git config --global log.decorate true
     git config --global push.default simple
     git config --global push.autoSetupRemote true
 
@@ -454,9 +461,9 @@ step_editors() {
 }
 
 step_professional() {
-    paru -S --needed --noconfirm visual-studio-code-bin discord telegram-desktop-bin libreoffice-fresh texlive-bin texlive-meta texlive-latex tex-fmt-bin perl-yaml-tiny perl-file-homedir perl-unicode-linebreak docker 
+    paru -S --needed --noconfirm visual-studio-code-bin discord telegram-desktop-bin libreoffice-fresh texlive-bin texlive-meta texlive-latex tex-fmt-bin perl-yaml-tiny perl-file-homedir perl-unicode-linebreak docker
     # paru -S --needed --noconfirm obs-studio wlrobs-hg
-    
+
     sudo systemctl enable docker.service
     sudo usermod -aG docker "$USER"
 }
@@ -482,7 +489,7 @@ step_encryption() {
 }
 
 step_theming_anime() {
-    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git 
+    paru -S --needed --noconfirm whitesur-cursor-theme-git yt-dlp-git ani-cli-git ani-skip-git
 }
 
 step_repo_fonts() {
@@ -503,19 +510,19 @@ step_pdf_zathura() {
 
 step_hyprland_stack() {
     paru -S --needed --noconfirm rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-guiutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi pear-desktop-bin hyprsunset sunsetr-bin thefuck
-    
+
     sudo usermod -aG video "$USER"
     sudo usermod -aG input "$USER"
-    
+
     mkdir -p "$HOME/.config/xdg-desktop-portal"
-    echo "[preferred]" > "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
-    echo "default=hyprland;gtk" >> "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
-    echo "org.freedesktop.impl.portal.FileChooser=gtk" >> "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
+    echo "[preferred]" >"$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
+    echo "default=hyprland;gtk" >>"$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
+    echo "org.freedesktop.impl.portal.FileChooser=gtk" >>"$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
 }
 
 step_wallpapers() {
     if [ -d "$HOME/Pictures/pix" ]; then return; fi
-    
+
     cd ~/Downloads
     curl -L -o wall.zip https://gitlab.com/chaganti-reddy1/wallpapers/-/archive/main/wallpapers-main.zip
     unzip -q wall.zip
@@ -526,10 +533,13 @@ step_wallpapers() {
 
 step_kvm_qemu() {
     info "Setting up KVM/QEMU..."
-    if ! grep -qE '(vmx|svm)' /proc/cpuinfo; then warning "Virtualization not supported by CPU."; return 0; fi
-    
+    if ! grep -qE '(vmx|svm)' /proc/cpuinfo; then
+        warning "Virtualization not supported by CPU."
+        return 0
+    fi
+
     paru -S --needed --noconfirm qemu-full qemu-img libvirt virt-install virt-manager virt-viewer spice-vdagent edk2-ovmf swtpm guestfs-tools libosinfo dnsmasq vde2 bridge-utils openbsd-netcat dmidecode iptables libguestfs
-    
+
     sudo systemctl enable --now libvirtd.service
     sudo usermod -aG libvirt "$USER"
     sudo sed -i 's/^#\?unix_sock_group.*/unix_sock_group = "libvirt"/' /etc/libvirt/libvirtd.conf
@@ -547,7 +557,7 @@ step_stow_karna() {
     cd "$DOTFILES_DIR" || return 1
     rm -rf ~/.bashrc
 
-    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps)
+    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps gtk-2 gtk-3 KDE)
 
     for folder in "${folders[@]}"; do
         info "Stowing $folder"
@@ -564,7 +574,7 @@ step_stow_karna() {
         sudo cp Extras/Extras/etc/mpd.conf /etc/mpd.conf
     fi
     if [ -f "Extras/Extras/nvim.desktop" ]; then sudo cp Extras/Extras/nvim.desktop /usr/share/applications/nvim.desktop; fi
-    
+
     mkdir -p "$HOME/.config/menus/"
     curl -L -s -o "$HOME/.config/menus/applications.menu" https://raw.githubusercontent.com/KDE/plasma-workspace/master/menu/desktop/plasma-applications.menu
 

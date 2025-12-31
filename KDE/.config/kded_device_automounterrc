@@ -1,0 +1,16 @@
+[Devices][/org/freedesktop/UDisks2/block_devices/nvme0n1p1]
+EverMounted=true
+Icon=drive-harddisk
+LastNameSeen=1.0 GiB Internal Drive (nvme0n1p1)
+LastSeenMounted=true
+
+[Devices][/org/freedesktop/UDisks2/block_devices/nvme0n1p2]
+EverMounted=true
+Icon=drive-harddisk-root
+LastNameSeen=475.9 GiB Internal Drive (nvme0n1p2)
+LastSeenMounted=true
+
+[General]
+AutomountEnabled=true
+AutomountOnLogin=true
+AutomountOnPlugin=true

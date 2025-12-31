@@ -1,0 +1,9 @@
+[Keyboard]
+NumLock=0
+
+[Libinput][1267][12615][DLL09D9:00 04F3:3147 Touchpad]
+ClickMethod=2
+NaturalScroll=true
+
+[Libinput][5426][152][Razer Razer DeathAdder Essential]
+PointerAccelerationProfile=1
