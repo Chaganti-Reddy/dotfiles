@@ -1,0 +1,15 @@
+[Appearance]
+HideSkinBorders=true
+TerminalHighlightOnManualActivation=true
+Translucency=true
+
+[Behavior]
+RememberFullscreen=true
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+Height=40
+ShowSystrayIcon=false
+ShowTitleBar=false
