@@ -1,6 +1,18 @@
 MenuBar=Disabled
 
+[ContextMenu]
+ShowAddToPlaces=false
+ShowCopyToOtherSplitView=false
+ShowDuplicateHere=false
+ShowMoveToOtherSplitView=false
+ShowViewMode=false
+
 [General]
+DoubleClickViewAction=view_redisplay
+DynamicView=true
+HideXTrashFile=true
+RememberOpenedTabs=false
+ShowZoomSlider=true
 Version=202
 ViewPropsTimestamp=2025,12,31,13,16,0.134
 
@@ -13,6 +25,9 @@ MenuBar=Disabled
 
 [MainWindow][Toolbar mainToolBar]
 ToolButtonStyle=IconOnly
+
+[PreviewSettings]
+Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,glycin-heif,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,glycin-image-rs,jpegthumbnail,glycin-jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,glycin-svg,svgthumbnail,textthumbnail
 
 [Toolbar mainToolBar]
 ToolButtonStyle=IconOnly
