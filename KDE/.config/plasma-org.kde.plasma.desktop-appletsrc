@@ -56,7 +56,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][27][Applets][30][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,preferred://browser,applications:org.kde.konsole.desktop
+launchers=applications:systemsettings.desktop,preferred://filemanager,preferred://browser,applications:code.desktop,applications:org.kde.konsole.desktop
 
 [Containments][27][Applets][31]
 immutability=1
@@ -164,6 +164,13 @@ PreloadWeight=55
 [Containments][27][Applets][32][Applets][50][Configuration][General]
 showNumberOfConnectedDevices=true
 
+[Containments][27][Applets][32][Applets][51]
+immutability=1
+plugin=org.kde.plasma.mediacontroller
+
+[Containments][27][Applets][32][Applets][51][Configuration]
+PreloadWeight=42
+
 [Containments][27][Applets][32][ConfigDialog]
 DialogHeight=630
 DialogWidth=810
@@ -179,8 +186,17 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][27][Applets][46][Configuration]
-popupHeight=400
-popupWidth=560
+PreloadWeight=75
+popupHeight=451
+popupWidth=810
+
+[Containments][27][Applets][46][Configuration][Appearance]
+enabledCalendarPlugins=astronomicalevents,holidaysevents
+showWeekNumbers=true
+
+[Containments][27][Applets][46][Configuration][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
 
 [Containments][27][Applets][47]
 immutability=1
