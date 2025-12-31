@@ -74,7 +74,7 @@ immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][27][Applets][32][Applets][34][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
 [Containments][27][Applets][32][Applets][35]
 immutability=1
@@ -104,6 +104,9 @@ plugin=org.kde.kscreen
 immutability=1
 plugin=org.kde.plasma.networkmanagement
 
+[Containments][27][Applets][32][Applets][41][Configuration]
+PreloadWeight=55
+
 [Containments][27][Applets][32][Applets][42]
 immutability=1
 plugin=org.kde.plasma.keyboardindicator
@@ -121,7 +124,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][27][Applets][32][Applets][45][Configuration]
-PreloadWeight=60
+PreloadWeight=70
 
 [Containments][27][Applets][32][Applets][45][Configuration][General]
 migrated=true
@@ -130,16 +133,28 @@ migrated=true
 immutability=1
 plugin=org.kde.plasma.brightness
 
+[Containments][27][Applets][32][Applets][48][Configuration]
+PreloadWeight=55
+
 [Containments][27][Applets][32][Applets][49]
 immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][27][Applets][32][Applets][49][Configuration]
-PreloadWeight=55
+PreloadWeight=60
+
+[Containments][27][Applets][32][Applets][49][Configuration][General]
+showPercentage=true
 
 [Containments][27][Applets][32][Applets][50]
 immutability=1
 plugin=org.kde.plasma.bluetooth
+
+[Containments][27][Applets][32][Applets][50][Configuration]
+PreloadWeight=55
+
+[Containments][27][Applets][32][Applets][50][Configuration][General]
+showNumberOfConnectedDevices=true
 
 [Containments][27][Applets][32][ConfigDialog]
 DialogHeight=630
