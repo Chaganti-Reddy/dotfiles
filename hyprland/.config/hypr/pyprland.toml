@@ -61,19 +61,9 @@ margin = 50
 [scratchpads.chess]
 animation = ""
 command = "$HOME/apps/Chess-linux-x64/Chess"
-class = "chess-nativefier-b30d50"
+class = "chess-nativefier-703820"
 size = "80% 80%"
 lazy = true
 position = "181px 97px"
-max_size = "1920px 100%"
-margin = 50
-
-[scratchpads.whatsapp]
-animation = ""
-command = "chromium --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm"
-class = "chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default"
-# size = "90% 85%"
-lazy = false
-# position = "181px 97px"
 max_size = "1920px 100%"
 margin = 50
