@@ -1,3 +1,6 @@
+[General]
+FreeFloating=true
+
 [Plugins]
 krunner_recentdocumentsEnabled=false
 
