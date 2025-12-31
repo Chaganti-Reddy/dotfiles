@@ -556,6 +556,33 @@ step_sddm_theme() {
 step_stow_karna() {
     cd "$DOTFILES_DIR" || return 1
     rm -rf ~/.bashrc
+    rm -rf ~/.config/dolphinrc
+    rm -rf ~/.config/gtkrc
+    rm -rf ~/.config/kate-externaltoolspluginrc
+    rm -rf ~/.config/katerc
+    rm -rf ~/.config/katevirc
+    rm -rf ~/.config/kcminputrc
+    rm -rf ~/.config/kded_device_automounterrc
+    rm -rf ~/.config/kdeglobals
+    rm -rf ~/.config/kglobalshortcutsrc
+    rm -rf ~/.config/konsolerc
+    rm -rf ~/.config/konsolesshconfig
+    rm -rf ~/.config/krunnerrc
+    rm -rf ~/.config/kscreenlockerrc
+    rm -rf ~/.config/ksmserverrc
+    rm -rf ~/.config/kwinrc
+    rm -rf ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+    rm -rf ~/.config/plasmanotifyrc
+    rm -rf ~/.config/plasmaparc
+    rm -rf ~/.config/plasmashellrc
+    rm -rf ~/.config/powerdevilrc
+    rm -rf ~/.config/powermanagementprofilesrc
+    rm -rf ~/.config/user-dirs.dirs
+    rm -rf ~/.config/yakuakerc
+    rm -rf ~/.local/share/dolphin
+    rm -rf ~/.local/share/kate
+    rm -rf ~/.local/share/konsole
+    rm -rf ~/.local/share/kxmlgui5
 
     local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps gtk-2 gtk-3 KDE)
 
