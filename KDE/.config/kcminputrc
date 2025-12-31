@@ -7,3 +7,6 @@ NaturalScroll=true
 
 [Libinput][5426][152][Razer Razer DeathAdder Essential]
 PointerAccelerationProfile=1
+
+[Mouse]
+cursorTheme=WhiteSur-cursors
