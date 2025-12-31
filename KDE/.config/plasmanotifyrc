@@ -1,5 +1,8 @@
 [Applications][firefox]
 Seen=true
 
+[DoNotDisturb]
+NotificationSoundsMuted=false
+
 [Notifications]
 PopupTimeout=3000
