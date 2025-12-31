@@ -1,5 +1,5 @@
 [Document 0]
-URL=file:///home/karna/.gitconfig
+URL=file:///home/karna/.config/yakuakerc
 
 [Kate Plugins]
 bookmarksplugin=false
@@ -56,7 +56,7 @@ Kate-MDI-Sidebar-2-Splitter=595
 Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
 Kate-MDI-Sidebar-3-LastSize=200
 Kate-MDI-Sidebar-3-SectSizes=0
-Kate-MDI-Sidebar-3-Splitter=282
+Kate-MDI-Sidebar-3-Splitter=286
 Kate-MDI-Sidebar-Style=2
 Kate-MDI-Sidebar-Visible=true
 Kate-MDI-ToolView-diagnostics-Position=3
@@ -103,9 +103,8 @@ Documents=0
 View 0=0
 
 [MainWindow0-ViewSpace 0 0]
-CursorColumn=16
-CursorLine=21
-ScrollLine=6
+CursorColumn=0
+CursorLine=10
 
 [Open Documents]
 Count=1
@@ -141,23 +140,23 @@ SizeLimit=128
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=$HOME/.config/plasmanotifyrc
-File10[$e]=$HOME/.gitconfig
-File2[$e]=$HOME/.config/plasmaparc
-File3[$e]=$HOME/.config/powerdevilrc
-File4[$e]=$HOME/.config/powermanagementprofilesrc
-File5[$e]=$HOME/.config/Trolltech.conf
-File6[$e]=$HOME/.config/user-dirs.dirs
-File7[$e]=$HOME/.config/user-dirs.locale
-File8[$e]=$HOME/.config/plasmashellrc
-File9[$e]=$HOME/.config/filetypesrc
-Name1[$e]=plasmanotifyrc
-Name10[$e]=.gitconfig
-Name2[$e]=plasmaparc
-Name3[$e]=powerdevilrc
-Name4[$e]=powermanagementprofilesrc
-Name5[$e]=Trolltech.conf
-Name6[$e]=user-dirs.dirs
-Name7[$e]=user-dirs.locale
-Name8[$e]=plasmashellrc
-Name9[$e]=filetypesrc
+File1[$e]=$HOME/.config/user-dirs.dirs
+File10[$e]=$HOME/.config/yakuakerc
+File2[$e]=$HOME/.config/user-dirs.locale
+File3[$e]=$HOME/.config/plasmashellrc
+File4[$e]=$HOME/.config/filetypesrc
+File5[$e]=$HOME/.gitconfig
+File6[$e]=$HOME/.local/share/konsole/Karna.profile
+File7[$e]=$HOME/.config/konsolerc
+File8[$e]=$HOME/.config/discoverrc
+File9[$e]=$HOME/.config/trashrc
+Name1[$e]=user-dirs.dirs
+Name10[$e]=yakuakerc
+Name2[$e]=user-dirs.locale
+Name3[$e]=plasmashellrc
+Name4[$e]=filetypesrc
+Name5[$e]=.gitconfig
+Name6[$e]=Karna.profile
+Name7[$e]=konsolerc
+Name8[$e]=discoverrc
+Name9[$e]=trashrc
