@@ -9,6 +9,7 @@ thickness=44
 
 [PlasmaViews][Panel 27]
 floating=1
+panelVisibility=1
 
 [PlasmaViews][Panel 27][Defaults]
 thickness=44
