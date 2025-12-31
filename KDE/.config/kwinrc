@@ -9,9 +9,6 @@ Rows=1
 [Effect-magiclamp]
 AnimationDuration=400
 
-[Effect-overview]
-BorderActivate=9
-
 [NightColor]
 Active=true
 NightTemperature=4900
