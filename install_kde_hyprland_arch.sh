@@ -509,7 +509,7 @@ step_pdf_zathura() {
 }
 
 step_hyprland_stack() {
-    paru -S --needed --noconfirm rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-guiutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi pear-desktop-bin hyprsunset sunsetr-bin thefuck
+    paru -S --needed --noconfirm rofi-wayland rofi-emoji rofi-calc dunst udiskie hyprlang kitty yazi hyprland hyprlock xdg-desktop-portal-hyprland cliphist hyprland-guiutils hyprpicker hyprpaper system-config-printer chafa hypridle waybar wl-clipboard speech-dispatcher cmake meson cpio grim slurp wtype wf-recorder qt5-wayland qt6-wayland xdg-desktop-portal-wlr wlr-randr pyprland wofi pear-desktop-bin hyprsunset sunsetr-bin thefuck foot
 
     sudo usermod -aG video "$USER"
     sudo usermod -aG input "$USER"
@@ -584,7 +584,7 @@ step_stow_karna() {
     rm -rf ~/.local/share/konsole
     rm -rf ~/.local/share/kxmlgui5
 
-    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps gtk-2 gtk-3 KDE)
+    local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps gtk-2 gtk-3 KDE foot)
 
     for folder in "${folders[@]}"; do
         info "Stowing $folder"
