@@ -21,13 +21,13 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=36,91,142
+BackgroundAlternate=24,101,78
 BackgroundNormal=41,44,48
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=161,169,177
-ForegroundLink=170,200,251
+ForegroundLink=32,226,164
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=252,252,252
@@ -37,11 +37,11 @@ ForegroundVisited=155,89,182
 [Colors:Complementary]
 BackgroundAlternate=30,87,116
 BackgroundNormal=32,35,38
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=161,169,177
-ForegroundLink=170,200,251
+ForegroundLink=32,226,164
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=252,252,252
@@ -51,11 +51,11 @@ ForegroundVisited=155,89,182
 [Colors:Header]
 BackgroundAlternate=32,35,38
 BackgroundNormal=41,44,48
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=161,169,177
-ForegroundLink=170,200,251
+ForegroundLink=32,226,164
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=252,252,252
@@ -77,13 +77,13 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:Selection]
-BackgroundAlternate=30,85,135
-BackgroundNormal=30,85,135
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+BackgroundAlternate=18,94,70
+BackgroundNormal=18,94,70
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=255,255,255
-ForegroundLink=26,82,134
+ForegroundLink=13,92,66
 ForegroundNegative=176,55,69
 ForegroundNeutral=198,92,0
 ForegroundNormal=255,255,255
@@ -93,11 +93,11 @@ ForegroundVisited=155,89,182
 [Colors:Tooltip]
 BackgroundAlternate=32,35,38
 BackgroundNormal=41,44,48
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=161,169,177
-ForegroundLink=170,200,251
+ForegroundLink=32,226,164
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=252,252,252
@@ -107,11 +107,11 @@ ForegroundVisited=155,89,182
 [Colors:View]
 BackgroundAlternate=29,31,34
 BackgroundNormal=20,22,24
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=161,169,177
-ForegroundLink=170,200,251
+ForegroundLink=32,226,164
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=252,252,252
@@ -121,11 +121,11 @@ ForegroundVisited=155,89,182
 [Colors:Window]
 BackgroundAlternate=41,44,48
 BackgroundNormal=32,35,38
-DecorationFocus=35,112,183
-DecorationHover=35,112,183
-ForegroundActive=35,112,183
+DecorationFocus=18,126,91
+DecorationHover=18,126,91
+ForegroundActive=18,126,91
 ForegroundInactive=161,169,177
-ForegroundLink=170,200,251
+ForegroundLink=32,226,164
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=252,252,252
@@ -133,9 +133,16 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [General]
-AccentColor=35,112,183
+AccentColor=18,126,91
 ColorSchemeHash=2c3f86428c11011a7c64ee1e7f47c274d498ff10
+XftHintStyle=hintslight
+XftSubPixel=rgb
 accentColorFromWallpaper=true
+fixed=Iosevka Nerd Font Mono,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+font=Iosevka Nerd Font Mono,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+menuFont=Iosevka Nerd Font Mono,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+smallestReadableFont=Iosevka Nerd Font Mono,8,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+toolBarFont=Iosevka Nerd Font Mono,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
 
 [KDE]
 LookAndFeelPackage=org.kde.breezedark.desktop
@@ -151,6 +158,7 @@ MaximumRemoteSize=0
 [WM]
 activeBackground=39,44,49
 activeBlend=252,252,252
+activeFont=Iosevka Nerd Font Mono,10,-1,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
 activeForeground=252,252,252
 inactiveBackground=32,36,40
 inactiveBlend=161,169,177
