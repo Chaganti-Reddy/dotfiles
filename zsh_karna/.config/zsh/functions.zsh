@@ -228,8 +228,25 @@ function fd() {
     ) && cd "$dir" && zle clear-screen
 }
 
-zle -N fd
-bindkey '^O' fd 
+function search_previous() {
+    zle -I              
+    $HOME/.config/scripts/fzf_listoldfiles.sh
+    zle reset-prompt    
+}
+
+function search_all() {
+    zle -I
+    $HOME/.config/scripts/zoxide_openfiles_nvim.sh
+    zle reset-prompt
+}
+
+# Register them as Widgets
+zle -N search_previous
+zle -N search_all
+
+# zle -N fd
+bindkey '^O' search_previous 
+bindkey '^[o' search_all
 
 function rmfzf() {
     local target
@@ -240,8 +257,8 @@ function rmfzf() {
     ) && trash "$target" && zle clear-screen
 }
 
-zle -N rmfzf
-bindkey '^X^A' rmfzf
+# zle -N rmfzf
+# bindkey '^X^A' rmfzf
 
 function nv() {
   if [[ -z "$1" ]]; then
@@ -300,7 +317,7 @@ function lolcat_clear() {
 }
 
 zle -N lolcat_clear
-bindkey '^L' lolcat_clear  # Ctrl+L
+# bindkey '^L' lolcat_clear  # Ctrl+L
 
 function nvm() {
   unset -f nvm
@@ -308,45 +325,4 @@ function nvm() {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   nvm "$@"
 }
-
-compdef fastanime
-
-_fastanime_completion() {
-    local -a completions
-    local -a completions_with_descriptions
-    local -a response
-    (( ! $+commands[fastanime] )) && return 1
-
-    response=("${(@f)$(env COMP_WORDS="${words[*]}" COMP_CWORD=$((CURRENT-1)) _FASTANIME_COMPLETE=zsh_complete fastanime)}")
-
-    for type key descr in ${response}; do
-        if [[ "$type" == "plain" ]]; then
-            if [[ "$descr" == "_" ]]; then
-                completions+=("$key")
-            else
-                completions_with_descriptions+=("$key":"$descr")
-            fi
-        elif [[ "$type" == "dir" ]]; then
-            _path_files -/
-        elif [[ "$type" == "file" ]]; then
-            _path_files -f
-        fi
-    done
-
-    if [ -n "$completions_with_descriptions" ]; then
-        _describe -V unsorted completions_with_descriptions -U
-    fi
-
-    if [ -n "$completions" ]; then
-        compadd -U -V unsorted -a completions
-    fi
-}
-
-if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
-    # autoload from fpath, call function directly
-    _fastanime_completion "$@"
-else
-    # eval/source/. command, register function for later
-    compdef _fastanime_completion fastanime
-fi
 
