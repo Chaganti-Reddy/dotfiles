@@ -390,7 +390,7 @@ step_pacman_config() {
 step_install_paru() {
   if command -v paru &>/dev/null; then return 0; fi
   cd ~/Downloads || return 1
-  sudo pacman -Syyu --noconfirm git base-devel
+  sudo pacman -Syyu --noconfirm git base-devel rustup
   rm -rf paru
   git clone https://aur.archlinux.org/paru.git
   cd paru
@@ -400,8 +400,11 @@ step_install_paru() {
 }
 
 step_system_base() {
-  local pkgs=(bash-completion tlp tlp-rdw git openssh curl wget system-config-printer base-devel intel-ucode bash-language-server btop fastfetch bat exa fd ripgrep fzf stow stylua tar tree time unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipnotify inotify-tools psutils yakuake e2fsprogs efibootmgr gc git-lfs gstreamer jq screenkey maim lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli pandoc python-pywal glow xarchiver man-db man-pages ncdu python-pip nwg-look zbar os-prober pamixer parallel shfmt tesseract tesseract-data-eng python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server bmon playerctl rmpc mpd mpv mpc poppler poppler-glib gnome-disk-utility gparted pavucontrol yad timeshift gnu-free-fonts go hugo hunspell hunspell-en_us imagemagick ueberzugpp luacheck mlocate translate-shell jdk-openjdk meld blueman newsboat dart-sass speedtest-cli lynx atool figlet luarocks network-manager-applet glfw alsa-firmware pipewire pipewire-audio pipewire-alsa pipewire-pulse wireplumber sof-firmware alsa-ucm-conf viewnior qalculate-gtk pyright python-black vscode-html-languageserver typescript-language-server mdformat ydotool ccls jedi-language-server wakatime flatpak ghostscript qpdf mupdf-tools openssl dbus sqlite hspell nuspell dictd cargo xmlstarlet lua51 gdb yq dos2unix 7zip perl-image-exiftool python-psutil preload sysstat lazydocker-bin gopls gomodifytags gotests gore graphviz python-pyflakes python-isort python-pipenv python-nose python-pytest tidy stylelint js-beautify cpptools-debug-bin dialog python-watchdog advcpmv maven speech-dispatcher python-lsp-server python-plyer taplo-cli reflector yakuake gnome-keyring mermaid-cli atuin)
+  local pkgs=(bash-completion tlp tlp-rdw git openssh curl wget system-config-printer base-devel intel-ucode bash-language-server btop fastfetch bat exa fd ripgrep fzf stow stylua tar tree time unrar unzip bluez bluez-utils brightnessctl xfsprogs ntfs-3g clang gcc clipnotify inotify-tools psutils yakuake e2fsprogs efibootmgr gc git-lfs gstreamer jq screenkey maim lazygit lolcat sxiv shellcheck net-tools numlockx prettier progress zip rsync trash-cli pandoc python-pywal glow xarchiver man-db man-pages ncdu python-pip nwg-look zbar os-prober pamixer parallel shfmt tesseract tesseract-data-eng python-prctl vscode-css-languageserver ffmpegthumbnailer lua-language-server bmon playerctl rmpc mpd mpv mpc poppler poppler-glib gnome-disk-utility gparted pavucontrol yad timeshift gnu-free-fonts go hugo hunspell hunspell-en_us imagemagick ueberzugpp luacheck mlocate translate-shell jdk-openjdk meld blueman newsboat dart-sass speedtest-cli lynx atool figlet luarocks network-manager-applet glfw alsa-firmware pipewire pipewire-audio pipewire-alsa pipewire-pulse wireplumber sof-firmware alsa-ucm-conf viewnior qalculate-gtk pyright python-black vscode-html-languageserver typescript-language-server mdformat ydotool ccls jedi-language-server wakatime flatpak ghostscript qpdf mupdf-tools openssl dbus sqlite hspell nuspell dictd rustup cargo xmlstarlet lua51 gdb yq dos2unix 7zip perl-image-exiftool python-psutil preload sysstat lazydocker-bin gopls gomodifytags gotests gore graphviz python-pyflakes python-isort python-pipenv python-nose python-pytest tidy stylelint js-beautify cpptools-debug-bin dialog python-watchdog advcpmv maven speech-dispatcher python-lsp-server python-plyer taplo-cli reflector yakuake gnome-keyring mermaid-cli atuin rust-analyzer rust-src)
   paru -S --needed --noconfirm "${pkgs[@]}"
+
+  rustup default stable
+  rustup component add rust-analyzer clippy rust-src
 
   sudo systemctl enable --now tlp.service
   sudo systemctl enable --now bluetooth.service
