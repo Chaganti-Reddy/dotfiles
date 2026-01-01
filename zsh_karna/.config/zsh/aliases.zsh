@@ -195,3 +195,9 @@ alias cls="clear"
 alias lg="lazygit"
 alias cat='bat --style header --style snip --style changes --style header'
 alias fman="compgen -c | fzf | xargs man"
+
+ # Tmux 
+alias tmux="tmux -f $TMUX_CONF"
+alias a="attach"
+# calls the tmux new session script
+alias tns="~/scripts/tmux-sessionizer"
