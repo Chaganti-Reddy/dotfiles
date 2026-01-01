@@ -23,16 +23,23 @@ rehash_precmd() {
   fi
 }
 add-zsh-hook -Uz precmd rehash_precmd
+source $HOME/.config/scripts/fzf-git.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+eval "$(fzf --zsh)" # fzf
 eval "$(zoxide init zsh)"
 # fastfetch 
 # colorscript random
-source /home/karna/.config/zsh/exports.zsh
-source /home/karna/.config/zsh/aliases.zsh
-source /home/karna/.config/zsh/functions.zsh
+source $HOME/.config/zsh/exports.zsh
+source $HOME/.config/zsh/aliases.zsh
+source $HOME/.config/zsh/functions.zsh
+
+# Atuin configs
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
+bindkey '^r' atuin-up-search-viins
 
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 eval "$(thefuck --alias)"
