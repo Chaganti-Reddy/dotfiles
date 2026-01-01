@@ -1,107 +1,164 @@
+[Document 0]
+URL=file:///home/karna/Downloads/temp/src/main.rs
+
 [Kate Plugins]
-bookmarksplugin=false
+bookmarksplugin=true
 cmaketoolsplugin=false
 compilerexplorer=false
-eslintplugin=false
+eslintplugin=true
 externaltoolsplugin=true
-formatplugin=false
-katebacktracebrowserplugin=false
-katebuildplugin=false
+formatplugin=true
+katebacktracebrowserplugin=true
+katebuildplugin=true
 katecloseexceptplugin=false
-katecolorpickerplugin=false
+katecolorpickerplugin=true
 katectagsplugin=false
 katefilebrowserplugin=false
 katefiletreeplugin=true
-kategdbplugin=false
-kategitblameplugin=false
-kategpgplugin=false
+kategdbplugin=true
+kategitblameplugin=true
+kategpgplugin=true
 katekonsoleplugin=true
 kateprojectplugin=true
 katereplicodeplugin=false
 katesearchplugin=true
 katesnippetsplugin=false
-katesqlplugin=false
-katesymbolviewerplugin=false
-katexmlcheckplugin=false
-katexmltoolsplugin=false
-keyboardmacrosplugin=false
-ktexteditorpreviewplugin=false
-latexcompletionplugin=false
+katesqlplugin=true
+katesymbolviewerplugin=true
+katexmlcheckplugin=true
+katexmltoolsplugin=true
+keyboardmacrosplugin=true
+ktexteditorpreviewplugin=true
+latexcompletionplugin=true
 lspclientplugin=true
-openlinkplugin=false
-rainbowparens=false
-rbqlplugin=false
+openlinkplugin=true
+rainbowparens=true
+rbqlplugin=true
 tabswitcherplugin=true
-templateplugin=false
+templateplugin=true
 textfilterplugin=true
 
 [MainWindow0]
 Active ViewSpace=0
-Kate-MDI-H-Splitter=0,595,0
-Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,kateproject,kateprojectgit,lspclient_symbol_outline
+Kate-MDI-H-Splitter=200,1621,0
+Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,kateproject,kateprojectgit,lspclient_symbol_outline,gpgPlugin,kate_private_plugin_katesql_schemabrowser,kate_plugin_symbolviewer
 Kate-MDI-Sidebar-0-LastSize=200
 Kate-MDI-Sidebar-0-SectSizes=0
-Kate-MDI-Sidebar-0-Splitter=371
-Kate-MDI-Sidebar-1-Bar-0-TvList=
+Kate-MDI-Sidebar-0-Splitter=930
+Kate-MDI-Sidebar-1-Bar-0-TvList=Locals and Stack,ktexteditorpreviewplugin
 Kate-MDI-Sidebar-1-LastSize=200
 Kate-MDI-Sidebar-1-SectSizes=0
-Kate-MDI-Sidebar-1-Splitter=371
+Kate-MDI-Sidebar-1-Splitter=930
 Kate-MDI-Sidebar-2-Bar-0-TvList=
 Kate-MDI-Sidebar-2-LastSize=200
 Kate-MDI-Sidebar-2-SectSizes=0
-Kate-MDI-Sidebar-2-Splitter=595
-Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
-Kate-MDI-Sidebar-3-LastSize=200
+Kate-MDI-Sidebar-2-Splitter=1621
+Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin,kate_plugin_katebuildplugin,Debug View,rainbow_csv_toolview,bookmarks,kate_private_plugin_katesql_output,kate_private_plugin_katebacktracebrowserplugin
+Kate-MDI-Sidebar-3-LastSize=355
 Kate-MDI-Sidebar-3-SectSizes=0
-Kate-MDI-Sidebar-3-Splitter=640
+Kate-MDI-Sidebar-3-Splitter=1350
 Kate-MDI-Sidebar-Style=2
 Kate-MDI-Sidebar-Visible=true
+Kate-MDI-ToolView-Debug View-Position=3
+Kate-MDI-ToolView-Debug View-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-Debug View-Visible=false
+Kate-MDI-ToolView-Locals and Stack-Position=1
+Kate-MDI-ToolView-Locals and Stack-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-Locals and Stack-Visible=false
+Kate-MDI-ToolView-bookmarks-Position=3
+Kate-MDI-ToolView-bookmarks-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-bookmarks-Visible=false
 Kate-MDI-ToolView-diagnostics-Position=3
 Kate-MDI-ToolView-diagnostics-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-diagnostics-Visible=false
+Kate-MDI-ToolView-gpgPlugin-Position=0
+Kate-MDI-ToolView-gpgPlugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-gpgPlugin-Visible=false
+Kate-MDI-ToolView-kate_plugin_katebuildplugin-Position=3
+Kate-MDI-ToolView-kate_plugin_katebuildplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_plugin_katebuildplugin-Visible=false
 Kate-MDI-ToolView-kate_plugin_katesearch-Position=3
 Kate-MDI-ToolView-kate_plugin_katesearch-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-kate_plugin_katesearch-Visible=false
+Kate-MDI-ToolView-kate_plugin_symbolviewer-Position=0
+Kate-MDI-ToolView-kate_plugin_symbolviewer-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_plugin_symbolviewer-Visible=false
+Kate-MDI-ToolView-kate_private_plugin_katebacktracebrowserplugin-Position=3
+Kate-MDI-ToolView-kate_private_plugin_katebacktracebrowserplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katebacktracebrowserplugin-Visible=false
 Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Position=0
 Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Visible=false
 Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Position=3
 Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Visible=false
+Kate-MDI-ToolView-kate_private_plugin_katesql_output-Position=3
+Kate-MDI-ToolView-kate_private_plugin_katesql_output-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katesql_output-Visible=false
+Kate-MDI-ToolView-kate_private_plugin_katesql_schemabrowser-Position=0
+Kate-MDI-ToolView-kate_private_plugin_katesql_schemabrowser-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katesql_schemabrowser-Visible=false
 Kate-MDI-ToolView-kateproject-Position=0
 Kate-MDI-ToolView-kateproject-Show-Button-In-Sidebar=true
-Kate-MDI-ToolView-kateproject-Visible=false
+Kate-MDI-ToolView-kateproject-Visible=true
 Kate-MDI-ToolView-kateprojectgit-Position=0
 Kate-MDI-ToolView-kateprojectgit-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-kateprojectgit-Visible=false
 Kate-MDI-ToolView-kateprojectinfo-Position=3
 Kate-MDI-ToolView-kateprojectinfo-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-kateprojectinfo-Visible=false
+Kate-MDI-ToolView-ktexteditorpreviewplugin-Position=1
+Kate-MDI-ToolView-ktexteditorpreviewplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-ktexteditorpreviewplugin-Visible=false
 Kate-MDI-ToolView-lspclient_symbol_outline-Position=0
 Kate-MDI-ToolView-lspclient_symbol_outline-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-lspclient_symbol_outline-Visible=false
 Kate-MDI-ToolView-output-Position=3
 Kate-MDI-ToolView-output-Show-Button-In-Sidebar=true
 Kate-MDI-ToolView-output-Visible=false
-Kate-MDI-V-Splitter=0,371,0
+Kate-MDI-ToolView-rainbow_csv_toolview-Position=3
+Kate-MDI-ToolView-rainbow_csv_toolview-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-rainbow_csv_toolview-Visible=false
+Kate-MDI-V-Splitter=0,930,0
+ToolBarsMovable=Enabled
 
 [MainWindow0 Settings]
-WindowState=8
+ToolBarsMovable=Enabled
+WindowState=10
 
 [MainWindow0-Splitter 0]
 Children=MainWindow0-ViewSpace 0
 Orientation=1
-Sizes=595
+Sizes=1621
 
 [MainWindow0-ViewSpace 0]
-Count=0
-Documents=
+Active View=0
+Count=1
+Documents=0
+View 0=0
+
+[MainWindow0-ViewSpace 0 0]
+CursorColumn=0
+CursorLine=4
 
 [Open Documents]
-Count=0
+Count=1
 
 [Open MainWindows]
 Count=1
+
+[Plugin:katebuildplugin:MainWindow:0]
+Active Target Index Tree=0
+NumTargets=0
+ProjectTargetSetRow=1
+
+[Plugin:kategdbplugin:MainWindow:0]
+alwaysFocusOnInput=false
+lastTarget=0
+redirectTerminal=false
+targetCount=1
+target_0={"debuggerKey":"dart","debuggerProfile":"launch (debug)","target":"Target 1","variables":{"args":"","file":"","workdir":""}}
+version=5
 
 [Plugin:kateprojectplugin:]
 projects=
@@ -130,24 +187,31 @@ SearchDiskFiless=
 SizeLimit=128
 UseRegExp=false
 
+[Plugin:katesqlplugin:MainWindow:0]
+LastUsed=
+
+[Plugin:ktexteditorpreviewplugin:MainWindow:0]
+automaticUpdate=false
+documentLocked=false
+
 [Recent Files]
-File1[$e]=$HOME/.config/plasmashellrc
-File10[$e]=$HOME/dotfiles-install.log
-File2[$e]=$HOME/.config/filetypesrc
-File3[$e]=$HOME/.gitconfig
-File4[$e]=$HOME/.local/share/konsole/Karna.profile
-File5[$e]=$HOME/.config/konsolerc
-File6[$e]=$HOME/.config/discoverrc
-File7[$e]=$HOME/.config/trashrc
-File8[$e]=$HOME/.config/yakuakerc
-File9[$e]=$HOME/.local/share/user-places.xbel
-Name1[$e]=plasmashellrc
-Name10[$e]=dotfiles-install.log
-Name2[$e]=filetypesrc
-Name3[$e]=.gitconfig
-Name4[$e]=Karna.profile
-Name5[$e]=konsolerc
-Name6[$e]=discoverrc
-Name7[$e]=trashrc
-Name8[$e]=yakuakerc
-Name9[$e]=user-places.xbel
+File1[$e]=$HOME/.local/share/konsole/Karna.profile
+File10[$e]=$HOME/Downloads/temp/src/main.rs
+File2[$e]=$HOME/.config/konsolerc
+File3[$e]=$HOME/.config/discoverrc
+File4[$e]=$HOME/.config/trashrc
+File5[$e]=$HOME/.config/yakuakerc
+File6[$e]=$HOME/.local/share/user-places.xbel
+File7[$e]=$HOME/dotfiles-install.log
+File8[$e]=$HOME/Downloads/temp/.gitignore
+File9[$e]=$HOME/Downloads/temp
+Name1[$e]=Karna.profile
+Name10[$e]=main.rs
+Name2[$e]=konsolerc
+Name3[$e]=discoverrc
+Name4[$e]=trashrc
+Name5[$e]=yakuakerc
+Name6[$e]=user-places.xbel
+Name7[$e]=dotfiles-install.log
+Name8[$e]=.gitignore
+Name9[$e]=temp
