@@ -584,7 +584,7 @@ step_stow_karna() {
   rm -rf ~/.local/share/konsole
   rm -rf ~/.local/share/kxmlgui5
 
-  local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps gtk-2 gtk-3 KDE foot)
+  local folders=(bash_karna BTOP_karna dunst face_karna neofetch latexmkrc libreoffice mpd_karna mpv_karna myemojis rmpc newsboat_karna nvim NWG octave pandoc pavucontrol qutebrowser yazi screenlayout sxiv Templates xarchiver zathura kitty enchant vim Okular fastfetch hyprland waybar rofi mimeapps gtk-2 gtk-3 KDE foot atuin)
 
   for folder in "${folders[@]}"; do
     info "Stowing $folder"
