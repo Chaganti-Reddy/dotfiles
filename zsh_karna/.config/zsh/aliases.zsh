@@ -194,3 +194,4 @@ alias neofetch="fastfetch"
 alias cls="clear"
 alias lg="lazygit"
 alias cat='bat --style header --style snip --style changes --style header'
+alias fman="compgen -c | fzf | xargs man"
