@@ -8,5 +8,7 @@ ShowSidebar=true
 [Recent Files]
 File1[$e]=$HOME/Downloads/taoup.pdf
 File2[$e]=$HOME/Downloads/art of unix programming.pdf
+File3[$e]=$HOME/.config/nvim/README.md
 Name1[$e]=taoup.pdf
 Name2[$e]=art of unix programming.pdf
+Name3[$e]=README.md
