@@ -201,3 +201,4 @@ alias tmux="tmux -f $TMUX_CONF"
 alias a="attach"
 # calls the tmux new session script
 alias tns="~/scripts/tmux-sessionizer"
+alias kickn='NVIM_APPNAME="nvim-kickstart" nvim'
