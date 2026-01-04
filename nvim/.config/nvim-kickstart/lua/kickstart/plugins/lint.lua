@@ -7,6 +7,18 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        -- Python: Ruff is the modern, ultra-fast choice
+        python = { 'ruff' },
+
+        -- Web Dev: Use eslint_d (the 'd' is for daemon, it's 10x faster)
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+
+        -- Styles and HTML
+        css = { 'stylelint' },
+        html = { 'htmlhint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -44,7 +56,7 @@ return {
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
         group = lint_augroup,
         callback = function()
           -- Only run the linter in buffers that you can modify in order to
@@ -55,6 +67,9 @@ return {
           end
         end,
       })
+      vim.keymap.set('n', '<leader>cl', function()
+        lint.try_lint()
+      end, { desc = '[C]ode [L]int' })
     end,
   },
 }
