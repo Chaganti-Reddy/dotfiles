@@ -1,6 +1,6 @@
 <h2 align="center">WezTerm Config</h2>
 
-![screenshot](./.github/screenshots/wezterm.gif)
+![screenshot](./screenshots/wezterm.gif)
 
 ---
 
