@@ -63,7 +63,7 @@ return {
 
     lualine.setup {
       options = {
-        theme = 'tokyonight',
+        theme = 'rose-pine',
         -- ROUNDED PILL LOOK
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
