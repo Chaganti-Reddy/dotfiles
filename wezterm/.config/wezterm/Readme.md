@@ -1,8 +1,10 @@
-<h2 align="center">WezTerm Config - ![link](https://github.com/KevinSilvester/wezterm-config)</h2>
+<h2 align="center">WezTerm Config</h2>
 
 ![screenshot](./.github/screenshots/wezterm.gif)
 
 ---
+
+- Copied from  - ![KevinSilvester/wezterm-config](https://github.com/KevinSilvester/wezterm-config)
 
 ### Getting Started
 
