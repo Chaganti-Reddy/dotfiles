@@ -15,7 +15,7 @@ return {
     toggle = {
       map = vim.keymap.set,
       which_key = true, -- Show state in which-key menu
-      notify = true, -- Show "Toast" notifications
+      notify = false, -- Show "Toast" notifications
       icon = {
         enabled = ' ',
         disabled = ' ',
@@ -30,7 +30,7 @@ return {
       },
     },
     scroll = {
-      enabled = true,
+      enabled = false,
       animate = {
         duration = { step = 15, total = 250 },
         easing = 'linear',
@@ -55,8 +55,13 @@ return {
         Snacks.notify.warn 'Bigfile detected: Heavy features disabled for performance'
       end,
     },
+    notifier = {
+      enabled = true,
+      timeout = 3000,
+      level = vim.log.levels.ERROR, -- Only shows Errors
+      style = 'compact', -- "compact" | "minimal" | "fancy"
+    },
     quickfile = { enabled = true },
-    notifier = { enabled = true, timeout = 3000 },
     words = { enabled = true },
     input = { enabled = true },
     lazygit = {
@@ -164,6 +169,13 @@ return {
       desc = '[ ] Find existing buffers',
     },
     {
+      '<leader>sm',
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = '[S]earch [M]essages',
+    },
+    {
       '<leader>sn',
       function()
         Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
@@ -173,6 +185,7 @@ return {
     {
       '<leader>st',
       function()
+        ---@diagnostic disable-next-line: undefined-field
         Snacks.picker.todo_comments()
       end,
       desc = '[S]earch [T]odos',
@@ -366,6 +379,24 @@ return {
         end
       end,
     })
+
+    -- This overrides the default notification behavior
+    vim.notify = function(msg, level, opts)
+      local severity = level or vim.log.levels.INFO
+
+      -- If it's an ERROR, use the Snacks Floating Notifier
+      if severity >= vim.log.levels.ERROR then
+        require('snacks').notifier.notify(msg, severity, opts)
+      else
+        -- For everything else (Info, Warn, Toggles), echo to the bottom
+        -- Using schedule ensures it doesn't flicker during heavy UI tasks
+        vim.schedule(function()
+          -- 'None' uses default text color; 'WarningMsg' would make warnings yellow
+          local hl = severity == vim.log.levels.WARN and 'WarningMsg' or 'None'
+          vim.api.nvim_echo({ { msg, hl } }, false, {})
+        end)
+      end
+    end
     -- [[ Writing Mode Logic ]]
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { 'markdown', 'tex', 'txt' },
