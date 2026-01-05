@@ -1,4 +1,4 @@
-<h2 align="center">WezTerm Config - [link](https://github.com/KevinSilvester/wezterm-config)</h2>
+<h2 align="center">WezTerm Config - ![link](https://github.com/KevinSilvester/wezterm-config)</h2>
 
 ![screenshot](./.github/screenshots/wezterm.gif)
 
