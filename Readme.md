@@ -187,6 +187,17 @@ My system is unified using **Pywal** for color generation (matches wallpaper) an
 
 ## 🤖 Extras
 
+### VSCode font change
+To change VSCode font in IDE but not in editor got to 
+
+`C:\Users\user-name\AppData\Local\Programs\Microsoft VS Code\Profile-ID\resources\app\out\vs\workbench` and there add this to the top of workbench.desktop.main.css
+
+```css
+.monaco-workbench {
+    font-family: "Iosevka NF" !important;
+}
+```
+
 ### My "Strict Mentor" ChatGPT Prompt
 This is the custom instruction I use with ChatGPT for learning and productivity.
 
