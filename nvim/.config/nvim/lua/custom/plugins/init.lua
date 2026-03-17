@@ -2,18 +2,37 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+---@module 'lazy'
+---@type LazySpec
 return {
-  { 'wakatime/vim-wakatime', lazy = false },
   {
-    'mg979/vim-visual-multi',
-    init = function()
-      -- Map Ctrl-d to match VS Code
-      vim.g.VM_maps = {
-        ['Find Under'] = '<C-d>',
-        ['Find Subword Under'] = '<C-d>',
-      }
-    end,
+    'Exafunction/codeium.vim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'saghen/blink.cmp',
+    },
+    event = 'BufEnter',
   },
+
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    ft = { 'markdown', 'codecompanion' },
+    opts = {
+      code = {
+        sign = false,
+        width = 'block',
+        right_pad = 1,
+        highlight = 'NormalFloat',
+      },
+      heading = {
+        sign = false,
+      },
+    },
+  },
+
+  { 'wakatime/vim-wakatime', lazy = false },
 
   {
     'rachartier/tiny-inline-diagnostic.nvim',
@@ -32,34 +51,117 @@ return {
       }
 
       -- IMPORTANT: Disable the default Neovim virtual text so they don't overlap
-      vim.diagnostic.config { virtual_text = false }
+      local diag_mode = 1 -- 1 = tiny-inline, 2 = virtual text, 3 = off
+
+      vim.keymap.set('n', '<leader>td', function()
+        diag_mode = diag_mode % 3 + 1
+        if diag_mode == 1 then
+          require('tiny-inline-diagnostic').enable()
+          vim.diagnostic.config { virtual_text = false }
+          print 'Diagnostics: tiny-inline'
+        -- elseif diag_mode == 2 then
+        --   require('tiny-inline-diagnostic').disable()
+        --   vim.diagnostic.config { virtual_text = true }
+        --   print 'Diagnostics: virtual text'
+        else
+          require('tiny-inline-diagnostic').disable()
+          vim.diagnostic.config { virtual_text = false }
+          print 'Diagnostics: off'
+        end
+      end, { desc = '[T]oggle [D]iagnostics' })
     end,
   },
 
   {
-    'kkoomen/vim-doge',
-    -- Build step ensures the generator is ready
-    build = ':call doge#install()',
-    event = 'BufReadPost', -- Load when you open a file
+    'echasnovski/mini.files',
     config = function()
-      -- 1. Basic Settings
-      vim.g.doge_doc_standard_python = 'google' -- Options: 'google', 'numpy', 'reST'
-      vim.g.doge_doc_standard_javascript = 'jsdoc'
-      vim.g.doge_doc_standard_typescript = 'tsdoc'
+      local show_dotfiles = false
 
-      -- 2. Mapping Workflow
-      -- This makes it so you can Tab/S-Tab through the placeholders in the docstring
-      vim.g.doge_mapping_workflow = 1
+      local filter_hide = function(fs_entry) return not vim.startswith(fs_entry.name, '.') end
 
-      -- 3. Keybindings
-      -- Generate documentation
-      vim.keymap.set('n', '<leader>gD', '<Plug>(doge-generate)', { desc = '[G]enerate [D]ocumentation' })
+      local toggle_dotfiles = function()
+        show_dotfiles = not show_dotfiles
+        local new_filter = show_dotfiles and require('mini.files').default_filter or filter_hide
+        require('mini.files').refresh { content = { filter = new_filter } }
+      end
 
-      -- These allow you to jump between the empty parts of the comment to fill them in
-      -- vim.keymap.set('n', '<Tab>', '<Plug>(doge-next-placeholder)', { desc = 'Next placeholder' })
-      -- vim.keymap.set('n', '<S-Tab>', '<Plug>(doge-prev-placeholder)', { desc = 'Previous placeholder' })
-      -- vim.keymap.set('i', '<Tab>', '<Plug>(doge-next-placeholder)', { desc = 'Next placeholder' })
-      -- vim.keymap.set('i', '<S-Tab>', '<Plug>(doge-prev-placeholder)', { desc = 'Previous placeholder' })
+      require('mini.files').setup {
+        content = {
+          filter = filter_hide,
+        },
+        mappings = {
+          close = 'q',
+          go_in = 'l',
+          go_in_plus = 'L',
+          go_out = 'h',
+          go_out_plus = 'H',
+          mark_goto = "'",
+          mark_set = 'm',
+          reset = '<BS>',
+          reveal_cwd = '@',
+          show_help = 'g?',
+          synchronize = '=',
+          trim_left = '<',
+          trim_right = '>',
+        },
+        windows = {
+          max_number = 3,
+          width_focus = 30,
+          width_nofocus = 15,
+          preview = true,
+          width_preview = 50,
+        },
+        options = {
+          use_as_default_explorer = true,
+          permanent_delete = false,
+        },
+      }
+
+      -- Toggle hidden files inside mini.files
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'MiniFilesBufferCreate',
+        callback = function(args)
+          local buf = args.data.buf_id
+
+          vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf, desc = 'Toggle Hidden Files' })
+
+          -- Split open
+          local open_split = function(cmd)
+            local entry = require('mini.files').get_fs_entry()
+            if not entry or entry.fs_type ~= 'file' then return end
+            require('mini.files').close()
+            vim.cmd(cmd .. ' ' .. vim.fn.fnameescape(entry.path))
+          end
+
+          vim.keymap.set('n', '<C-h>', function() open_split 'split' end, { buffer = buf, desc = 'Open in horizontal split', nowait = true })
+          vim.keymap.set('n', '<C-x>', function() open_split 'vsplit' end, { buffer = buf, desc = 'Open in vertical split', nowait = true })
+          vim.keymap.set('n', '<C-t>', function() open_split 'tabedit' end, { buffer = buf, desc = 'Open in new tab', nowait = true })
+        end,
+      })
+
+      -- Open mini.files (toggles if already open)
+      vim.keymap.set('n', '<leader>e', function()
+        if not require('mini.files').close() then require('mini.files').open(vim.api.nvim_buf_get_name(0), true) end
+      end, { desc = '[E]xplorer (current file)' })
+
+      vim.keymap.set('n', '<leader>E', function()
+        if not require('mini.files').close() then require('mini.files').open(vim.uv.cwd(), true) end
+      end, { desc = '[E]xplorer (cwd)' })
     end,
+  },
+
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {},
+    keys = {
+      { '<leader>ha', function() require('harpoon'):list():add() end, desc = '[H]arpoon [A]dd' },
+      { '<leader>hh', function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end, desc = '[H]arpoon [M]enu' },
+      { '<leader>h1', function() require('harpoon'):list():select(1) end, desc = '[H]arpoon [1]' },
+      { '<leader>h2', function() require('harpoon'):list():select(2) end, desc = '[H]arpoon [2]' },
+      { '<leader>h3', function() require('harpoon'):list():select(3) end, desc = '[H]arpoon [3]' },
+      { '<leader>h4', function() require('harpoon'):list():select(4) end, desc = '[H]arpoon [4]' },
+    },
   },
 }
