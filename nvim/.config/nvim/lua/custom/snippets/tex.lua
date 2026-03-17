@@ -8,9 +8,7 @@ local d = ls.dynamic_node
 local sn = ls.snippet_node
 
 -- Advanced: Context-aware math detection
-local function in_math()
-  return vim.fn['vimtex#syntax#in_mathzone']() == 1
-end
+local function in_math() return vim.fn['vimtex#syntax#in_mathzone']() == 1 end
 
 -- Helper for Visual selection wrapping
 local get_visual = function(args, parent)
