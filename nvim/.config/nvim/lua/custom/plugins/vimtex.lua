@@ -4,9 +4,7 @@ return {
     lazy = false,
     init = function()
       -- 1. SERVER START (For Inverse Search)
-      if vim.v.servername == '' then
-        vim.fn.serverstart '/tmp/nvimsocket'
-      end
+      if vim.v.servername == '' then vim.fn.serverstart '/tmp/nvimsocket' end
 
       -- 2. VIEWER SETUP (Fixed for Okular)
       -- Using 'general' method is more stable for Okular on Linux
@@ -64,9 +62,7 @@ return {
             local ok, _ = pcall(vim.cmd, 'Lspsaga hover_doc')
 
             -- 2. Fallback to standard LSP hover
-            if not ok then
-              vim.lsp.buf.hover()
-            end
+            if not ok then vim.lsp.buf.hover() end
 
             -- Note: We REMOVED VimtexDoc from here so it stops opening the browser.
           end, { desc = 'LaTeX: Hover Documentation (Floating)', buffer = true })
